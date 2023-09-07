@@ -8,10 +8,8 @@ node_modules
 # testing
 coverage
 
-# next.js
-.next/
-out/
 build
+dist/
 
 # misc
 .DS_Store
@@ -31,6 +29,5 @@ yarn-error.log*
 
 # turbo
 .turbo
+packages/**/.turbo
 
-# vercel
-.vercel

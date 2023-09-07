@@ -1,17 +1,71 @@
 {
+  "name": "ui",
   "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interlay/ui"
+  },
   "scripts": {
+    "dev": "storybook dev -p 6006",
+    "lint": "eslint packages/**/src --ext .ts,.tsx --config .eslintrc.json --cache",
+    "lint:fix": "pnpm lint --fix",
+    "typecheck": "turbo typecheck",
+    "format:check": "prettier --check packages/**/src --cache",
+    "format:write": "prettier --write packages/**/src --cache",
+    "clean": "turbo run clean && rm -rf node_modules",
     "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "build:sb": "storybook build",
+    "version": "changeset version",
+    "release": "changeset publish",
+    "version:dev": "changeset version --snapshot dev2",
+    "release:dev": "changeset publish --snapshot --no-git-tag --tag dev2"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@storybook/addon-essentials": "^7.4.0",
+    "@storybook/addon-interactions": "^7.4.0",
+    "@storybook/addon-links": "^7.4.0",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.4.0",
+    "@storybook/react": "^7.4.0",
+    "@storybook/react-vite": "^7.4.0",
+    "@storybook/testing-library": "^0.2.0",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
     "eslint": "^8.48.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "prettier": "^3.0.3",
-    "tsconfig": "workspace:*",
-    "turbo": "latest"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.4.0",
+    "tsup": "^7.2.0",
+    "turbo": "latest",
+    "typescript": ">=3.0.0"
   },
-  "packageManager": "pnpm@8.6.10",
-  "name": "ui"
+  "pnpm": {
+    "overrides": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
+  },
+  "engines": {
+    "node": ">=18.x",
+    "pnpm": ">=8.x"
+  },
+  "packageManager": "pnpm@8.7.0"
 }
