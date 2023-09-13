@@ -1,12 +1,13 @@
-import { ForwardRefExoticComponent, forwardRef, useCallback } from 'react';
+import { forwardRef, useCallback } from 'react';
 import { Icon } from '@just_testing13/icons';
 
 import { CoinIconProps } from './CoinIcon';
 import { FallbackIcon } from './FallbackIcon';
+import { CoinComponent } from './types';
 
 type Props = {
   tickers: string[];
-  data: Record<string, ForwardRefExoticComponent<any>>;
+  data: Record<string, CoinComponent>;
 };
 
 type InheritAttrs = Omit<CoinIconProps, keyof Props>;
