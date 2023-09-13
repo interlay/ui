@@ -1,12 +1,13 @@
-import { ForwardRefExoticComponent, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { IconProps } from '@just_testing13/icons';
 
 import * as coins from '../../../icons/src/svg/coin';
 
 import { FallbackIcon } from './FallbackIcon';
 import { LPCoinIcon } from './LPCoinIcon';
+import { CoinComponent } from './types';
 
-const DATA = coins as unknown as Record<string, ForwardRefExoticComponent<any>>;
+const DATA = coins as unknown as Record<string, CoinComponent>;
 
 type Props = {
   ticker: string;
