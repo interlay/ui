@@ -16,12 +16,6 @@ runs:
         registry-url: "https://registry.npmjs.org"
         cache: "pnpm"
 
-    - name: Setup Git User
-      shell: bash
-      run: |
-        git config --global user.email "jrgarciadev@gmail.com"
-        git config --global user.name "Junior Garcia"
-
     - name: Install dependencies
       shell: bash
       run: pnpm install
