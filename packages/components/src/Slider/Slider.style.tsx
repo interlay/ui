@@ -8,6 +8,7 @@ type StyledSliderThumbProps = {
   $isHovered: boolean;
   $isDragged: boolean;
   $isFocused: boolean;
+  $isDisabled: boolean;
   $isFocusVisible: boolean;
 };
 
@@ -98,7 +99,8 @@ const StyledSliderThumb = styled.div<StyledSliderThumbProps>`
   top: 50%;
   z-index: 3;
 
-  background-color: ${({ $isHovered }) => ($isHovered ? theme.slider.thumb.hover.bg : theme.slider.thumb.bg)};
+  background-color: ${({ $isHovered, $isDisabled }) =>
+    $isHovered && !$isDisabled ? theme.slider.thumb.hover.bg : theme.slider.thumb.bg};
   border-style: solid;
   border-color: ${theme.colors.textSecondary};
   border-width: ${({ $isDragged }) => ($isDragged ? '8px' : '2px')};

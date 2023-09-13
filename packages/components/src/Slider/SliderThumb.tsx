@@ -39,6 +39,7 @@ const SliderThumb = ({ state, trackRef, name, ...props }: SliderThumbProps): JSX
   return (
     <StyledSliderThumb
       {...mergeProps(thumbProps, hoverProps)}
+      $isDisabled={state.isDisabled}
       $isDragged={isDragging}
       $isFocusVisible={isFocusVisible}
       $isFocused={isFocused}
