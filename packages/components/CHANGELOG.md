@@ -1,5 +1,15 @@
 # @just_testing13/components
 
+## 0.1.4
+
+### Patch Changes
+
+- [#2](https://github.com/interlay/ui/pull/2) [`df9657a`](https://github.com/interlay/ui/commit/df9657a24da59099657a3571b9f007d61943fd0e) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): coin icon types
+
+- [#4](https://github.com/interlay/ui/pull/4) [`b13eacd`](https://github.com/interlay/ui/commit/b13eacd2d8029a6452cd21ce8b66c2d5a5f513f0) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): select style
+
+- [#1](https://github.com/interlay/ui/pull/1) [`fc81980`](https://github.com/interlay/ui/commit/fc8198097dde6cff75bd6f6fbb1a618277e13cf7) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): slider disable style
+
 ## 0.1.3
 
 ### Patch Changes
