@@ -64,6 +64,8 @@ const StyledTriggerValue = styled(Span)<StyledTriggerValueProps>`
   color: ${({ $isDisabled, $isSelected }) =>
     $isDisabled ? theme.input.disabled.color : $isSelected ? theme.select.color : theme.select.placeholder};
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const StyledList = styled(List)`
