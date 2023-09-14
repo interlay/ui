@@ -37,12 +37,13 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
       shouldCloseOnBlur,
       shouldCloseOnInteractOutside,
       container,
+      isOpen,
       ...props
     },
     ref
   ): JSX.Element | null => {
     const domRef = useDOMRef(ref);
-    const { isOpen, onClose } = props;
+    const { onClose } = props;
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     const isCentered = align === 'center';

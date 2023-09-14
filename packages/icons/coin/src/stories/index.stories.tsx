@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Icon, IconProps } from '@just_testing13/icon';
 
-import { Icon, IconProps } from '..';
 import * as SVGS from '..';
 
 export default {

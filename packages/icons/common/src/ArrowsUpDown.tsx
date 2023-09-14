@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-
 import { Icon, IconProps } from '@just_testing13/icon';
 
 const ArrowsUpDown = forwardRef<SVGSVGElement, IconProps>((props, ref) => (

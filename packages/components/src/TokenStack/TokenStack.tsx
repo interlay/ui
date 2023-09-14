@@ -1,4 +1,4 @@
-import { IconSize } from '@just_testing13/icons';
+import { IconSize } from '@just_testing13/icon';
 
 import { CoinIcon } from '../CoinIcon';
 import { FlexProps } from '../Flex';

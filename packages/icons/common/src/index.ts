@@ -16,5 +16,3 @@ export { PresentationChartBar } from './PresentationChartBar';
 export { Warning } from './Warning';
 export { XCircle } from './XCircle';
 export { XMark } from './XMark';
-export { Icon } from '@just_testing13/icon';
-export type { IconProps, IconSize } from '@just_testing13/icon';

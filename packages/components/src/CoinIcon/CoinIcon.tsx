@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { IconProps } from '@just_testing13/coin-icons';
+import { IconProps } from '@just_testing13/icon';
 import * as coins from '@just_testing13/coin-icons';
 
 import { FallbackIcon } from './FallbackIcon';

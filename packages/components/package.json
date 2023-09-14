@@ -34,6 +34,8 @@
     "@just_testing13/icons": "workspace:*",
     "@just_testing13/coin-icons": "workspace:*",
     "@just_testing13/theme": "workspace:*",
+    "@just_testing13/test-utils": "workspace:*",
+    "@just_testing13/icon": "workspace:*",
     "@react-aria/accordion": "3.0.0-alpha.20",
     "@react-aria/breadcrumbs": "^3.5.4",
     "@react-aria/button": "^3.8.1",
