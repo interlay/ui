@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import * as coins from '@just_testing13/icons/src/svg/coin';
+import * as coins from '@just_testing13/coin-icons';
 import { useState } from 'react';
 import { mergeProps } from '@react-aria/utils';
 

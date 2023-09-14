@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
-import { IconProps } from '@just_testing13/icons';
-
-import * as coins from '../../../icons/src/svg/coin';
+import { IconProps } from '@just_testing13/coin-icons';
+import * as coins from '@just_testing13/coin-icons';
 
 import { FallbackIcon } from './FallbackIcon';
 import { LPCoinIcon } from './LPCoinIcon';
