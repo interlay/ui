@@ -32,6 +32,7 @@
   "dependencies": {
     "@just_testing13/hooks": "workspace:*",
     "@just_testing13/icons": "workspace:*",
+    "@just_testing13/coin-icons": "workspace:*",
     "@just_testing13/theme": "workspace:*",
     "@react-aria/accordion": "3.0.0-alpha.20",
     "@react-aria/breadcrumbs": "^3.5.4",
