@@ -120,12 +120,15 @@ importers:
 
   packages/components:
     dependencies:
+      '@just_testing13/coin-icons':
+        specifier: workspace:*
+        version: link:../icons/coin
       '@just_testing13/hooks':
         specifier: workspace:*
         version: link:../hooks
       '@just_testing13/icons':
         specifier: workspace:*
-        version: link:../icons
+        version: link:../icons/common
       '@just_testing13/theme':
         specifier: workspace:*
         version: link:../theme
@@ -276,11 +279,43 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
 
-  packages/icons:
+  packages/icons/coin:
+    dependencies:
+      '@just_testing13/icon':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      clean-package:
+        specifier: ^2.2.0
+        version: 2.2.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+
+  packages/icons/common:
+    dependencies:
+      '@just_testing13/icon':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      clean-package:
+        specifier: ^2.2.0
+        version: 2.2.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+
+  packages/icons/core:
     dependencies:
       '@just_testing13/theme':
         specifier: workspace:*
-        version: link:../theme
+        version: link:../../theme
     devDependencies:
       '@types/styled-components':
         specifier: ^5.1.26
