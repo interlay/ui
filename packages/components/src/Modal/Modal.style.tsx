@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { Overflow } from '@just_testing13/theme';
+import { theme } from '../../../core/theme/src';
+import { Overflow } from '../../../core/theme/src';
 
 import { overlayCSS } from '../utils/overlay';
 import { Dialog, DialogBody } from '../Dialog';

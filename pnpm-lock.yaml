@@ -173,7 +173,7 @@ importers:
         version: link:../utilities/test-utils
       '@just_testing13/theme':
         specifier: workspace:*
-        version: link:../theme
+        version: link:../core/theme
       '@react-aria/accordion':
         specifier: 3.0.0-alpha.20
         version: 3.0.0-alpha.20(react@18.2.0)
@@ -305,11 +305,42 @@ importers:
         specifier: ^6.0.7
         version: 6.0.8(react-dom@18.2.0)(react@18.2.0)
 
+  packages/core/system:
+    dependencies:
+      '@react-aria/i18n':
+        specifier: ^3.8.1
+        version: 3.8.2(react@18.2.0)
+      '@react-aria/overlays':
+        specifier: ^3.16.0
+        version: 3.17.0(react-dom@18.2.0)(react@18.2.0)
+    devDependencies:
+      clean-package:
+        specifier: ^2.2.0
+        version: 2.2.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+
+  packages/core/theme:
+    devDependencies:
+      clean-package:
+        specifier: ^2.2.0
+        version: 2.2.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+
   packages/hooks:
     dependencies:
       '@just_testing13/theme':
         specifier: workspace:*
-        version: link:../theme
+        version: link:../core/theme
     devDependencies:
       clean-package:
         specifier: ^2.2.0
@@ -357,7 +388,7 @@ importers:
     dependencies:
       '@just_testing13/theme':
         specifier: workspace:*
-        version: link:../../theme
+        version: link:../../core/theme
     devDependencies:
       '@types/styled-components':
         specifier: ^5.1.26
@@ -374,18 +405,6 @@ importers:
       styled-components:
         specifier: ^6.0.7
         version: 6.0.8(react-dom@18.2.0)(react@18.2.0)
-
-  packages/theme:
-    devDependencies:
-      clean-package:
-        specifier: ^2.2.0
-        version: 2.2.0
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
 
   packages/utilities/test-utils:
     dependencies:

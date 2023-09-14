@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributes } from 'react';
-import { CTASizes, CTAVariants } from '@just_testing13/theme';
+import { CTASizes, CTAVariants } from '../../../core/theme/src';
 
 import { ElementTypeProp } from '../utils/types';
 

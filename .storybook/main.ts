@@ -27,6 +27,7 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true
   },
+  
   async viteFinal(config) {
     // Merge custom configuration into the default config
     return mergeConfig(config, {
@@ -44,4 +45,5 @@ const config: StorybookConfig = {
     })
   },
 };
+
 export default config;

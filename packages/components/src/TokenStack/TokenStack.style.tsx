@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IconSize } from '@just_testing13/icons';
+import { IconSize } from '@just_testing13/icon';
 import { theme } from '@just_testing13/theme';
 
 import { Flex } from '../Flex';

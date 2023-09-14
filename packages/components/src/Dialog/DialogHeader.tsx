@@ -1,6 +1,6 @@
 import { mergeProps } from '@react-aria/utils';
 import { ElementType } from 'react';
-import { FontSize, Sizes } from '@just_testing13/theme';
+import { FontSize, Sizes } from '../../../core/theme/src';
 
 import { TextProps } from '../Text';
 

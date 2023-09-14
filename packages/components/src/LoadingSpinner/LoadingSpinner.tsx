@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { CTAVariants } from '@just_testing13/theme';
+import { CTAVariants } from '../../../core/theme/src';
 
 import { BaseIndeterminateLoadingSpinner, BaseLoadingSpinner, BaseLoadingSpinnerProps } from './LoadingSpinner.style';
 

@@ -7,7 +7,7 @@ import type {
   MarginProps,
   Spacing,
   Wrap
-} from '@just_testing13/theme';
+} from '../../../core/theme/src';
 
 import { forwardRef } from 'react';
 import { useStyleProps } from '@just_testing13/hooks';

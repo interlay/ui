@@ -1,7 +1,7 @@
-import type { AlignItems, AlignSelf, Direction, JustifyContent, Spacing, Wrap } from '@just_testing13/theme';
+import type { AlignItems, AlignSelf, Direction, JustifyContent, Spacing, Wrap } from '../../../core/theme/src';
 
 import { styled } from 'styled-components';
-import { theme } from '@just_testing13/theme';
+import { theme } from '../../../core/theme/src';
 import { StyledMarginProps } from '@just_testing13/hooks';
 
 import { marginCSS } from '../utils/margin';

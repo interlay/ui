@@ -1,7 +1,7 @@
 import type { DefaultTheme, RuleSet } from 'styled-components';
 
 import { css } from 'styled-components';
-import { Spacing, theme } from '@just_testing13/theme';
+import { Spacing, theme } from '../../../core/theme/src';
 import { StyledMarginProps } from '@just_testing13/hooks';
 
 const getThemeSpacing = (spacing?: Spacing): string | undefined => spacing && theme.spacing[spacing];

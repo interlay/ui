@@ -1,7 +1,7 @@
 import type { DefaultTheme, RuleSet } from 'styled-components';
 
 import { css } from 'styled-components';
-import { Placement, theme } from '@just_testing13/theme';
+import { Placement, theme } from '../../../core/theme/src';
 
 const getOverlayPlacementCSS = (placement: Placement): RuleSet<DefaultTheme> => {
   switch (placement) {

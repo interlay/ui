@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { Sizes } from '@just_testing13/theme';
+import { theme } from '../../../core/theme/src';
+import { Sizes } from '../../../core/theme/src';
 
 import { CTA } from '../CTA';
 import { Divider } from '../Divider';

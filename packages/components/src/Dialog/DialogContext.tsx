@@ -1,6 +1,6 @@
 import { DOMAttributes } from '@react-types/shared';
 import React from 'react';
-import { Sizes } from '@just_testing13/theme';
+import { Sizes } from '../../../core/theme/src';
 
 interface DialogConfig {
   titleProps?: DOMAttributes;

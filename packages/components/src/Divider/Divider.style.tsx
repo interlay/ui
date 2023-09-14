@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { theme, resolveColor } from '@just_testing13/theme';
+import { theme, resolveColor } from '../../../core/theme/src';
 import { StyledMarginProps } from '@just_testing13/hooks';
-import { DividerVariants, Orientation, Sizes } from '@just_testing13/theme';
+import { DividerVariants, Orientation, Sizes } from '../../../core/theme/src';
 
 import { marginCSS } from '../utils/margin';
 

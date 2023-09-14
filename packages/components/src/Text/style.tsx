@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { theme, resolveColor, resolveHeight } from '@just_testing13/theme';
-import { Colors, FontSize, FontWeight, NormalAlignments } from '@just_testing13/theme';
+import { theme, resolveColor, resolveHeight } from '../../../core/theme/src';
+import { Colors, FontSize, FontWeight, NormalAlignments } from '../../../core/theme/src';
 
 type StyledTextProps = {
   $color?: Colors;

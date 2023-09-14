@@ -10,7 +10,8 @@
   "sideEffects": false,
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --ext ts,tsx --fix"
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": ">=18",

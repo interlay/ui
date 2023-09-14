@@ -1,4 +1,4 @@
-import { Overflow } from '@just_testing13/theme';
+import { Overflow } from '../../../core/theme/src';
 
 import { DialogBodyProps } from '../Dialog';
 

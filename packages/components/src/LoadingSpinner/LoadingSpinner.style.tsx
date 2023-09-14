@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { CTAVariants } from '@just_testing13/theme';
+import { theme } from '../../../core/theme/src';
+import { CTAVariants } from '../../../core/theme/src';
 
 interface BaseLoadingSpinnerProps {
   $diameter: number;

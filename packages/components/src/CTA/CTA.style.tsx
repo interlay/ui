@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ArrowTopRightOnSquare } from '@just_testing13/icons';
-import { theme } from '@just_testing13/theme';
-import { CTASizes, CTAVariants } from '@just_testing13/theme';
+import { theme } from '../../../core/theme/src';
+import { CTASizes, CTAVariants } from '../../../core/theme/src';
 
 import { LoadingSpinner } from '../LoadingSpinner';
 

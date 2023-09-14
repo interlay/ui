@@ -1,4 +1,4 @@
-import { Spacing } from '@just_testing13/theme';
+import { Spacing } from '../../core/theme/src';
 
 type MarginProps = {
   margin?: Spacing;

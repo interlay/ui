@@ -3,7 +3,7 @@ import { useFocusRing } from '@react-aria/focus';
 import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
-import { CTASizes } from '@just_testing13/theme';
+import { CTASizes } from '../../../core/theme/src';
 import { useDOMRef } from '@just_testing13/hooks';
 
 import { BaseCTA, BaseCTAProps } from './BaseCTA';
