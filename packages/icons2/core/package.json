@@ -1,0 +1,29 @@
+{
+  "name": "@just_testing13/icon",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --ext ts,tsx --fix"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "styled-components": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.26",
+    "clean-package": "^2.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.0.7"
+  },
+  "dependencies": {
+    "@just_testing13/theme": "workspace:*"
+  }
+}
