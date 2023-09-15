@@ -1,0 +1,14 @@
+*.css
+.changeset
+dist
+scripts/*
+*.config.js
+.DS_Store
+node_modules
+coverage
+build
+!.storybook
+!.commitlintrc.cjs
+!.lintstagedrc
+!jest.config.js
+!tsup.config.ts
