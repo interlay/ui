@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { IconSize } from '@just_testing13/icon';
-import { theme } from '@just_testing13/theme';
+import { IconSize } from '@interlay/theme';
+import { theme } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 

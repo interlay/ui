@@ -3,9 +3,6 @@ module.exports = {
   testEnvironment: 'jsdom',
   collectCoverageFrom: ['packages/**/*.{ts,tsx}'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  moduleNameMapper: {
-    "@just_testing13/icon$": "<rootDir>/packages/icons/core/src",
-  },
   transform: {
     '^.+\\.(t|j)sx?$': [
       '@swc/jest',
@@ -21,7 +18,7 @@ module.exports = {
     ]
   },
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
-  setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect", './scripts/setup-test.ts'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './scripts/setup-test.ts'],
   testTimeout: 10000,
   globals: {
     'ts-jest': {

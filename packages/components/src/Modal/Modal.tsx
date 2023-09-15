@@ -1,5 +1,5 @@
 import { forwardRef, useRef } from 'react';
-import { useDOMRef } from '@just_testing13/hooks';
+import { useDOMRef } from '@interlay/hooks';
 
 import { DialogProps } from '../Dialog';
 import { Overlay } from '../Overlay';

@@ -1,7 +1,7 @@
 import type { DefaultTheme, RuleSet } from 'styled-components';
 
 import { css } from 'styled-components';
-import { StyledMarginProps } from '@just_testing13/hooks';
+import { StyledMarginProps } from '@interlay/hooks';
 
 import { Spacing, theme } from '../../../core/theme/src';
 

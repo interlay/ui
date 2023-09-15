@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Icon } from '@just_testing13/icon';
-import { theme } from '@just_testing13/theme';
+import { Icon } from '@interlay/icons';
+import { theme } from '@interlay/theme';
 
 const StyledFallbackIcon = styled(Icon)`
   stroke: ${theme.icon.fallback.stroke};

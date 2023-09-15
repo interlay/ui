@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Spacing, theme } from '@just_testing13/theme';
+import { Spacing, theme } from '@interlay/theme';
 
 type StyledFieldProps = {
   $maxWidth?: Spacing;

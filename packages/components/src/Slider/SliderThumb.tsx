@@ -5,7 +5,7 @@ import { mergeProps } from '@react-aria/utils';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import { SliderState } from '@react-stately/slider';
 import { InputHTMLAttributes, RefObject } from 'react';
-import { useDOMRef } from '@just_testing13/hooks';
+import { useDOMRef } from '@interlay/hooks';
 
 import { StyledInput, StyledSliderThumb } from './Slider.style';
 

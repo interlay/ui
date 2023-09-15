@@ -6,7 +6,7 @@ import { mergeProps } from '@react-aria/utils';
 import { ListState } from '@react-stately/list';
 import { Node } from '@react-types/shared';
 import { useMemo, useRef } from 'react';
-import { ListVariants } from '@just_testing13/theme';
+import { ListVariants } from '@interlay/theme';
 
 import { Flex, FlexProps } from '../Flex';
 

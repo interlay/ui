@@ -1,5 +1,5 @@
 import { forwardRef, ReactNode, useRef } from 'react';
-import { useDOMRef } from '@just_testing13/hooks';
+import { useDOMRef } from '@interlay/hooks';
 
 import { Overlay } from '../Overlay';
 

@@ -1,5 +1,5 @@
 import { forwardRef, LabelHTMLAttributes } from 'react';
-import { LabelPosition } from '@just_testing13/theme';
+import { LabelPosition } from '@interlay/theme';
 
 import { StyledLabel } from './Label.style';
 

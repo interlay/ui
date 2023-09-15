@@ -2,7 +2,7 @@ import { useFocusRing } from '@react-aria/focus';
 import { AriaLinkOptions, useLink } from '@react-aria/link';
 import { mergeProps } from '@react-aria/utils';
 import { AnchorHTMLAttributes, forwardRef } from 'react';
-import { useDOMRef } from '@just_testing13/hooks';
+import { useDOMRef } from '@interlay/hooks';
 
 import { BaseCTA, BaseCTAProps } from './BaseCTA';
 import { StyledIcon } from './CTA.style';

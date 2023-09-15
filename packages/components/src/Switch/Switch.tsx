@@ -5,8 +5,8 @@ import { mergeProps } from '@react-aria/utils';
 import { useToggleState } from '@react-stately/toggle';
 import { PressEvent } from '@react-types/shared';
 import { ChangeEvent, forwardRef, HTMLAttributes, useRef } from 'react';
-import { Placement } from '@just_testing13/theme';
-import { useDOMRef } from '@just_testing13/hooks';
+import { Placement } from '@interlay/theme';
+import { useDOMRef } from '@interlay/hooks';
 
 import { TextProps } from '../Text';
 

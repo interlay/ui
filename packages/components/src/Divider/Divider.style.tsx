@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledMarginProps } from '@just_testing13/hooks';
+import { StyledMarginProps } from '@interlay/hooks';
 
 import { theme, resolveColor } from '../../../core/theme/src';
 import { DividerVariants, Orientation, Sizes } from '../../../core/theme/src';

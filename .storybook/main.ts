@@ -1,6 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import { mergeConfig } from 'vite';
-import { join, dirname, resolve } from 'path';
+import { join, dirname } from 'path';
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -29,20 +28,6 @@ const config: StorybookConfig = {
   },
   core: {
     disableTelemetry: true
-  },
-
-  async viteFinal(config) {
-    // Merge custom configuration into the default config
-    return mergeConfig(config, {
-      resolve: {
-        alias: [
-          {
-            find: /\@just_testing13\/icon$/,
-            replacement: resolve(__dirname, '../packages/icons/icon/src')
-          }
-        ]
-      }
-    });
   }
 };
 

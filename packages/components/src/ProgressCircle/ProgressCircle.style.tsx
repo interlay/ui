@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '@just_testing13/theme';
+import { theme } from '@interlay/theme';
 
 const Mask = styled.circle.attrs({ stroke: 'currentColor' })`
   color: ${theme.progress.circle.mask};

@@ -1,7 +1,7 @@
 import { AriaBreadcrumbItemProps, useBreadcrumbItem } from '@react-aria/breadcrumbs';
 import { mergeProps } from '@react-aria/utils';
 import { AnchorHTMLAttributes, Fragment, useRef } from 'react';
-import { ChevronRight } from '@just_testing13/icons';
+import { ChevronRight } from '@interlay/icons';
 
 import { TextLinkProps } from '../TextLink';
 

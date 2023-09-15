@@ -10,7 +10,7 @@ import type {
 } from '../../../core/theme/src';
 
 import { forwardRef } from 'react';
-import { useStyleProps } from '@just_testing13/hooks';
+import { useStyleProps } from '@interlay/hooks';
 
 import { ElementTypeProp } from '../utils/types';
 

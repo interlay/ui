@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ArrowTopRightOnSquare } from '@just_testing13/icons';
-import { theme, resolveColor, resolveHeight } from '@just_testing13/theme';
-import { Colors, FontSize, FontWeight } from '@just_testing13/theme';
+import { ArrowTopRightOnSquare } from '@interlay/icons';
+import { theme, resolveColor, resolveHeight } from '@interlay/theme';
+import { Colors, FontSize, FontWeight } from '@interlay/theme';
 
 type BaseTextLinkProps = {
   $color?: Colors;

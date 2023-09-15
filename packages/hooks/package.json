@@ -1,6 +1,6 @@
 {
-  "name": "@just_testing13/hooks",
-  "version": "0.2.0",
+  "name": "@interlay/hooks",
+  "version": "0.0.0",
   "description": "Interlay UI hooks",
   "homepage": "https://github.com/interlay/ui#readme",
   "license": "MIT",
@@ -35,7 +35,7 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@just_testing13/theme": "workspace:*"
+    "@interlay/theme": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18",

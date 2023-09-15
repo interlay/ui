@@ -1,5 +1,5 @@
 import { HTMLAttributes, useEffect, useState } from 'react';
-import { MeterVariants, Status } from '@just_testing13/theme';
+import { MeterVariants, Status } from '@interlay/theme';
 
 import { Span } from '../Text';
 

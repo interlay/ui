@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { BorderRadius, CardVariants, Spacing, Variants } from '@just_testing13/theme';
+import { theme } from '@interlay/theme';
+import { BorderRadius, CardVariants, Spacing, Variants } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 

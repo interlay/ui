@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { MeterVariants, Status, Variants } from '@just_testing13/theme';
+import { theme } from '@interlay/theme';
+import { MeterVariants, Status, Variants } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 import { Span } from '../Text';

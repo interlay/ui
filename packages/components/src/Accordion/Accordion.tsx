@@ -2,8 +2,8 @@ import { AriaAccordionProps, useAccordion } from '@react-aria/accordion';
 import { mergeProps } from '@react-aria/utils';
 import { useTreeState } from '@react-stately/tree';
 import { forwardRef, HTMLAttributes, Ref } from 'react';
-import { FontSize } from '@just_testing13/theme';
-import { useDOMRef } from '@just_testing13/hooks';
+import { FontSize } from '@interlay/theme';
+import { useDOMRef } from '@interlay/hooks';
 
 import { AccordionItem } from './AccordionItem';
 

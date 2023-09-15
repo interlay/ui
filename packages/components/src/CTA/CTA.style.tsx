@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ArrowTopRightOnSquare } from '@just_testing13/icons';
+import { ArrowTopRightOnSquare } from '@interlay/icons';
 
 import { theme } from '../../../core/theme/src';
 import { CTASizes, CTAVariants } from '../../../core/theme/src';

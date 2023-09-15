@@ -2,7 +2,7 @@ import { AriaTableProps, useTable } from '@react-aria/table';
 import { mergeProps } from '@react-aria/utils';
 import { TableStateProps, useTableState } from '@react-stately/table';
 import { forwardRef, HTMLAttributes } from 'react';
-import { useDOMRef } from '@just_testing13/hooks';
+import { useDOMRef } from '@interlay/hooks';
 
 import { StyledTable } from './Table.style';
 import { TableCell } from './TableCell';

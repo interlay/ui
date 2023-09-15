@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ChevronRight } from '@just_testing13/icons';
+import { ChevronRight } from '@interlay/icons';
 
 import { CTA } from '../CTA';
 

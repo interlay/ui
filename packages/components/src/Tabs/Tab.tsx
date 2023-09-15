@@ -2,7 +2,7 @@ import { useTab } from '@react-aria/tabs';
 import { TabListState } from '@react-stately/tabs';
 import { AriaTabProps } from '@react-types/tabs';
 import { ReactNode, useRef } from 'react';
-import { Sizes } from '@just_testing13/theme';
+import { Sizes } from '@interlay/theme';
 
 import { StyledTab } from './Tabs.style';
 

@@ -1,8 +1,8 @@
 import { AriaLinkOptions, useLink } from '@react-aria/link';
 import { mergeProps } from '@react-aria/utils';
 import { AnchorHTMLAttributes, forwardRef } from 'react';
-import { Colors, FontSize, FontWeight } from '@just_testing13/theme';
-import { useDOMRef } from '@just_testing13/hooks';
+import { Colors, FontSize, FontWeight } from '@interlay/theme';
+import { useDOMRef } from '@interlay/hooks';
 
 import { BaseTextLink, StyledIcon } from './TextLink.style';
 

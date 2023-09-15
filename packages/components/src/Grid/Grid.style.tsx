@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '@just_testing13/theme';
+import { theme } from '@interlay/theme';
 
 export const GridContainer = styled.div`
   display: grid;

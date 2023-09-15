@@ -2,9 +2,9 @@ import { AriaGridListOptions, useGridList } from '@react-aria/gridlist';
 import { mergeProps } from '@react-aria/utils';
 import { ListProps as StatelyListProps, useListState } from '@react-stately/list';
 import { forwardRef } from 'react';
-import { ListVariants } from '@just_testing13/theme';
+import { ListVariants } from '@interlay/theme';
 import { Selection } from '@react-types/shared';
-import { useDOMRef } from '@just_testing13/hooks';
+import { useDOMRef } from '@interlay/hooks';
 
 import { FlexProps } from '../Flex';
 

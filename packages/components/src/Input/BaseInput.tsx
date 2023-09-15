@@ -1,6 +1,6 @@
 import { ValidationState } from '@react-types/shared';
 import { forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
-import { Sizes, Spacing } from '@just_testing13/theme';
+import { Sizes, Spacing } from '@interlay/theme';
 
 import { Field, FieldProps, useFieldProps } from '../Field';
 import { HelperTextProps } from '../HelperText';

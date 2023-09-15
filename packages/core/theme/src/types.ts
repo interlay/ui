@@ -102,3 +102,5 @@ export type ProgressBarColors = 'default' | 'red';
 export type BorderRadius = keyof typeof theme.rounded;
 
 export type LabelPosition = 'top' | 'side';
+
+export type IconSize = keyof typeof theme.icon.sizes;
