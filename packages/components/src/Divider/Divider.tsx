@@ -2,8 +2,8 @@ import { useSeparator } from '@react-aria/separator';
 import { mergeProps } from '@react-aria/utils';
 import { forwardRef, HTMLAttributes } from 'react';
 import { useStyleProps } from '@just_testing13/hooks';
-import { DividerVariants, MarginProps, Orientation, Sizes } from '../../../core/theme/src';
 
+import { DividerVariants, MarginProps, Orientation, Sizes } from '../../../core/theme/src';
 import { ElementTypeProp } from '../utils/types';
 
 import { StyledDivider } from './Divider.style';

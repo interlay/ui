@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+
 import { theme } from '../../../core/theme/src';
 import { Sizes } from '../../../core/theme/src';
-
 import { CTA } from '../CTA';
 import { Divider } from '../Divider';
 import { Flex } from '../Flex';

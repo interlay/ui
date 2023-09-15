@@ -1,4 +1,5 @@
 import { HTMLAttributes } from 'react';
+
 import { Colors, FontSize, FontWeight, NormalAlignments } from '../../../core/theme/src';
 
 type Props = {

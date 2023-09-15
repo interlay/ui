@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes } from 'react';
-import { CTASizes, CTAVariants } from '../../../core/theme/src';
 
+import { CTASizes, CTAVariants } from '../../../core/theme/src';
 import { ElementTypeProp } from '../utils/types';
 
 import { OutlinedCTA, PrimaryCTA, SecondaryCTA, TextCTA } from './CTA.style';

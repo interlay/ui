@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import { mergeConfig } from "vite"
+import { mergeConfig } from 'vite';
 import { join, dirname, resolve } from 'path';
 
 /**
@@ -10,7 +10,10 @@ function getAbsolutePath(value: string): any {
   return dirname(require.resolve(join(value, 'package.json')));
 }
 const config: StorybookConfig = {
-  stories: ['../packages/components/src/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../packages/icons/**/src/stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: [
+    '../packages/components/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../packages/icons/**/src/stories/*.stories.@(js|jsx|mjs|ts|tsx)'
+  ],
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
@@ -27,7 +30,7 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true
   },
-  
+
   async viteFinal(config) {
     // Merge custom configuration into the default config
     return mergeConfig(config, {
@@ -35,15 +38,12 @@ const config: StorybookConfig = {
         alias: [
           {
             find: /\@just_testing13\/icon$/,
-            replacement: resolve(
-              __dirname,
-              "../packages/icons/core/src",
-            ),
-          },
-        ],
-      },
-    })
-  },
+            replacement: resolve(__dirname, '../packages/icons/icon/src')
+          }
+        ]
+      }
+    });
+  }
 };
 
 export default config;

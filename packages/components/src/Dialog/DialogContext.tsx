@@ -1,5 +1,6 @@
 import { DOMAttributes } from '@react-types/shared';
 import React from 'react';
+
 import { Sizes } from '../../../core/theme/src';
 
 interface DialogConfig {

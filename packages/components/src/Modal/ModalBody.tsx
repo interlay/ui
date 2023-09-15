@@ -1,5 +1,4 @@
 import { Overflow } from '../../../core/theme/src';
-
 import { DialogBodyProps } from '../Dialog';
 
 import { StyledDialogBody } from './Modal.style';

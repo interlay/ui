@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { theme, resolveColor } from '../../../core/theme/src';
 import { StyledMarginProps } from '@just_testing13/hooks';
-import { DividerVariants, Orientation, Sizes } from '../../../core/theme/src';
 
+import { theme, resolveColor } from '../../../core/theme/src';
+import { DividerVariants, Orientation, Sizes } from '../../../core/theme/src';
 import { marginCSS } from '../utils/margin';
 
 type StyledDividerProps = {

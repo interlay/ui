@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+
 import { theme } from '../../../core/theme/src';
 import { Overflow } from '../../../core/theme/src';
-
 import { overlayCSS } from '../utils/overlay';
 import { Dialog, DialogBody } from '../Dialog';
 

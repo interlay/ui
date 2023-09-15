@@ -3,8 +3,9 @@ import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { forwardRef, ReactNode } from 'react';
 import { XMark } from '@just_testing13/icons';
-import { CTASizes, Sizes } from '../../../core/theme/src';
 import { useDOMRef } from '@just_testing13/hooks';
+
+import { CTASizes, Sizes } from '../../../core/theme/src';
 
 import { StyledCloseCTA, StyledDialog } from './Dialog.style';
 import { DialogContext } from './DialogContext';

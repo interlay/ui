@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '../../../core/theme/src';
 
+import { theme } from '../../../core/theme/src';
 import { overlayCSS } from '../utils/overlay';
 
 type StyledUnderlayProps = {

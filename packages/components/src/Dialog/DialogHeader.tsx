@@ -1,7 +1,7 @@
 import { mergeProps } from '@react-aria/utils';
 import { ElementType } from 'react';
-import { FontSize, Sizes } from '../../../core/theme/src';
 
+import { FontSize, Sizes } from '../../../core/theme/src';
 import { TextProps } from '../Text';
 
 import { StyledDialogHeader } from './Dialog.style';

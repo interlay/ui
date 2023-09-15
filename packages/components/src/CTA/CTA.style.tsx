@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { ArrowTopRightOnSquare } from '@just_testing13/icons';
+
 import { theme } from '../../../core/theme/src';
 import { CTASizes, CTAVariants } from '../../../core/theme/src';
-
 import { LoadingSpinner } from '../LoadingSpinner';
 
 interface StyledCTAProps {

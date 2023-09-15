@@ -1,9 +1,9 @@
 import type { AlignItems, AlignSelf, Direction, JustifyContent, Spacing, Wrap } from '../../../core/theme/src';
 
 import { styled } from 'styled-components';
-import { theme } from '../../../core/theme/src';
 import { StyledMarginProps } from '@just_testing13/hooks';
 
+import { theme } from '../../../core/theme/src';
 import { marginCSS } from '../utils/margin';
 
 type StyledFlexProps = {
