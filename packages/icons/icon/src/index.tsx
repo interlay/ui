@@ -1,8 +1,9 @@
 import type { Colors } from '../../../core/theme/src';
 
 import styled from 'styled-components';
-import { theme, resolveColor } from '../../../core/theme/src';
 import { SVGAttributes, forwardRef } from 'react';
+
+import { theme, resolveColor } from '../../../core/theme/src';
 
 type IconSize = keyof typeof theme.icon.sizes;
 

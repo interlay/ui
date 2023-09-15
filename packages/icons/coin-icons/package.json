@@ -2,6 +2,7 @@
   "name": "@just_testing13/coin-icons",
   "version": "0.0.0",
   "main": "src/index.ts",
+  "private": true,
   "files": [
     "dist"
   ],
