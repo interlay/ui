@@ -1,38 +1,11 @@
 @import url('reset.css');
 
-@font-face {
-  font-family: 'inter';
-  src: url('../fonts/inter/Inter-Light.ttf') format('truetype');
-  font-weight: 300; /* light */
-  font-style: normal;
-}
-@font-face {
-  font-family: 'inter';
-  src: url('../fonts/inter/Inter-Regular.ttf') format('truetype');
-  font-weight: 400; /* regular */
-  font-style: normal;
-}
-@font-face {
-  font-family: 'inter';
-  src: url('../fonts/inter/Inter-Medium.ttf') format('truetype');
-  font-weight: 500; /* medium */
-  font-style: normal;
-}
-@font-face {
-  font-family: 'inter';
-  src: url('../fonts/inter/Inter-Bold.ttf') format('truetype');
-  font-weight: 700; /* bold */
-  font-style: normal;
-}
-
 * {
   box-sizing: border-box;
   font-family: 'inter';
 }
 
 :root {
-  --fonts-primary: 'inter';
-
   --font-weights-light: 300;
   --font-weights-book: 400;
   --font-weights-medium: 500;
