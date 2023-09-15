@@ -13,7 +13,6 @@
     "typecheck": "turbo typecheck",
     "format:check": "prettier --check packages/**/src packages/**/**/src --cache",
     "format:write": "prettier --write packages/**/src packages/**/**/src --cache",
-    "clean": "turbo run clean && rm -rf node_modules",
     "build": "turbo run build",
     "build:sb": "storybook build",
     "test": "jest --verbose --config ./jest.config.js",
@@ -21,7 +20,13 @@
     "release": "changeset publish",
     "version:dev": "changeset version --snapshot dev2",
     "release:dev": "changeset publish --snapshot --no-git-tag --tag dev2",
-    "prepare": "husky install"
+    "postinstall": "husky install",
+    "clean": "pnpm turbo:clean && pnpm clean:jest && pnpm clean:node-modules && pnpm clean:lock && pnpm install --hoist",
+    "clean:node-modules": "rimraf ./packages/**/**/node_modules && rimraf ./packages/**/node_modules && rm -rf ./node_modules",
+    "clean:lock": "rm ./pnpm-lock.yaml",
+    "clean:jest": "jest --clearCache",
+    "turbo:clean": "turbo clean && rimraf ./node_modules/.cache/turbo",
+    "turbo:graph": "pnpm build --graph=dependency-graph.png"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
@@ -71,6 +76,7 @@
     "prettier": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^5.0.1",
     "storybook": "^7.4.0",
     "tsup": "^7.2.0",
     "turbo": "latest",
