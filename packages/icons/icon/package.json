@@ -1,7 +1,7 @@
 {
   "name": "@just_testing13/icon",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Internal base component for icons",
   "homepage": "https://github.com/interlay/ui#readme",
   "license": "MIT",

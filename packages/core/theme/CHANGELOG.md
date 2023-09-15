@@ -1,5 +1,11 @@
 # @just_testing13/theme
 
+## 0.2.0
+
+### Minor Changes
+
+- final test
+
 ## 0.1.3
 
 ### Patch Changes

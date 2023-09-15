@@ -1,7 +1,7 @@
 {
   "name": "@just_testing13/coin-icons",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Internal coin icons used in Interlay UI components",
   "homepage": "https://github.com/interlay/ui#readme",
   "license": "MIT",
@@ -36,15 +36,13 @@
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
-  "dependencies": {
-    "@just_testing13/icon": "workspace:*"
-  },
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
   },
   "devDependencies": {
     "clean-package": "^2.2.0",
+    "@just_testing13/icon": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

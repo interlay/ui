@@ -180,18 +180,12 @@ importers:
       '@just_testing13/hooks':
         specifier: workspace:*
         version: link:../hooks
-      '@just_testing13/icon':
-        specifier: workspace:*
-        version: link:../icons/icon
       '@just_testing13/icons':
         specifier: workspace:*
         version: link:../icons/common
       '@just_testing13/system':
         specifier: workspace:*
         version: link:../core/system
-      '@just_testing13/test-utils':
-        specifier: workspace:*
-        version: link:../utilities/test-utils
       '@just_testing13/theme':
         specifier: workspace:*
         version: link:../core/theme
@@ -301,6 +295,12 @@ importers:
         specifier: ^4.4.5
         version: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
+      '@just_testing13/icon':
+        specifier: workspace:*
+        version: link:../icons/icon
+      '@just_testing13/test-utils':
+        specifier: workspace:*
+        version: link:../utilities/test-utils
       '@react-types/grid':
         specifier: ^3.2.0
         version: 3.2.1(react@18.2.0)
@@ -374,11 +374,10 @@ importers:
         version: 18.2.0(react@18.2.0)
 
   packages/icons/coin-icons:
-    dependencies:
+    devDependencies:
       '@just_testing13/icon':
         specifier: workspace:*
         version: link:../icon
-    devDependencies:
       clean-package:
         specifier: ^2.2.0
         version: 2.2.0
@@ -390,11 +389,10 @@ importers:
         version: 18.2.0(react@18.2.0)
 
   packages/icons/common:
-    dependencies:
+    devDependencies:
       '@just_testing13/icon':
         specifier: workspace:*
         version: link:../icon
-    devDependencies:
       clean-package:
         specifier: ^2.2.0
         version: 2.2.0

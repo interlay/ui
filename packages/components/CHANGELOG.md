@@ -1,5 +1,22 @@
 # @just_testing13/components
 
+## 0.2.0
+
+### Minor Changes
+
+- final test
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @just_testing13/system@0.1.0
+  - @just_testing13/theme@0.2.0
+  - @just_testing13/hooks@0.2.0
+  - @just_testing13/coin-icons@0.1.0
+  - @just_testing13/icons@0.2.0
+  - @just_testing13/icon@0.1.0
+  - @just_testing13/test-utils@0.1.0
+
 ## 0.1.4
 
 ### Patch Changes
