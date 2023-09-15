@@ -285,9 +285,6 @@ importers:
       '@react-stately/tree':
         specifier: ^3.7.1
         version: 3.7.2(react@18.2.0)
-      '@react-types/meter':
-        specifier: ^3.3.3
-        version: 3.3.4(react@18.2.0)
       react-transition-group:
         specifier: ^4.4.5
         version: 4.4.5(react-dom@18.2.0)(react@18.2.0)
@@ -298,9 +295,15 @@ importers:
       '@react-types/grid':
         specifier: ^3.2.0
         version: 3.2.1(react@18.2.0)
+      '@react-types/meter':
+        specifier: ^3.3.3
+        version: 3.3.4(react@18.2.0)
       '@react-types/shared':
         specifier: ^3.19.0
         version: 3.20.0(react@18.2.0)
+      '@react-types/tabs':
+        specifier: ^3.3.2
+        version: 3.3.2(react@18.2.0)
       '@types/react-transition-group':
         specifier: ^4.4.6
         version: 4.4.6
@@ -4330,7 +4333,6 @@ packages:
       '@react-types/progress': 3.4.3(react@18.2.0)
       '@react-types/shared': 3.20.0(react@18.2.0)
       react: 18.2.0
-    dev: false
 
   /@react-types/overlays@3.8.2(react@18.2.0):
     resolution: {integrity: sha512-HpLYzkNvuvC6nKd06vF9XbcLLv3u55+e7YUFNVpgWq8yVxcnduOcJdRJhPaAqHUl6iVii04mu1GKnCFF8jROyQ==}
@@ -4348,7 +4350,6 @@ packages:
     dependencies:
       '@react-types/shared': 3.20.0(react@18.2.0)
       react: 18.2.0
-    dev: false
 
   /@react-types/radio@3.5.1(react@18.2.0):
     resolution: {integrity: sha512-jPF8zt+XdgW9DaTvB5ZYCh0uk7DVko1VZ/jOlCRs82w3P884Wc7MMpwdl1T5PBdhtLcdr+xjM1YI6/31reIBfQ==}
@@ -4411,7 +4412,6 @@ packages:
     dependencies:
       '@react-types/shared': 3.20.0(react@18.2.0)
       react: 18.2.0
-    dev: false
 
   /@react-types/textfield@3.8.0(react@18.2.0):
     resolution: {integrity: sha512-KRIEiIaB7pi0VlyOXNv39qeY0nBVmaXHwReCmEktQxKtXQ5lbEU6pvbc6srMZIplJffutQCZSXAucw/2ewLLVQ==}

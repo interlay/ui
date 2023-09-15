@@ -1,8 +1,9 @@
 import type { Preview } from '@storybook/react';
-import React from 'react';
-import { InterlayUIProvider } from "../packages/core/system/src";
-import "../packages/core/theme/src/css/theme.interlay.css";
 
+import React from 'react';
+
+import { InterlayUIProvider } from '../packages/core/system/src';
+import '../packages/core/theme/src/css/theme.interlay.css';
 
 const preview: Preview = {
   parameters: {
@@ -15,19 +16,19 @@ const preview: Preview = {
     }
   },
   decorators: [
-    (Story, {globals: {locale}}) => {
+    (Story, { globals: { locale } }) => {
       const direction =
         // @ts-ignore
-        locale && new Intl.Locale(locale)?.textInfo?.direction === "rtl" ? "rtl" : undefined;
+        locale && new Intl.Locale(locale)?.textInfo?.direction === 'rtl' ? 'rtl' : undefined;
 
       return (
         <InterlayUIProvider locale={locale}>
-          <div lang={locale} dir={direction}>
+          <div dir={direction} lang={locale} style={{ fontFamily: 'Inter' }}>
             <Story />
           </div>
         </InterlayUIProvider>
       );
-    },
+    }
   ]
 };
 

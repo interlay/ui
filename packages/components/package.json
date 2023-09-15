@@ -38,11 +38,11 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
+    "@interlay/coin-icons": "workspace:*",
     "@interlay/hooks": "workspace:*",
     "@interlay/icons": "workspace:*",
-    "@interlay/coin-icons": "workspace:*",
-    "@interlay/theme": "workspace:*",
     "@interlay/system": "workspace:*",
+    "@interlay/theme": "workspace:*",
     "@react-aria/accordion": "3.0.0-alpha.20",
     "@react-aria/breadcrumbs": "^3.5.4",
     "@react-aria/button": "^3.8.1",
@@ -76,7 +76,6 @@
     "@react-stately/toggle": "^3.6.1",
     "@react-stately/tooltip": "^3.4.3",
     "@react-stately/tree": "^3.7.1",
-    "@react-types/meter": "^3.3.3",
     "react-transition-group": "^4.4.5"
   },
   "peerDependencies": {
@@ -85,14 +84,16 @@
     "styled-components": ">=6.0.0"
   },
   "devDependencies": {
+    "@interlay/test-utils": "workspace:*",
     "@react-types/grid": "^3.2.0",
+    "@react-types/meter": "^3.3.3",
     "@react-types/shared": "^3.19.0",
+    "@react-types/tabs": "^3.3.2",
     "@types/react-transition-group": "^4.4.6",
     "@types/styled-components": "^5.1.26",
     "clean-package": "^2.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@interlay/test-utils": "workspace:*",
     "styled-components": "^6.0.7"
   },
   "clean-package": "../../clean-package.config.json"
