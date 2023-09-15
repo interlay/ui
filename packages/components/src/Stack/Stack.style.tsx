@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { AlignItems, JustifyContent } from '@just_testing13/theme';
+import { theme } from '@interlay/theme';
+import { AlignItems, JustifyContent } from '@interlay/theme';
 
 import { Spacing } from './Stack';
 

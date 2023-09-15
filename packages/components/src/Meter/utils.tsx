@@ -1,4 +1,4 @@
-import { Status } from '@just_testing13/theme';
+import { Status } from '@interlay/theme';
 
 import { MeterRanges } from './Meter';
 

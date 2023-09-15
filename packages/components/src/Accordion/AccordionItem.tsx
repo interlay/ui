@@ -4,7 +4,7 @@ import { mergeProps } from '@react-aria/utils';
 import { TreeState } from '@react-stately/tree';
 import { Node } from '@react-types/shared';
 import { useRef } from 'react';
-import { FontSize } from '@just_testing13/theme';
+import { FontSize } from '@interlay/theme';
 
 import {
   StyledAccordionItemButton,

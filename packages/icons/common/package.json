@@ -1,6 +1,6 @@
 {
-  "name": "@just_testing13/icons",
-  "version": "0.2.0",
+  "name": "@interlay/icons",
+  "version": "0.0.0",
   "description": "Interlay UI icons, commonly used in components",
   "homepage": "https://github.com/interlay/ui#readme",
   "license": "MIT",
@@ -35,15 +35,18 @@
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
+  "dependencies": {
+    "@interlay/theme": "workspace:*"
+  },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "styled-components": ">=6.0.0"
   },
   "devDependencies": {
     "clean-package": "^2.2.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@just_testing13/icon": "workspace:*"
+    "react-dom": "^18.2.0"
   },
   "clean-package": "../../../clean-package.config.json"
 }

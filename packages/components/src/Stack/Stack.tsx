@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { AlignItems, JustifyContent } from '@just_testing13/theme';
+import { AlignItems, JustifyContent } from '@interlay/theme';
 
 import { StackContainer } from './Stack.style';
 

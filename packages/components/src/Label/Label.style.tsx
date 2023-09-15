@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LabelPosition, theme } from '@just_testing13/theme';
+import { LabelPosition, theme } from '@interlay/theme';
 
 type StyledLabelProps = {
   $position: LabelPosition;

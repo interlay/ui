@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ChevronDown } from '@just_testing13/icons';
-import { theme } from '@just_testing13/theme';
-import { Sizes } from '@just_testing13/theme';
+import { ChevronDown } from '@interlay/icons';
+import { theme } from '@interlay/theme';
+import { Sizes } from '@interlay/theme';
 
 import { List } from '../List';
 import { Span } from '../Text';

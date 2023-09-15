@@ -1,7 +1,7 @@
 import { useOverlayTrigger } from '@react-aria/overlays';
 import { OverlayTriggerProps, useOverlayTriggerState } from '@react-stately/overlays';
 import { ReactNode, useRef } from 'react';
-import { Placement } from '@just_testing13/theme';
+import { Placement } from '@interlay/theme';
 
 import { PopoverContext } from './PopoverContext';
 

@@ -1,6 +1,6 @@
 import { AriaBreadcrumbsProps, useBreadcrumbs } from '@react-aria/breadcrumbs';
 import { Children, forwardRef, HTMLAttributes, isValidElement, ReactElement } from 'react';
-import { useDOMRef } from '@just_testing13/hooks';
+import { useDOMRef } from '@interlay/hooks';
 
 import { BreadcrumbItem } from './BreadcrumbItem';
 import { StyledList, StyledListItem, StyledNav } from './Breadcrumbs.style';

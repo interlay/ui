@@ -1,6 +1,6 @@
 {
-  "name": "@just_testing13/test-utils",
-  "version": "0.1.0",
+  "name": "@interlay/test-utils",
+  "version": "0.0.0",
   "private": true,
   "keywords": [
     "interlay",

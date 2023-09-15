@@ -1,7 +1,7 @@
-import { Warning } from '@just_testing13/icons';
+import { Warning } from '@interlay/icons';
 import styled from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { Status } from '@just_testing13/theme';
+import { theme } from '@interlay/theme';
+import { Status } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 

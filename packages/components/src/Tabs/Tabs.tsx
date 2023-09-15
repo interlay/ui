@@ -4,8 +4,8 @@ import { mergeProps } from '@react-aria/utils';
 import { useTabListState } from '@react-stately/tabs';
 import { CollectionChildren } from '@react-types/shared';
 import { forwardRef, HTMLAttributes, Key, useEffect, useState } from 'react';
-import { AlignItems, Sizes } from '@just_testing13/theme';
-import { useDOMRef } from '@just_testing13/hooks';
+import { AlignItems, Sizes } from '@interlay/theme';
+import { useDOMRef } from '@interlay/hooks';
 
 import { Tab } from './Tab';
 import { TabPanel } from './TabPanel';

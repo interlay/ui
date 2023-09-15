@@ -1,4 +1,4 @@
-import { IconSize } from '@just_testing13/icon';
+import { IconSize } from '@interlay/theme';
 
 import { CoinIcon } from '../CoinIcon';
 import { FlexProps } from '../Flex';

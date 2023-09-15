@@ -3,7 +3,7 @@ import { AriaTooltipProps, useTooltip, useTooltipTrigger } from '@react-aria/too
 import { mergeProps } from '@react-aria/utils';
 import { TooltipTriggerProps as StatelyTooltipTriggerProps, useTooltipTriggerState } from '@react-stately/tooltip';
 import React, { Children, cloneElement, HTMLAttributes, ReactElement, ReactNode, useRef } from 'react';
-import { Placement } from '@just_testing13/theme';
+import { Placement } from '@interlay/theme';
 
 import { Span } from '../Text';
 

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { Placement } from '@just_testing13/theme';
+import { theme } from '@interlay/theme';
+import { Placement } from '@interlay/theme';
 
 import { getOverlayPlacementCSS, overlayCSS } from '../utils/overlay';
 

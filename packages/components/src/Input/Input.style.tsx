@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { Placement, Sizes, Spacing } from '@just_testing13/theme';
+import { theme } from '@interlay/theme';
+import { Placement, Sizes, Spacing } from '@interlay/theme';
 
 const getSpacing = (padding?: Spacing) => (padding ? theme.spacing[padding] : undefined);
 

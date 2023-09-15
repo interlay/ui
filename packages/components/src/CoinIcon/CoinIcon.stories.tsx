@@ -1,6 +1,6 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import * as coins from '@just_testing13/coin-icons';
 
+import * as coins from '../../../icons/coin/src';
 import { Flex } from '../Flex';
 
 import { CoinIcon, CoinIconProps } from './CoinIcon';

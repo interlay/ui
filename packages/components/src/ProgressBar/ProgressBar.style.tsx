@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '@just_testing13/theme';
-import { ProgressBarColors } from '@just_testing13/theme';
+import { theme } from '@interlay/theme';
+import { ProgressBarColors } from '@interlay/theme';
 
 type StyledFillProps = {
   $color: ProgressBarColors;

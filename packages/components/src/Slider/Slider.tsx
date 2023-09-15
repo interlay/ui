@@ -2,7 +2,7 @@ import { useNumberFormatter } from '@react-aria/i18n';
 import { AriaSliderProps, useSlider } from '@react-aria/slider';
 import { useSliderState } from '@react-stately/slider';
 import { forwardRef, InputHTMLAttributes, ReactNode, useRef } from 'react';
-import { useDOMRef } from '@just_testing13/hooks';
+import { useDOMRef } from '@interlay/hooks';
 
 import { Label } from '../Label';
 

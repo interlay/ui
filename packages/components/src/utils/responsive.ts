@@ -1,4 +1,4 @@
-import { theme, BreakPoints, ResponsiveProp } from '@just_testing13/theme';
+import { theme, BreakPoints, ResponsiveProp } from '@interlay/theme';
 
 const getResponsiveCSS = <T extends number | string>(key: string, prop?: ResponsiveProp<T>): string | undefined => {
   if (!prop) return undefined;

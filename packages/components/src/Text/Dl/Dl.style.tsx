@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { resolveColor } from '@just_testing13/theme';
+import { resolveColor } from '@interlay/theme';
 
 import { TextProps } from '../types';
 

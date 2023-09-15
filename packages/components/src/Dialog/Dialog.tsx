@@ -2,8 +2,8 @@ import { AriaDialogProps, useDialog } from '@react-aria/dialog';
 import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { forwardRef, ReactNode } from 'react';
-import { XMark } from '@just_testing13/icons';
-import { useDOMRef } from '@just_testing13/hooks';
+import { XMark } from '@interlay/icons';
+import { useDOMRef } from '@interlay/hooks';
 
 import { CTASizes, Sizes } from '../../../core/theme/src';
 

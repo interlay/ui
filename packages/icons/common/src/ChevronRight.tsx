@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
-import { Icon, IconProps } from '@just_testing13/icon';
+
+import { Icon, IconProps } from './core';
 
 const ChevronRight = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
   <Icon

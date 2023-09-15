@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ChevronDown } from '@just_testing13/icons';
-import { theme } from '@just_testing13/theme';
+import { ChevronDown } from '@interlay/icons';
+import { theme } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 import { List } from '../List';

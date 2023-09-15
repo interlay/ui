@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
-import { IconProps } from '@just_testing13/icon';
-import * as coins from '@just_testing13/coin-icons';
+import { IconProps } from '@interlay/icons';
+
+import * as coins from '../../../icons/coin/src';
 
 import { FallbackIcon } from './FallbackIcon';
 import { LPCoinIcon } from './LPCoinIcon';

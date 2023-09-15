@@ -1,6 +1,6 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { InformationCircle } from '@just_testing13/icons';
+import { InformationCircle } from '@interlay/icons';
 
 import { Flex, Span } from '..';
 

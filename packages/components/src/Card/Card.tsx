@@ -2,8 +2,8 @@ import { useButton } from '@react-aria/button';
 import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { forwardRef } from 'react';
-import { BorderRadius, CardVariants, Spacing, Variants } from '@just_testing13/theme';
-import { useDOMRef } from '@just_testing13/hooks';
+import { BorderRadius, CardVariants, Spacing, Variants } from '@interlay/theme';
+import { useDOMRef } from '@interlay/hooks';
 
 import { FlexProps } from '../Flex';
 

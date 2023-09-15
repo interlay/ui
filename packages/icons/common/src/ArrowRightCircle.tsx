@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
-import { Icon, IconProps } from '@just_testing13/icon';
+
+import { Icon, IconProps } from './core';
 
 const ArrowRightCircle = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
   <Icon ref={ref} fill='currentColor' stroke='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' {...props}>

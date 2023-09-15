@@ -1,6 +1,6 @@
 {
-  "name": "@just_testing13/ui",
-  "version": "0.2.0",
+  "name": "@interlay/ui",
+  "version": "0.0.0",
   "description": "Interlay UI library.",
   "homepage": "https://github.com/interlay/ui#readme",
   "license": "MIT",
@@ -38,11 +38,11 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@just_testing13/hooks": "workspace:*",
-    "@just_testing13/icons": "workspace:*",
-    "@just_testing13/coin-icons": "workspace:*",
-    "@just_testing13/theme": "workspace:*",
-    "@just_testing13/system": "workspace:*",
+    "@interlay/hooks": "workspace:*",
+    "@interlay/icons": "workspace:*",
+    "@interlay/coin-icons": "workspace:*",
+    "@interlay/theme": "workspace:*",
+    "@interlay/system": "workspace:*",
     "@react-aria/accordion": "3.0.0-alpha.20",
     "@react-aria/breadcrumbs": "^3.5.4",
     "@react-aria/button": "^3.8.1",
@@ -92,8 +92,7 @@
     "clean-package": "^2.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@just_testing13/test-utils": "workspace:*",
-    "@just_testing13/icon": "workspace:*",
+    "@interlay/test-utils": "workspace:*",
     "styled-components": "^6.0.7"
   },
   "clean-package": "../../clean-package.config.json"
