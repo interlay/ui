@@ -1,6 +1,6 @@
-# Next UI Contributing Guide
+# Interlay UI Contributing Guide
 
-Hello!, I am very excited that you are interested in contributing with Next UI. However, before submitting your contribution, be sure to take a moment and read the following guidelines.
+Hello!, I am very excited that you are interested in contributing with Interlay UI. However, before submitting your contribution, be sure to take a moment and read the following guidelines.
 
 - [Extraction request guidelines](#pull-request-guidelines)
 - [Development Setup](#development-setup)

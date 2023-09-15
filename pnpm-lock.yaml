@@ -186,6 +186,9 @@ importers:
       '@just_testing13/icons':
         specifier: workspace:*
         version: link:../icons/common
+      '@just_testing13/system':
+        specifier: workspace:*
+        version: link:../core/system
       '@just_testing13/test-utils':
         specifier: workspace:*
         version: link:../utilities/test-utils

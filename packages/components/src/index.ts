@@ -67,3 +67,4 @@ export type { TooltipProps } from './Tooltip';
 export { Tooltip } from './Tooltip';
 export { Icon } from '@just_testing13/icon';
 export type { IconProps, IconSize } from '@just_testing13/icon';
+export * from '@just_testing13/system';
