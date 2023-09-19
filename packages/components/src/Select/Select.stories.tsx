@@ -35,8 +35,7 @@ export default {
     layout: 'centered'
   },
   args: {
-    label: 'Coin',
-    withModal: false
+    label: 'Coin'
   },
   render: Render
 } as Meta<typeof Select>;

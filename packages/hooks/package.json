@@ -35,7 +35,10 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@interlay/theme": "workspace:*"
+    "@interlay/theme": "workspace:*",
+    "@react-aria/utils": "^3.19.0",
+    "formik": "^2.4.5",
+    "react-use": "^17.4.0"
   },
   "peerDependencies": {
     "react": ">=18",

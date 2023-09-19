@@ -18,7 +18,7 @@ module.exports = {
     ]
   },
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './scripts/setup-test.ts'],
+  setupFilesAfterEnv: ['./scripts/setup-test.ts'],
   testTimeout: 10000,
   globals: {
     'ts-jest': {

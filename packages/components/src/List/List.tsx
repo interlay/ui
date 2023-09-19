@@ -25,8 +25,11 @@ type NativeAttrs = Omit<FlexProps, keyof Props>;
 type ListProps = Props & NativeAttrs & InheritAttrs;
 
 const List = forwardRef<HTMLUListElement, ListProps>(
-  ({ variant = 'primary', direction = 'column', onSelectionChange, ...props }, ref): JSX.Element => {
-    const ariaProps = { onSelectionChange, ...props };
+  (
+    { variant = 'primary', direction = 'column', onSelectionChange, selectionMode, selectedKeys, ...props },
+    ref
+  ): JSX.Element => {
+    const ariaProps = { onSelectionChange, selectionMode, selectedKeys, ...props };
     const state = useListState(ariaProps);
     const listRef = useDOMRef<HTMLUListElement>(ref);
     const { gridProps } = useGridList(ariaProps, state, listRef);

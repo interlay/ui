@@ -24,7 +24,9 @@ const Table = forwardRef<HTMLTableElement, TableProps>(
     <BaseTable ref={ref} {...props}>
       {/* TODO: rename `uid` to `id` */}
       <TableHeader columns={columns}>{(column) => <Column key={column.uid}>{column.name}</Column>}</TableHeader>
-      <TableBody items={rows}>{(item: any) => <Row>{(columnKey) => <Cell>{item[columnKey]}</Cell>}</Row>}</TableBody>
+      <TableBody items={rows}>
+        {(item: any) => <Row>{(columnKey) => <Cell>{item[columnKey.toString()]}</Cell>}</Row>}
+      </TableBody>
     </BaseTable>
   )
 );

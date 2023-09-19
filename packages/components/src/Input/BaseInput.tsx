@@ -1,5 +1,5 @@
 import { ValidationState } from '@react-types/shared';
-import { forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
+import { FocusEvent, forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
 import { Sizes, Spacing } from '@interlay/theme';
 
 import { Field, FieldProps, useFieldProps } from '../Field';
@@ -22,6 +22,8 @@ type Props = {
   padding?: { top?: Spacing; bottom?: Spacing; left?: Spacing; right?: Spacing };
   validationState?: ValidationState;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (e: FocusEvent<Element>) => void;
+  onBlur?: (e: FocusEvent<Element>) => void;
 };
 
 type NativeAttrs = Omit<InputHTMLAttributes<HTMLInputElement>, keyof Props>;
@@ -29,7 +31,7 @@ type NativeAttrs = Omit<InputHTMLAttributes<HTMLInputElement>, keyof Props>;
 type InheritAttrs = Omit<
   HelperTextProps &
     Pick<FieldProps, 'label' | 'labelPosition' | 'labelProps' | 'maxWidth' | 'justifyContent' | 'alignItems'>,
-  keyof Props & NativeAttrs
+  keyof (Props & NativeAttrs)
 >;
 type BaseInputProps = Props & NativeAttrs & InheritAttrs;
 

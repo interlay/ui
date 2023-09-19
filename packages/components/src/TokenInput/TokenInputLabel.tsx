@@ -6,6 +6,7 @@ import { Label, LabelProps } from '../Label';
 import { TokenInputBalance } from './TokenInputBalance';
 
 type Props = {
+  inputId: string;
   ticker?: string;
   balance?: string | number;
   balanceLabel?: ReactNode;
@@ -18,6 +19,7 @@ type InheritAttrs = Omit<LabelProps, keyof Props>;
 type TokenInputLabelProps = Props & InheritAttrs;
 
 const TokenInputLabel = ({
+  inputId,
   balance,
   balanceLabel,
   isDisabled,
@@ -33,6 +35,7 @@ const TokenInputLabel = ({
       {hasLabel && <Label {...props}>{children}</Label>}
       {balance !== undefined && (
         <TokenInputBalance
+          inputId={inputId}
           isDisabled={isDisabled}
           label={balanceLabel}
           ticker={ticker}

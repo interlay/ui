@@ -15,8 +15,9 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "types": ["@testing-library/jest-dom"]
   },
-  "include": ["packages"],
+  "include": ["packages", "scripts/setup-test.ts"],
   "exclude": ["**/node_modules", "**/dist", "**/.turbo"]
 }
