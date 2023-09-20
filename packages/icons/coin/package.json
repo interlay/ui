@@ -40,7 +40,8 @@
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "styled-components": ">=6.0.0"
   },
   "devDependencies": {
     "clean-package": "^2.2.0",
