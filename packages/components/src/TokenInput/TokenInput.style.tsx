@@ -5,7 +5,7 @@ import { theme } from '@interlay/theme';
 import { Flex } from '../Flex';
 import { List } from '../List';
 import { StyledTrigger } from '../Select/Select.style';
-import { Span } from '../Text';
+import { Dl, Dt, Span } from '../Text';
 
 type StyledUSDAdornmentProps = {
   $isDisabled?: boolean;
@@ -58,26 +58,14 @@ const StyledChevronDown = styled(ChevronDown)`
   margin-left: ${theme.spacing.spacing1};
 `;
 
-const StyledTokenInputBalanceWrapper = styled.dl`
-  display: inline-flex;
-  gap: ${theme.spacing.spacing1};
-  font-weight: ${theme.fontWeight.medium};
-  line-height: ${theme.lineHeight.lg};
-  font-size: ${theme.text.xs};
+const StyledBalance = styled(Dl)`
   padding: ${theme.spacing.spacing1} 0;
 `;
 
-const StyledTokenInputBalanceLabel = styled.dt`
-  color: ${theme.label.text};
-
+const StyledBalanceLabel = styled(Dt)`
   &:after {
     content: ':';
   }
-`;
-
-const StyledTokenInputBalanceValue = styled.span`
-  display: block;
-  color: ${theme.colors.textSecondary};
 `;
 
 const StyledListItemLabel = styled(Span)<StyledListItemSelectedLabelProps>`
@@ -108,9 +96,8 @@ export {
   StyledListTokenWrapper,
   StyledTicker,
   StyledTokenAdornment,
-  StyledTokenInputBalanceLabel,
-  StyledTokenInputBalanceValue,
-  StyledTokenInputBalanceWrapper,
+  StyledBalance,
+  StyledBalanceLabel,
   StyledTokenSelect,
   StyledUSDAdornment
 };

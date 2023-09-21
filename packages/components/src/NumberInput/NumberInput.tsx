@@ -1,6 +1,6 @@
 import { AriaTextFieldOptions, useTextField } from '@react-aria/textfield';
 import { mergeProps } from '@react-aria/utils';
-import { ChangeEventHandler, forwardRef, useEffect, useState } from 'react';
+import { ChangeEventHandler, FocusEvent, forwardRef, useEffect, useState } from 'react';
 import { useDOMRef } from '@interlay/hooks';
 
 import { BaseInput, BaseInputProps } from '../Input';
@@ -18,6 +18,8 @@ const decimalRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`);
 type Props = {
   value?: string | number;
   defaultValue?: string | number;
+  onFocus?: (e: FocusEvent<Element>) => void;
+  onBlur?: (e: FocusEvent<Element>) => void;
 };
 
 type InheritAttrs = Omit<
@@ -29,9 +31,10 @@ type AriaAttrs = Omit<AriaTextFieldOptions<'input'>, keyof (Props & InheritAttrs
 
 type NumberInputProps = Props & InheritAttrs & AriaAttrs;
 
+// FIXME: some event are running duplicate
 const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
   (
-    { onChange, validationState, value: valueProp, defaultValue = '', inputMode = 'numeric', ...props },
+    { onChange, value: valueProp, defaultValue = '', inputMode = 'numeric', isDisabled, onFocus, onBlur, ...props },
     ref
   ): JSX.Element => {
     const [value, setValue] = useState<string | undefined>(defaultValue?.toString());
@@ -63,10 +66,13 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
     const { inputProps, descriptionProps, errorMessageProps, labelProps } = useTextField(
       {
         ...props,
+        isDisabled,
         inputMode,
-        validationState: props.errorMessage ? 'invalid' : validationState,
+        isInvalid: !!props.errorMessage,
         value: value,
-        autoComplete: 'off'
+        autoComplete: 'off',
+        onFocus,
+        onBlur
       },
       inputRef
     );

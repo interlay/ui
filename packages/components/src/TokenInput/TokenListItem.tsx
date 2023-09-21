@@ -1,3 +1,4 @@
+import { formatUSD } from '../utils/format';
 import { CoinIcon } from '../CoinIcon';
 import { Flex } from '../Flex';
 import { useSelectModalContext } from '../Select/SelectModalContext';
@@ -20,7 +21,7 @@ const TokenListItem = ({ balance, balanceUSD, value, tickers, isDisabled }: Toke
       <Flex alignItems='flex-end' direction='column' flex='0' gap='spacing2'>
         <StyledListItemLabel $isSelected={isSelected}>{balance}</StyledListItemLabel>
         <Span color='tertiary' size='s'>
-          {balanceUSD}
+          {formatUSD(balanceUSD, { compact: true })}
         </Span>
       </Flex>
     </>

@@ -1,44 +1,55 @@
 import { ReactNode } from 'react';
 
 import { CTA } from '../CTA';
+import { Dd, Flex } from '..';
 
-import {
-  StyledTokenInputBalanceLabel,
-  StyledTokenInputBalanceValue,
-  StyledTokenInputBalanceWrapper
-} from './TokenInput.style';
+import { StyledBalance, StyledBalanceLabel } from './TokenInput.style';
 
 type TokenInputBalanceProps = {
-  inputId: string;
-  ticker?: string;
-  value: string | number;
-  onClickBalance?: () => void;
+  inputId?: string;
+  balance: string | number;
+  balanceHuman?: string | number;
+  onClickBalance?: (balance: string | number) => void;
   isDisabled?: boolean;
-  className?: string;
   label?: ReactNode;
 };
 
 const TokenInputBalance = ({
   inputId,
-  ticker,
-  value,
+  balance: balanceProp,
+  balanceHuman,
   onClickBalance,
-  className,
   isDisabled: isDisabledProp,
   label = 'Balance'
 }: TokenInputBalanceProps): JSX.Element => {
-  const isDisabled = isDisabledProp || !ticker || value === 0;
+  const isDisabled = isDisabledProp || balanceProp === 0;
+
+  const ariaLabel = typeof label === 'string' ? `apply max ${label}` : 'apply max';
+
+  const balance = balanceHuman || balanceProp;
+
+  const handleClickBalance = () => onClickBalance?.(balanceProp);
 
   return (
-    <StyledTokenInputBalanceWrapper className={className}>
-      <StyledTokenInputBalanceLabel>{label}</StyledTokenInputBalanceLabel>
-      <dd>
-        <StyledTokenInputBalanceValue>{ticker ? value : 0}</StyledTokenInputBalanceValue>
-      </dd>
-      <CTA aria-controls={inputId} disabled={isDisabled} size='x-small' onPress={onClickBalance}>
+    <Flex alignItems='center' gap='spacing1'>
+      <StyledBalance gap='spacing1'>
+        <StyledBalanceLabel color='primary' size='xs' weight='medium'>
+          {label}
+        </StyledBalanceLabel>
+        <Dd color='secondary' size='xs' weight='medium'>
+          {balance}
+        </Dd>
+      </StyledBalance>
+      <CTA
+        aria-controls={inputId}
+        aria-label={ariaLabel}
+        disabled={isDisabled}
+        size='x-small'
+        onPress={handleClickBalance}
+      >
         MAX
       </CTA>
-    </StyledTokenInputBalanceWrapper>
+    </Flex>
   );
 };
 

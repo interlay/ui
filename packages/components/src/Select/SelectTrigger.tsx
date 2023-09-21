@@ -1,8 +1,8 @@
+import { useDOMRef } from '@interlay/hooks';
+import { Sizes } from '@interlay/theme';
 import { useButton } from '@react-aria/button';
 import { PressEvent } from '@react-types/shared';
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
-import { Sizes } from '@interlay/theme';
-import { useDOMRef } from '@interlay/hooks';
 
 import { TextProps } from '../Text';
 

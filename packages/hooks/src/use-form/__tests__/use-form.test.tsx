@@ -190,7 +190,7 @@ describe('useForm', () => {
 
       render(
         <form onSubmit={result.current.handleSubmit}>
-          <TokenInput label='Amount' {...props} />
+          <TokenInput label='Amount' ticker='BTC' {...props} />
           <button type='submit'>Submit</button>
         </form>
       );

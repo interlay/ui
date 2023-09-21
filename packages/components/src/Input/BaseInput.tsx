@@ -1,5 +1,4 @@
-import { ValidationState } from '@react-types/shared';
-import { FocusEvent, forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
+import { forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
 import { Sizes, Spacing } from '@interlay/theme';
 
 import { Field, FieldProps, useFieldProps } from '../Field';
@@ -20,10 +19,8 @@ type Props = {
   size?: Sizes;
   // TODO: temporary
   padding?: { top?: Spacing; bottom?: Spacing; left?: Spacing; right?: Spacing };
-  validationState?: ValidationState;
+  isInvalid?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (e: FocusEvent<Element>) => void;
-  onBlur?: (e: FocusEvent<Element>) => void;
 };
 
 type NativeAttrs = Omit<InputHTMLAttributes<HTMLInputElement>, keyof Props>;
@@ -37,7 +34,7 @@ type BaseInputProps = Props & NativeAttrs & InheritAttrs;
 
 const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
   (
-    { startAdornment, endAdornment, bottomAdornment, disabled, size = 'medium', validationState, padding, ...props },
+    { startAdornment, endAdornment, bottomAdornment, disabled, size = 'medium', isInvalid, padding, ...props },
     ref
   ): JSX.Element => {
     const endAdornmentRef = useRef<HTMLDivElement>(null);
@@ -51,7 +48,7 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
       setEndAdornmentWidth(endAdornmentRef.current.getBoundingClientRect().width);
     }, [endAdornment]);
 
-    const error = hasError({ validationState, errorMessage: props.errorMessage });
+    const error = hasError({ isInvalid, errorMessage: props.errorMessage });
 
     return (
       <Field {...fieldProps}>

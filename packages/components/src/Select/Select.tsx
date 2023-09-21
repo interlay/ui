@@ -45,7 +45,7 @@ type SelectProps<F extends SelectType = 'listbox', T = SelectObject> = Props<F, 
   NativeAttrs<F, T> &
   InheritAttrs<F, T>;
 
-// TODO: when type is modal, we should use also types from our List
+// FIXME: when type is modal, we should use also types from our List and improve this components types
 const Select = <F extends SelectType = 'listbox', T extends SelectObject = SelectObject>(
   {
     value,
@@ -61,7 +61,7 @@ const Select = <F extends SelectType = 'listbox', T extends SelectObject = Selec
     placeholder = 'Select an option',
     asSelectTrigger,
     modalTitle,
-    validationState,
+    isInvalid,
     onChange,
     renderValue = (item) => item.rendered,
     items,
@@ -84,7 +84,7 @@ const Select = <F extends SelectType = 'listbox', T extends SelectObject = Selec
     defaultSelectedKey: defaultValue as Key,
     label,
     errorMessage,
-    validationState,
+    isInvalid,
     items,
     children,
     ...props
@@ -109,7 +109,7 @@ const Select = <F extends SelectType = 'listbox', T extends SelectObject = Selec
     })
   );
 
-  const error = hasError({ errorMessage, validationState });
+  const error = hasError({ errorMessage, isInvalid });
 
   const selectTriggerProps =
     type === 'listbox'
