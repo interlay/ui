@@ -32,6 +32,7 @@ const StyledBaseInput = styled.input<BaseInputProps>`
     $adornments.bottom ? theme.input.overflow.large.text : theme.input[$size].text};
   line-height: ${theme.lineHeight.base};
   font-weight: ${({ $size }) => theme.input[$size].weight};
+  text-overflow: ellipsis;
 
   background-color: ${({ $isDisabled }) => ($isDisabled ? theme.input.disabled.bg : theme.input.background)};
   overflow: hidden;

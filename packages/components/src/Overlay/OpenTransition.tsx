@@ -20,9 +20,9 @@ type OpenTransitionProps = Props & InheritAttrs;
 
 const OpenTransition = (props: OpenTransitionProps): any => {
   // Do not apply any transition if in chromatic (based on react-spectrum)
-  // if (process.env.CHROMATIC) {
-  //   return Children.map(props.children, (child) => child && cloneElement(child as any, { isOpen: props.in }));
-  // }
+  if (process.env.NODE_ENV === 'test') {
+    return Children.map(props.children, (child) => child && cloneElement(child as any, { isOpen: props.in }));
+  }
 
   return (
     <Transition timeout={{ enter: 0, exit: 350 }} {...props}>

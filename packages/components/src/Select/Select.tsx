@@ -129,7 +129,7 @@ const Select = <F extends SelectType = 'listbox', T extends SelectObject = Selec
           disabled={disabled}
           name={name}
           tabIndex={-1}
-          value={onChange ? state.selectedKey || '' : undefined}
+          value={onChange ? state.selectedKey.toString() || '' : undefined}
           onChange={onChange}
         />
       </VisuallyHidden>
@@ -153,7 +153,7 @@ const Select = <F extends SelectType = 'listbox', T extends SelectObject = Selec
           ref={modalRef}
           id={modalId}
           isOpen={state.isOpen}
-          listProps={{ selectedKeys: [state.selectedItem?.key], disabledKeys }}
+          listProps={{ selectedKeys: state.selectedItem?.key ? [state.selectedItem?.key] : [], disabledKeys }}
           state={state}
           title={modalTitle}
           onClose={state.close}

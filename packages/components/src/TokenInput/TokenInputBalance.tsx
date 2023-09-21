@@ -9,6 +9,7 @@ import {
 } from './TokenInput.style';
 
 type TokenInputBalanceProps = {
+  inputId: string;
   ticker?: string;
   value: string | number;
   onClickBalance?: () => void;
@@ -18,6 +19,7 @@ type TokenInputBalanceProps = {
 };
 
 const TokenInputBalance = ({
+  inputId,
   ticker,
   value,
   onClickBalance,
@@ -33,7 +35,7 @@ const TokenInputBalance = ({
       <dd>
         <StyledTokenInputBalanceValue>{ticker ? value : 0}</StyledTokenInputBalanceValue>
       </dd>
-      <CTA disabled={isDisabled} size='x-small' onPress={onClickBalance}>
+      <CTA aria-controls={inputId} disabled={isDisabled} size='x-small' onPress={onClickBalance}>
         MAX
       </CTA>
     </StyledTokenInputBalanceWrapper>

@@ -1,13 +1,12 @@
 import { useLabel } from '@react-aria/label';
 import { chain, mergeProps, useId } from '@react-aria/utils';
-import { forwardRef, Key, ReactNode, useEffect, useState } from 'react';
+import { ChangeEvent, FocusEvent, forwardRef, Key, ReactNode, useEffect, useState } from 'react';
 import { useDOMRef } from '@interlay/hooks';
 
 import { Flex } from '../Flex';
 import { HelperText } from '../HelperText';
 import { NumberInput, NumberInputProps } from '../NumberInput';
 import { formatUSD } from '../utils/format';
-import { triggerChangeEvent } from '../utils/input';
 
 import { TokenAdornment, TokenTicker } from './TokenAdornment';
 import { StyledUSDAdornment } from './TokenInput.style';
@@ -22,6 +21,7 @@ type Props = {
   ticker?: TokenTicker;
   onClickBalance?: (balance?: string | number) => void;
   onChangeTicker?: (ticker?: string) => void;
+  onValueChange?: (value?: string | number) => void;
   selectProps?: Omit<TokenSelectProps, 'label' | 'helperTextId'>;
 };
 
@@ -43,17 +43,22 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
       hidden,
       className,
       onClickBalance,
+      onValueChange,
       onChangeTicker,
       selectProps,
       placeholder = '0',
       errorMessage,
       description,
+      value: valueProp,
+      defaultValue,
+      onBlur,
       ...props
     },
     ref
   ): JSX.Element => {
     const inputRef = useDOMRef(ref);
 
+    const [value, setValue] = useState(defaultValue);
     const [ticker, setTicker] = useState<string>(
       (selectProps?.defaultValue as string) || (typeof tickerProp === 'string' ? tickerProp : tickerProp?.text) || ''
     );
@@ -61,6 +66,7 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
     const { labelProps, fieldProps } = useLabel({ label, ...props });
 
     const selectHelperTextId = useId();
+    const inputId = useId();
 
     const itemsArr = Array.from(selectProps?.items || []);
     const isSelectAdornment = itemsArr.length > 1;
@@ -72,16 +78,43 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
       setTicker(selectProps.value as string);
     }, [selectProps?.value]);
 
+    useEffect(() => {
+      if (valueProp === undefined) return;
+
+      setValue(valueProp);
+    }, [valueProp]);
+
     const handleClickBalance = () => {
       if (!balance) return;
 
-      triggerChangeEvent(inputRef, balance);
+      inputRef.current?.focus();
       onClickBalance?.(balance);
+      setValue(balance);
+      onValueChange?.(balance);
     };
 
     const handleTokenChange = (ticker: Key) => {
       onChangeTicker?.(ticker as string);
       setTicker(ticker as string);
+    };
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+
+      onValueChange?.(value);
+      setValue(value);
+    };
+
+    const handleBlur = (e: FocusEvent<Element>) => {
+      const relatedTargetEl = e.relatedTarget as HTMLButtonElement;
+
+      if (!relatedTargetEl) return;
+
+      const isTargetingMaxBtn = relatedTargetEl.getAttribute('aria-controls') === inputId;
+
+      if (!isTargetingMaxBtn) {
+        onBlur?.(e);
+      }
     };
 
     // Prioritise Number Input description and error message
@@ -105,6 +138,15 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
     ) : null;
 
     const hasLabel = !!label || balance !== undefined;
+    const hasLabelWithBalance = hasLabel && balance !== undefined;
+
+    const numberInputProps: Partial<NumberInputProps> = hasLabelWithBalance
+      ? {
+          id: inputId,
+          onBlur: handleBlur,
+          onChange: handleChange
+        }
+      : { onBlur, onChange: handleChange };
 
     return (
       <Flex className={className} direction='column' gap='spacing0' hidden={hidden} style={style}>
@@ -112,6 +154,7 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
           <TokenInputLabel
             balance={humanBalance || balance}
             balanceLabel={balanceLabel}
+            inputId={inputId}
             isDisabled={isDisabled || !ticker}
             ticker={ticker}
             onClickBalance={handleClickBalance}
@@ -137,7 +180,8 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
           pattern='^[0-9]*[.,]?[0-9]*$'
           placeholder={placeholder}
           size='large'
-          {...mergeProps(props, fieldProps)}
+          value={value}
+          {...mergeProps(props, fieldProps, numberInputProps)}
         />
         {hasSelectHelperText && (
           <HelperText

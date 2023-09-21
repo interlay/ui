@@ -25,7 +25,7 @@ type InheritAttrs = Omit<
   keyof Props | 'errorMessageProps' | 'descriptionProps' | 'disabled' | 'required' | 'readOnly'
 >;
 
-type AriaAttrs = Omit<AriaTextFieldOptions<'input'>, (keyof Props & InheritAttrs) | 'onChange'>;
+type AriaAttrs = Omit<AriaTextFieldOptions<'input'>, keyof (Props & InheritAttrs)>;
 
 type NumberInputProps = Props & InheritAttrs & AriaAttrs;
 
