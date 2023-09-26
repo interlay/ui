@@ -9,7 +9,7 @@ import { CTA } from '..';
 import { Select, SelectProps } from './Select';
 
 const Render = (args: SelectProps) => (
-  <Select<any, any> {...args}>
+  <Select<any> {...args}>
     <Item key='BTC' textValue='BTC'>
       <Flex alignItems='center' gap='spacing2'>
         <CoinIcon ticker='BTC' /> BTC
@@ -42,36 +42,36 @@ export default {
 
 export const Listbox: StoryObj<SelectProps> = {};
 
-export const Modal: StoryObj<SelectProps<'modal', any>> = {
+export const Modal: StoryObj<SelectProps<any>> = {
   args: {
     type: 'modal',
-    modalTitle: 'Select coin'
+    modalProps: { title: 'Select coin' }
   }
 };
 
-export const DefaultValue: StoryObj<SelectProps<'modal', any>> = {
+export const DefaultValue: StoryObj<SelectProps<any>> = {
   args: {
     type: 'modal',
-    modalTitle: 'Select coin',
+    modalProps: { title: 'Select coin' },
     defaultValue: 'BTC'
   }
 };
 
-const ControlledComponent = (args: SelectProps<'modal', any>) => {
+const ControlledComponent = (args: SelectProps<any>) => {
   const [state, setState] = useState<Key>();
 
   return <Render {...(args as any)} value={state} onSelectionChange={setState} />;
 };
 
-export const Controlled: StoryObj<SelectProps<'modal', any>> = {
+export const Controlled: StoryObj<SelectProps<any>> = {
   args: {
     type: 'modal',
-    modalTitle: 'Select coin'
+    modalProps: { title: 'Select coin' }
   },
   render: ControlledComponent
 };
 
-const ControlledOpenComponent = (args: SelectProps<'modal', any>) => {
+const ControlledOpenComponent = (args: SelectProps<any>) => {
   const [state, setState] = useState(true);
 
   return (
@@ -82,18 +82,18 @@ const ControlledOpenComponent = (args: SelectProps<'modal', any>) => {
   );
 };
 
-export const ControlledOpen: StoryObj<SelectProps<'modal', any>> = {
+export const ControlledOpen: StoryObj<SelectProps<any>> = {
   args: {
     type: 'modal',
-    modalTitle: 'Select coin'
+    modalProps: { title: 'Select coin' }
   },
   render: ControlledOpenComponent
 };
 
-export const DisabledKeys: StoryObj<SelectProps<'modal', any>> = {
+export const DisabledKeys: StoryObj<SelectProps<any>> = {
   args: {
     type: 'modal',
-    modalTitle: 'Select coin',
+    modalProps: { title: 'Select coin' },
     disabledKeys: ['BTC', 'ETH']
   }
 };
@@ -134,7 +134,7 @@ export const MaxWidth: StoryObj<SelectProps> = {
   }
 };
 
-export const Sizes: StoryFn<SelectProps> = (args) => (
+export const Sizes: StoryFn<SelectProps> = (args: any) => (
   <Flex direction='column'>
     <Select {...args} label='Small' size='small' />
     <Select {...args} label='Medium' />

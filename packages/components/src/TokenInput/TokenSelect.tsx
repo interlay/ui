@@ -20,14 +20,14 @@ type TokenData = {
   balanceUSD: number;
 };
 
-type TokenSelectProps = Omit<SelectProps<'modal', TokenData>, 'children' | 'type'>;
+type TokenSelectProps = Omit<SelectProps<TokenData>, 'children' | 'type'>;
 
 const TokenSelect = (props: TokenSelectProps): JSX.Element => (
-  <Select<'modal', TokenData>
+  <Select<TokenData>
     {...props}
     aria-label='select token'
     asSelectTrigger={StyledTokenSelect}
-    modalTitle='Select Token'
+    modalProps={{ title: 'Select Token' }}
     placeholder={<Span>Select Token</Span>}
     renderValue={(item) => <Value data={item.value as TokenData} />}
     type='modal'
