@@ -2,6 +2,7 @@ import type { ModalProviderProps } from '@react-aria/overlays';
 
 import { I18nProvider, I18nProviderProps } from '@react-aria/i18n';
 import { OverlayProvider } from '@react-aria/overlays';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 interface InterlayUIProviderProps extends Omit<ModalProviderProps, 'children'> {
   children: React.ReactNode;
@@ -10,15 +11,21 @@ interface InterlayUIProviderProps extends Omit<ModalProviderProps, 'children'> {
    * @default "en-US"
    */
   locale?: I18nProviderProps['locale'];
+  theme: DefaultTheme;
 }
 
-const InterlayUIProvider: React.FC<InterlayUIProviderProps> = ({ children, locale = 'en-US', ...otherProps }) => {
-  return (
+const InterlayUIProvider: React.FC<InterlayUIProviderProps> = ({
+  children,
+  locale = 'en-US',
+  theme,
+  ...otherProps
+}) => (
+  <ThemeProvider theme={theme}>
     <I18nProvider locale={locale}>
       <OverlayProvider {...otherProps}>{children}</OverlayProvider>
     </I18nProvider>
-  );
-};
+  </ThemeProvider>
+);
 
 export { InterlayUIProvider };
 export type { InterlayUIProviderProps };

@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { theme } from '@interlay/theme';
+import styled, { css } from 'styled-components';
+import { theme as oldTheme } from '@interlay/theme';
 import { Placement, Sizes, Spacing } from '@interlay/theme';
 
-const getSpacing = (padding?: Spacing) => (padding ? theme.spacing[padding] : undefined);
+const getSpacing = (padding?: Spacing) => (padding ? oldTheme.spacing[padding] : undefined);
 
 type BaseInputProps = {
   $size: Sizes;
@@ -27,55 +27,62 @@ const StyledBaseInput = styled.input<BaseInputProps>`
   letter-spacing: inherit;
   background: none;
 
-  color: ${(props) => (props.disabled ? theme.input.disabled.color : theme.input.color)};
+  color: ${(props) => (props.disabled ? props.theme.input.disabled.color : props.theme.input.color)};
   font-size: ${({ $size, $adornments }) =>
-    $adornments.bottom ? theme.input.overflow.large.text : theme.input[$size].text};
-  line-height: ${theme.lineHeight.base};
-  font-weight: ${({ $size }) => theme.input[$size].weight};
+    $adornments.bottom ? oldTheme.input.overflow.large.text : oldTheme.input[$size].text};
+  line-height: ${(props) => props.theme.lineHeight.base};
+  font-weight: ${({ theme, $size }) => theme.input.size[$size].weight};
   text-overflow: ellipsis;
 
-  background-color: ${({ $isDisabled }) => ($isDisabled ? theme.input.disabled.bg : theme.input.background)};
+  background-color: ${({ theme, $isDisabled }) =>
+    $isDisabled ? theme.input.disabled.background : theme.input.background};
   overflow: hidden;
 
-  border: ${(props) =>
-    props.$isDisabled
-      ? theme.input.disabled.border
-      : props.$hasError
-      ? theme.input.error.border
-      : theme.border.default};
-  border-radius: ${theme.rounded.lg};
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${({ theme, $isDisabled, $hasError }) =>
+    $isDisabled
+      ? theme.input.disabled.border.color
+      : $hasError
+      ? theme.input.error.border.color
+      : theme.input.border.color};
+
+  border-radius: ${({ theme }) => theme.rounded.lg};
   transition:
-    border-color ${theme.transition.duration.duration150}ms ease-in-out,
-    box-shadow ${theme.transition.duration.duration150}ms ease-in-out;
+    border-color ${oldTheme.transition.duration.duration150}ms ease-in-out,
+    box-shadow ${oldTheme.transition.duration.duration150}ms ease-in-out;
 
-  padding-top: ${({ $padding }) => getSpacing($padding?.top) || theme.spacing.spacing2};
+  padding-top: ${({ theme, $padding }) => getSpacing($padding?.top) || theme.spacing['2']};
   padding-left: ${({ $adornments, $padding }) =>
-    getSpacing($padding?.left) || ($adornments.left ? theme.input.paddingX.md : theme.spacing.spacing2)};
+    getSpacing($padding?.left) || ($adornments.left ? oldTheme.input.paddingX.md : oldTheme.spacing.spacing2)};
 
-  padding-right: ${({ $adornments, $endAdornmentWidth, $padding }) => {
-    if (!$adornments.right) return getSpacing($padding?.right) || theme.spacing.spacing2;
+  padding-right: ${({ theme, $adornments, $endAdornmentWidth, $padding }) => {
+    if (!$adornments.right) return getSpacing($padding?.right) || theme.spacing[2];
 
     // MEMO: adding `spacing6` is a hacky solution because
     // the `endAdornmentWidth` does not update width correctly
     // after fonts are loaded. Instead of falling back to a more
     // complex solution, an extra offset does the job of not allowing
     // the input overlap the adornment.
-    return `calc(${$endAdornmentWidth}px + ${theme.spacing.spacing6})`;
+    return `calc(${$endAdornmentWidth}px + ${theme.spacing[6]})`;
   }};
   padding-bottom: ${({ $adornments, $padding }) =>
-    getSpacing($padding?.bottom) || ($adornments.bottom ? theme.spacing.spacing6 : theme.spacing.spacing2)};
+    getSpacing($padding?.bottom) || ($adornments.bottom ? oldTheme.spacing.spacing6 : oldTheme.spacing.spacing2)};
 
   &:hover:not(:disabled):not(:focus) {
-    border: ${(props) => !props.$isDisabled && !props.$hasError && theme.border.focus};
+    border-color: ${({ theme, $hasError, $isDisabled }) =>
+      !$isDisabled && !$hasError && theme.input.focus.border.color};
   }
 
   &:focus {
-    border: ${(props) => !props.$isDisabled && theme.border.focus};
-    box-shadow: ${(props) => !props.$isDisabled && theme.boxShadow.focus};
+    ${({ theme, $isDisabled }) => css`
+      border-color: ${!$isDisabled && theme.input.focus.border.color};
+      box-shadow: ${!$isDisabled && theme.input.focus.boxShadow};
+    `}
   }
 
   &::placeholder {
-    color: ${(props) => (props.disabled ? theme.input.disabled.color : theme.colors.textTertiary)};
+    color: ${(props) => (props.disabled ? oldTheme.input.disabled.color : oldTheme.colors.textTertiary)};
   }
 
   /* MEMO: inspired by https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
@@ -93,7 +100,7 @@ const StyledBaseInput = styled.input<BaseInputProps>`
 
 const BaseInputWrapper = styled.div`
   position: relative;
-  color: ${theme.colors.textPrimary};
+  color: ${oldTheme.colors.textPrimary};
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -105,10 +112,10 @@ const Adornment = styled.div<AdornmentProps>`
   align-items: center;
   position: absolute;
   top: ${({ $position }) => ($position === 'left' || $position === 'right') && '50%'};
-  left: ${({ $position }) => ($position === 'left' || $position === 'bottom') && theme.spacing.spacing2};
-  right: ${({ $position }) => $position === 'right' && theme.spacing.spacing2};
+  left: ${({ $position }) => ($position === 'left' || $position === 'bottom') && oldTheme.spacing.spacing2};
+  right: ${({ $position }) => $position === 'right' && oldTheme.spacing.spacing2};
   transform: ${({ $position }) => ($position === 'left' || $position === 'right') && 'translateY(-50%)'};
-  bottom: ${({ $position }) => $position === 'bottom' && theme.spacing.spacing1};
+  bottom: ${({ $position }) => $position === 'bottom' && oldTheme.spacing.spacing1};
   // to not allow adornment to take more than 50% of the input. We might want to reduce this in the future.
   max-width: 50%;
 `;

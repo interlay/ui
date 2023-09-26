@@ -85,7 +85,6 @@ const base = {
   input: {
     color: 'var(--colors-input-text)',
     background: 'var(--colors-input-background)',
-    height: '4rem',
     default: {
       border: '1px solid var(--colors-input-default-border)'
     },

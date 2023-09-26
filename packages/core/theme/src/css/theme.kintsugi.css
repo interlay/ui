@@ -9,7 +9,6 @@
   --colors-dark-yellow: #e6b700;
   --box-shadow-none: none;
   --colors-slate-gray: #6a7994;
-  --colors-bronze: #d57b33;
 }
 
 .theme-kintsugi {
@@ -75,7 +74,7 @@
   --colors-token-list-item-select-text: var(--colors-neutral-black);
   /* Modal */
   --colors-title-primary: var(--colors-neutral-white);
-  --colors-title-secondary: var(--colors-bronze);
+  --colors-title-secondary: var(--colors-yellow);
   /* Switch */
   --colors-switch-unchecked-bg: var(--colors-dark-blue);
   --colors-switch-checked-bg: var(--colors-yellow);
