@@ -1,6 +1,6 @@
 import type { Theme } from '../types/index';
 
-import base from './base';
+import base from '../base';
 
 const neutral = {
   neutral1: 'rgba(255, 255, 255, 0.05)',
