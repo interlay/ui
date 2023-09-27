@@ -3,7 +3,9 @@ import type { Preview } from '@storybook/react';
 import React from 'react';
 
 import { InterlayUIProvider } from '../packages/core/system/src';
+import { CSSReset } from '../packages/components/src';
 import '../packages/core/theme/src/css/theme.interlay.css';
+import './style.css';
 
 const preview: Preview = {
   parameters: {
@@ -23,7 +25,8 @@ const preview: Preview = {
 
       return (
         <InterlayUIProvider locale={locale}>
-          <div dir={direction} lang={locale} style={{ fontFamily: 'Inter' }}>
+          <CSSReset />
+          <div dir={direction} lang={locale}>
             <Story />
           </div>
         </InterlayUIProvider>
