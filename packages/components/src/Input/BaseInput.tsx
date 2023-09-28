@@ -1,5 +1,5 @@
-import { forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
-import { Sizes, Spacing } from '@interlay/theme';
+import { Sizes } from '@interlay/theme';
+import { FocusEvent, forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
 
 import { Field, FieldProps, useFieldProps } from '../Field';
 import { HelperTextProps } from '../HelperText';
@@ -17,30 +17,30 @@ type Props = {
   value?: string | ReadonlyArray<string> | number;
   defaultValue?: string | ReadonlyArray<string> | number;
   size?: Sizes;
-  // TODO: temporary
-  padding?: { top?: Spacing; bottom?: Spacing; left?: Spacing; right?: Spacing };
   isInvalid?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (e: FocusEvent<Element>) => void;
+  onBlur?: (e: FocusEvent<Element>) => void;
+  inputProps: InputHTMLAttributes<HTMLInputElement>;
 };
-
-type NativeAttrs = Omit<InputHTMLAttributes<HTMLInputElement>, keyof Props>;
 
 type InheritAttrs = Omit<
   HelperTextProps &
     Pick<FieldProps, 'label' | 'labelPosition' | 'labelProps' | 'maxWidth' | 'justifyContent' | 'alignItems'>,
-  keyof (Props & NativeAttrs)
+  keyof Props
 >;
-type BaseInputProps = Props & NativeAttrs & InheritAttrs;
+type BaseInputProps = Props & InheritAttrs;
 
 const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
   (
-    { startAdornment, endAdornment, bottomAdornment, disabled, size = 'medium', isInvalid, padding, ...props },
+    { startAdornment, endAdornment, bottomAdornment, size = 'medium', isInvalid, inputProps, ...props },
     ref
   ): JSX.Element => {
     const endAdornmentRef = useRef<HTMLDivElement>(null);
     const [endAdornmentWidth, setEndAdornmentWidth] = useState(0);
 
-    const { fieldProps, elementProps } = useFieldProps(props);
+    // FIXME: move this into Field
+    const { fieldProps } = useFieldProps(props);
 
     useEffect(() => {
       if (!endAdornmentRef.current || !endAdornment) return;
@@ -58,12 +58,9 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
           $adornments={{ bottom: !!bottomAdornment, left: !!startAdornment, right: !!endAdornment }}
           $endAdornmentWidth={endAdornmentWidth}
           $hasError={error}
-          $isDisabled={!!disabled}
-          $padding={padding}
+          $isDisabled={!!inputProps.disabled}
           $size={size}
-          disabled={disabled}
-          type='text'
-          {...elementProps}
+          {...inputProps}
         />
         {bottomAdornment && <Adornment $position='bottom'>{bottomAdornment}</Adornment>}
         {endAdornment && (
