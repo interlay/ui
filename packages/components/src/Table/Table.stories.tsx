@@ -10,11 +10,10 @@ const action = (
     <ChevronRight size='s' />
   </CTA>
 );
-
 const columns: ColumnProps[] = [
-  { name: 'Coin', uid: 'coin' },
-  { name: 'Price', uid: 'price' },
-  { name: '', uid: 'action' }
+  { name: 'Coin', id: 'coin' },
+  { name: 'Price', id: 'price' },
+  { name: 'Action', id: 'action', hideHeader: true }
 ];
 
 const rows: RowProps[] = [

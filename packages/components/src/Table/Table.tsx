@@ -3,7 +3,7 @@ import { forwardRef, ReactNode } from 'react';
 
 import { BaseTable, BaseTableProps } from './BaseTable';
 
-type ColumnProps = { name: ReactNode; uid: string | number };
+type ColumnProps = { name: ReactNode; id: string | number; hideHeader?: boolean };
 
 type RowProps = {
   id: string | number;
@@ -22,8 +22,13 @@ type TableProps = Props & InheritAttrs;
 const Table = forwardRef<HTMLTableElement, TableProps>(
   ({ columns, rows, ...props }, ref): JSX.Element => (
     <BaseTable ref={ref} {...props}>
-      {/* TODO: rename `uid` to `id` */}
-      <TableHeader columns={columns}>{(column) => <Column key={column.uid}>{column.name}</Column>}</TableHeader>
+      <TableHeader columns={columns}>
+        {({ id, name, ...columnProps }) => (
+          <Column key={id} {...columnProps}>
+            {name}
+          </Column>
+        )}
+      </TableHeader>
       <TableBody items={rows}>
         {(item: any) => <Row>{(columnKey) => <Cell>{item[columnKey.toString()]}</Cell>}</Row>}
       </TableBody>

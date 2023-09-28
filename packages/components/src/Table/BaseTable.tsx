@@ -34,16 +34,16 @@ const BaseTable = forwardRef<HTMLTableElement, BaseTableProps>(
         <TableRowGroup elementType='thead'>
           {collection.headerRows.map((headerRow) => (
             <TableHeaderRow key={headerRow.key} item={headerRow} state={state}>
-              {[...headerRow.childNodes].map((column) => (
+              {[...(collection.getChildren?.(headerRow.key) || [])].map((column) => (
                 <TableColumnHeader key={column.key} column={column} state={state} />
               ))}
             </TableHeaderRow>
           ))}
         </TableRowGroup>
         <TableRowGroup elementType='tbody'>
-          {[...collection.body.childNodes].map((row) => (
+          {[...collection].map((row) => (
             <TableRow key={row.key} item={row} state={state}>
-              {[...row.childNodes].map((cell) => (
+              {[...(collection.getChildren?.(row.key) || [])].map((cell) => (
                 <TableCell key={cell.key} cell={cell} state={state} />
               ))}
             </TableRow>

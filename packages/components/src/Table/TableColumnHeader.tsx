@@ -3,6 +3,7 @@ import { mergeProps } from '@react-aria/utils';
 import { TableState } from '@react-stately/table';
 import { GridNode } from '@react-types/grid';
 import { HTMLAttributes, useRef } from 'react';
+import { VisuallyHidden } from '@react-aria/visually-hidden';
 
 import { StyledTableColumnHeader } from './Table.style';
 
@@ -21,7 +22,7 @@ const TableColumnHeader = ({ column, state, ...props }: TableColumnHeaderProps):
 
   return (
     <StyledTableColumnHeader ref={ref} colSpan={column.colspan} {...mergeProps(props, columnHeaderProps)}>
-      {column.rendered}
+      {column.props?.hideHeader ? <VisuallyHidden>{column.rendered}</VisuallyHidden> : column.rendered}
     </StyledTableColumnHeader>
   );
 };
