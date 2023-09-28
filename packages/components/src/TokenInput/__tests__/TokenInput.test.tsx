@@ -1,7 +1,7 @@
+import { blur, testA11y } from '@interlay/test-utils';
 import { render, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
-import { Key, createRef, useState } from 'react';
 import { userEvent } from '@testing-library/user-event';
-import { blur } from '@interlay/test-utils';
+import { Key, createRef, useState } from 'react';
 
 import { TokenInput } from '..';
 
@@ -17,6 +17,10 @@ describe('TokenInput', () => {
 
     render(<TokenInput ref={ref} label='label' ticker='BTC' />);
     expect(ref.current).not.toBeNull();
+  });
+
+  it('should pass a11y', async () => {
+    await testA11y(<TokenInput label='label' ticker='BTC' />);
   });
 
   it('should render with placeholder', () => {
@@ -181,6 +185,10 @@ describe('TokenInput', () => {
       const wrapper = render(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
 
       expect(() => wrapper.unmount()).not.toThrow();
+    });
+
+    it('should pass a11y', async () => {
+      await testA11y(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
     });
 
     it('should render empty value', () => {

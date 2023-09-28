@@ -2,9 +2,10 @@ import { AriaButtonProps } from '@react-aria/button';
 import { AriaPopoverProps } from '@react-aria/overlays';
 import { OverlayTriggerState } from '@react-stately/overlays';
 import { DOMProps } from '@react-types/shared';
-import React, { RefObject } from 'react';
+import React, { ForwardedRef, RefObject } from 'react';
 
 interface PopoverConfig {
+  ref?: ForwardedRef<HTMLDivElement>;
   state: OverlayTriggerState;
   triggerRef?: RefObject<Element>;
   triggerProps?: AriaButtonProps<'button'>;

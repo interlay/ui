@@ -29,7 +29,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
   (
     {
       variant = 'default',
-      role = 'section',
       direction = 'column',
       background = 'primary',
       isHoverable,
@@ -52,6 +51,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
 
     return (
       <StyledCard
+        ref={cardRef}
         $background={background}
         $isHoverable={isHoverable}
         $isPressable={isPressable}
@@ -61,7 +61,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         $variant={variant}
         direction={direction}
         elementType={elementType}
-        role={role}
         {...mergeProps(props, isPressable ? buttonProps : {})}
       >
         {children}

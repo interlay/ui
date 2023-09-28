@@ -12,9 +12,9 @@ type PopoverContentProps = Props;
 
 const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((props, ref): JSX.Element => {
   const { children, ...otherProps } = props;
-  const domRef = useDOMRef(ref);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const { state, triggerRef, dialogProps, popoverProps } = usePopoverContext();
+  const { ref: popoverRef, state, triggerRef, dialogProps, popoverProps } = usePopoverContext();
+  const domRef = useDOMRef(popoverRef || ref);
 
   return (
     <Overlay {...otherProps} isOpen={state.isOpen} nodeRef={wrapperRef}>
