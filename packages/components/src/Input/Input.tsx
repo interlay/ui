@@ -19,11 +19,10 @@ type AriaAttrs = Omit<AriaTextFieldOptions<'input'>, (keyof Props & InheritAttrs
 
 type InputProps = Props & InheritAttrs & AriaAttrs;
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ onChange, validationState, ...props }, ref): JSX.Element => {
+const Input = forwardRef<HTMLInputElement, InputProps>(({ onChange, isInvalid, ...props }, ref): JSX.Element => {
   const inputRef = useDOMRef(ref);
-  // We are specifing `validationState` so that when there are errors, `aria-invalid` is set to `true`
   const { inputProps, descriptionProps, errorMessageProps, labelProps } = useTextField(
-    { ...props, validationState: validationState || props.errorMessage ? 'invalid' : validationState },
+    { ...props, isInvalid: isInvalid || !!props.errorMessage },
     inputRef
   );
 
