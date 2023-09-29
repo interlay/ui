@@ -1,4 +1,5 @@
-import { formatUSD } from '../utils/format';
+import { useCurrencyFormatter } from '@interlay/hooks';
+
 import { CoinIcon } from '../CoinIcon';
 import { Flex } from '../Flex';
 import { useSelectModalContext } from '../Select/SelectModalContext';
@@ -11,6 +12,7 @@ type TokenListItemProps = { isDisabled?: boolean } & TokenData;
 
 const TokenListItem = ({ balance, balanceUSD, value, tickers, isDisabled }: TokenListItemProps): JSX.Element => {
   const isSelected = useSelectModalContext().selectedItem?.key === value && !isDisabled;
+  const format = useCurrencyFormatter();
 
   return (
     <>
@@ -21,7 +23,7 @@ const TokenListItem = ({ balance, balanceUSD, value, tickers, isDisabled }: Toke
       <Flex alignItems='flex-end' direction='column' flex='0' gap='spacing2'>
         <StyledListItemLabel $isSelected={isSelected}>{balance}</StyledListItemLabel>
         <Span color='tertiary' size='s'>
-          {formatUSD(balanceUSD, { compact: true })}
+          {format(balanceUSD)}
         </Span>
       </Flex>
     </>
