@@ -10,16 +10,12 @@ import { useDOMRef } from '@interlay/hooks';
 import { Field, FieldProps, useFieldProps } from '../Field';
 import { hasError } from '../utils/input';
 
-import { SelectModal } from './SelectModal';
+import { SelectModal, SelectModalProps } from './SelectModal';
 import { SelectTrigger } from './SelectTrigger';
-
-type SelectType = 'listbox' | 'modal';
 
 type SelectObject = Record<any, any>;
 
-// TODO: listbox to be implemented
-type Props<F extends SelectType = 'listbox', T = SelectObject> = {
-  type?: F;
+type Props<T = SelectObject> = {
   open?: boolean;
   loading?: boolean;
   size?: Sizes;
@@ -27,30 +23,32 @@ type Props<F extends SelectType = 'listbox', T = SelectObject> = {
   asSelectTrigger?: any;
   renderValue?: (item: Node<T>) => ReactNode;
   placeholder?: ReactNode;
-  modalTitle?: F extends 'modal' ? ReactNode : never;
-  modalRef?: F extends 'modal' ? React.Ref<HTMLDivElement> : never;
 };
 
-type InheritAttrs<F extends SelectType = 'listbox', T = SelectObject> = Omit<
+type ListboxAttrs = { type?: 'listbox' };
+
+type ModalAttrs = {
+  type?: 'modal';
+  modalProps?: { ref?: React.Ref<HTMLDivElement> } & Omit<SelectModalProps, 'state' | 'isOpen' | 'onClose' | 'id'>;
+};
+
+type ConditionalAttrs = ListboxAttrs | ModalAttrs;
+
+type InheritAttrs<T = SelectObject> = Omit<
   CollectionBase<T> & Omit<FieldProps, 'children'> & AriaSelectProps<T>,
-  keyof Props<F, T> | 'isDisabled' | 'isLoading' | 'isOpen' | 'isRequired' | 'selectedKey' | 'defaultSelectedKey'
+  keyof Props<T> | 'isDisabled' | 'isLoading' | 'isOpen' | 'isRequired' | 'selectedKey' | 'defaultSelectedKey'
 >;
 
-type NativeAttrs<F extends SelectType = 'listbox', T = SelectObject> = Omit<
-  React.InputHTMLAttributes<Element>,
-  keyof Props<F, T> | 'children'
->;
+type NativeAttrs<T = SelectObject> = Omit<React.InputHTMLAttributes<Element>, keyof Props<T> | 'children'>;
 
-type SelectProps<F extends SelectType = 'listbox', T = SelectObject> = Props<F, T> &
-  NativeAttrs<F, T> &
-  InheritAttrs<F, T>;
+type SelectProps<T = SelectObject> = Props<T> & ConditionalAttrs & NativeAttrs<T> & InheritAttrs<T>;
 
-// FIXME: when type is modal, we should use also types from our List and improve this components types
-const Select = <F extends SelectType = 'listbox', T extends SelectObject = SelectObject>(
+// TODO: listbox is not implemented
+const Select = <T extends SelectObject = SelectObject>(
   {
+    type = 'listbox',
     value,
     defaultValue,
-    type = 'listbox' as F,
     name,
     disabled,
     open,
@@ -60,16 +58,14 @@ const Select = <F extends SelectType = 'listbox', T extends SelectObject = Selec
     size = 'medium',
     placeholder = 'Select an option',
     asSelectTrigger,
-    modalTitle,
     isInvalid,
     onChange,
     renderValue = (item) => item.rendered,
     items,
     disabledKeys,
-    modalRef,
     children,
     ...props
-  }: SelectProps<F, T>,
+  }: SelectProps<T>,
   ref: ForwardedRef<HTMLInputElement>
 ): JSX.Element => {
   const inputRef = useDOMRef(ref);
@@ -114,12 +110,15 @@ const Select = <F extends SelectType = 'listbox', T extends SelectObject = Selec
   const selectTriggerProps =
     type === 'listbox'
       ? triggerProps
-      : mergeProps(props, {
-          onPress: () => state.setOpen(true),
-          disabled,
-          id: triggerProps.id,
-          'aria-labelledby': triggerProps['aria-labelledby']
-        });
+      : mergeProps(
+          { ...props, modalProps: undefined },
+          {
+            onPress: () => state.setOpen(true),
+            disabled,
+            id: triggerProps.id,
+            'aria-labelledby': triggerProps['aria-labelledby']
+          }
+        );
 
   return (
     <Field {...fieldProps}>
@@ -150,21 +149,24 @@ const Select = <F extends SelectType = 'listbox', T extends SelectObject = Selec
       </SelectTrigger>
       {type === 'modal' && (
         <SelectModal
-          ref={modalRef}
+          {...mergeProps((props as ModalAttrs).modalProps, {
+            onClose: state.close
+          })}
           id={modalId}
           isOpen={state.isOpen}
-          listProps={{ selectedKeys: state.selectedItem?.key ? [state.selectedItem?.key] : [], disabledKeys }}
+          listProps={mergeProps((props as ModalAttrs).modalProps?.listProps, {
+            selectedKeys: state.selectedItem?.key ? [state.selectedItem?.key] : [],
+            disabledKeys
+          })}
           state={state}
-          title={modalTitle}
-          onClose={state.close}
         />
       )}
     </Field>
   );
 };
 
-const _Select = forwardRef(Select) as <F extends SelectType = 'listbox', T extends SelectObject = SelectObject>(
-  props: SelectProps<F, T> & { ref?: React.ForwardedRef<HTMLInputElement> }
+const _Select = forwardRef(Select) as <T extends SelectObject = SelectObject>(
+  props: SelectProps<T> & { ref?: React.ForwardedRef<HTMLInputElement> }
 ) => ReturnType<typeof Select>;
 
 Select.displayName = 'Select';

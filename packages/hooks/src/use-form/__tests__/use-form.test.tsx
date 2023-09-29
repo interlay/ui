@@ -1,4 +1,4 @@
-import { render, renderHook, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
+import { act, render, renderHook, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 
 import { Input, TokenInput, Select, Item, InterlayUIProvider } from '../../../../components/src';
@@ -222,9 +222,9 @@ describe('useForm', () => {
       render(
         <InterlayUIProvider>
           <form onSubmit={result.current.handleSubmit}>
-            <Select<'modal', any>
+            <Select
               label='Token'
-              modalTitle='Select Token'
+              modalProps={{ title: 'Select Token' }}
               type='modal'
               {...result.current.getSelectFieldProps('token')}
             >
@@ -277,7 +277,9 @@ describe('useForm', () => {
 
       expect((props as any).onChange).toBeUndefined();
 
-      props.onSelectionChange?.('BTC');
+      act(() => {
+        props.onSelectionChange?.('BTC');
+      });
 
       await waitFor(() => {
         expect(result.current.values.token).toBe('BTC');

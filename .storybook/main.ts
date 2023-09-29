@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+
 import { join, dirname } from 'path';
 
 /**
@@ -11,7 +12,8 @@ function getAbsolutePath(value: string): any {
 const config: StorybookConfig = {
   stories: [
     '../packages/components/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    '../packages/icons/**/src/stories/*.stories.@(js|jsx|mjs|ts|tsx)'
+    '../packages/icons/**/src/stories/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../packages/hooks/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'
   ],
   addons: [
     getAbsolutePath('@storybook/addon-links'),
