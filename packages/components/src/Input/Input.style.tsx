@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { theme } from '@interlay/theme';
-import { Placement, Sizes, Spacing } from '@interlay/theme';
-
-const getSpacing = (padding?: Spacing) => (padding ? theme.spacing[padding] : undefined);
+import { Placement, Sizes } from '@interlay/theme';
 
 type BaseInputProps = {
   $size: Sizes;
   $adornments: { bottom: boolean; left: boolean; right: boolean };
-  $padding?: { top: Spacing; bottom: Spacing; left: Spacing; right: Spacing };
   $isDisabled: boolean;
   $hasError: boolean;
   $endAdornmentWidth: number;
@@ -48,12 +45,11 @@ const StyledBaseInput = styled.input<BaseInputProps>`
     border-color ${theme.transition.duration.duration150}ms ease-in-out,
     box-shadow ${theme.transition.duration.duration150}ms ease-in-out;
 
-  padding-top: ${({ $padding }) => getSpacing($padding?.top) || theme.spacing.spacing2};
-  padding-left: ${({ $adornments, $padding }) =>
-    getSpacing($padding?.left) || ($adornments.left ? theme.input.paddingX.md : theme.spacing.spacing2)};
+  padding-top: ${theme.spacing.spacing2};
+  padding-left: ${({ $adornments }) => ($adornments.left ? theme.input.paddingX.md : theme.spacing.spacing2)};
 
-  padding-right: ${({ $adornments, $endAdornmentWidth, $padding }) => {
-    if (!$adornments.right) return getSpacing($padding?.right) || theme.spacing.spacing2;
+  padding-right: ${({ $adornments, $endAdornmentWidth }) => {
+    if (!$adornments.right) theme.spacing.spacing2;
 
     // MEMO: adding `spacing6` is a hacky solution because
     // the `endAdornmentWidth` does not update width correctly
@@ -62,8 +58,7 @@ const StyledBaseInput = styled.input<BaseInputProps>`
     // the input overlap the adornment.
     return `calc(${$endAdornmentWidth}px + ${theme.spacing.spacing6})`;
   }};
-  padding-bottom: ${({ $adornments, $padding }) =>
-    getSpacing($padding?.bottom) || ($adornments.bottom ? theme.spacing.spacing6 : theme.spacing.spacing2)};
+  padding-bottom: ${({ $adornments }) => ($adornments.bottom ? theme.spacing.spacing6 : theme.spacing.spacing2)};
 
   &:hover:not(:disabled):not(:focus) {
     border: ${(props) => !props.$isDisabled && !props.$hasError && theme.border.focus};
