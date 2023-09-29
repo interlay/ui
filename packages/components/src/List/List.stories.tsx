@@ -40,6 +40,12 @@ export const Card: StoryObj<ListProps> = {
   }
 };
 
+export const Horizontal: StoryObj<ListProps> = {
+  args: {
+    direction: 'row'
+  }
+};
+
 export const SingleSelection: StoryObj<ListProps> = {
   args: {
     selectionMode: 'multiple',
@@ -50,6 +56,14 @@ export const SingleSelection: StoryObj<ListProps> = {
 export const MultipleSelection: StoryObj<ListProps> = {
   args: {
     selectionMode: 'multiple'
+  }
+};
+
+export const HorizontalSelection: StoryObj<ListProps> = {
+  args: {
+    selectionMode: 'multiple',
+    selectionBehavior: 'replace',
+    direction: 'row'
   }
 };
 

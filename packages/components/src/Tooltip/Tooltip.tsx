@@ -1,11 +1,13 @@
-import { Overlay, OverlayContainer, PositionAria, useOverlayPosition } from '@react-aria/overlays';
+import { PositionAria, useOverlayPosition } from '@react-aria/overlays';
 import { AriaTooltipProps, useTooltip, useTooltipTrigger } from '@react-aria/tooltip';
 import { mergeProps } from '@react-aria/utils';
 import { TooltipTriggerProps as StatelyTooltipTriggerProps, useTooltipTriggerState } from '@react-stately/tooltip';
-import React, { Children, cloneElement, HTMLAttributes, ReactElement, ReactNode, useRef } from 'react';
+import React, { Children, cloneElement, forwardRef, HTMLAttributes, ReactElement, ReactNode, useRef } from 'react';
 import { Placement } from '@interlay/theme';
+import { useDOMRef } from '@interlay/hooks';
 
 import { Span } from '../Text';
+import { Overlay } from '../Overlay';
 
 import { StyledTooltip, StyledTooltipLabel, StyledTooltipTip } from './Tooltip.style';
 
@@ -29,7 +31,7 @@ type NativeAttrs = Omit<HTMLAttributes<unknown>, keyof Props & InheritAttrs>;
 
 type TooltipProps = Props & InheritAttrs & NativeAttrs;
 
-const Tooltip = (props: TooltipProps): JSX.Element => {
+const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref): JSX.Element => {
   const {
     children,
     label,
@@ -40,10 +42,10 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     delay = DEFAULT_DELAY
   } = props;
 
-  const state = useTooltipTriggerState({ delay, ...props });
+  const state = useTooltipTriggerState({ ...props, delay });
 
   const tooltipTriggerRef = useRef<HTMLElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useDOMRef<HTMLDivElement>(ref);
 
   const { triggerProps, tooltipProps } = useTooltipTrigger(
     {
@@ -93,29 +95,28 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     trigger = cloneElement(child, mergeProps(child.props, triggerProps, { ref: tooltipTriggerRef }));
   }
 
-  /* TODO: Move OverlayContainer out when new modal added */
   return (
     <>
       {trigger}
       {state.isOpen && (
-        <OverlayContainer>
-          <Overlay>
-            <StyledTooltip
-              {...mergeProps(ariaTooltipProps, overlayProps)}
-              ref={overlayRef}
-              $isOpen={state.isOpen}
-              $placement={placement}
-              className={props.className}
-            >
-              <StyledTooltipLabel>{label}</StyledTooltipLabel>
-              <StyledTooltipTip $placement={placement} {...arrowProps} />
-            </StyledTooltip>
-          </Overlay>
-        </OverlayContainer>
+        <Overlay isOpen={state.isOpen} nodeRef={overlayRef}>
+          <StyledTooltip
+            {...mergeProps(ariaTooltipProps, overlayProps)}
+            ref={overlayRef}
+            $isOpen={state.isOpen}
+            $placement={placement}
+            className={props.className}
+          >
+            <StyledTooltipLabel>{label}</StyledTooltipLabel>
+            <StyledTooltipTip $placement={placement} {...arrowProps} />
+          </StyledTooltip>
+        </Overlay>
       )}
     </>
   );
-};
+});
+
+Tooltip.displayName = 'Tooltip';
 
 export { Tooltip };
 export type { TooltipProps };

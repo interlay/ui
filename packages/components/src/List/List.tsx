@@ -24,14 +24,22 @@ type NativeAttrs = Omit<FlexProps, keyof Props>;
 
 type ListProps = Props & NativeAttrs & InheritAttrs;
 
-const List = forwardRef<HTMLUListElement, ListProps>(
+// FIXME: use keyboardDelegate for horizontal list (see TagGroup from spectrum)
+const List = forwardRef<HTMLDivElement, ListProps>(
   (
     { variant = 'primary', direction = 'column', onSelectionChange, selectionMode, selectedKeys, ...props },
     ref
   ): JSX.Element => {
-    const ariaProps = { onSelectionChange, selectionMode, selectedKeys, ...props };
+    const listRef = useDOMRef<HTMLDivElement>(ref);
+
+    const ariaProps: AriaGridListOptions<Record<string, unknown>> = {
+      onSelectionChange,
+      selectionMode,
+      selectedKeys,
+      ...props
+    };
     const state = useListState(ariaProps);
-    const listRef = useDOMRef<HTMLUListElement>(ref);
+
     const { gridProps } = useGridList(ariaProps, state, listRef);
 
     return (
@@ -40,7 +48,6 @@ const List = forwardRef<HTMLUListElement, ListProps>(
         ref={listRef}
         $variant={variant}
         direction={direction}
-        elementType='ul'
         gap={variant === 'card' ? undefined : 'spacing2'}
       >
         {[...state.collection].map((item) => (

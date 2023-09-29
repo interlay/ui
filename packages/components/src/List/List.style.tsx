@@ -23,7 +23,7 @@ type StyledListItemProps = {
   $isFocusVisible: boolean;
 };
 
-const StyledListItem = styled.li<StyledListItemProps>`
+const StyledListItem = styled.div<StyledListItemProps>`
   flex: 1;
   align-self: stretch;
   padding: ${theme.spacing.spacing3};

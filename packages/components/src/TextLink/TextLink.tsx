@@ -35,7 +35,7 @@ const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
 
     return (
       <BaseTextLink
-        ref={ref}
+        ref={linkRef}
         $color={color}
         $size={size}
         $underlined={underlined}

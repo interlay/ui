@@ -6,6 +6,8 @@ import { Node } from '@react-types/shared';
 import { useRef } from 'react';
 import { FontSize } from '@interlay/theme';
 
+import { Span } from '..';
+
 import {
   StyledAccordionItemButton,
   StyledAccordionItemHeading,
@@ -40,8 +42,8 @@ const AccordionItem = <T extends Record<string, unknown>>({
             $isDisabled={isDisabled}
             $isFocusVisible={isFocusVisible}
           >
-            {item.props.title}
-            <StyledChevronDown $isExpanded={isExpanded} role='img' size='s' />
+            <Span>{item.props.title}</Span>
+            <StyledChevronDown $isExpanded={isExpanded} aria-hidden='true' role='img' size='s' />
           </StyledAccordionItemButton>
         </FocusRing>
       </StyledAccordionItemHeading>
