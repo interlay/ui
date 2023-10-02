@@ -10,9 +10,7 @@
   --box-shadow-none: none;
   --colors-slate-gray: #6a7994;
   --colors-bronze: #d57b33;
-}
 
-.theme-kintsugi {
   --colors-border: var(--colors-mid-blue);
   --colors-bg-primary: var(--colors-dark-blue);
   /* Card */
@@ -92,8 +90,10 @@
   /* List */
   --color-list-primary-bg: var(--colors-bg-primary);
   --color-list-primary-hover-bg: #1c2c46;
+  --color-list-primary-selected-bg: var(--colors-yellow);
   --color-list-secondary-bg: #101e3d;
   --color-list-secondary-hover-bg: #1c2c46;
+  --color-list-secondary-selected-bg: var(--colors-yellow);
   --color-list-selected-text: var(--colors-neutral-black);
   /* Icon */
   --color-icon-fallback-stroke: #232323;

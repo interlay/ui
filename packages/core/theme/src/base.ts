@@ -545,7 +545,10 @@ const base = {
         hover: {
           bg: 'var(--color-list-primary-hover-bg)'
         },
-        rounded: 'var(--rounded-md)'
+        rounded: 'var(--rounded-md)',
+        selected: {
+          bg: 'var(--color-list-primary-selected-bg)'
+        }
       },
       secondary: {
         bg: 'var(--color-list-secondary-bg)',
@@ -553,7 +556,10 @@ const base = {
         hover: {
           bg: 'var(--color-list-secondary-hover-bg)'
         },
-        rounded: 'var(--rounded-md)'
+        rounded: 'var(--rounded-md)',
+        selected: {
+          bg: 'var(--color-list-secondary-selected-bg)'
+        }
       },
       card: {
         bg: 'var(--colors-table-odd-row-bg)',
@@ -561,7 +567,10 @@ const base = {
         hover: {
           bg: 'var(--color-list-primary-hover-bg)'
         },
-        rounded: ''
+        rounded: '',
+        selected: {
+          bg: ''
+        }
       }
     }
   },

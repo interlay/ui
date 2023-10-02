@@ -48,9 +48,9 @@ const StyledListItem = styled.div<StyledListItemProps>`
 
     return css`
       &[aria-selected='true'] {
-        background-color: ${theme.colors.textSecondary};
+        background-color: ${theme.list.item[$variant].selected.bg};
         color: ${theme.list.text};
-        border-color: ${theme.colors.textSecondary};
+        border-color: ${theme.list.item[$variant].selected.bg};
       }
     `;
   }}
