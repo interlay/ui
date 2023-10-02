@@ -32,7 +32,7 @@ type ModalAttrs = {
   modalProps?: { ref?: React.Ref<HTMLDivElement> } & Omit<SelectModalProps, 'state' | 'isOpen' | 'onClose' | 'id'>;
 };
 
-type ConditionalAttrs = ListboxAttrs | ModalAttrs;
+// type ConditionalAttrs = ListboxAttrs | ModalAttrs;
 
 type InheritAttrs<T = SelectObject> = Omit<
   CollectionBase<T> & Omit<FieldProps, 'children'> & AriaSelectProps<T>,
@@ -41,7 +41,13 @@ type InheritAttrs<T = SelectObject> = Omit<
 
 type NativeAttrs<T = SelectObject> = Omit<React.InputHTMLAttributes<Element>, keyof Props<T> | 'children'>;
 
-type SelectProps<T = SelectObject> = Props<T> & ConditionalAttrs & NativeAttrs<T> & InheritAttrs<T>;
+type CommonProps<T = SelectObject> = Props<T> & NativeAttrs<T> & InheritAttrs<T>;
+
+type ListboxSelectProps<T = SelectObject> = CommonProps<T> & ListboxAttrs;
+
+type ModalSelectProps<T = SelectObject> = CommonProps<T> & ModalAttrs;
+
+type SelectProps<T = SelectObject> = ModalSelectProps<T> | ListboxSelectProps<T>;
 
 // TODO: listbox is not implemented
 const Select = <T extends SelectObject = SelectObject>(
@@ -172,4 +178,4 @@ const _Select = forwardRef(Select) as <T extends SelectObject = SelectObject>(
 Select.displayName = 'Select';
 
 export { _Select as Select };
-export type { SelectProps };
+export type { SelectProps, ListboxSelectProps, ModalSelectProps };
