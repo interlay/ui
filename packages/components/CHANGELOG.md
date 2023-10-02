@@ -1,5 +1,27 @@
 # @interlay/ui
 
+## 0.0.3
+
+### Patch Changes
+
+- [#27](https://github.com/interlay/ui/pull/27) [`5d11b0a`](https://github.com/interlay/ui/commit/5d11b0aa63dd3efa13e16a52f3b267bfa09e45d4) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(theme): add bob
+
+- [#19](https://github.com/interlay/ui/pull/19) [`0609525`](https://github.com/interlay/ui/commit/06095257734dbe058a1b584642e993c45331a7dd) Thanks [@danielsimao](https://github.com/danielsimao)! - refactor(components): token input
+  fix(components): base input, input, number input events and add tests
+  fix(components): table deprecated variables, fix aria errors and add tests
+  fix(components): add axe to tests and fix components
+  feat(components): add css-reset
+  fix(components): select types
+  refactor(components): token input
+
+- [#14](https://github.com/interlay/ui/pull/14) [`85d810a`](https://github.com/interlay/ui/commit/85d810af98c72454845d62eee7438e2afa19a4f4) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(hooks): add use-form hook and changes to related components
+
+- Updated dependencies [[`5d11b0a`](https://github.com/interlay/ui/commit/5d11b0aa63dd3efa13e16a52f3b267bfa09e45d4), [`0609525`](https://github.com/interlay/ui/commit/06095257734dbe058a1b584642e993c45331a7dd), [`85d810a`](https://github.com/interlay/ui/commit/85d810af98c72454845d62eee7438e2afa19a4f4)]:
+  - @interlay/theme@0.0.3
+  - @interlay/hooks@0.0.3
+  - @interlay/icons@0.0.3
+  - @interlay/coin-icons@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes

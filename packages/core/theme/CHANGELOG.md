@@ -1,5 +1,11 @@
 # @interlay/theme
 
+## 0.0.3
+
+### Patch Changes
+
+- [#27](https://github.com/interlay/ui/pull/27) [`5d11b0a`](https://github.com/interlay/ui/commit/5d11b0aa63dd3efa13e16a52f3b267bfa09e45d4) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(theme): add bob
+
 ## 0.0.2
 
 ### Patch Changes
