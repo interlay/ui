@@ -1,5 +1,17 @@
 # @interlay/ui
 
+## 0.0.4
+
+### Patch Changes
+
+- [#29](https://github.com/interlay/ui/pull/29) [`edd2937`](https://github.com/interlay/ui/commit/edd2937b2fbe05fd82b33c1e1cada3ed5c76e3db) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): select types
+  fix(theme): bob input disable
+- Updated dependencies [[`edd2937`](https://github.com/interlay/ui/commit/edd2937b2fbe05fd82b33c1e1cada3ed5c76e3db)]:
+  - @interlay/theme@0.0.4
+  - @interlay/hooks@0.0.4
+  - @interlay/icons@0.0.4
+  - @interlay/coin-icons@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
