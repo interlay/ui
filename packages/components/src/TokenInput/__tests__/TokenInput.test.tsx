@@ -181,7 +181,7 @@ describe('TokenInput', () => {
       { balance: 2, value: 'ETH', balanceUSD: 900 }
     ];
 
-    it('should render correctly', () => {
+    it('should render correctly', async () => {
       const wrapper = render(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
 
       expect(() => wrapper.unmount()).not.toThrow();
@@ -189,6 +189,20 @@ describe('TokenInput', () => {
 
     it('should pass a11y', async () => {
       await testA11y(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
+    });
+
+    it('ref should be forwarded to the modal', async () => {
+      const ref = createRef<HTMLInputElement>();
+
+      render(<TokenInput label='label' selectProps={{ items, modalProps: { ref } }} type='selectable' />);
+
+      userEvent.click(screen.getByRole('button', { name: /select token/i }));
+
+      await waitFor(() => {
+        expect(screen.getByRole('dialog', { name: /select token/i })).toBeInTheDocument();
+      });
+
+      expect(ref.current).not.toBeNull();
     });
 
     it('should render empty value', () => {
