@@ -4,8 +4,7 @@ import { testA11y } from '@interlay/test-utils';
 
 import { Tooltip } from '..';
 
-// FIXME: isOpen prop throwing error
-describe.skip('Tooltip', () => {
+describe('Tooltip', () => {
   it('should render correctly', () => {
     const wrapper = render(
       <Tooltip isOpen label='tooltip'>
