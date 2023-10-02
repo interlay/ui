@@ -8,7 +8,8 @@ export default defineConfig({
   entry: {
     index: 'src/index.ts',
     kintsugi: 'src/css/theme.kintsugi.css',
-    interlay: 'src/css/theme.interlay.css'
+    interlay: 'src/css/theme.interlay.css',
+    bob: 'src/css/theme.bob.css'
   },
   dts: {
     entry: {
