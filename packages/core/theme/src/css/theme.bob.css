@@ -72,7 +72,7 @@
   --colors-input-disabled-text: #9a9a9a;
   --colors-input-disabled-border: var(--colors-neutral-opacity-300);
   --colors-input-background: var(--colors-dark-400);
-  --colors-input-disabled-bg: #fbfbfc;
+  --colors-input-disabled-bg: #1d2330;
   /* Label */
   --colors-label-text: var(--colors-white);
   /* Token Input */
