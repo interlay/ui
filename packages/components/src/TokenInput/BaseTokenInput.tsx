@@ -1,10 +1,10 @@
 import { useLabel } from '@react-aria/label';
 import { mergeProps } from '@react-aria/utils';
 import { forwardRef, ReactNode } from 'react';
+import { useCurrencyFormatter } from '@interlay/hooks';
 
 import { Flex } from '../Flex';
 import { NumberInput, NumberInputProps } from '../NumberInput';
-import { formatUSD } from '../utils/format';
 
 import { TokenInputLabel } from './TokenInputLabel';
 import { StyledUSDAdornment } from './TokenInput.style';
@@ -36,12 +36,13 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
     },
     ref
   ): JSX.Element => {
+    const format = useCurrencyFormatter();
     const { labelProps, fieldProps } = useLabel({ label, ...props });
 
     const hasLabel = !!label || !!balance;
 
     const bottomAdornment = valueUSD !== undefined && (
-      <StyledUSDAdornment $isDisabled={isDisabled}>{formatUSD(valueUSD, { compact: true })}</StyledUSDAdornment>
+      <StyledUSDAdornment $isDisabled={isDisabled}>{format(valueUSD)}</StyledUSDAdornment>
     );
 
     return (
