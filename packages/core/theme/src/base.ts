@@ -249,7 +249,7 @@ const base = {
       color: 'var(--colors-tabs-active-color)',
       bg: 'var(--colors-tabs-active-bg)'
     },
-    border: '1px solid var(--colors-border)',
+    border: '1px solid var(--colors-tabs-border)',
     small: {
       wrapper: {
         padding: 'var(--spacing-1) var(--spacing-2)'

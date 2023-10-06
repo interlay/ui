@@ -44,10 +44,11 @@
   --colors-text-secondary: var(--colors-orange);
   --colors-text-tertiary: var(--colors-neutral-light-grey);
   /* Tabs */
-  --colors-tabs-bg: var(--colors-neutral-white);
-  --colors-tabs-text: var(--colors-neutral-black-9);
-  --colors-tabs-active-color: var(--colors-neutral-white);
-  --colors-tabs-active-bg: var(--colors-light-blue);
+  --colors-tabs-bg: var(--colors-dark-500);
+  --colors-tabs-border: var(--colors-neutral-light-grey);
+  --colors-tabs-text: var(--colors-neutral-white);
+  --colors-tabs-active-color: var(--colors-neutral-black-9);
+  --colors-tabs-active-bg: var(--colors-neutral-white);
   /* Loading Spinner */
   --colors-indeterminate-primary-color: var(--colors-light-blue);
   --colors-indeterminate-primary-bg: var(--colors-light-blue-10);
