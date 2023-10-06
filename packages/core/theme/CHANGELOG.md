@@ -1,5 +1,11 @@
 # @interlay/theme
 
+## 0.0.5
+
+### Patch Changes
+
+- [#36](https://github.com/interlay/ui/pull/36) [`200454d`](https://github.com/interlay/ui/commit/200454d7df265c661a5e74d83293179962be8822) Thanks [@tomjeatt](https://github.com/tomjeatt)! - feature: add BOB tab styles
+
 ## 0.0.4
 
 ### Patch Changes

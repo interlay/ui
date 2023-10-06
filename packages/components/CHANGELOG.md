@@ -1,5 +1,15 @@
 # @interlay/ui
 
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies [[`200454d`](https://github.com/interlay/ui/commit/200454d7df265c661a5e74d83293179962be8822), [`e2c5472`](https://github.com/interlay/ui/commit/e2c547298f5881d56a7f5b5b36ac86aaff11cb8f)]:
+  - @interlay/theme@0.0.5
+  - @interlay/coin-icons@0.0.6
+  - @interlay/hooks@0.0.6
+  - @interlay/icons@0.0.5
+
 ## 0.0.5
 
 ### Patch Changes

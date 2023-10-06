@@ -1,5 +1,12 @@
 # @interlay/icons
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [[`200454d`](https://github.com/interlay/ui/commit/200454d7df265c661a5e74d83293179962be8822)]:
+  - @interlay/theme@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes
