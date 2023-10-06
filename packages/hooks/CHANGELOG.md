@@ -1,5 +1,11 @@
 # @interlay/hooks
 
+## 0.0.5
+
+### Patch Changes
+
+- [#25](https://github.com/interlay/ui/pull/25) [`d039765`](https://github.com/interlay/ui/commit/d0397657fa39d8e191c2135fe1a02fb350d3890b) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(hooks): add use-currency-formatter
+
 ## 0.0.4
 
 ### Patch Changes

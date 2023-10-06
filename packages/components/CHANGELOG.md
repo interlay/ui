@@ -1,5 +1,15 @@
 # @interlay/ui
 
+## 0.0.5
+
+### Patch Changes
+
+- [#25](https://github.com/interlay/ui/pull/25) [`d039765`](https://github.com/interlay/ui/commit/d0397657fa39d8e191c2135fe1a02fb350d3890b) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(hooks): add use-currency-formatter
+
+- Updated dependencies [[`d039765`](https://github.com/interlay/ui/commit/d0397657fa39d8e191c2135fe1a02fb350d3890b), [`287594f`](https://github.com/interlay/ui/commit/287594f1e6b31cd65d7263b7e9fa73f51034bc66)]:
+  - @interlay/hooks@0.0.5
+  - @interlay/coin-icons@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes
