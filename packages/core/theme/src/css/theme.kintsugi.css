@@ -36,7 +36,6 @@
   --box-shadow-default: var(--box-shadow-none);
   /* Tabs */
   --colors-tabs-bg: var(--colors-dark-blue);
-  --colors-tabs-border: var(--colors-border);
   --colors-tabs-text: var(--colors-neutral-lighter-grey);
   --colors-tabs-active-color: var(--colors-blue);
   --colors-tabs-active-bg: var(--colors-neutral-white);
