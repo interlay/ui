@@ -4,7 +4,7 @@ import { Icon, IconProps } from '@interlay/icons';
 const ZBTC = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
   <Icon {...props} ref={ref} fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
     <title>ZBTC</title>
-    <g clipPath='url(#zbtc-a)'>
+    <g clipPath='url(#zbtc-icon-a)'>
       <path
         d='M23.64 14.903c-1.602 6.429-8.114 10.341-14.544 8.738C2.669 22.038-1.244 15.527.359 9.099 1.961 2.669 8.473-1.243 14.902.359c6.43 1.603 10.342 8.115 8.739 14.544Z'
         fill='#F7931A'
@@ -14,9 +14,10 @@ const ZBTC = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
         fill='#fff'
       />
     </g>
-    <path d='M0 23v-.244l4.228-6.193h-3.8V15H7v.252l-4.213 6.185h4.036V23H0Z' fill='#000' />
+    <rect fill='#fff' height='11' rx='5' width='10' y='12' />
+    <path d='M2 20.5v-.183l3.624-4.645H2.367V14.5H8v.189l-3.611 4.639h3.459V20.5H2Z' fill='#000' />
     <defs>
-      <clipPath id='zbtc-a'>
+      <clipPath id='zbtc-icon-a'>
         <path d='M0 0h24v24H0z' fill='#fff' />
       </clipPath>
     </defs>
