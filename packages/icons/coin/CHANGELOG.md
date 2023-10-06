@@ -1,5 +1,14 @@
 # @interlay/coin-icons
 
+## 0.0.6
+
+### Patch Changes
+
+- [#34](https://github.com/interlay/ui/pull/34) [`e2c5472`](https://github.com/interlay/ui/commit/e2c547298f5881d56a7f5b5b36ac86aaff11cb8f) Thanks [@tomjeatt](https://github.com/tomjeatt)! - Update ZBTC icon
+
+- Updated dependencies []:
+  - @interlay/icons@0.0.5
+
 ## 0.0.5
 
 ### Patch Changes
