@@ -4,7 +4,17 @@ import { LoadingSpinner, LoadingSpinnerProps } from '.';
 
 export default {
   title: 'Loading/LoadingSpinner',
-  component: LoadingSpinner
+  component: LoadingSpinner,
+  parameters: {
+    layout: 'centered'
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex' }}>
+        <Story />
+      </div>
+    )
+  ]
 } as Meta;
 
 export const Indeterminate: StoryObj<LoadingSpinnerProps> = {
