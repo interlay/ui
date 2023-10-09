@@ -1,5 +1,11 @@
 # @interlay/theme
 
+## 0.0.6
+
+### Patch Changes
+
+- [#38](https://github.com/interlay/ui/pull/38) [`0f85afc`](https://github.com/interlay/ui/commit/0f85afc17d8a576331cbd8ae5f6b743977cf80a0) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(theme): bob loading spinner (#37)
+
 ## 0.0.5
 
 ### Patch Changes
