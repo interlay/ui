@@ -1,14 +1,13 @@
+import { testA11y } from '@interlay/test-utils';
 import { render } from '@testing-library/react';
 import { createRef } from 'react';
-import { testA11y } from '@interlay/test-utils';
 
 import { Tooltip } from '..';
 
-// FIXME: isOpen prop throwing error
-describe.skip('Tooltip', () => {
+describe('Tooltip', () => {
   it('should render correctly', () => {
     const wrapper = render(
-      <Tooltip isOpen label='tooltip'>
+      <Tooltip isOpen label='tooltip content'>
         trigger
       </Tooltip>
     );
@@ -20,7 +19,7 @@ describe.skip('Tooltip', () => {
     const ref = createRef<HTMLDivElement>();
 
     render(
-      <Tooltip ref={ref} isOpen label='tooltip'>
+      <Tooltip ref={ref} isOpen label='tooltip content'>
         trigger
       </Tooltip>
     );
@@ -30,7 +29,7 @@ describe.skip('Tooltip', () => {
 
   it('should pass a11y', async () => {
     await testA11y(
-      <Tooltip isOpen label='tooltip'>
+      <Tooltip isOpen label='tooltip content'>
         trigger
       </Tooltip>
     );

@@ -21,7 +21,8 @@ type OpenTransitionProps = Props & InheritAttrs;
 const OpenTransition = (props: OpenTransitionProps): any => {
   // Do not apply any transition if in chromatic (based on react-spectrum)
   if (process.env.NODE_ENV === 'test') {
-    return Children.map(props.children, (child) => child && cloneElement(child as any, { isOpen: props.in }));
+    // MEMO: removed  { isOpen: props.in } because of error with prop for component that do not recognize it
+    return Children.map(props.children, (child) => child && cloneElement(child as any));
   }
 
   return (
