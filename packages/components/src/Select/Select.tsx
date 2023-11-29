@@ -3,9 +3,10 @@ import { mergeProps, useId } from '@react-aria/utils';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import { SelectProps as AriaSelectProps, useSelectState } from '@react-stately/select';
 import { CollectionBase, Node } from '@react-types/shared';
-import { ForwardedRef, forwardRef, Key, ReactNode, useRef } from 'react';
+import { ForwardedRef, forwardRef, ReactNode, useRef } from 'react';
 import { Sizes } from '@interlay/theme';
 import { useDOMRef } from '@interlay/hooks';
+import { Key } from '@react-types/shared';
 
 import { Field, FieldProps, useFieldProps } from '../Field';
 import { hasError } from '../utils/input';

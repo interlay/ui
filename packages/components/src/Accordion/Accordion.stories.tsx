@@ -1,5 +1,6 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { Key, useState } from 'react';
+import { useState } from 'react';
+import { Key } from '@react-types/shared';
 
 import { P } from '../Text';
 

@@ -2,8 +2,8 @@ import { useFocusRing } from '@react-aria/focus';
 import { useTabList } from '@react-aria/tabs';
 import { mergeProps } from '@react-aria/utils';
 import { useTabListState } from '@react-stately/tabs';
-import { CollectionChildren } from '@react-types/shared';
-import { forwardRef, HTMLAttributes, Key, useEffect, useState } from 'react';
+import { CollectionChildren, Key } from '@react-types/shared';
+import { forwardRef, HTMLAttributes, useEffect, useState } from 'react';
 import { AlignItems, Sizes } from '@interlay/theme';
 import { useDOMRef } from '@interlay/hooks';
 

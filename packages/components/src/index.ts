@@ -67,3 +67,5 @@ export type { TooltipProps } from './Tooltip';
 export { Tooltip } from './Tooltip';
 export * from '@interlay/system';
 export { CSSReset } from './CSSReset';
+export type { RadioGroupProps, RadioProps } from './Radio';
+export { RadioGroup, Radio } from './Radio';
