@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 0.0.8
+
+### Patch Changes
+
+- [#40](https://github.com/interlay/ui/pull/40) [`3b7b812b7f9cf62fda54cf29be3d61617e3314a1`](https://github.com/interlay/ui/commit/3b7b812b7f9cf62fda54cf29be3d61617e3314a1) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(components): add radio component
+
 ## 0.0.7
 
 ### Patch Changes
