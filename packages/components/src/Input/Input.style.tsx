@@ -38,8 +38,8 @@ const StyledBaseInput = styled.input<BaseInputProps>`
     props.$isDisabled
       ? theme.input.disabled.border
       : props.$hasError
-      ? theme.input.error.border
-      : theme.border.default};
+        ? theme.input.error.border
+        : theme.border.default};
   border-radius: ${theme.rounded.lg};
   transition:
     border-color ${theme.transition.duration.duration150}ms ease-in-out,
