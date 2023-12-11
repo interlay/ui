@@ -55,7 +55,7 @@ export type MeterVariants = Exclude<Variants, 'tertiary'>;
 
 export type DividerVariants = Colors | 'default';
 
-export type CTASizes = 'x-small' | 'small' | 'medium' | 'large';
+export type CTASizes = 'small' | 'medium' | 'large';
 
 export type Status = (typeof status)[number];
 

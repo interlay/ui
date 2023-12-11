@@ -46,12 +46,6 @@ export const Text: StoryObj<CTAProps> = {
   }
 };
 
-export const XSmall: StoryObj<CTAProps> = {
-  args: {
-    size: 'x-small'
-  }
-};
-
 export const Small: StoryObj<CTAProps> = {
   args: {
     size: 'small'

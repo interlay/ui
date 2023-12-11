@@ -5,16 +5,15 @@ import { PressEvent } from '@react-types/shared';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { useDOMRef } from '@interlay/hooks';
 
-import { CTASizes } from '../../../core/theme/src';
+import { CTASizes, IconSize } from '../../../core/theme/src';
 
 import { BaseCTA, BaseCTAProps } from './BaseCTA';
-import { LoadingWrapper, StyledLoadingSpinner } from './CTA.style';
+import { LoadingWrapper, StyledSpinner } from './CTA.style';
 
-const loadingSizes: Record<CTASizes, number> = {
-  'x-small': 14,
-  small: 16,
-  medium: 18,
-  large: 20
+const loadingSizes: Record<CTASizes, IconSize> = {
+  small: 'xs',
+  medium: 's',
+  large: 's'
 };
 
 type Props = {
@@ -54,12 +53,11 @@ const CTA = forwardRef<HTMLButtonElement, CTAProps>(
       >
         {loading && (
           <LoadingWrapper>
-            <StyledLoadingSpinner
+            <StyledSpinner
               $variant={variant}
               aria-label='Loading...'
-              diameter={loadingSizes[size]}
-              thickness={2}
-              variant='indeterminate'
+              size={loadingSizes[size]}
+              thickness={size === 'large' ? 3 : 2}
             />
           </LoadingWrapper>
         )}

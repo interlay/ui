@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { LoadingSpinner, LoadingSpinnerProps } from '.';
+import { Spinner, SpinnerProps } from '.';
 
 export default {
-  title: 'Loading/LoadingSpinner',
-  component: LoadingSpinner,
+  title: 'Loading/Spinner',
+  component: Spinner,
   parameters: {
     layout: 'centered'
   },
@@ -17,10 +17,8 @@ export default {
   ]
 } as Meta;
 
-export const Indeterminate: StoryObj<LoadingSpinnerProps> = {
+export const Default: StoryObj<SpinnerProps> = {
   args: {
-    diameter: 60,
-    thickness: 5,
-    variant: 'indeterminate'
+    thickness: 5
   }
 };
