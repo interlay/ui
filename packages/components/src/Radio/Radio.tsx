@@ -22,7 +22,7 @@ type RadioProps = Props & NativeAttrs & InheritAttrs;
 
 // TODO: determine if isInvalid is necessary
 const Radio = forwardRef<HTMLLabelElement, RadioProps>(
-  ({ labelProps, isDisabled: isDisabledProp, children, ...props }, ref): JSX.Element => {
+  ({ labelProps, isDisabled: isDisabledProp, children, className, style, ...props }, ref): JSX.Element => {
     let { hoverProps, isHovered } = useHover({ isDisabled: isDisabledProp });
 
     const labelRef = useDOMRef(ref);
@@ -41,7 +41,14 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>(
     );
 
     return (
-      <StyledLabel {...labelProps} {...hoverProps} ref={labelRef} $isDisabled={isDisabled}>
+      <StyledLabel
+        {...labelProps}
+        {...hoverProps}
+        ref={labelRef}
+        $isDisabled={isDisabled}
+        className={className}
+        style={style}
+      >
         <StyledInput {...inputProps} ref={inputRef} />
         <StyledButton $isHovered={isHovered} $isSelected={isSelected} />
         {children && <Span size='xs'>{children}</Span>}

@@ -1,5 +1,5 @@
 import { useDOMRef } from '@interlay/hooks';
-import { Orientation } from '@interlay/theme';
+import { Orientation, Spacing } from '@interlay/theme';
 import { AriaRadioGroupProps, useRadioGroup } from '@react-aria/radio';
 import { ChangeEvent, forwardRef } from 'react';
 import { useRadioGroupState } from '@react-stately/radio';
@@ -10,6 +10,7 @@ import { RadioContext } from './RadioContext';
 import { StyledRadioGroup } from './Radio.style';
 
 type Props = {
+  gap?: Spacing;
   orientation?: Orientation;
   onChange?: (e: ChangeEvent<HTMLDivElement>) => void;
   onValueChange?: (value: string) => void;
@@ -22,7 +23,7 @@ type FieldAttrs = Omit<FieldProps, keyof (Props & InheritAttrs)>;
 type RadioGroupProps = Props & FieldAttrs & InheritAttrs;
 
 const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
-  ({ orientation = 'vertical', children, onValueChange, onChange, ...props }, ref): JSX.Element => {
+  ({ orientation = 'vertical', children, onValueChange, onChange, gap, ...props }, ref): JSX.Element => {
     const { fieldProps } = useFieldProps(props);
 
     let domRef = useDOMRef(ref);
@@ -40,6 +41,7 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
       >
         <StyledRadioGroup
           {...radioGroupProps}
+          $gap={orientation === 'horizontal' ? gap || 'spacing4' : gap}
           $orientation={orientation}
           direction={orientation === 'vertical' ? 'column' : 'row'}
           onChange={onChange}
