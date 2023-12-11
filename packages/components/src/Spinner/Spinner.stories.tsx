@@ -17,8 +17,4 @@ export default {
   ]
 } as Meta;
 
-export const Default: StoryObj<SpinnerProps> = {
-  args: {
-    thickness: 5
-  }
-};
+export const Default: StoryObj<SpinnerProps> = {};
