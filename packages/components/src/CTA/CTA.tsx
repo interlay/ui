@@ -11,6 +11,7 @@ import { BaseCTA, BaseCTAProps } from './BaseCTA';
 import { LoadingWrapper, StyledSpinner } from './CTA.style';
 
 const loadingSizes: Record<CTASizes, IconSize> = {
+  'x-small': 'xs',
   small: 'xs',
   medium: 's',
   large: 's'
