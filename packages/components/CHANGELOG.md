@@ -1,5 +1,19 @@
 # @interlay/ui
 
+## 0.0.9
+
+### Patch Changes
+
+- [#42](https://github.com/interlay/ui/pull/42) [`4f38fec0481cd7b1134457932dc23a94c9665511`](https://github.com/interlay/ui/commit/4f38fec0481cd7b1134457932dc23a94c9665511) Thanks [@danielsimao](https://github.com/danielsimao)! - refactor(components): Spinner (LoadingSpinner) and CTA
+
+- [#46](https://github.com/interlay/ui/pull/46) [`95c75c1968cda23b75ff5f7aaaa13d5c4cbe6c0e`](https://github.com/interlay/ui/commit/95c75c1968cda23b75ff5f7aaaa13d5c4cbe6c0e) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): Radio and RadioGroup
+
+- Updated dependencies [[`9abb0482aa628549bd7b51153587255bceed6c51`](https://github.com/interlay/ui/commit/9abb0482aa628549bd7b51153587255bceed6c51), [`4f38fec0481cd7b1134457932dc23a94c9665511`](https://github.com/interlay/ui/commit/4f38fec0481cd7b1134457932dc23a94c9665511)]:
+  - @interlay/coin-icons@0.0.8
+  - @interlay/icons@0.0.7
+  - @interlay/theme@0.0.7
+  - @interlay/hooks@0.0.8
+
 ## 0.0.8
 
 ### Patch Changes
