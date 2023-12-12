@@ -1,15 +1,11 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Card } from '../Card';
-
 import { Radio, RadioGroupProps, RadioGroup } from '.';
 
 const Render = (args: RadioGroupProps) => (
   <RadioGroup {...args} label='Coin'>
-    <Card>
-      <Radio value='BTC'>BTC</Radio>
-    </Card>
+    <Radio value='BTC'>BTC</Radio>
     <Radio value='ETH'>ETH</Radio>
   </RadioGroup>
 );
