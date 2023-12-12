@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Orientation, theme } from '@interlay/theme';
+import { Orientation, Spacing, theme } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 import { visuallyHidden } from '../utils/visually-hidden';
@@ -7,6 +7,7 @@ import { Label } from '../Label';
 
 type StyledRadioGroupProps = {
   $orientation: Orientation;
+  $gap?: Spacing;
 };
 
 type StyledLabelProps = {
@@ -20,7 +21,8 @@ type StyledButtonProps = {
 
 const StyledRadioGroup = styled(Flex)<StyledRadioGroupProps>`
   label {
-    margin-right: ${({ $orientation }) => $orientation && theme.spacing.spacing4};
+    margin-right: ${({ $orientation, $gap }) => $orientation === 'horizontal' && $gap && theme.spacing[$gap]};
+    margin-bottom: ${({ $orientation, $gap }) => $orientation === 'vertical' && $gap && theme.spacing[$gap]};
   }
 `;
 

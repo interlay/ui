@@ -3,7 +3,7 @@ import { ArrowTopRightOnSquare } from '@interlay/icons';
 
 import { theme } from '../../../core/theme/src';
 import { CTASizes, CTAVariants } from '../../../core/theme/src';
-import { LoadingSpinner } from '../LoadingSpinner';
+import { Spinner } from '../Spinner';
 
 interface StyledCTAProps {
   $fullWidth: boolean;
@@ -11,7 +11,7 @@ interface StyledCTAProps {
   $isFocusVisible?: boolean;
 }
 
-type StyledLoadingSpinnerProps = {
+type StyledSpinnerProps = {
   $variant: CTAVariants;
 };
 
@@ -25,7 +25,8 @@ const BaseCTA = styled.button<StyledCTAProps>`
   font-size: ${(props) => theme.cta[props.$size].text};
   font-weight: ${theme.fontWeight.medium};
   line-height: ${(props) => theme.cta[props.$size].lineHeight};
-  padding: ${(props) => theme.cta[props.$size].padding};
+  padding: ${(props) => `0 ${theme.cta[props.$size].padding}`};
+  height: ${({ $size }) => theme.cta[$size].height};
   text-decoration: none;
   width: ${(props) => (props.$fullWidth ? '100%' : 'auto')};
   background: none;
@@ -76,7 +77,7 @@ const LoadingWrapper = styled.span`
   margin-right: ${theme.spacing.spacing2};
 `;
 
-const StyledLoadingSpinner = styled(LoadingSpinner)<StyledLoadingSpinnerProps>`
+const StyledSpinner = styled(Spinner)<StyledSpinnerProps>`
   border-top-color: ${({ $variant }) => theme.cta[$variant].text};
   border-right-color: ${({ $variant }) => theme.cta[$variant].text};
   border-bottom-color: ${({ $variant }) => theme.cta[$variant].text};
@@ -90,5 +91,5 @@ const StyledIcon = styled(ArrowTopRightOnSquare)`
   color: inherit;
 `;
 
-export { LoadingWrapper, OutlinedCTA, PrimaryCTA, SecondaryCTA, StyledIcon, StyledLoadingSpinner, TextCTA };
+export { LoadingWrapper, OutlinedCTA, PrimaryCTA, SecondaryCTA, StyledIcon, StyledSpinner, TextCTA };
 export type { StyledCTAProps };

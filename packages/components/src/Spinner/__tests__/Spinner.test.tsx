@@ -1,16 +1,16 @@
 import { render } from '@testing-library/react';
 import { testA11y } from '@interlay/test-utils';
 
-import { LoadingSpinner } from '..';
+import { Spinner } from '..';
 
-describe('LoadingSpinner', () => {
+describe('Spinner', () => {
   it('should render correctly', () => {
-    const wrapper = render(<LoadingSpinner aria-label='loading' />);
+    const wrapper = render(<Spinner aria-label='loading' />);
 
     expect(() => wrapper.unmount()).not.toThrow();
   });
 
   it('should pass a11y', async () => {
-    await testA11y(<LoadingSpinner aria-label='loading' />);
+    await testA11y(<Spinner aria-label='loading' />);
   });
 });
