@@ -2,31 +2,19 @@ import { forwardRef } from 'react';
 import { Icon, IconProps } from '@interlay/icons';
 
 const ETH = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
-  <Icon {...props} ref={ref} fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+  <Icon {...props} ref={ref} viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'>
     <title>ETH</title>
-    <g clipPath='url(#clip0_23_38)'>
-      <circle cx='12' cy='12' fill='url(#paint0_linear_23_38)' r='11.5' stroke='#393939' />
-      <g clipPath='url(#clip1_23_38)'>
-        <path d='M11.9988 5L11.9114 5.29625V13.8921L11.9988 13.9791L15.9976 11.6205L11.9988 5Z' fill='#343434' />
-        <path d='M11.9988 5L8 11.6205L11.9988 13.9791V9.8069V5Z' fill='#8C8C8C' />
-        <path d='M11.9988 14.7345L11.9496 14.7945V17.8564L11.9988 17.9999L16 12.3772L11.9988 14.7345Z' fill='#3C3C3B' />
-        <path d='M11.9988 17.9999V14.7345L8 12.3772L11.9988 17.9999Z' fill='#8C8C8C' />
-        <path d='M11.9988 13.9791L15.9976 11.6205L11.9988 9.8069V13.9791Z' fill='#141414' />
-        <path d='M8 11.6205L11.9988 13.9791V9.8069L8 11.6205Z' fill='#393939' />
+    <g fill='none' fillRule='evenodd'>
+      <circle cx='16' cy='16' fill='#627EEA' r='16' />
+      <g fill='#FFF' fillRule='nonzero'>
+        <path d='M16.498 4v8.87l7.497 3.35z' fillOpacity='.602' />
+        <path d='M16.498 4L9 16.22l7.498-3.35z' />
+        <path d='M16.498 21.968v6.027L24 17.616z' fillOpacity='.602' />
+        <path d='M16.498 27.995v-6.028L9 17.616z' />
+        <path d='M16.498 20.573l7.497-4.353-7.497-3.348z' fillOpacity='.2' />
+        <path d='M9 16.22l7.498 4.353v-7.701z' fillOpacity='.602' />
       </g>
     </g>
-    <defs>
-      <linearGradient gradientUnits='userSpaceOnUse' id='paint0_linear_23_38' x1='12' x2='12' y1='0' y2='24'>
-        <stop stopColor='white' />
-        <stop offset='1' stopColor='#D8D6D6' />
-      </linearGradient>
-      <clipPath id='clip0_23_38'>
-        <rect fill='white' height='24' width='24' />
-      </clipPath>
-      <clipPath id='clip1_23_38'>
-        <rect fill='white' height='13' transform='translate(8 5)' width='8' />
-      </clipPath>
-    </defs>
   </Icon>
 ));
 

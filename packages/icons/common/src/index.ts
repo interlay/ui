@@ -18,3 +18,4 @@ export { XCircle } from './XCircle';
 export { XMark } from './XMark';
 export { Icon } from './core';
 export type { IconProps } from './core';
+export { ArrowLongRight } from './ArrowLongRight';
