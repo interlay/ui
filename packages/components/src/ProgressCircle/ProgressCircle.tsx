@@ -16,7 +16,6 @@ const viewBoxDiameter = 32;
 const center = viewBoxDiameter / 2;
 const viewBox = `0 0 ${viewBoxDiameter} ${viewBoxDiameter}`;
 
-// TODO: move LoadingSpinner indeterminate over here
 const ProgressCircle = (props: ProgressCircleProps): JSX.Element => {
   const { value = 0, minValue = 0, maxValue = 100, diameter = '1.5em', thickness = 3 } = props;
   const { progressBarProps } = useProgressBar(props);

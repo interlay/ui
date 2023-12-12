@@ -189,22 +189,26 @@ const base = {
       padding: 'var(--spacing-1)',
       text: 'var(--text-xs)',
       // TODO: revist on redesign
-      lineHeight: '1'
+      lineHeight: '1',
+      height: 'var(--spacing-5)'
     },
     small: {
       padding: 'var(--spacing-2)',
       text: 'var(--text-xs)',
-      lineHeight: 'var(--line-height-s)'
+      lineHeight: 'var(--line-height-s)',
+      height: 'var(--spacing-8)'
     },
     medium: {
-      padding: 'var(--spacing-3) var(--spacing-10)',
+      padding: 'var(--spacing-6)',
       text: 'var(--text-base)',
-      lineHeight: 'var(--line-height-base)'
+      lineHeight: 'var(--line-height-base)',
+      height: 'var(--spacing-12)'
     },
     large: {
-      padding: 'var(--spacing-4) var(--spacing-12)',
+      padding: 'var(--spacing-8)',
       text: 'var(--text-lg)',
-      lineHeight: 'var(--line-height-lg)'
+      lineHeight: 'var(--line-height-lg)',
+      height: 'var(--spacing-14)'
     }
   },
   table: {
@@ -331,27 +335,29 @@ const base = {
     bg: 'var(--colors-border)'
   },
   spinner: {
-    determinate: {
-      color: 'var(--colors-cta-primary)',
-      bg: 'var(--colors-cta-secondary)'
+    primary: {
+      color: 'var(--colors-indeterminate-primary-color)',
+      bg: 'var(--colors-indeterminate-primary-bg)'
     },
-    indeterminate: {
-      primary: {
-        color: 'var(--colors-indeterminate-primary-color)',
-        bg: 'var(--colors-indeterminate-primary-bg)'
-      },
-      secondary: {
-        color: 'var(--colors-indeterminate-secondary-color)',
-        bg: 'var(--colors-indeterminate-secondary-bg)'
-      },
-      outlined: {
-        color: 'var(--colors-indeterminate-outlined-color)',
-        bg: 'var(--colors-indeterminate-outlined-bg)'
-      },
-      text: {
-        color: 'var(--colors-indeterminate-outlined-color)',
-        bg: 'var(--colors-indeterminate-outlined-bg)'
-      }
+    secondary: {
+      color: 'var(--colors-indeterminate-secondary-color)',
+      bg: 'var(--colors-indeterminate-secondary-bg)'
+    },
+    outlined: {
+      color: 'var(--colors-indeterminate-outlined-color)',
+      bg: 'var(--colors-indeterminate-outlined-bg)'
+    },
+    text: {
+      color: 'var(--colors-indeterminate-outlined-color)',
+      bg: 'var(--colors-indeterminate-outlined-bg)'
+    },
+    sizes: {
+      xs: 'var(--spacing-4)',
+      s: 'var(--spacing-6)',
+      md: 'var(--spacing-8)',
+      lg: 'var(--spacing-10)',
+      xl: 'var(--spacing-12)',
+      xl2: 'var(--spacing-14)'
     }
   },
   progress: {
