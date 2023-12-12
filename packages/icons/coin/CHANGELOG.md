@@ -1,5 +1,14 @@
 # @interlay/coin-icons
 
+## 0.0.8
+
+### Patch Changes
+
+- [#45](https://github.com/interlay/ui/pull/45) [`9abb0482aa628549bd7b51153587255bceed6c51`](https://github.com/interlay/ui/commit/9abb0482aa628549bd7b51153587255bceed6c51) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(icons): add common icons and change ETH icon
+
+- Updated dependencies [[`9abb0482aa628549bd7b51153587255bceed6c51`](https://github.com/interlay/ui/commit/9abb0482aa628549bd7b51153587255bceed6c51)]:
+  - @interlay/icons@0.0.7
+
 ## 0.0.7
 
 ### Patch Changes
