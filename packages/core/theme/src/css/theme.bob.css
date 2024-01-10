@@ -44,7 +44,7 @@
   --colors-text-secondary: var(--colors-orange);
   --colors-text-tertiary: var(--colors-neutral-light-grey);
   /* Tabs */
-  --colors-tabs-bg: var(--colors-dark-500);
+  --colors-tabs-bg: var(--colors-dark-400);
   --colors-tabs-text: var(--colors-neutral-white);
   --colors-tabs-active-color: var(--colors-neutral-black-9);
   --colors-tabs-active-bg: var(--colors-neutral-white);
