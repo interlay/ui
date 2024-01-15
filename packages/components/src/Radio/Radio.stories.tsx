@@ -5,8 +5,12 @@ import { Radio, RadioGroupProps, RadioGroup } from '.';
 
 const Render = (args: RadioGroupProps) => (
   <RadioGroup {...args} label='Coin'>
-    <Radio value='BTC'>BTC</Radio>
-    <Radio value='ETH'>ETH</Radio>
+    <Radio flex value='BTC'>
+      BTC
+    </Radio>
+    <Radio flex value='ETH'>
+      ETH
+    </Radio>
   </RadioGroup>
 );
 

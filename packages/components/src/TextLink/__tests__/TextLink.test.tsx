@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import { testA11y } from '@interlay/test-utils';
 
@@ -21,5 +21,13 @@ describe('TextLink', () => {
 
   it('should pass a11y', async () => {
     await testA11y(<TextLink>link</TextLink>);
+  });
+
+  it('should render pressable link as a span', async () => {
+    const handlePress = jest.fn();
+
+    render(<TextLink onPress={handlePress}>link</TextLink>);
+
+    expect(screen.getByRole('link').tagName).toBe('SPAN');
   });
 });

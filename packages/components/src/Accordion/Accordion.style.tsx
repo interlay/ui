@@ -15,7 +15,10 @@ type StyledAccordionItemButtonProps = {
 };
 
 type StyledAccordionItemRegionProps = {
-  $height: number;
+  $isExpanded: boolean;
+};
+
+type StyledAccordionItemContentProps = {
   $isExpanded: boolean;
 };
 
@@ -53,16 +56,18 @@ const StyledChevronDown = styled(ChevronDown)<Pick<StyledAccordionProps, '$isExp
 `;
 
 const StyledAccordionItemRegion = styled.div<StyledAccordionItemRegionProps>`
-  overflow: hidden;
-  opacity: ${({ $isExpanded }) => ($isExpanded ? 1 : 0)};
-  height: ${({ $isExpanded, $height }) => ($isExpanded ? `${$height}px` : 0)};
-  transition:
-    height 200ms ease 0ms,
-    opacity 300ms ease 0ms;
+  display: grid;
+  grid-template-rows: ${(props) => (props.$isExpanded ? '1fr' : '0fr')};
+  transition: all 200ms ease 0ms;
 `;
 
-const StyledAccordionItemContent = styled.div`
-  padding: 0 ${theme.spacing.spacing4} ${theme.spacing.spacing4} ${theme.spacing.spacing4};
+const StyledAccordionItemContent = styled.div<StyledAccordionItemContentProps>`
+  overflow: hidden;
+  padding-top: 0;
+  padding-left: ${theme.spacing.spacing4};
+  padding-right: ${theme.spacing.spacing4};
+  padding-bottom: ${({ $isExpanded }) => ($isExpanded ? theme.spacing.spacing4 : 0)};
+  transition: all 200ms ease 0ms;
 `;
 
 export {

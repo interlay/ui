@@ -9,7 +9,7 @@ import { BaseTextLink, StyledIcon } from './TextLink.style';
 type Props = {
   color?: Colors;
   external?: boolean;
-  underlined?: boolean;
+  isQuiet?: boolean;
   size?: FontSize;
   weight?: FontWeight;
   icon?: boolean;
@@ -23,12 +23,21 @@ type TextLinkProps = Props & NativeAttrs & AriaAttrs;
 
 // TODO: merge this with CTALink
 const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
-  ({ color = 'primary', external, underlined, size, weight, icon, children, ...props }, ref): JSX.Element => {
+  (
+    { color = 'primary', external, isQuiet, size, weight, icon, children, href, className, ...props },
+    ref
+  ): JSX.Element => {
     const linkRef = useDOMRef(ref);
+
+    const elementType = href ? 'a' : 'span';
+
+    const externalProps = external ? { target: '_blank', rel: 'noreferrer' } : undefined;
 
     const ariaProps = {
       ...props,
-      ...(external && { target: '_blank', rel: 'noreferrer' })
+      ...externalProps,
+      href,
+      elementType
     };
 
     const { linkProps } = useLink(ariaProps, linkRef);
@@ -37,12 +46,12 @@ const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
       <BaseTextLink
         ref={linkRef}
         $color={color}
+        $isQuiet={!href || isQuiet}
         $size={size}
-        $underlined={underlined}
         $weight={weight}
-        {...mergeProps(props, linkProps, {
-          ...(external && { target: '_blank', rel: 'noreferrer' })
-        })}
+        as={elementType}
+        className={className}
+        {...mergeProps(linkProps, externalProps)}
       >
         {children}
         {icon && <StyledIcon />}

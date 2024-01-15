@@ -6,12 +6,13 @@ import { HTMLAttributes, forwardRef, useRef } from 'react';
 
 import { Span, TextProps } from '../Text';
 
-import { useRadioProvider } from './RadioContext';
 import { StyledButton, StyledInput, StyledLabel } from './Radio.style';
+import { useRadioProvider } from './RadioContext';
 
 type Props = {
   labelProps?: TextProps;
   labelPlacement?: Extract<Placement, 'left' | 'right'>;
+  flex?: string | number | boolean;
 };
 
 type NativeAttrs = Omit<HTMLAttributes<unknown>, keyof Props>;
@@ -22,7 +23,7 @@ type RadioProps = Props & NativeAttrs & InheritAttrs;
 
 // TODO: determine if isInvalid is necessary
 const Radio = forwardRef<HTMLLabelElement, RadioProps>(
-  ({ labelProps, isDisabled: isDisabledProp, children, className, style, ...props }, ref): JSX.Element => {
+  ({ labelProps, isDisabled: isDisabledProp, children, className, style, flex, ...props }, ref): JSX.Element => {
     let { hoverProps, isHovered } = useHover({ isDisabled: isDisabledProp });
 
     const labelRef = useDOMRef(ref);
@@ -45,6 +46,7 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>(
         {...labelProps}
         {...hoverProps}
         ref={labelRef}
+        $flex={flex}
         $isDisabled={isDisabled}
         className={className}
         style={style}
