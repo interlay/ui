@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 0.0.10
+
+### Patch Changes
+
+- [#48](https://github.com/interlay/ui/pull/48) [`bfafd599800a975403db69c818f836a1325c327d`](https://github.com/interlay/ui/commit/bfafd599800a975403db69c818f836a1325c327d) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): radio, accordion and textLink
+
 ## 0.0.9
 
 ### Patch Changes
