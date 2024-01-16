@@ -5,7 +5,7 @@ import { Colors, FontSize, FontWeight } from '@interlay/theme';
 
 type BaseTextLinkProps = {
   $color?: Colors;
-  $underlined?: boolean;
+  $isQuiet?: boolean;
   $size?: FontSize;
   $weight?: FontWeight;
 };
@@ -17,11 +17,11 @@ const BaseTextLink = styled.a<BaseTextLinkProps>`
   font-size: ${({ $size }) => $size && theme.text[$size]};
   line-height: ${({ $size }) => resolveHeight($size)};
   font-weight: ${({ $weight }) => $weight && theme.fontWeight[$weight]};
-  text-decoration: ${(props) => props.$underlined && 'underline'};
+  text-decoration: ${(props) => (props.$isQuiet ? 'none' : 'underline')};
 
   &:hover,
   &:focus-visible {
-    text-decoration: ${(props) => (props.$underlined ? 'underline double' : 'underline')};
+    text-decoration: underline;
   }
 `;
 

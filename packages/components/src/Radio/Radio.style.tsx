@@ -12,6 +12,7 @@ type StyledRadioGroupProps = {
 
 type StyledLabelProps = {
   $isDisabled?: boolean;
+  $flex?: number | string | boolean;
 };
 
 type StyledButtonProps = {
@@ -20,6 +21,8 @@ type StyledButtonProps = {
 };
 
 const StyledRadioGroup = styled(Flex)<StyledRadioGroupProps>`
+  width: 100%;
+
   label {
     margin-right: ${({ $orientation, $gap }) => $orientation === 'horizontal' && $gap && theme.spacing[$gap]};
     margin-bottom: ${({ $orientation, $gap }) => $orientation === 'vertical' && $gap && theme.spacing[$gap]};
@@ -32,6 +35,7 @@ const StyledLabel = styled(Label)<StyledLabelProps>`
   gap: ${theme.spacing.spacing2};
   align-items: center;
   opacity: ${({ $isDisabled }) => $isDisabled && 0.5};
+  flex: ${({ $flex }) => (typeof $flex === 'boolean' ? '1' : $flex)};
 `;
 
 const StyledInput = styled.input`

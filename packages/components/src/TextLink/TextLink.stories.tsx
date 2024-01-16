@@ -22,3 +22,9 @@ export const External: StoryObj<TextLinkProps> = {
     icon: true
   }
 };
+
+export const WithoutHref: StoryObj<TextLinkProps> = {
+  args: {
+    href: undefined
+  }
+};
