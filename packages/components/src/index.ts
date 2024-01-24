@@ -47,6 +47,8 @@ export type { SelectProps } from './Select';
 export { Item, Select } from './Select';
 export type { SliderProps } from './Slider';
 export { Slider } from './Slider';
+export type { DrawerProps } from './Drawer';
+export { Drawer } from './Drawer';
 export type { StackProps } from './Stack';
 export { Stack } from './Stack';
 export type { SwitchProps } from './Switch';
