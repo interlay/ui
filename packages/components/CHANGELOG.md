@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 0.0.11
+
+### Patch Changes
+
+- [#50](https://github.com/interlay/ui/pull/50) [`b34fb3e19195a747d9907ab578abd2fc18d8e670`](https://github.com/interlay/ui/commit/b34fb3e19195a747d9907ab578abd2fc18d8e670) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(components): add drawer
+
 ## 0.0.10
 
 ### Patch Changes
