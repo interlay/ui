@@ -6,6 +6,7 @@ import { XMark } from '@interlay/icons';
 import { useDOMRef } from '@interlay/hooks';
 
 import { CTASizes, Sizes } from '../../../core/theme/src';
+import { ElementTypeProp } from '../utils/types';
 
 import { StyledCloseCTA, StyledDialog } from './Dialog.style';
 import { DialogContext } from './DialogContext';
@@ -20,10 +21,10 @@ type Props = {
 
 type InheritAttrs = Omit<AriaDialogProps, keyof Props>;
 
-type DialogProps = Props & InheritAttrs;
+type DialogProps = Props & InheritAttrs & ElementTypeProp;
 
 const Dialog = forwardRef<HTMLDivElement, DialogProps>(
-  ({ children, onClose, size = 'medium', ...props }, ref): JSX.Element => {
+  ({ children, onClose, size = 'medium', elementType, role = 'dialog', ...props }, ref): JSX.Element => {
     const dialogRef = useDOMRef(ref);
 
     // Get props for the dialog and its title
@@ -33,7 +34,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 
     return (
       <DialogContext.Provider value={{ titleProps, size }}>
-        <StyledDialog ref={dialogRef} $size={size} {...mergeProps(props, dialogProps)}>
+        <StyledDialog ref={dialogRef} $size={size} as={elementType} {...mergeProps(props, dialogProps)} role={role}>
           {onClose && (
             <StyledCloseCTA aria-label='Dismiss' size={closeCTASize} variant='text' onPress={onClose}>
               <XMark />
