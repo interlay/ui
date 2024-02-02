@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '@interlay/theme';
+import { Spacing, theme } from '@interlay/theme';
 import { Placement, Sizes } from '@interlay/theme';
 
 type BaseInputProps = {
@@ -8,6 +8,7 @@ type BaseInputProps = {
   $isDisabled: boolean;
   $hasError: boolean;
   $endAdornmentWidth: number;
+  $minHeight?: Spacing;
 };
 
 type AdornmentProps = {
@@ -59,6 +60,10 @@ const StyledBaseInput = styled.input<BaseInputProps>`
     return `calc(${$endAdornmentWidth}px + ${theme.spacing.spacing6})`;
   }};
   padding-bottom: ${({ $adornments }) => ($adornments.bottom ? theme.spacing.spacing6 : theme.spacing.spacing2)};
+
+  min-height: ${({ $minHeight, as }) =>
+    $minHeight ? theme.spacing[$minHeight] : as === 'textarea' && theme.spacing.spacing16};
+  resize: ${({ as }) => as === 'textarea' && 'vertical'};
 
   &:hover:not(:disabled):not(:focus) {
     border: ${(props) => !props.$isDisabled && !props.$hasError && theme.border.focus};
