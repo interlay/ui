@@ -20,14 +20,20 @@ type Props = {
   value?: string | number;
   defaultValue?: string | number;
   onValueChange?: (value: string | number) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputMode?: 'numeric' | 'decimal';
 };
 
-type InheritAttrs = Omit<BaseInputProps, keyof Props | 'errorMessageProps' | 'descriptionProps' | 'inputProps'>;
+type InheritAttrs = Omit<
+  BaseInputProps,
+  keyof Props | 'errorMessageProps' | 'descriptionProps' | 'inputProps' | 'elementType'
+>;
 
 type AriaAttrs = Omit<AriaTextFieldOptions<'input'>, keyof (Props & InheritAttrs)>;
 
 type NumberInputProps = Props & InheritAttrs & AriaAttrs;
+
+const elementType = 'input';
 
 // FIXME: some event are running duplicate
 const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
@@ -56,7 +62,8 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         inputMode,
         isInvalid: isInvalid || !!props.errorMessage,
         value: value,
-        autoComplete: 'off'
+        autoComplete: 'off',
+        inputElementType: elementType
       },
       inputRef
     );
@@ -72,6 +79,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         ref={inputRef}
         autoCorrect='off'
         descriptionProps={descriptionProps}
+        elementType={elementType}
         errorMessageProps={errorMessageProps}
         inputProps={mergeProps(inputProps, { onChange: handleChange })}
         labelProps={labelProps}

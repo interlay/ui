@@ -1,15 +1,15 @@
+import { useDOMRef } from '@interlay/hooks';
 import { AriaTextFieldOptions, useTextField } from '@react-aria/textfield';
 import { mergeProps } from '@react-aria/utils';
 import { forwardRef } from 'react';
-import { useDOMRef } from '@interlay/hooks';
 
-import { BaseInput, BaseInputProps } from './BaseInput';
+import { BaseInput, BaseInputProps } from '../Input';
 
 type Props = {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
 type InheritAttrs = Omit<
@@ -17,13 +17,13 @@ type InheritAttrs = Omit<
   keyof Props | 'errorMessageProps' | 'descriptionProps' | 'inputProps' | 'elementType'
 >;
 
-type AriaAttrs = Omit<AriaTextFieldOptions<'input'>, (keyof Props & InheritAttrs) | 'onChange'>;
+type AriaAttrs = Omit<AriaTextFieldOptions<'textarea'>, (keyof Props & InheritAttrs) | 'onChange'>;
 
-type InputProps = Props & InheritAttrs & AriaAttrs;
+type TextAreaProps = Props & InheritAttrs & AriaAttrs;
 
-const elementType = 'input';
+const elementType = 'textarea';
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ isInvalid, onValueChange, onChange, ...props }, ref): JSX.Element => {
     const inputRef = useDOMRef(ref);
     // We are specifing `validationState` so that when there are errors, `aria-invalid` is set to `true`
@@ -39,7 +39,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <BaseInput
-        ref={inputRef}
+        ref={inputRef as any}
         descriptionProps={descriptionProps}
         elementType={elementType}
         errorMessageProps={errorMessageProps}
@@ -51,7 +51,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-Input.displayName = 'Input';
+TextArea.displayName = 'TextArea';
 
-export { Input };
-export type { InputProps };
+export { TextArea };
+export type { TextAreaProps };

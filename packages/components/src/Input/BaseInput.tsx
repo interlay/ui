@@ -1,12 +1,35 @@
-import { Sizes } from '@interlay/theme';
-import { FocusEvent, forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
+import { Sizes, Spacing } from '@interlay/theme';
+import {
+  FocusEvent,
+  forwardRef,
+  InputHTMLAttributes,
+  ReactNode,
+  TextareaHTMLAttributes,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 
+import { ElementTypeProp } from '../utils/types';
 import { Field, FieldProps, useFieldProps } from '../Field';
 import { HelperTextProps } from '../HelperText';
 import { LabelProps } from '../Label';
 import { hasError } from '../utils/input';
 
 import { Adornment, StyledBaseInput } from './Input.style';
+
+// TODO: might need to consolidate this later
+interface HTMLInputProps extends ElementTypeProp {
+  elementType?: 'input';
+  inputProps: InputHTMLAttributes<HTMLInputElement>;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+interface HTMLTextAreaProps extends ElementTypeProp {
+  elementType?: 'textarea';
+  inputProps: TextareaHTMLAttributes<HTMLTextAreaElement>;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
 
 type Props = {
   label?: ReactNode;
@@ -18,11 +41,10 @@ type Props = {
   defaultValue?: string | ReadonlyArray<string> | number;
   size?: Sizes;
   isInvalid?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  minHeight?: Spacing;
   onFocus?: (e: FocusEvent<Element>) => void;
   onBlur?: (e: FocusEvent<Element>) => void;
-  inputProps: InputHTMLAttributes<HTMLInputElement>;
-};
+} & (HTMLInputProps | HTMLTextAreaProps);
 
 type InheritAttrs = Omit<
   HelperTextProps &
@@ -33,7 +55,17 @@ type BaseInputProps = Props & InheritAttrs;
 
 const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
   (
-    { startAdornment, endAdornment, bottomAdornment, size = 'medium', isInvalid, inputProps, ...props },
+    {
+      startAdornment,
+      endAdornment,
+      bottomAdornment,
+      size = 'medium',
+      isInvalid,
+      inputProps,
+      minHeight,
+      elementType = 'input',
+      ...props
+    },
     ref
   ): JSX.Element => {
     const endAdornmentRef = useRef<HTMLDivElement>(null);
@@ -54,12 +86,14 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
       <Field {...fieldProps}>
         {startAdornment && <Adornment $position='left'>{startAdornment}</Adornment>}
         <StyledBaseInput
-          ref={ref}
+          ref={ref as any}
           $adornments={{ bottom: !!bottomAdornment, left: !!startAdornment, right: !!endAdornment }}
           $endAdornmentWidth={endAdornmentWidth}
           $hasError={error}
           $isDisabled={!!inputProps.disabled}
+          $minHeight={minHeight}
           $size={size}
+          as={elementType}
           {...inputProps}
         />
         {bottomAdornment && <Adornment $position='bottom'>{bottomAdornment}</Adornment>}
