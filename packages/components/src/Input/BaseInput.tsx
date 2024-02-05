@@ -9,8 +9,8 @@ import {
   useRef,
   useState
 } from 'react';
-import { ElementTypeProp } from 'src/utils/types';
 
+import { ElementTypeProp } from '../utils/types';
 import { Field, FieldProps, useFieldProps } from '../Field';
 import { HelperTextProps } from '../HelperText';
 import { LabelProps } from '../Label';

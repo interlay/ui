@@ -12,14 +12,19 @@ type Props = {
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
-type InheritAttrs = Omit<BaseInputProps, keyof Props | 'errorMessageProps' | 'descriptionProps' | 'inputProps'>;
+type InheritAttrs = Omit<
+  BaseInputProps,
+  keyof Props | 'errorMessageProps' | 'descriptionProps' | 'inputProps' | 'elementType'
+>;
 
 type AriaAttrs = Omit<AriaTextFieldOptions<'textarea'>, (keyof Props & InheritAttrs) | 'onChange'>;
 
 type TextAreaProps = Props & InheritAttrs & AriaAttrs;
 
+const elementType = 'textarea';
+
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ isInvalid, onValueChange, onChange, elementType = 'textarea', ...props }, ref): JSX.Element => {
+  ({ isInvalid, onValueChange, onChange, ...props }, ref): JSX.Element => {
     const inputRef = useDOMRef(ref);
     // We are specifing `validationState` so that when there are errors, `aria-invalid` is set to `true`
     const { inputProps, descriptionProps, errorMessageProps, labelProps } = useTextField(
