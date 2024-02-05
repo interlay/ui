@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 0.0.13
+
+### Patch Changes
+
+- [#56](https://github.com/interlay/ui/pull/56) [`6371a9c34359c944a2feecab31566f78f7782f5c`](https://github.com/interlay/ui/commit/6371a9c34359c944a2feecab31566f78f7782f5c) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): add missing export for TextArea
+
 ## 0.0.12
 
 ### Patch Changes
