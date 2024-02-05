@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 0.0.12
+
+### Patch Changes
+
+- [#54](https://github.com/interlay/ui/pull/54) [`f8e4cb14fc787ee12144c31df758f899488b8a05`](https://github.com/interlay/ui/commit/f8e4cb14fc787ee12144c31df758f899488b8a05) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(components): add textarea
+
 ## 0.0.11
 
 ### Patch Changes
