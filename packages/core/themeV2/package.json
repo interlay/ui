@@ -1,13 +1,19 @@
 {
-  "name": "@interlay/system",
-  "version": "0.0.1",
-  "description": "Interlay UI system primitives.",
+  "name": "@interlay/theme",
+  "version": "0.0.7",
+  "description": "The default theme for Interlay UI components",
   "homepage": "https://github.com/interlay/ui#readme",
   "license": "MIT",
   "keywords": [
     "interlay",
     "interlay ui",
-    "system"
+    "theme",
+    "theming",
+    "design",
+    "ui",
+    "components",
+    "classNames",
+    "css"
   ],
   "main": "src/index.ts",
   "files": [
@@ -20,7 +26,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/interlay/ui.git",
-    "directory": "packages/core/system"
+    "directory": "packages/core/theme"
   },
   "bugs": {
     "url": "https://github.com/interlay/ui/issues"
@@ -30,23 +36,18 @@
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
-    "build": "tsup src/index.ts --dts",
+    "build": "tsup",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
-  "dependencies": {
-    "@react-aria/overlays": "^3.16.0",
-    "@react-aria/i18n": "^3.8.1"
-  },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18",
-    "styled-components": ">=6.0.0"
+    "react-dom": ">=18"
   },
   "devDependencies": {
     "clean-package": "^2.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "clean-package": "../../../clean-package.config.json"
+  "clean-package": "./clean-package.config.json"
 }
