@@ -42,6 +42,12 @@ const StyledTokenAdornment = styled(Flex)`
   overflow: hidden;
 `;
 
+const StyledTokenImg = styled.img`
+  height: ${theme.spacing.spacing6};
+  width: ${theme.spacing.spacing6};
+  border-radius: ${theme.rounded.full};
+`;
+
 const StyledTokenSelect = styled(StyledTrigger)`
   background-color: ${theme.tokenInput.endAdornment.bg};
   opacity: ${({ $isDisabled }) => $isDisabled && 0.5};
@@ -99,5 +105,6 @@ export {
   StyledBalance,
   StyledBalanceLabel,
   StyledTokenSelect,
-  StyledUSDAdornment
+  StyledUSDAdornment,
+  StyledTokenImg
 };

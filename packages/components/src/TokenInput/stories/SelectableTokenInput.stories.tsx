@@ -6,10 +6,14 @@ import * as coins from '../../../../icons/coin/src';
 import { TokenInput, TokenInputProps } from '..';
 
 const items = [
-  { balance: 1, value: 'BTC', balanceUSD: 10000 },
-  { balance: 2, value: 'ETH', balanceUSD: 900 },
-  { balance: 500, value: 'USDT', balanceUSD: 500 },
-  { balance: 120, value: 'LP Token', tickers: ['BTC', 'ETH', 'USDT'], balanceUSD: 230 }
+  { balance: 2, ticker: 'ETH', logoUrl: 'https://ethereum-optimism.github.io/data/ETH/logo.svg', balanceUSD: 900 },
+  { balance: 500, ticker: 'USDT', logoUrl: 'https://ethereum-optimism.github.io/data/USDT/logo.png', balanceUSD: 500 },
+  {
+    balance: 100,
+    ticker: 'USDC',
+    logoUrl: 'https://ethereum-optimism.github.io/data/BridgedUSDC/logo.png',
+    balanceUSD: 100
+  }
 ];
 
 export default {

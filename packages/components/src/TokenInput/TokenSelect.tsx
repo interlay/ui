@@ -1,23 +1,22 @@
 import { mergeProps } from '@react-aria/utils';
 
-import { CoinIcon } from '../CoinIcon';
 import { Flex } from '../Flex';
 import { Item, Select, ModalSelectProps } from '../Select';
 import { Span } from '../Text';
 
-import { StyledTicker, StyledTokenSelect } from './TokenInput.style';
+import { StyledTicker, StyledTokenImg, StyledTokenSelect } from './TokenInput.style';
 import { TokenListItem } from './TokenListItem';
 
 const Value = ({ data }: { data: TokenData }) => (
   <Flex alignItems='center' gap='spacing1' justifyContent='space-evenly'>
-    <CoinIcon size={data.tickers ? 'lg' : 'md'} ticker={data.value} tickers={data.tickers} />
-    <StyledTicker>{data.value}</StyledTicker>
+    <StyledTokenImg alt={data.ticker} src={data.logoUrl} />
+    <StyledTicker>{data.ticker}</StyledTicker>
   </Flex>
 );
 
 type TokenData = {
-  value: string;
-  tickers?: string[];
+  ticker: string;
+  logoUrl: string;
   balance: string | number;
   balanceUSD: number;
 };
@@ -35,7 +34,7 @@ const TokenSelect = ({ modalProps, ...props }: TokenSelectProps): JSX.Element =>
     type='modal'
   >
     {(data: TokenData) => (
-      <Item key={data.value} textValue={data.value}>
+      <Item key={data.ticker} textValue={data.ticker}>
         <TokenListItem {...data} />
       </Item>
     )}

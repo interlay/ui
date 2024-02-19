@@ -14,31 +14,16 @@ export default {
     ticker: { control: 'select', options: Object.keys(coins) }
   },
   args: {
+    ticker: 'ETH',
+    logoUrl: 'https://ethereum-optimism.github.io/data/ETH/logo.svg',
     label: 'Amount'
   }
 } as Meta<typeof TokenInput>;
 
-export const Default: StoryObj<TokenInputProps> = {
-  args: {
-    ticker: 'BTC'
-  }
-};
-
-export const UnknownTicker: StoryObj<TokenInputProps> = {
-  args: {
-    ticker: 'ABCD'
-  }
-};
-
-export const MultiTokenTicker: StoryObj<TokenInputProps> = {
-  args: {
-    ticker: { text: 'LP Token', icons: ['BTC', 'ETH', 'USDT'] }
-  }
-};
+export const Default: StoryObj<TokenInputProps> = {};
 
 export const DefaultValue: StoryObj<TokenInputProps> = {
   args: {
-    ticker: 'BTC',
     defaultValue: '10'
   }
 };
@@ -52,15 +37,12 @@ const ControlledComponent = ({ value, valueUSD: valueUSDProp, ...args }: TokenIn
 };
 
 export const Controlled: StoryObj<TokenInputProps> = {
-  args: {
-    ticker: 'BTC'
-  },
+  args: {},
   render: ControlledComponent
 };
 
 export const WithValueUSD: StoryObj<TokenInputProps> = {
   args: {
-    ticker: 'BTC',
     valueUSD: 0
   },
   render: ControlledComponent
@@ -68,14 +50,12 @@ export const WithValueUSD: StoryObj<TokenInputProps> = {
 
 export const WithBalance: StoryObj<TokenInputProps> = {
   args: {
-    ticker: 'BTC',
     balance: '10'
   }
 };
 
 export const WithHumanBalance: StoryObj<TokenInputProps> = {
   args: {
-    ticker: 'BTC',
     balance: '10.901231231',
     humanBalance: '11'
   }
@@ -83,7 +63,6 @@ export const WithHumanBalance: StoryObj<TokenInputProps> = {
 
 export const WithCustomBalanceLabel: StoryObj<TokenInputProps> = {
   args: {
-    ticker: 'BTC',
     balance: '10',
     balanceLabel: 'Available'
   }
@@ -91,28 +70,24 @@ export const WithCustomBalanceLabel: StoryObj<TokenInputProps> = {
 
 export const WithDescription: StoryObj<TokenInputProps> = {
   args: {
-    ticker: 'BTC',
     description: 'Please enter your amount'
   }
 };
 
 export const WithErrorMessage: StoryObj<TokenInputProps> = {
   args: {
-    ticker: 'BTC',
     errorMessage: 'Please enter your amount'
   }
 };
 
 export const WithMultipleErrorMessage: StoryObj<TokenInputProps> = {
   args: {
-    ticker: 'BTC',
     errorMessage: ['Please enter your amount', 'Please enter your amount']
   }
 };
 
 export const Disabled: StoryObj<TokenInputProps> = {
   args: {
-    ticker: 'BTC',
     isDisabled: true
   }
 };
