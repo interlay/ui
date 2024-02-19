@@ -11,6 +11,7 @@ interface InterlayUIProviderProps extends Omit<ModalProviderProps, 'children'> {
    * @default "en-US"
    */
   locale?: I18nProviderProps['locale'];
+  // TODO: make required
   theme?: DefaultTheme;
 }
 
