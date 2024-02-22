@@ -1,9 +1,5 @@
 import { SwitchTheme } from '../../components';
 
-const switch: SwitchTheme = {
-  size: {
-    xs: {}
-  }
-};
+const _switch: SwitchTheme = {};
 
-export { switch };
+export { _switch };

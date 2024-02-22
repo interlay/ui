@@ -10,9 +10,11 @@ import { divider } from './divider';
 import { drawer } from './drawer';
 import { list } from './list';
 import { radio } from './radio';
-import { switch } from './switch';
+import { colors } from './colors';
+import { _switch } from './switch';
 
-const theme = defineTheme({
+const bobTheme = defineTheme({
+  colors,
   accordion,
   alert,
   button,
@@ -22,7 +24,8 @@ const theme = defineTheme({
   drawer,
   input,
   list,
-  radio,switch
+  radio,
+  switch: _switch
 });
 
-export { theme };
+export { bobTheme };

@@ -5,6 +5,7 @@ import React from 'react';
 import { InterlayUIProvider } from '../packages/core/system/src';
 import { CSSReset } from '../packages/components/src';
 import '../packages/core/theme/src/css/theme.interlay.css';
+import { bobTheme } from '../packages/core/themeV2/src';
 import './style.css';
 
 const preview: Preview = {
@@ -24,7 +25,7 @@ const preview: Preview = {
         locale && new Intl.Locale(locale)?.textInfo?.direction === 'rtl' ? 'rtl' : undefined;
 
       return (
-        <InterlayUIProvider locale={locale}>
+        <InterlayUIProvider locale={locale} theme={bobTheme}>
           <CSSReset />
           <div dir={direction} lang={locale}>
             <Story />

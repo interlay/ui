@@ -1,4 +1,6 @@
-import { fontSize, fontWeight, lineHeight, rounded, spacing, breakpoints } from './core';
+import type { Colors } from './core';
+
+import { fontSize, typography, fontWeight, lineHeight, rounded, spacing, breakpoints, transition } from './core';
 import {
   ButtonTheme,
   InputTheme,
@@ -14,15 +16,18 @@ import {
 } from './components';
 
 const baseTheme = {
-  ...fontSize,
-  ...fontWeight,
-  ...lineHeight,
-  ...rounded,
-  ...spacing,
+  fontSize,
+  fontWeight,
+  lineHeight,
+  rounded,
+  spacing,
+  typography,
+  transition,
   ...breakpoints
 };
 
-type Theme = {
+type ThemeParams = {
+  colors: Colors;
   accordion: AccordionTheme;
   alert: AlertTheme;
   button: ButtonTheme;
@@ -36,9 +41,12 @@ type Theme = {
   switch: SwitchTheme;
 };
 
-const defineTheme = (theme: Theme) => ({
+const defineTheme = (theme: ThemeParams) => ({
   ...baseTheme,
   ...theme
 });
 
+type Theme = ReturnType<typeof defineTheme>;
+
 export { baseTheme, defineTheme };
+export type { Theme };

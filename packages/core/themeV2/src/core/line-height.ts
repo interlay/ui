@@ -1,13 +1,23 @@
-type LineHeight = keyof typeof lineHeight;
+import { style } from '../utils';
 
-const lineHeight = {
+type LineHeight = keyof typeof lineHeightBase;
+
+const lineHeightBase = {
   none: 1,
-  xs: 1.25,
-  s: 1.375,
-  md: 1.5,
-  lg: 1.625,
-  xl: 2
+  xs: 18,
+  s: 20,
+  md: 24,
+  lg: 28,
+  xl: 30,
+  '2xl': 32,
+  '3xl': 38,
+  '4xl': 44,
+  '5xl': 60,
+  '6xl': 72,
+  '7xl': 90
 };
+
+const lineHeight = style(lineHeightBase);
 
 export { lineHeight };
 export type { LineHeight };

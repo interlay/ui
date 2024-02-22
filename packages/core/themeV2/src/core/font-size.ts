@@ -1,17 +1,22 @@
-type FontSize = keyof typeof fontSize;
+import { style } from '../utils';
 
-const fontSize = {
-  xs: '0.75rem',
-  s: '0.875rem',
-  md: '1rem',
-  lg: '1.125rem',
-  xl: '1.25rem',
-  xl2: '1.5rem',
-  xl3: '1.875rem',
-  xl4: '2.25rem',
-  xl5: '3rem',
-  xl6: '4rem'
+type FontSize = keyof typeof fontSizeBase;
+
+const fontSizeBase = {
+  xs: 12,
+  s: 14,
+  md: 16,
+  lg: 18,
+  xl: 20,
+  '2xl': 24,
+  '3xl': 30,
+  '4xl': 36,
+  '5xl': 48,
+  '6xl': 60,
+  '7xl': 72
 };
+
+const fontSize = style(fontSizeBase);
 
 export { fontSize };
 export type { FontSize };

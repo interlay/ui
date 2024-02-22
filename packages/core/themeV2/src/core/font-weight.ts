@@ -1,16 +1,13 @@
-type FontWeight = keyof typeof fontWeight;
+type FontWeight = keyof typeof fontWeightBase;
 
-const fontWeight = {
-  thin: 100,
-  extralight: 200,
-  light: 300,
+const fontWeightBase = {
   normal: 400,
   medium: 500,
   semibold: 600,
-  bold: 700,
-  extrabold: 800,
-  black: 900
+  bold: 700
 };
+
+const fontWeight = (key: FontWeight) => fontWeightBase[key];
 
 export { fontWeight };
 export type { FontWeight };

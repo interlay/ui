@@ -1,25 +1,45 @@
-import { FontSize, LineHeight, Spacing } from '../core';
-
-type ButtonSizes = 'xs' | 's' | 'md' | 'lg';
+type ButtonSizes = 's' | 'md' | 'lg' | 'xl' | '2xl';
 
 type ButtonSizeParams = {
-  paddingX: Spacing;
-  text: FontSize;
-  lineHeight: LineHeight;
-  height: Spacing;
+  padding: string;
+  fontSize: string;
+  lineHeight: string;
+  height: string;
 };
 
-type ButtonVariants = 'primary' | 'secondary' | 'tertiary' | 'text';
+type ButtonColors = 'default' | 'primary';
+
+type ButtonColorsParams = {
+  color: string;
+  bg: string;
+  border?: string;
+  hover: {
+    bg: string;
+  };
+  active: {
+    bg: string;
+  };
+  focus?: {
+    boxShadow: string;
+  };
+  disabled: {
+    color: string;
+    bg?: string;
+    border?: string;
+  };
+};
+
+type ButtonVariants = 'solid' | 'outline' | 'ghost';
 
 type ButtonVariantParams = {
-  bg: string;
-  bgHover: string;
-  color: string;
+  color: Record<ButtonColors, ButtonColorsParams>;
 };
 
 type ButtonTheme = {
+  rounded: string;
+  fontWeight: number;
   size: Record<ButtonSizes, ButtonSizeParams>;
   variant: Record<ButtonVariants, ButtonVariantParams>;
 };
 
-export type { ButtonSizes, ButtonTheme, ButtonVariants };
+export type { ButtonSizes, ButtonTheme, ButtonColors, ButtonVariants };

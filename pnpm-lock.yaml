@@ -186,6 +186,9 @@ importers:
       '@interlay/theme':
         specifier: workspace:*
         version: link:../core/theme
+      '@interlay/themev2':
+        specifier: workspace:*
+        version: link:../core/themeV2
       '@react-aria/accordion':
         specifier: 3.0.0-alpha.20
         version: 3.0.0-alpha.20(react-dom@18.2.0)(react@18.2.0)
@@ -377,6 +380,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      styled-components:
+        specifier: ^6.0.7
+        version: 6.1.8(react-dom@18.2.0)(react@18.2.0)
 
   packages/hooks:
     dependencies:
