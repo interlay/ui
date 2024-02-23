@@ -1,12 +1,15 @@
-import { fontSize, fontWeight, lineHeight, rounded, spacing } from '../../core';
+import { fontSize, fontWeight, lineHeight, rounded, spacing, transition } from '../../core';
 import { ButtonTheme } from '../../components';
 import { rem } from '../../utils';
 
 import { colors } from './colors';
 
 const button: ButtonTheme = {
-  rounded: rounded('md'),
-  fontWeight: fontWeight('semibold'),
+  base: {
+    borderRadius: rounded('md'),
+    fontWeight: fontWeight('semibold'),
+    ...transition('common', 'normal')
+  },
   size: {
     s: {
       height: rem(36),
@@ -18,7 +21,6 @@ const button: ButtonTheme = {
       height: spacing('5xl'),
       fontSize: fontSize('s'),
       lineHeight: lineHeight('s'),
-      // FIXME:
       padding: `0 ${spacing('lg')}`
     },
     lg: {
@@ -44,37 +46,41 @@ const button: ButtonTheme = {
     solid: {
       color: {
         default: {
-          bg: colors.grey[200],
-          color: colors.light,
+          base: {
+            backgroundColor: colors('grey', 200),
+            color: colors('light')
+          },
           hover: {
-            bg: colors.grey[100]
+            backgroundColor: colors('grey', 100)
           },
           active: {
-            bg: colors.grey[100]
+            backgroundColor: colors('grey', 100)
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #4040403D, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors.grey[100],
-            bg: colors.grey[200]
+            color: colors('grey', 100),
+            backgroundColor: colors('grey', 200)
           }
         },
         primary: {
-          bg: colors.primary[300],
-          color: colors.light,
+          base: {
+            backgroundColor: colors('primary', 300),
+            color: colors('light')
+          },
           hover: {
-            bg: colors.primary[200]
+            backgroundColor: colors('primary', 200)
           },
           active: {
-            bg: colors.primary[200]
+            backgroundColor: colors('primary', 200)
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #FA45163D, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors.grey[100],
-            bg: colors.grey[200]
+            color: colors('grey', 100),
+            backgroundColor: colors('grey', 200)
           }
         }
       }
@@ -82,39 +88,41 @@ const button: ButtonTheme = {
     outline: {
       color: {
         default: {
-          bg: 'none',
-          border: `1px solid ${colors.grey[200]}`,
-          color: colors.light,
+          base: {
+            border: `1px solid ${colors('grey', 200)}`,
+            color: colors('light')
+          },
           hover: {
-            bg: colors.grey[300]
+            backgroundColor: colors('grey', 300)
           },
           active: {
-            bg: colors.grey[300]
+            backgroundColor: colors('grey', 300)
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #98A2B324, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors.grey[200],
-            border: `1px solid ${colors.grey[100]}`
+            color: colors('grey', 200),
+            border: `1px solid ${colors('grey', 100)}`
           }
         },
         primary: {
-          bg: 'none',
-          border: `1px solid ${colors.primary[300]}`,
-          color: colors.primary[300],
+          base: {
+            border: `1px solid ${colors('primary', 300)}`,
+            color: colors('primary', 300)
+          },
           hover: {
-            bg: colors.grey[300]
+            backgroundColor: colors('grey', 300)
           },
           active: {
-            bg: colors.grey[300]
+            backgroundColor: colors('grey', 300)
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #D92D2040, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors.grey[200],
-            border: `1px solid ${colors.grey[100]}`
+            color: colors('grey', 200),
+            border: `1px solid ${colors('grey', 100)}`
           }
         }
       }
@@ -122,32 +130,37 @@ const button: ButtonTheme = {
     ghost: {
       color: {
         default: {
-          bg: 'none',
-          color: colors.light,
+          base: {
+            color: colors('light')
+          },
           hover: {
-            bg: colors.grey[300]
+            backgroundColor: colors('grey', 300)
           },
           active: {
-            bg: colors.grey[300]
+            backgroundColor: colors('grey', 300)
           },
-          focus: {
+          focusVisible: {
             boxShadow: '0px 0px 0px 4px #98A2B324, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors.grey[200]
+            color: colors('grey', 200)
           }
         },
         primary: {
-          bg: 'none',
-          color: colors.primary[300],
+          base: {
+            color: colors('primary', 300)
+          },
           hover: {
-            bg: colors.grey[300]
+            backgroundColor: colors('grey', 300)
           },
           active: {
-            bg: colors.grey[300]
+            backgroundColor: colors('grey', 300)
+          },
+          focusVisible: {
+            boxShadow: '0px 0px 0px 4px #D92D2040, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors.grey[200]
+            color: colors('grey', 200)
           }
         }
       }

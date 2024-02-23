@@ -1,21 +1,15 @@
-type Color = {
-  50: string;
-  75: string;
-  100: string;
-  200: string;
-  300: string;
-  400: string;
-  500: string;
-};
+type ColorHue = keyof Colors;
+
+type ColorShade = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
 type Colors = {
   light: string;
   dark: string;
-  primary: Color;
+  primary: Record<ColorShade, string>;
   // secondary: Color;
-  grey: Color;
+  grey: Record<ColorShade, string>;
   // success: Color;
   // error: Color;
 };
 
-export type { Colors };
+export type { Colors, ColorHue, ColorShade };

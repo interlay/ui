@@ -1,57 +1,57 @@
-import { css } from 'styled-components';
+import { Styles } from 'styled-components/dist/types';
 
 import { style } from '../utils';
 
 import { fontSize } from './font-size';
 import { lineHeight } from './line-height';
 
-type Typography = keyof typeof typographyBase;
+type Typography = 'xs' | 's' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
 
-const typographyBase = {
-  xs: css({
+const typographyBase: Record<Typography, Styles<object>> = {
+  xs: {
     fontSize: fontSize('xs', 'rem'),
     lineHeight: lineHeight('xs', 'rem')
-  }),
-  s: css({
+  },
+  s: {
     fontSize: fontSize('s', 'rem'),
     lineHeight: lineHeight('s', 'rem')
-  }),
-  md: css({
+  },
+  md: {
     fontSize: fontSize('md', 'rem'),
     lineHeight: lineHeight('md', 'rem')
-  }),
-  lg: css({
+  },
+  lg: {
     fontSize: fontSize('lg', 'rem'),
     lineHeight: lineHeight('lg', 'rem')
-  }),
-  xl: css({
+  },
+  xl: {
     fontSize: fontSize('xl', 'rem'),
     lineHeight: lineHeight('xl', 'rem')
-  }),
-  '2xl': css({
+  },
+  '2xl': {
     fontSize: fontSize('2xl', 'rem'),
     lineHeight: lineHeight('2xl', 'rem')
-  }),
-  '3xl': css({
+  },
+  '3xl': {
     fontSize: fontSize('3xl', 'rem'),
     lineHeight: lineHeight('3xl', 'rem')
-  }),
-  '4xl': css({
+  },
+  '4xl': {
     fontSize: fontSize('4xl', 'rem'),
     lineHeight: lineHeight('4xl', 'rem')
-  }),
-  '5xl': css({
+  },
+  '5xl': {
     fontSize: fontSize('5xl', 'rem'),
     lineHeight: lineHeight('5xl', 'rem')
-  }),
-  '6xl': css({
+  },
+  '6xl': {
     fontSize: fontSize('6xl', 'rem'),
     lineHeight: lineHeight('6xl', 'rem')
-  }),
-  '7xl': css({
+  },
+  '7xl': {
     fontSize: fontSize('7xl', 'rem'),
     lineHeight: lineHeight('7xl', 'rem')
-  })
+  }
 };
 
 const typography = style(typographyBase);

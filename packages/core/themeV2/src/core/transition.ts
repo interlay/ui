@@ -1,3 +1,5 @@
+import { Styles } from 'styled-components/dist/types';
+
 type TransitionProperty = keyof typeof transitionProprety;
 
 const transitionProprety = {
@@ -32,8 +34,11 @@ const transition = (
   property: TransitionProperty,
   duration: TransitionDuration,
   timingFunction?: TransitionTimingFunction
-) =>
-  `${transitionProprety[property]} ${transitionDuration[duration]} ${timingFunction ? transitionTimingFunction[timingFunction] : ''}`;
+): Styles<object> => ({
+  transitionProperty: transitionProprety[property],
+  transitionDuration: transitionDuration[duration],
+  transitionTimingFunction: timingFunction && transitionTimingFunction[timingFunction]
+});
 
 export { transition };
 export type { TransitionProperty, TransitionDuration, TransitionTimingFunction };

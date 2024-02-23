@@ -1,44 +1,27 @@
-type ButtonSizes = 's' | 'md' | 'lg' | 'xl' | '2xl';
+import { Styles } from 'styled-components/dist/types';
 
-type ButtonSizeParams = {
-  padding: string;
-  fontSize: string;
-  lineHeight: string;
-  height: string;
-};
+type ButtonSizes = 's' | 'md' | 'lg' | 'xl' | '2xl';
 
 type ButtonColors = 'default' | 'primary';
 
 type ButtonColorsParams = {
-  color: string;
-  bg: string;
-  border?: string;
-  hover: {
-    bg: string;
-  };
-  active: {
-    bg: string;
-  };
-  focus?: {
-    boxShadow: string;
-  };
-  disabled: {
-    color: string;
-    bg?: string;
-    border?: string;
-  };
+  base: Styles<object>;
+  hover: Styles<object>;
+  active: Styles<object>;
+  focus?: Styles<object>;
+  focusVisible?: Styles<object>;
+  disabled: Styles<object>;
 };
-
-type ButtonVariants = 'solid' | 'outline' | 'ghost';
 
 type ButtonVariantParams = {
   color: Record<ButtonColors, ButtonColorsParams>;
 };
 
+type ButtonVariants = 'solid' | 'outline' | 'ghost';
+
 type ButtonTheme = {
-  rounded: string;
-  fontWeight: number;
-  size: Record<ButtonSizes, ButtonSizeParams>;
+  base: Styles<object>;
+  size: Record<ButtonSizes, Styles<object>>;
   variant: Record<ButtonVariants, ButtonVariantParams>;
 };
 
