@@ -13,7 +13,7 @@ export default {
     layout: 'centered'
   },
   render: (args) => (
-    <Accordion {...args}>
+    <Accordion {...args} className='dhj'>
       <AccordionItem key='1' hasChildItems={false} title='Item 1'>
         <P>This is item 1 section</P>
       </AccordionItem>

@@ -18,12 +18,15 @@ type NativeAttrs<T> = Omit<HTMLAttributes<unknown>, (keyof InheritAttrs<T> & Pro
 type AccordionProps<T = any> = Props & InheritAttrs<T> & NativeAttrs<T>;
 
 const Accordion = <T extends Record<string, unknown>>(
-  { size = 'base', ...props }: AccordionProps<T>,
+  { size = 'base', defaultExpandedKeys, disabledKeys, expandedKeys, onExpandedChange, ...props }: AccordionProps<T>,
   ref: Ref<HTMLDivElement>
 ): JSX.Element => {
-  const state = useTreeState(props);
+  const ariaProps = { defaultExpandedKeys, disabledKeys, expandedKeys, onExpandedChange, ...props };
+
+  const state = useTreeState(ariaProps);
+
   const accordionRef = useDOMRef<HTMLDivElement>(ref);
-  const { accordionProps } = useAccordion(props, state, accordionRef);
+  const { accordionProps } = useAccordion(ariaProps, state, accordionRef);
 
   return (
     <div {...mergeProps(props, accordionProps)} ref={accordionRef}>

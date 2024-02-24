@@ -9,7 +9,7 @@ describe('Overlay', () => {
     const ref = createRef<HTMLDivElement>();
 
     const wrapper = render(
-      <Overlay nodeRef={ref}>
+      <Overlay isOpen nodeRef={ref}>
         <div />
       </Overlay>
     );
