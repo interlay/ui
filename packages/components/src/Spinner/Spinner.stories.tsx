@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { SpinnerSizes } from '@interlay/themev2';
 
 import { Spinner, SpinnerProps } from '.';
 
@@ -7,6 +8,9 @@ export default {
   component: Spinner,
   parameters: {
     layout: 'centered'
+  },
+  argTypes: {
+    size: { control: 'radio', options: ['xs', 's', 'md', 'lg', 'xl', '2xl', '3xl'] as SpinnerSizes[] }
   },
   decorators: [
     (Story) => (
@@ -17,4 +21,4 @@ export default {
   ]
 } as Meta;
 
-export const Default: StoryObj<SpinnerProps> = {};
+export const Default: StoryObj<SpinnerProps> = { args: {} };

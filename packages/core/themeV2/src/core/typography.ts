@@ -1,13 +1,11 @@
-import { Styles } from 'styled-components/dist/types';
-
-import { style } from '../utils';
+import { StyledObject } from 'styled-components/dist/types';
 
 import { fontSize } from './font-size';
 import { lineHeight } from './line-height';
 
 type Typography = 'xs' | 's' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
 
-const typographyBase: Record<Typography, Styles<object>> = {
+const typographyBase: Record<Typography, StyledObject<object>> = {
   xs: {
     fontSize: fontSize('xs', 'rem'),
     lineHeight: lineHeight('xs', 'rem')
@@ -54,7 +52,7 @@ const typographyBase: Record<Typography, Styles<object>> = {
   }
 };
 
-const typography = style(typographyBase);
+const typography = (key: Typography) => typographyBase[key];
 
 export { typography };
 export type { Typography };

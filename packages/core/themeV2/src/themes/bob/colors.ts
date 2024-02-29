@@ -1,6 +1,6 @@
-import { ColorHue, ColorShade, Colors } from '../../core';
+import { Colors, color as baseColor } from '../../core';
 
-const colorsBase: Colors = {
+const colors: Colors = {
   light: '#ffffff',
   dark: '#030303',
   primary: {
@@ -10,7 +10,11 @@ const colorsBase: Colors = {
     200: '#ff7e2c',
     300: '#ff6301',
     400: '#b34501',
-    500: '#9c3c01'
+    500: '#9c3c01',
+    600: '#9c3c01',
+    700: '#9c3c01',
+    800: '#9c3c01',
+    900: '#9c3c01'
   },
   grey: {
     50: '#e8e8e9',
@@ -19,16 +23,14 @@ const colorsBase: Colors = {
     200: '#3e424b',
     300: '#161b26',
     400: '#0f131b',
-    500: '#0d1017'
+    500: '#0d1017',
+    600: '#0d1017',
+    700: '#0d1017',
+    800: '#0d1017',
+    900: '#0d1017'
   }
 };
 
-const colors = (hue: ColorHue, shade: ColorShade = 500) => {
-  if (hue === 'light' || hue === 'dark') {
-    return colorsBase[hue];
-  }
+const color = baseColor(colors);
 
-  return colorsBase[hue][shade];
-};
-
-export { colors };
+export { color, colors };

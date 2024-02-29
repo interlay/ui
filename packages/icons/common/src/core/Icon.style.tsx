@@ -1,21 +1,17 @@
-import type { Colors, IconSize } from '@interlay/theme';
-
-import { theme, resolveColor } from '@interlay/theme';
+import { IconColors, IconsSizes } from '@interlay/themev2';
 import styled from 'styled-components';
 
 type StyledIconProps = {
-  $size: IconSize;
-  $color?: Colors;
+  $size: IconsSizes;
+  $color: IconColors;
 };
 
 const StyledIcon = styled.svg<StyledIconProps>`
-  color: ${({ $color }) => resolveColor($color)};
-  width: ${({ $size }) => theme.icon.sizes[$size]};
-  height: ${({ $size }) => theme.icon.sizes[$size]};
   display: inline-block;
   user-select: none;
   flex-shrink: 0;
   overflow: hidden;
+  ${({ theme, $size, $color }) => theme.icon($size, $color)}
 `;
 
 export { StyledIcon };

@@ -2,7 +2,7 @@ import { fontSize, fontWeight, lineHeight, rounded, spacing, transition } from '
 import { ButtonTheme } from '../../components';
 import { rem } from '../../utils';
 
-import { colors } from './colors';
+import { color } from './colors';
 
 const button: ButtonTheme = {
   base: {
@@ -47,40 +47,38 @@ const button: ButtonTheme = {
       color: {
         default: {
           base: {
-            backgroundColor: colors('grey', 200),
-            color: colors('light')
+            backgroundColor: color('grey', 200),
+            color: color('light')
           },
           hover: {
-            backgroundColor: colors('grey', 100)
+            backgroundColor: color('grey', 100)
           },
           active: {
-            backgroundColor: colors('grey', 100)
+            backgroundColor: color('grey', 100)
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #4040403D, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors('grey', 100),
-            backgroundColor: colors('grey', 200)
+            opacity: 0.5
           }
         },
         primary: {
           base: {
-            backgroundColor: colors('primary', 300),
-            color: colors('light')
+            backgroundColor: color('primary', 300),
+            color: color('light')
           },
           hover: {
-            backgroundColor: colors('primary', 200)
+            backgroundColor: color('primary', 200)
           },
           active: {
-            backgroundColor: colors('primary', 200)
+            backgroundColor: color('primary', 200)
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #FA45163D, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors('grey', 100),
-            backgroundColor: colors('grey', 200)
+            opacity: 0.5
           }
         }
       }
@@ -89,40 +87,38 @@ const button: ButtonTheme = {
       color: {
         default: {
           base: {
-            border: `1px solid ${colors('grey', 200)}`,
-            color: colors('light')
+            border: `1px solid ${color('grey', 200)}`,
+            color: color('light')
           },
           hover: {
-            backgroundColor: colors('grey', 300)
+            backgroundColor: color('grey', 300)
           },
           active: {
-            backgroundColor: colors('grey', 300)
+            backgroundColor: color('grey', 300)
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #98A2B324, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors('grey', 200),
-            border: `1px solid ${colors('grey', 100)}`
+            opacity: 0.5
           }
         },
         primary: {
           base: {
-            border: `1px solid ${colors('primary', 300)}`,
-            color: colors('primary', 300)
+            border: `1px solid ${color('primary', 300)}`,
+            color: color('primary', 300)
           },
           hover: {
-            backgroundColor: colors('grey', 300)
+            backgroundColor: color('grey', 300)
           },
           active: {
-            backgroundColor: colors('grey', 300)
+            backgroundColor: color('grey', 300)
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #D92D2040, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors('grey', 200),
-            border: `1px solid ${colors('grey', 100)}`
+            opacity: 0.5
           }
         }
       }
@@ -131,36 +127,36 @@ const button: ButtonTheme = {
       color: {
         default: {
           base: {
-            color: colors('light')
+            color: color('light')
           },
           hover: {
-            backgroundColor: colors('grey', 300)
+            backgroundColor: color('grey', 300)
           },
           active: {
-            backgroundColor: colors('grey', 300)
+            backgroundColor: color('grey', 300)
           },
           focusVisible: {
             boxShadow: '0px 0px 0px 4px #98A2B324, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors('grey', 200)
+            opacity: 0.5
           }
         },
         primary: {
           base: {
-            color: colors('primary', 300)
+            color: color('primary', 300)
           },
           hover: {
-            backgroundColor: colors('grey', 300)
+            backgroundColor: color('grey', 300)
           },
           active: {
-            backgroundColor: colors('grey', 300)
+            backgroundColor: color('grey', 300)
           },
           focusVisible: {
             boxShadow: '0px 0px 0px 4px #D92D2040, 0px 1px 2px 0px #1018280D'
           },
           disabled: {
-            color: colors('grey', 200)
+            opacity: 0.5
           }
         }
       }

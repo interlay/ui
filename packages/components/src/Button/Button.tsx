@@ -4,16 +4,33 @@ import { useFocusRing } from '@react-aria/focus';
 import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
-import { ButtonVariants, ButtonSizes, ButtonColors } from '@interlay/themev2';
+import { ButtonVariants, ButtonSizes, ButtonColors, SpinnerSizes, SpinnerColors } from '@interlay/themev2';
+
+import { Flex } from '../Flex';
+import { Spinner } from '../Spinner';
 
 import { StyledButton } from './Button.style';
 
-// const loadingSizes: Record<ButtonSizes, IconSize> = {
-//   'x-small': 'xs',
-//   small: 'xs',
-//   medium: 's',
-//   large: 's'
-// };
+const spinnerSizeMap: Record<ButtonSizes, SpinnerSizes> = {
+  s: 's',
+  md: 's',
+  lg: 'md',
+  xl: 'md',
+  '2xl': 'lg'
+};
+
+const spinnerColorMap: Record<ButtonColors, Record<ButtonVariants, SpinnerColors>> = {
+  default: {
+    ghost: 'default',
+    outline: 'default',
+    solid: 'default'
+  },
+  primary: {
+    ghost: 'primary',
+    outline: 'primary',
+    solid: 'default'
+  }
+};
 
 type Props = {
   variant?: ButtonVariants;
@@ -21,6 +38,7 @@ type Props = {
   size?: ButtonSizes;
   color?: ButtonColors;
   loading?: boolean;
+  isIconOnly?: boolean;
   onPress?: (e: PressEvent) => void;
 };
 
@@ -38,6 +56,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'md',
       color = 'default',
       fullWidth,
+      isIconOnly,
       onPress,
       onClick,
       ...props
@@ -57,22 +76,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         $color={color}
         $fullWidth={fullWidth}
         $isFocusVisible={isFocusVisible}
+        $isIconOnly={isIconOnly}
         $size={size}
         $variant={variant}
         disabled={isDisabled}
         {...mergeProps(props, buttonProps, focusProps, { onClick })}
       >
-        {/* {loading && (
-          <LoadingWrapper>
-            <StyledSpinner
-              $variant={variant}
-              aria-label='Loading...'
-              size={loadingSizes[size]}
-              thickness={size === 'large' ? 3 : 2}
-            />
-          </LoadingWrapper>
-        )} */}
-        {children}
+        {loading && (
+          <Flex elementType='span' marginRight={isIconOnly ? undefined : 'spacing2'}>
+            <Spinner aria-label='Loading...' color={spinnerColorMap[color][variant]} size={spinnerSizeMap[size]} />
+          </Flex>
+        )}
+        {isIconOnly ? (loading ? undefined : children) : children}
       </StyledButton>
     );
   }

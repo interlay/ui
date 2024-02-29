@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { XMark } from '@interlay/icons';
 
 import { Button, ButtonProps } from '.';
 
@@ -15,7 +16,15 @@ export default {
 
 export const Solid: StoryObj<ButtonProps> = {
   args: {
-    variant: 'solid'
+    variant: 'solid',
+    loading: true
+  }
+};
+
+export const Icon: StoryObj<ButtonProps> = {
+  args: {
+    isIconOnly: true,
+    children: <XMark />
   }
 };
 

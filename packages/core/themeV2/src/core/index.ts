@@ -7,3 +7,4 @@ export * from './breakpoints';
 export * from './colors';
 export * from './typography';
 export * from './transition';
+export * from './icon';

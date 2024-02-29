@@ -1,6 +1,17 @@
 import type { Colors } from './core';
 
-import { fontSize, typography, fontWeight, lineHeight, rounded, spacing, breakpoints, transition } from './core';
+import {
+  fontSize,
+  typography,
+  fontWeight,
+  lineHeight,
+  rounded,
+  spacing,
+  breakpoints,
+  transition,
+  color,
+  icon
+} from './core';
 import {
   ButtonTheme,
   InputTheme,
@@ -12,7 +23,8 @@ import {
   DrawerTheme,
   ListTheme,
   RadioTheme,
-  SwitchTheme
+  SwitchTheme,
+  SpinnerTheme
 } from './components';
 
 const baseTheme = {
@@ -39,11 +51,14 @@ type ThemeParams = {
   list: ListTheme;
   radio: RadioTheme;
   switch: SwitchTheme;
+  spinner: SpinnerTheme;
 };
 
-const defineTheme = (theme: ThemeParams) => ({
+const defineTheme = ({ colors, ...theme }: ThemeParams) => ({
   ...baseTheme,
-  ...theme
+  ...theme,
+  icon: icon(colors),
+  color: color(colors)
 });
 
 type Theme = ReturnType<typeof defineTheme>;

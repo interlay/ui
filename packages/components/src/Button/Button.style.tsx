@@ -8,6 +8,7 @@ type StyledButtonProps = {
   $color: ButtonColors;
   $variant: ButtonVariants;
   $isFocusVisible?: boolean;
+  $isIconOnly?: boolean;
 };
 
 const StyledButton = styled.button<StyledButtonProps>`
@@ -23,7 +24,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   appearance: none;
   user-select: none;
 
-  ${({ theme, $size, $variant, $color, $isFocusVisible }) => {
+  ${({ theme, $size, $variant, $color, $isFocusVisible, $isIconOnly }) => {
     const { active, disabled, hover, focus, focusVisible } = theme.button.variant[$variant].color[$color];
 
     return css`
@@ -31,6 +32,12 @@ const StyledButton = styled.button<StyledButtonProps>`
       ${theme.button.size[$size]}
       ${theme.button.variant[$variant].color[$color].base}
       ${$isFocusVisible && focusVisible}
+      ${$isIconOnly &&
+      css`
+        padding: 0;
+        width: ${theme.button.size[$size].height};
+      `}
+      
 
       &:hover:not([disabled]) {
         ${hover}

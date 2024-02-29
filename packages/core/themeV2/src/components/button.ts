@@ -1,16 +1,16 @@
-import { Styles } from 'styled-components/dist/types';
+import { StyledObject } from 'styled-components/dist/types';
 
 type ButtonSizes = 's' | 'md' | 'lg' | 'xl' | '2xl';
 
 type ButtonColors = 'default' | 'primary';
 
 type ButtonColorsParams = {
-  base: Styles<object>;
-  hover: Styles<object>;
-  active: Styles<object>;
-  focus?: Styles<object>;
-  focusVisible?: Styles<object>;
-  disabled: Styles<object>;
+  base: StyledObject<object>;
+  hover: StyledObject<object>;
+  active: StyledObject<object>;
+  focus?: StyledObject<object>;
+  focusVisible?: StyledObject<object>;
+  disabled: StyledObject<object>;
 };
 
 type ButtonVariantParams = {
@@ -20,8 +20,8 @@ type ButtonVariantParams = {
 type ButtonVariants = 'solid' | 'outline' | 'ghost';
 
 type ButtonTheme = {
-  base: Styles<object>;
-  size: Record<ButtonSizes, Styles<object>>;
+  base: StyledObject<object>;
+  size: Record<ButtonSizes, StyledObject<object>>;
   variant: Record<ButtonVariants, ButtonVariantParams>;
 };
 

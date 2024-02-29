@@ -11,6 +11,7 @@ import { drawer } from './drawer';
 import { list } from './list';
 import { radio } from './radio';
 import { colors } from './colors';
+import { spinner } from './spinner';
 import { _switch } from './switch';
 
 const bobTheme = defineTheme({
@@ -25,6 +26,7 @@ const bobTheme = defineTheme({
   input,
   list,
   radio,
+  spinner,
   switch: _switch
 });
 
