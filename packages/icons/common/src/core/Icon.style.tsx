@@ -1,9 +1,9 @@
-import { IconColors, IconsSizes } from '@interlay/themev2';
+import { Color, IconsSizes } from '@interlay/themev2';
 import styled from 'styled-components';
 
 type StyledIconProps = {
   $size: IconsSizes;
-  $color: IconColors;
+  $color: Color;
 };
 
 const StyledIcon = styled.svg<StyledIconProps>`

@@ -1,3 +1,5 @@
+export type NormalAlignments = 'start' | 'center' | 'end';
+
 export * from './font-size';
 export * from './font-weight';
 export * from './line-height';

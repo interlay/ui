@@ -2,11 +2,9 @@ import { Styles } from 'styled-components/dist/types';
 import { css } from 'styled-components';
 
 import { spacing } from './space';
-import { ColorHue, Colors, color } from './colors';
+import { Color, Palette, color } from './colors';
 
 type IconsSizes = 'xs' | 's' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
-
-type IconColors = ColorHue;
 
 const iconSizeBase: Record<IconsSizes, Styles<object>> = {
   xs: {
@@ -43,14 +41,14 @@ const iconSizeBase: Record<IconsSizes, Styles<object>> = {
   }
 };
 
-const icon = (colors: Colors) => {
+const icon = (colors: Palette) => {
   const getColor = color(colors);
 
-  return (size: IconsSizes, color: ColorHue = 'light') => css`
+  return (size: IconsSizes, color: Color = 'light') => css`
     ${iconSizeBase[size]}
     color: ${getColor(color)};
   `;
 };
 
 export { icon };
-export type { IconsSizes, IconColors };
+export type { IconsSizes };

@@ -6,7 +6,7 @@ const baseSpacing = {
   none: 0,
   xxs: 2,
   xs: 4,
-  sm: 6,
+  s: 6,
   md: 8,
   lg: 12,
   xl: 16,

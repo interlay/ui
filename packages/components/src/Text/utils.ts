@@ -2,10 +2,10 @@ import { StyledTextProps } from './style';
 import { TextProps } from './types';
 
 const mapTextProps = <T extends TextProps = TextProps>({
-  color,
-  size,
+  color = 'light',
+  size = 'md',
+  weight = 'normal',
   align,
-  weight,
   rows,
   noWrap,
   ...props

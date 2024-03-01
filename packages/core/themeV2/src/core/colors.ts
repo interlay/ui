@@ -1,26 +1,18 @@
-type ColorHue = keyof Colors;
-
 type ColorShade = 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
-type Colors = {
+type PrimaryColors = Record<`primary-${ColorShade}`, string>;
+
+type GreyColors = Record<`grey-${ColorShade}`, string>;
+
+type Palette = {
   light: string;
   dark: string;
-  primary: Record<ColorShade, string>;
-  // secondary: Color;
-  grey: Record<ColorShade, string>;
-  // success: Color;
-  // error: Color;
-};
+} & PrimaryColors &
+  GreyColors;
 
-const color =
-  (colors: Colors) =>
-  (hue: ColorHue, shade: ColorShade = 500) => {
-    if (hue === 'light' || hue === 'dark') {
-      return colors[hue];
-    }
+type Color = keyof Palette;
 
-    return colors[hue][shade];
-  };
+const color = (colors: Palette) => (color: Color) => colors[color];
 
 export { color };
-export type { Colors, ColorHue, ColorShade };
+export type { Color, Palette, PrimaryColors, GreyColors };

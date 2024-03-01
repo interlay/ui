@@ -1,33 +1,18 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
-import { Em, EmProps } from '.';
+import { EmProps } from './Em';
 
-const Template: Story<EmProps> = (args) => <Em {...args} />;
-
-const Primary = Template.bind({});
-
-Primary.args = {
-  color: 'primary',
-  children: 'Primary emphasis'
-};
-
-const Secondary = Template.bind({});
-
-Secondary.args = {
-  color: 'secondary',
-  children: 'Secondary emphasis'
-};
-
-const Tertiary = Template.bind({});
-
-Tertiary.args = {
-  color: 'tertiary',
-  children: 'Tertiary emphasis'
-};
-
-export { Primary, Secondary, Tertiary };
+import { Em } from '.';
 
 export default {
   title: 'Text/Em',
-  component: Em
-} as Meta;
+  component: Em,
+  parameters: {
+    layout: 'centered'
+  },
+  args: {
+    children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit'
+  }
+} as Meta<typeof Em>;
+
+export const Default: StoryObj<EmProps> = {};

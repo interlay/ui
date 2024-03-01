@@ -7,7 +7,7 @@ import { mapTextProps } from '../utils';
 type StrongProps = TextProps<HTMLElement>;
 
 const Strong = forwardRef<HTMLElement, StrongProps>(
-  (props, ref): JSX.Element => <Text ref={ref} as='strong' {...mapTextProps(props)} />
+  (props, ref): JSX.Element => <Text ref={ref} as='strong' {...mapTextProps({ ...props, weight: 'bold' })} />
 );
 
 Strong.displayName = 'Strong';

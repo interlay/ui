@@ -1,18 +1,13 @@
-import styled from 'styled-components';
-import { Spacing, theme } from '@interlay/theme';
-import { Placement, Sizes } from '@interlay/theme';
+import styled, { css } from 'styled-components';
+import { Spacing, theme as oldTheme } from '@interlay/theme';
+import { InputSizes } from '@interlay/themev2';
 
 type BaseInputProps = {
-  $size: Sizes;
+  $size: InputSizes;
   $adornments: { bottom: boolean; left: boolean; right: boolean };
   $isDisabled: boolean;
   $hasError: boolean;
-  $endAdornmentWidth: number;
   $minHeight?: Spacing;
-};
-
-type AdornmentProps = {
-  $position: Placement;
 };
 
 const StyledBaseInput = styled.input<BaseInputProps>`
@@ -25,57 +20,58 @@ const StyledBaseInput = styled.input<BaseInputProps>`
   letter-spacing: inherit;
   background: none;
 
-  color: ${(props) => (props.disabled ? theme.input.disabled.color : theme.input.color)};
-  font-size: ${({ $size, $adornments }) =>
-    $adornments.bottom ? theme.input.overflow.large.text : theme.input[$size].text};
-  line-height: ${theme.lineHeight.base};
-  font-weight: ${({ $size }) => theme.input[$size].weight};
   text-overflow: ellipsis;
 
-  background-color: ${({ $isDisabled }) => ($isDisabled ? theme.input.disabled.bg : theme.input.background)};
+  /* background-color: ${({ $isDisabled }) =>
+    $isDisabled ? oldTheme.input.disabled.bg : oldTheme.input.background}; */
   overflow: hidden;
 
   border: ${(props) =>
     props.$isDisabled
-      ? theme.input.disabled.border
+      ? oldTheme.input.disabled.border
       : props.$hasError
-        ? theme.input.error.border
-        : theme.border.default};
-  border-radius: ${theme.rounded.lg};
+        ? oldTheme.input.error.border
+        : oldTheme.border.default};
   transition:
-    border-color ${theme.transition.duration.duration150}ms ease-in-out,
-    box-shadow ${theme.transition.duration.duration150}ms ease-in-out;
+    border-color ${oldTheme.transition.duration.duration150}ms ease-in-out,
+    box-shadow ${oldTheme.transition.duration.duration150}ms ease-in-out;
 
-  padding-top: ${theme.spacing.spacing2};
-  padding-left: ${({ $adornments }) => ($adornments.left ? theme.input.paddingX.md : theme.spacing.spacing2)};
+  min-height: ${({ $minHeight, as }) =>
+    $minHeight ? oldTheme.spacing[$minHeight] : as === 'textarea' && oldTheme.spacing.spacing16};
+  resize: ${({ as }) => as === 'textarea' && 'vertical'};
 
-  padding-right: ${({ $adornments, $endAdornmentWidth }) => {
-    if (!$adornments.right) theme.spacing.spacing2;
+  ${({ theme, $size, $adornments }) => {
+    const { paddingRight, paddingTop, paddingBottom, paddingLeft, fontSize, ...sizeCss } = theme.input.size[$size];
 
     // MEMO: adding `spacing6` is a hacky solution because
     // the `endAdornmentWidth` does not update width correctly
     // after fonts are loaded. Instead of falling back to a more
     // complex solution, an extra offset does the job of not allowing
     // the input overlap the adornment.
-    return `calc(${$endAdornmentWidth}px + ${theme.spacing.spacing6})`;
-  }};
-  padding-bottom: ${({ $adornments }) => ($adornments.bottom ? theme.spacing.spacing6 : theme.spacing.spacing2)};
+    //$adornments.bottom ? `calc(${fontSize} - ${theme.spacing('md')})` :
+    return css`
+      font-size: ${fontSize};
+      padding-top: ${paddingTop};
+      padding-left: ${$adornments.left ? theme.spacing('5xl') : paddingLeft};
+      padding-right: ${$adornments.right ? theme.spacing('5xl') : paddingRight};
+      padding-bottom: ${$adornments.bottom ? theme.spacing('3xl') : paddingBottom};
 
-  min-height: ${({ $minHeight, as }) =>
-    $minHeight ? theme.spacing[$minHeight] : as === 'textarea' && theme.spacing.spacing16};
-  resize: ${({ as }) => as === 'textarea' && 'vertical'};
+      ${sizeCss}
+      ${theme.input.base}
+    `;
+  }}
 
   &:hover:not(:disabled):not(:focus) {
-    border: ${(props) => !props.$isDisabled && !props.$hasError && theme.border.focus};
+    border: ${(props) => !props.$isDisabled && !props.$hasError && oldTheme.border.focus};
   }
 
   &:focus {
-    border: ${(props) => !props.$isDisabled && theme.border.focus};
-    box-shadow: ${(props) => !props.$isDisabled && theme.boxShadow.focus};
+    border: ${(props) => !props.$isDisabled && oldTheme.border.focus};
+    box-shadow: ${(props) => !props.$isDisabled && oldTheme.boxShadow.focus};
   }
 
   &::placeholder {
-    color: ${(props) => (props.disabled ? theme.input.disabled.color : theme.colors.textTertiary)};
+    color: ${(props) => (props.disabled ? oldTheme.input.disabled.color : oldTheme.colors.textTertiary)};
   }
 
   /* MEMO: inspired by https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
@@ -93,24 +89,39 @@ const StyledBaseInput = styled.input<BaseInputProps>`
 
 const BaseInputWrapper = styled.div`
   position: relative;
-  color: ${theme.colors.textPrimary};
+  color: ${oldTheme.colors.textPrimary};
   box-sizing: border-box;
   display: flex;
   align-items: center;
 `;
 
-// TODO: simplify this (put into theme)
-const Adornment = styled.div<AdornmentProps>`
+type StyledAdornmentProps = {
+  $size: InputSizes;
+};
+
+const StyledAdornment = styled.div<StyledAdornmentProps>`
   display: inline-flex;
   align-items: center;
   position: absolute;
-  top: ${({ $position }) => ($position === 'left' || $position === 'right') && '50%'};
-  left: ${({ $position }) => ($position === 'left' || $position === 'bottom') && theme.spacing.spacing2};
-  right: ${({ $position }) => $position === 'right' && theme.spacing.spacing2};
-  transform: ${({ $position }) => ($position === 'left' || $position === 'right') && 'translateY(-50%)'};
-  bottom: ${({ $position }) => $position === 'bottom' && theme.spacing.spacing1};
   // to not allow adornment to take more than 50% of the input. We might want to reduce this in the future.
   max-width: 50%;
+`;
+
+const StyledAdornmentRight = styled(StyledAdornment)`
+  top: 50%;
+  right: ${({ theme }) => theme.spacing('md')};
+  transform: translateY(-50%);
+`;
+
+const StyledAdornmentLeft = styled(StyledAdornment)`
+  top: 50%;
+  left: ${({ theme }) => theme.spacing('md')};
+  transform: translateY(-50%);
+`;
+
+const StyledAdornmentBottom = styled(StyledAdornment)`
+  left: ${({ theme, $size }) => theme.input.size[$size].paddingLeft};
+  bottom: ${({ theme }) => theme.spacing('s')};
 `;
 
 const Wrapper = styled.div`
@@ -118,4 +129,24 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export { Adornment, BaseInputWrapper, StyledBaseInput, Wrapper };
+// TODO: here
+const StyledAddon = styled.div`
+  display: flex;
+  align-items: center;
+  width: auto;
+`;
+
+const StyledLeftAddon = styled(StyledAddon)`
+  border-top-right-radius: ${({ theme }) => theme.input.base.borderRadius};
+  border-bottom-right-radius: ${({ theme }) => theme.input.base.borderRadius};
+`;
+
+export {
+  StyledAdornmentRight,
+  StyledAdornmentLeft,
+  StyledLeftAddon,
+  StyledAdornmentBottom,
+  BaseInputWrapper,
+  StyledBaseInput,
+  Wrapper
+};

@@ -1,4 +1,4 @@
-import type { Colors } from './core';
+import type { Palette } from './core';
 
 import {
   fontSize,
@@ -39,7 +39,7 @@ const baseTheme = {
 };
 
 type ThemeParams = {
-  colors: Colors;
+  colors: Palette;
   accordion: AccordionTheme;
   alert: AlertTheme;
   button: ButtonTheme;

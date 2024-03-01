@@ -1,33 +1,18 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
-import { Strong, StrongProps } from '.';
+import { StrongProps } from './Strong';
 
-const Template: Story<StrongProps> = (args) => <Strong {...args} />;
-
-const Primary = Template.bind({});
-
-Primary.args = {
-  color: 'primary',
-  children: 'Primary strong'
-};
-
-const Secondary = Template.bind({});
-
-Secondary.args = {
-  color: 'secondary',
-  children: 'Secondary strong'
-};
-
-const Tertiary = Template.bind({});
-
-Tertiary.args = {
-  color: 'tertiary',
-  children: 'Tertiary strong'
-};
-
-export { Primary, Secondary, Tertiary };
+import { Strong } from '.';
 
 export default {
   title: 'Text/Strong',
-  component: Strong
-} as Meta;
+  component: Strong,
+  parameters: {
+    layout: 'centered'
+  },
+  args: {
+    children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit'
+  }
+} as Meta<typeof Strong>;
+
+export const Default: StoryObj<StrongProps> = {};

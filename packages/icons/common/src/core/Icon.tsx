@@ -1,11 +1,11 @@
 import { SVGAttributes, forwardRef } from 'react';
-import { IconColors, IconsSizes } from '@interlay/themev2';
+import { Color, IconsSizes } from '@interlay/themev2';
 
 import { StyledIcon } from './Icon.style';
 
 type Props = {
   size?: IconsSizes;
-  color?: IconColors;
+  color?: Color;
 };
 
 type NativeAttrs<T = unknown> = Omit<SVGAttributes<T>, keyof Props>;

@@ -1,5 +1,7 @@
-import { fontWeight, spacing, typography } from '../../core';
+import { fontWeight, rounded, spacing, typography } from '../../core';
 import { InputTheme } from '../../components';
+
+import { color } from './colors';
 
 // color: 'var(--colors-input-text)',
 // background: 'var(--colors-input-background)',
@@ -28,7 +30,7 @@ import { InputTheme } from '../../components';
 //     color: 'var(--colors-error-dark)'
 //   }
 // },
-// small: {
+// sall: {
 //   text: 'var(--text-s)',
 //   maxHeight: 'var(--spacing-8)',
 //   weight: 'var(--font-weights-book)'
@@ -55,27 +57,38 @@ import { InputTheme } from '../../components';
 //   xl: '8rem',
 //   xl2: '9.5rem'
 // }
-typography;
 
 const input: InputTheme = {
+  base: {
+    color: color('light'),
+    backgroundColor: color('grey-500'),
+    border: `1px solid ${color('grey-200')}`,
+    borderRadius: rounded('md')
+  },
   size: {
     s: {
       ...typography('s'),
       fontWeight: fontWeight('normal'),
-      paddingLeft: spacing('md'),
-      paddingRight: spacing('md')
+      paddingLeft: spacing('s'),
+      paddingRight: spacing('s'),
+      paddingTop: spacing('xs'),
+      paddingBottom: spacing('xs')
     },
     md: {
       ...typography('md'),
       fontWeight: fontWeight('medium'),
-      paddingLeft: spacing('xl'),
-      paddingRight: spacing('xl')
+      paddingLeft: spacing('md'),
+      paddingRight: spacing('md'),
+      paddingTop: spacing('s'),
+      paddingBottom: spacing('s')
     },
     lg: {
-      ...typography('4xl'),
-      fontWeight: fontWeight('medium'),
-      paddingLeft: spacing('2xl'),
-      paddingRight: spacing('2xl')
+      ...typography('xl'),
+      fontWeight: fontWeight('semibold'),
+      paddingLeft: spacing('lg'),
+      paddingRight: spacing('lg'),
+      paddingTop: spacing('md'),
+      paddingBottom: spacing('md')
     }
   }
 };

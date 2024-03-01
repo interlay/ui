@@ -39,7 +39,7 @@ const spinner: SpinnerTheme = {
       borderColor: `${color('light')} ${color('light')} ${'transparent'}`
     },
     primary: {
-      borderColor: `${color('primary', 300)} ${color('primary', 300)} ${'transparent'}`
+      borderColor: `${color('primary-300')} ${color('primary-300')} ${'transparent'}`
     }
   }
 };

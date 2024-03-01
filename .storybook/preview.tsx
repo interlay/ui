@@ -16,6 +16,19 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/
       }
+    },
+    backgrounds: {
+      default: 'dark',
+      values: [
+        {
+          name: 'dark',
+          value: bobTheme.color('dark')
+        },
+        {
+          name: 'light',
+          value: bobTheme.color('light')
+        }
+      ]
     }
   },
   decorators: [

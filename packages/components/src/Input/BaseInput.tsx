@@ -1,14 +1,6 @@
-import { Sizes, Spacing } from '@interlay/theme';
-import {
-  FocusEvent,
-  forwardRef,
-  InputHTMLAttributes,
-  ReactNode,
-  TextareaHTMLAttributes,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import { Spacing } from '@interlay/theme';
+import { FocusEvent, forwardRef, InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react';
+import { InputSizes } from '@interlay/themev2';
 
 import { ElementTypeProp } from '../utils/types';
 import { Field, FieldProps, useFieldProps } from '../Field';
@@ -16,7 +8,7 @@ import { HelperTextProps } from '../HelperText';
 import { LabelProps } from '../Label';
 import { hasError } from '../utils/input';
 
-import { Adornment, StyledBaseInput } from './Input.style';
+import { StyledAdornmentBottom, StyledAdornmentLeft, StyledAdornmentRight, StyledBaseInput } from './Input.style';
 
 // TODO: might need to consolidate this later
 interface HTMLInputProps extends ElementTypeProp {
@@ -39,7 +31,7 @@ type Props = {
   bottomAdornment?: ReactNode;
   value?: string | ReadonlyArray<string> | number;
   defaultValue?: string | ReadonlyArray<string> | number;
-  size?: Sizes;
+  size?: InputSizes;
   isInvalid?: boolean;
   minHeight?: Spacing;
   onFocus?: (e: FocusEvent<Element>) => void;
@@ -59,7 +51,7 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
       startAdornment,
       endAdornment,
       bottomAdornment,
-      size = 'medium',
+      size = 'md',
       isInvalid,
       inputProps,
       minHeight,
@@ -68,27 +60,17 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
     },
     ref
   ): JSX.Element => {
-    const endAdornmentRef = useRef<HTMLDivElement>(null);
-    const [endAdornmentWidth, setEndAdornmentWidth] = useState(0);
-
     // FIXME: move this into Field
     const { fieldProps } = useFieldProps(props);
-
-    useEffect(() => {
-      if (!endAdornmentRef.current || !endAdornment) return;
-
-      setEndAdornmentWidth(endAdornmentRef.current.getBoundingClientRect().width);
-    }, [endAdornment]);
 
     const error = hasError({ isInvalid, errorMessage: props.errorMessage });
 
     return (
       <Field {...fieldProps}>
-        {startAdornment && <Adornment $position='left'>{startAdornment}</Adornment>}
+        {startAdornment && <StyledAdornmentLeft $size={size}>{startAdornment}</StyledAdornmentLeft>}
         <StyledBaseInput
           ref={ref as any}
           $adornments={{ bottom: !!bottomAdornment, left: !!startAdornment, right: !!endAdornment }}
-          $endAdornmentWidth={endAdornmentWidth}
           $hasError={error}
           $isDisabled={!!inputProps.disabled}
           $minHeight={minHeight}
@@ -96,12 +78,8 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
           as={elementType}
           {...inputProps}
         />
-        {bottomAdornment && <Adornment $position='bottom'>{bottomAdornment}</Adornment>}
-        {endAdornment && (
-          <Adornment ref={endAdornmentRef} $position='right'>
-            {endAdornment}
-          </Adornment>
-        )}
+        {bottomAdornment && <StyledAdornmentBottom $size={size}>{bottomAdornment}</StyledAdornmentBottom>}
+        {endAdornment && <StyledAdornmentRight $size={size}>{endAdornment}</StyledAdornmentRight>}
       </Field>
     );
   }

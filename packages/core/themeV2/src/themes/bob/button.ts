@@ -47,14 +47,14 @@ const button: ButtonTheme = {
       color: {
         default: {
           base: {
-            backgroundColor: color('grey', 200),
+            backgroundColor: color('grey-200'),
             color: color('light')
           },
           hover: {
-            backgroundColor: color('grey', 100)
+            backgroundColor: color('grey-100')
           },
           active: {
-            backgroundColor: color('grey', 100)
+            backgroundColor: color('grey-100')
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #4040403D, 0px 1px 2px 0px #1018280D'
@@ -65,14 +65,14 @@ const button: ButtonTheme = {
         },
         primary: {
           base: {
-            backgroundColor: color('primary', 300),
+            backgroundColor: color('primary-300'),
             color: color('light')
           },
           hover: {
-            backgroundColor: color('primary', 200)
+            backgroundColor: color('primary-200')
           },
           active: {
-            backgroundColor: color('primary', 200)
+            backgroundColor: color('primary-200')
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #FA45163D, 0px 1px 2px 0px #1018280D'
@@ -87,14 +87,14 @@ const button: ButtonTheme = {
       color: {
         default: {
           base: {
-            border: `1px solid ${color('grey', 200)}`,
+            border: `1px solid ${color('grey-200')}`,
             color: color('light')
           },
           hover: {
-            backgroundColor: color('grey', 300)
+            backgroundColor: color('grey-300')
           },
           active: {
-            backgroundColor: color('grey', 300)
+            backgroundColor: color('grey-300')
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #98A2B324, 0px 1px 2px 0px #1018280D'
@@ -105,14 +105,14 @@ const button: ButtonTheme = {
         },
         primary: {
           base: {
-            border: `1px solid ${color('primary', 300)}`,
-            color: color('primary', 300)
+            border: `1px solid ${color('primary-300')}`,
+            color: color('primary-300')
           },
           hover: {
-            backgroundColor: color('grey', 300)
+            backgroundColor: color('grey-300')
           },
           active: {
-            backgroundColor: color('grey', 300)
+            backgroundColor: color('grey-300')
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #D92D2040, 0px 1px 2px 0px #1018280D'
@@ -130,10 +130,10 @@ const button: ButtonTheme = {
             color: color('light')
           },
           hover: {
-            backgroundColor: color('grey', 300)
+            backgroundColor: color('grey-300')
           },
           active: {
-            backgroundColor: color('grey', 300)
+            backgroundColor: color('grey-300')
           },
           focusVisible: {
             boxShadow: '0px 0px 0px 4px #98A2B324, 0px 1px 2px 0px #1018280D'
@@ -144,13 +144,13 @@ const button: ButtonTheme = {
         },
         primary: {
           base: {
-            color: color('primary', 300)
+            color: color('primary-300')
           },
           hover: {
-            backgroundColor: color('grey', 300)
+            backgroundColor: color('grey-300')
           },
           active: {
-            backgroundColor: color('grey', 300)
+            backgroundColor: color('grey-300')
           },
           focusVisible: {
             boxShadow: '0px 0px 0px 4px #D92D2040, 0px 1px 2px 0px #1018280D'

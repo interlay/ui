@@ -26,7 +26,7 @@ const getOverlayPlacementCSS = (placement: Placement): RuleSet<DefaultTheme> => 
   }
 };
 
-const overlayCSS = (isOpen: boolean): RuleSet<DefaultTheme> => css`
+const overlayCSS = (isOpen: boolean) => css`
   visibility: ${isOpen ? 'visible' : 'hidden'};
   opacity: ${isOpen ? 1 : 0};
   pointer-events: ${isOpen ? 'auto' : 'none'};

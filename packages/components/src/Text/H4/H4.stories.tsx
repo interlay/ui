@@ -1,33 +1,18 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
-import { H4, H4Props } from '.';
+import { H4Props } from './H4';
 
-const Template: Story<H4Props> = (args) => <H4 {...args} />;
-
-const Primary = Template.bind({});
-
-Primary.args = {
-  color: 'primary',
-  children: 'Primary heading 4'
-};
-
-const Secondary = Template.bind({});
-
-Secondary.args = {
-  color: 'secondary',
-  children: 'Secondary heading 4'
-};
-
-const Tertiary = Template.bind({});
-
-Tertiary.args = {
-  color: 'tertiary',
-  children: 'Tertiary heading 4'
-};
-
-export { Primary, Secondary, Tertiary };
+import { H4 } from '.';
 
 export default {
   title: 'Text/H4',
-  component: H4
-} as Meta;
+  component: H4,
+  parameters: {
+    layout: 'centered'
+  },
+  args: {
+    children: 'Heading 4'
+  }
+} as Meta<typeof H4>;
+
+export const Default: StoryObj<H4Props> = {};

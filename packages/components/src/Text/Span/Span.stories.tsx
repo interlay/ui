@@ -1,35 +1,18 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
-import { TextProps } from '../types';
+import { SpanProps } from './Span';
 
 import { Span } from '.';
 
-const Template: Story<TextProps> = (args) => <Span {...args} />;
-
-const Primary = Template.bind({});
-
-Primary.args = {
-  color: 'primary',
-  children: 'Primary span'
-};
-
-const Secondary = Template.bind({});
-
-Secondary.args = {
-  color: 'secondary',
-  children: 'Secondary span'
-};
-
-const Tertiary = Template.bind({});
-
-Tertiary.args = {
-  color: 'tertiary',
-  children: 'Tertiary span'
-};
-
-export { Primary, Secondary, Tertiary };
-
 export default {
   title: 'Text/Span',
-  component: Span
-} as Meta;
+  component: Span,
+  parameters: {
+    layout: 'centered'
+  },
+  args: {
+    children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit'
+  }
+} as Meta<typeof Span>;
+
+export const Default: StoryObj<SpanProps> = {};
