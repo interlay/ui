@@ -19,9 +19,7 @@ const Render = ({ title, footer, children, ...args }: StoryProps) => {
       <Modal {...args} isOpen={state} onClose={() => setState(false)}>
         {title && (
           <>
-            <ModalHeader align='center' color='secondary'>
-              {title}
-            </ModalHeader>
+            <ModalHeader align='center'>{title}</ModalHeader>
           </>
         )}
         <ModalBody>{children}</ModalBody>

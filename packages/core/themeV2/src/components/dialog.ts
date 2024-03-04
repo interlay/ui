@@ -1,26 +1,17 @@
-import { Rounded, Spacing } from '../core';
+import { StyledObject } from 'styled-components';
 
 type DialogSize = 's' | 'md' | 'lg';
 
 type DialogSizeParams = {
-  width: Spacing | string;
-  header: {
-    padding: Spacing;
-  };
-  body: {
-    paddingY: Spacing;
-    paddingX: Spacing;
-  };
-  footer: {
-    padding: Spacing;
-  };
+  base: StyledObject<object>;
+  header: StyledObject<object>;
+  body: StyledObject<object>;
+  footer: StyledObject<object>;
 };
 
 type DialogTheme = {
-  bg: string;
-  border: string;
-  rounded: Rounded;
+  base: StyledObject<object>;
   size: Record<DialogSize, DialogSizeParams>;
 };
 
-export type { DialogTheme };
+export type { DialogTheme, DialogSize };

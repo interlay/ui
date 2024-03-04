@@ -2,7 +2,9 @@ import { DividerTheme } from '../../components';
 
 const divider: DividerTheme = {
   size: {
-    xs: {}
+    s: '1px',
+    md: '2px',
+    lg: '3px'
   }
 };
 

@@ -1,69 +1,15 @@
-import { fontWeight, rounded, spacing, typography } from '../../core';
+import { fontWeight, rounded, spacing, typography, transition } from '../../core';
 import { InputTheme } from '../../components';
 
 import { color } from './colors';
-
-// color: 'var(--colors-input-text)',
-// background: 'var(--colors-input-background)',
-// height: '4rem',
-// default: {
-//   border: '1px solid var(--colors-input-default-border)'
-// },
-// hover: {
-//   border: '1px solid var(--colors-input-hover-border)'
-// },
-// focus: {
-//   border: '1px solid var(--colors-input-focus-border)',
-//   boxShadow: '0 0 0 1px var(--colors-input-focus-border)'
-// },
-// error: {
-//   color: 'var(--colors-error-dark)',
-//   border: '1px solid var(--colors-error-dark)'
-// },
-// disabled: {
-//   color: 'var(--colors-input-disabled-text)',
-//   bg: 'var(--colors-input-disabled-bg)',
-//   border: '1px solid var(--colors-input-disabled-border)'
-// },
-// helperText: {
-//   error: {
-//     color: 'var(--colors-error-dark)'
-//   }
-// },
-// sall: {
-//   text: 'var(--text-s)',
-//   maxHeight: 'var(--spacing-8)',
-//   weight: 'var(--font-weights-book)'
-// },
-// medium: {
-//   text: 'var(--text-base)',
-//   maxHeight: 'var(--spacing-10)',
-//   weight: 'var(--font-weights-book)'
-// },
-// large: {
-//   text: 'var(--text-4xl)',
-//   maxHeight: 'var(--spacing-16)',
-//   weight: 'var(--font-weights-medium)'
-// },
-// overflow: {
-//   large: {
-//     text: 'var(--text-2xl)'
-//   }
-// },
-// paddingX: {
-//   s: '2rem',
-//   md: '4rem',
-//   lg: '6.25rem',
-//   xl: '8rem',
-//   xl2: '9.5rem'
-// }
 
 const input: InputTheme = {
   base: {
     color: color('light'),
     backgroundColor: color('grey-500'),
     border: `1px solid ${color('grey-200')}`,
-    borderRadius: rounded('md')
+    borderRadius: rounded('md'),
+    ...transition('common', 'normal')
   },
   size: {
     s: {
@@ -84,11 +30,35 @@ const input: InputTheme = {
     },
     lg: {
       ...typography('xl'),
-      fontWeight: fontWeight('semibold'),
+      fontWeight: fontWeight('medium'),
       paddingLeft: spacing('lg'),
       paddingRight: spacing('lg'),
       paddingTop: spacing('md'),
       paddingBottom: spacing('md')
+    }
+  },
+  hover: {
+    border: `1px solid ${color('grey-200')}`
+  },
+  focus: {
+    border: `1px solid ${color('light')}`,
+    boxShadow: `0 0 0 1px ${color('light')}`
+  },
+  placeholder: {
+    color: color('grey-100')
+  },
+  disabled: {
+    opacity: 0.5
+  },
+  error: {
+    base: {
+      border: `1px solid ${'#FF0000'}`
+    },
+    hover: {
+      border: `1px solid ${'#FF0000'}`
+    },
+    focus: {
+      boxShadow: `0 0 0 1px ${'#FF0000'}`
     }
   }
 };

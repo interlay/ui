@@ -1,9 +1,5 @@
-import { Spacing } from '../core';
+import { StyledObject } from 'styled-components';
 
-type DrawerTheme = {
-  bg: string;
-  width: string | Spacing;
-  padding: Spacing;
-};
+type DrawerTheme = StyledObject<object>;
 
 export type { DrawerTheme };

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from '@interlay/theme';
 
 import { overlayCSS } from '../utils/overlay';
 import { Dialog } from '../Dialog';
@@ -23,7 +22,7 @@ const StyledModal = styled.div<StyledModalProps>`
   opacity: 1;
 
   overflow-y: scroll;
-  z-index: ${theme.modal.zIndex};
+  z-index: 2;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -31,11 +30,10 @@ const StyledModal = styled.div<StyledModalProps>`
   right: 100%;
 
   height: 100%;
-  background: ${theme.colors.bgPrimary};
 
-  transition: transform
-    ${({ $isOpen }) => ($isOpen ? theme.transition.duration.duration250 : theme.transition.duration.duration100)}ms
-    ease-in-out;
+  transition: transform ${({ $isOpen }) => ($isOpen ? '250ms' : '100ms')} ease-in-out;
+
+  ${({ theme }) => theme.drawer};
 `;
 
 const StyledDialog = styled(Dialog)<StyledDialogProps>`
@@ -48,7 +46,7 @@ const StyledDialog = styled(Dialog)<StyledDialogProps>`
   flex-direction: column;
   position: relative;
   outline: none;
-  padding: ${theme.spacing.spacing4};
+  padding: ${({ theme }) => theme.spacing('md')};
 `;
 
 export { StyledDialog, StyledModal };

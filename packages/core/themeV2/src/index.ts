@@ -1,4 +1,13 @@
-export type { ButtonSizes, ButtonVariants, ButtonColors, SpinnerColors, SpinnerSizes, InputSizes } from './components';
+export type {
+  ButtonSizes,
+  ButtonVariants,
+  ButtonColors,
+  SpinnerColors,
+  SpinnerSizes,
+  InputSizes,
+  DividerSizes,
+  DialogSize
+} from './components';
 export type {
   IconsSizes,
   Color,

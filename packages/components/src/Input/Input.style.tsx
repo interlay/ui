@@ -1,10 +1,9 @@
+import { InputSizes, Spacing } from '@interlay/themev2';
 import styled, { css } from 'styled-components';
-import { Spacing, theme as oldTheme } from '@interlay/theme';
-import { InputSizes } from '@interlay/themev2';
 
 type BaseInputProps = {
   $size: InputSizes;
-  $adornments: { bottom: boolean; left: boolean; right: boolean };
+  $adornments: { left: boolean; right: boolean };
   $isDisabled: boolean;
   $hasError: boolean;
   $minHeight?: Spacing;
@@ -22,57 +21,47 @@ const StyledBaseInput = styled.input<BaseInputProps>`
 
   text-overflow: ellipsis;
 
-  /* background-color: ${({ $isDisabled }) =>
-    $isDisabled ? oldTheme.input.disabled.bg : oldTheme.input.background}; */
-  overflow: hidden;
-
-  border: ${(props) =>
-    props.$isDisabled
-      ? oldTheme.input.disabled.border
-      : props.$hasError
-        ? oldTheme.input.error.border
-        : oldTheme.border.default};
-  transition:
-    border-color ${oldTheme.transition.duration.duration150}ms ease-in-out,
-    box-shadow ${oldTheme.transition.duration.duration150}ms ease-in-out;
-
-  min-height: ${({ $minHeight, as }) =>
-    $minHeight ? oldTheme.spacing[$minHeight] : as === 'textarea' && oldTheme.spacing.spacing16};
+  // Properties for textarea
+  min-height: ${({ $minHeight, theme, as }) =>
+    $minHeight ? theme.spacing($minHeight) : as === 'textarea' && theme.spacing('7xl')};
   resize: ${({ as }) => as === 'textarea' && 'vertical'};
 
-  ${({ theme, $size, $adornments }) => {
-    const { paddingRight, paddingTop, paddingBottom, paddingLeft, fontSize, ...sizeCss } = theme.input.size[$size];
+  ${({ theme, $size, $adornments, $hasError }) => {
+    const { paddingRight, paddingTop, paddingBottom, paddingLeft, ...sizeCss } = theme.input.size[$size];
 
     // MEMO: adding `spacing6` is a hacky solution because
     // the `endAdornmentWidth` does not update width correctly
     // after fonts are loaded. Instead of falling back to a more
     // complex solution, an extra offset does the job of not allowing
     // the input overlap the adornment.
-    //$adornments.bottom ? `calc(${fontSize} - ${theme.spacing('md')})` :
     return css`
-      font-size: ${fontSize};
       padding-top: ${paddingTop};
+      padding-bottom: ${paddingBottom};
       padding-left: ${$adornments.left ? theme.spacing('5xl') : paddingLeft};
       padding-right: ${$adornments.right ? theme.spacing('5xl') : paddingRight};
-      padding-bottom: ${$adornments.bottom ? theme.spacing('3xl') : paddingBottom};
 
       ${sizeCss}
       ${theme.input.base}
+      ${$hasError && theme.input.error.base}
+
+
+      &:hover:not(:disabled):not(:focus) {
+        ${$hasError ? theme.input.error.hover : theme.input.hover}
+      }
+
+      &:focus:not(:disabled) {
+        ${$hasError ? theme.input.error.focus : theme.input.focus}
+      }
+
+      &::placeholder {
+        ${theme.input.placeholder}
+      }
+
+      &:disabled {
+        ${theme.input.disabled}
+      }
     `;
   }}
-
-  &:hover:not(:disabled):not(:focus) {
-    border: ${(props) => !props.$isDisabled && !props.$hasError && oldTheme.border.focus};
-  }
-
-  &:focus {
-    border: ${(props) => !props.$isDisabled && oldTheme.border.focus};
-    box-shadow: ${(props) => !props.$isDisabled && oldTheme.boxShadow.focus};
-  }
-
-  &::placeholder {
-    color: ${(props) => (props.disabled ? oldTheme.input.disabled.color : oldTheme.colors.textTertiary)};
-  }
 
   /* MEMO: inspired by https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
   /* Chrome, Safari, Edge, Opera */
@@ -87,9 +76,8 @@ const StyledBaseInput = styled.input<BaseInputProps>`
   }
 `;
 
-const BaseInputWrapper = styled.div`
+const StyledWrapper = styled.div<BaseInputProps>`
   position: relative;
-  color: ${oldTheme.colors.textPrimary};
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -119,34 +107,9 @@ const StyledAdornmentLeft = styled(StyledAdornment)`
   transform: translateY(-50%);
 `;
 
-const StyledAdornmentBottom = styled(StyledAdornment)`
-  left: ${({ theme, $size }) => theme.input.size[$size].paddingLeft};
-  bottom: ${({ theme }) => theme.spacing('s')};
-`;
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-// TODO: here
-const StyledAddon = styled.div`
-  display: flex;
-  align-items: center;
-  width: auto;
-`;
-
-const StyledLeftAddon = styled(StyledAddon)`
-  border-top-right-radius: ${({ theme }) => theme.input.base.borderRadius};
-  border-bottom-right-radius: ${({ theme }) => theme.input.base.borderRadius};
-`;
-
-export {
-  StyledAdornmentRight,
-  StyledAdornmentLeft,
-  StyledLeftAddon,
-  StyledAdornmentBottom,
-  BaseInputWrapper,
-  StyledBaseInput,
-  Wrapper
-};
+export { StyledAdornmentLeft, StyledAdornmentRight, StyledBaseInput, StyledWrapper, Wrapper };

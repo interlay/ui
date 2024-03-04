@@ -1,5 +1,7 @@
+type DividerSizes = 's' | 'md' | 'lg';
+
 type DividerTheme = {
-  bg: string;
+  size: Record<DividerSizes, string>;
 };
 
-export type { DividerTheme };
+export type { DividerTheme, DividerSizes };

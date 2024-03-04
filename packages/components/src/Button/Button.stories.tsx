@@ -28,6 +28,14 @@ export const Icon: StoryObj<ButtonProps> = {
   }
 };
 
+export const Link: StoryObj<ButtonProps> = {
+  args: {
+    asChild: true,
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+    children: <a href='#'>Link</a>
+  }
+};
+
 // export const Secondary: StoryObj<ButtonProps> = {
 //   args: {
 //     variant: 'secondary'

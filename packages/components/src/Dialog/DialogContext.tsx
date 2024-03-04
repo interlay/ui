@@ -1,14 +1,13 @@
 import { DOMAttributes } from '@react-types/shared';
 import React from 'react';
-
-import { Sizes } from '../../../core/theme/src';
+import { DialogSize } from '@interlay/themev2';
 
 interface DialogConfig {
   titleProps?: DOMAttributes;
-  size: Sizes;
+  size: DialogSize;
 }
 
-const defaultContext: DialogConfig = { size: 'medium' };
+const defaultContext: DialogConfig = { size: 'md' };
 
 const DialogContext = React.createContext<DialogConfig>(defaultContext);
 

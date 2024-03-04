@@ -2,7 +2,6 @@ import { Item } from '@react-stately/collections';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { Key, useState } from 'react';
 
-import { CoinIcon } from '../CoinIcon';
 import { Flex } from '../Flex';
 import { CTA } from '..';
 
@@ -12,17 +11,17 @@ const Render = (args: SelectProps) => (
   <Select<any> {...args}>
     <Item key='BTC' textValue='BTC'>
       <Flex alignItems='center' gap='spacing2'>
-        <CoinIcon ticker='BTC' /> BTC
+        BTC
       </Flex>
     </Item>
     <Item key='ETH' textValue='ETH'>
       <Flex alignItems='center' gap='spacing2'>
-        <CoinIcon ticker='ETH' /> ETH
+        ETH
       </Flex>
     </Item>
     <Item key='USDT' textValue='USDT'>
       <Flex alignItems='center' gap='spacing2'>
-        <CoinIcon ticker='USDT' /> USDT
+        USDT
       </Flex>
     </Item>
   </Select>

@@ -11,7 +11,7 @@ const hideScrollbar = (): RuleSet<DefaultTheme> => css`
   scrollbar-width: none; /* Firefox */
 `;
 
-const visuallyHidden = (): RuleSet<DefaultTheme> => css`
+const visuallyHidden = () => css`
   border: 0px;
   clip: rect(0px, 0px, 0px, 0px);
   clip-path: inset(50%);

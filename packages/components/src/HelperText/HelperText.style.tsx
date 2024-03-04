@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from '@interlay/theme';
 
 import { visuallyHidden } from '../utils/visually-hidden';
 
@@ -9,16 +8,15 @@ type StyledHelperTextProps = {
 };
 
 const StyledHelperText = styled.div<StyledHelperTextProps>`
-  font-weight: ${theme.fontWeight.medium};
-  line-height: ${theme.lineHeight.lg};
-  font-size: ${theme.text.xs};
-  color: ${(props) => (props.$hasError ? theme.input.helperText.error.color : theme.colors.textTertiary)};
-  padding: ${theme.spacing.spacing1} 0;
+  font-weight: ${({ theme }) => theme.fontWeight('medium')};
+  ${({ theme }) => theme.typography('xs')}
+  color: ${({ $hasError, theme }) => ($hasError ? '#FF0000' : theme.color('grey-100'))};
+  padding: ${({ theme }) => theme.spacing('xs')} 0;
   ${({ $isHidden }) => $isHidden && visuallyHidden()}
 `;
 
 const StyledSubHelperText = styled.p`
-  line-height: ${theme.lineHeight.s};
+  line-height: ${({ theme }) => theme.lineHeight('s')};
 `;
 
 export { StyledHelperText, StyledSubHelperText };

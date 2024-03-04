@@ -44,6 +44,7 @@
     "@interlay/system": "workspace:*",
     "@interlay/theme": "workspace:*",
     "@interlay/themev2": "workspace:*",
+    "@radix-ui/react-slot": "^1.0.2",
     "@react-aria/accordion": "3.0.0-alpha.20",
     "@react-aria/breadcrumbs": "^3.5.4",
     "@react-aria/button": "^3.8.1",

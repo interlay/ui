@@ -5,6 +5,7 @@ import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { ButtonVariants, ButtonSizes, ButtonColors, SpinnerSizes, SpinnerColors } from '@interlay/themev2';
+import { Slot, Slottable } from '@radix-ui/react-slot';
 
 import { Flex } from '../Flex';
 import { Spinner } from '../Spinner';
@@ -39,6 +40,7 @@ type Props = {
   color?: ButtonColors;
   loading?: boolean;
   isIconOnly?: boolean;
+  asChild?: boolean;
   onPress?: (e: PressEvent) => void;
 };
 
@@ -59,6 +61,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       isIconOnly,
       onPress,
       onClick,
+      asChild,
       ...props
     },
     ref
@@ -70,6 +73,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const { buttonProps } = useButton({ isDisabled, onPress, ...props }, domRef);
     const { focusProps, isFocusVisible } = useFocusRing(props);
 
+    const Comp = asChild ? Slot : 'button';
+
     return (
       <StyledButton
         ref={domRef}
@@ -79,6 +84,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         $isIconOnly={isIconOnly}
         $size={size}
         $variant={variant}
+        as={Comp}
         disabled={isDisabled}
         {...mergeProps(props, buttonProps, focusProps, { onClick })}
       >
@@ -87,7 +93,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             <Spinner aria-label='Loading...' color={spinnerColorMap[color][variant]} size={spinnerSizeMap[size]} />
           </Flex>
         )}
-        {isIconOnly ? (loading ? undefined : children) : children}
+        {isIconOnly ? loading ? undefined : <Slottable>{children}</Slottable> : <Slottable>{children}</Slottable>}
       </StyledButton>
     );
   }

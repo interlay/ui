@@ -2,7 +2,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { InformationCircle } from '@interlay/icons';
 
-import { Flex, Span } from '..';
+import { Flex } from '..';
 
 import { TextArea, TextAreaProps } from '.';
 
@@ -71,15 +71,7 @@ export const Adornments: StoryFn<TextAreaProps> = (args) => (
   <Flex direction='column'>
     <TextArea {...args} label='Start Adornment' startAdornment={<InformationCircle />} />
     <TextArea {...args} endAdornment={<InformationCircle />} label='End Adornment' />
-    <TextArea
-      {...args}
-      bottomAdornment={
-        <Span color='tertiary' size='xs'>
-          $0.00
-        </Span>
-      }
-      label='Bottom Adornment'
-    />
+    <TextArea {...args} label='Bottom Adornment' />
   </Flex>
 );
 

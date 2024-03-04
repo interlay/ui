@@ -1,19 +1,18 @@
 import styled from 'styled-components';
-import { LabelPosition, theme } from '@interlay/theme';
+import { LabelPosition } from '@interlay/theme';
 
 type StyledLabelProps = {
   $position: LabelPosition;
 };
 
 const StyledLabel = styled.label<StyledLabelProps>`
-  font-weight: ${theme.fontWeight.medium};
-  line-height: ${theme.lineHeight.lg};
-  font-size: ${theme.text.xs};
-  color: ${theme.label.text};
-  padding: ${({ $position }) =>
-    $position === 'top'
-      ? `${theme.spacing.spacing1} 0`
-      : `${theme.spacing.spacing2} ${theme.spacing.spacing1} 0.438rem 0`};
+  ${({ theme }) => theme.typography('xs')}
+  color: ${({ theme }) => theme.color('light')};
+  font-weight: ${({ theme }) => theme.fontWeight('medium')};
+
+  // FIXME: padding bottom when position is on side
+  padding: ${({ theme, $position }) =>
+    $position === 'top' ? `${theme.spacing('xs')} 0` : `${theme.spacing('s')} ${theme.spacing('xs')} 0.625rem 0`};
   align-self: flex-start;
 `;
 

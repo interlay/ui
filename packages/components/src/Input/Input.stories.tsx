@@ -1,7 +1,6 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { InformationCircle } from '@interlay/icons';
 
-import { Span } from '../Text';
 import { Flex } from '../Flex';
 
 import { Input, InputProps } from '.';
@@ -31,17 +30,17 @@ export const Default: StoryObj<InputProps> = {};
 //   }
 // };
 
-// export const WithDescription: StoryObj<InputProps> = {
-//   args: {
-//     description: 'Please enter your street address'
-//   }
-// };
+export const WithDescription: StoryObj<InputProps> = {
+  args: {
+    description: 'Please enter your street address'
+  }
+};
 
-// export const WithErrorMessage: StoryObj<InputProps> = {
-//   args: {
-//     errorMessage: 'Please enter your street address'
-//   }
-// };
+export const WithErrorMessage: StoryObj<InputProps> = {
+  args: {
+    errorMessage: 'Please enter your street address'
+  }
+};
 
 // export const WithMultipleErrorMessage: StoryObj<InputProps> = {
 //   args: {
@@ -65,7 +64,6 @@ export const Adornments: StoryFn<InputProps> = (args) => (
   <Flex direction='column'>
     <Input {...args} label='Start Adornment' startAdornment={<InformationCircle />} />
     <Input {...args} endAdornment={<InformationCircle />} label='End Adornment' />
-    <Input {...args} bottomAdornment={<Span size='xs'>$0.00</Span>} label='Bottom Adornment' />
   </Flex>
 );
 
@@ -77,8 +75,14 @@ export const Adornments: StoryFn<InputProps> = (args) => (
 //   </Flex>
 // );
 
-// export const Disabled: StoryObj<InputProps> = {
-//   args: {
-//     isDisabled: true
-//   }
-// };
+export const Placeholder: StoryObj<InputProps> = {
+  args: {
+    placeholder: 'Enter address'
+  }
+};
+
+export const Disabled: StoryObj<InputProps> = {
+  args: {
+    isDisabled: true
+  }
+};

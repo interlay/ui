@@ -1,16 +1,16 @@
 import { mergeProps } from '@react-aria/utils';
 import { ElementType } from 'react';
+import { DialogSize, Typography } from '@interlay/themev2';
 
-import { FontSize, Sizes } from '../../../core/theme/src';
 import { TextProps } from '../Text';
 
 import { StyledDialogHeader } from './Dialog.style';
 import { useDialogContext } from './DialogContext';
 
-const sizeMap: Record<Sizes, FontSize> = {
-  small: 'base',
-  medium: 'xl',
-  large: 'xl'
+const sizeMap: Record<DialogSize, Typography> = {
+  s: 'md',
+  md: 'xl',
+  lg: 'xl'
 };
 
 type Props = {
