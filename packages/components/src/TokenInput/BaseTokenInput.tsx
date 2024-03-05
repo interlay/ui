@@ -46,7 +46,7 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
     );
 
     return (
-      <Flex className={className} direction='column' gap='spacing0' hidden={hidden} style={style}>
+      <Flex className={className} direction='column' gap='none' hidden={hidden} style={style}>
         {hasLabel && (
           <TokenInputLabel {...labelProps} balance={balance}>
             {label}
@@ -54,7 +54,7 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
         )}
         <NumberInput
           ref={ref}
-          bottomAdornment={bottomAdornment}
+          // bottomAdornment={bottomAdornment}
           description={description}
           errorMessage={errorMessage}
           inputMode='decimal'
@@ -63,7 +63,7 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
           minLength={1}
           pattern='^[0-9]*[.,]?[0-9]*$'
           placeholder={placeholder}
-          size='large'
+          size='lg'
           {...mergeProps(props, fieldProps)}
         />
         {children}

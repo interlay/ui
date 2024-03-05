@@ -19,7 +19,7 @@ const Render = ({ title, footer, children, ...args }: StoryProps) => {
       <Modal {...args} isOpen={state} onClose={() => setState(false)}>
         {title && (
           <>
-            <ModalHeader align='center'>{title}</ModalHeader>
+            <ModalHeader>{title}</ModalHeader>
           </>
         )}
         <ModalBody>{children}</ModalBody>
@@ -83,11 +83,11 @@ export const BodyWithFooter: StoryObj<StoryProps> = {
   }
 };
 
-export const LargeContent: StoryObj<StoryProps> = {
+export const ScrollBehaviour: StoryObj<StoryProps> = {
   args: {
     title: 'Title',
     footer: true,
-    hasMaxHeight: true,
+    scrollBehavior: 'outside',
     children: (
       <>
         Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.

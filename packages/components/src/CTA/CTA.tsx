@@ -30,6 +30,9 @@ type InheritAttrs = Omit<BaseCTAProps, keyof Props & NativeAttrs>;
 
 type CTAProps = Props & InheritAttrs & NativeAttrs;
 
+/**
+ * @deprecated use Button
+ */
 const CTA = forwardRef<HTMLButtonElement, CTAProps>(
   (
     { children, loading, disabled, variant = 'primary', fullWidth, size = 'medium', onPress, onClick, ...props },

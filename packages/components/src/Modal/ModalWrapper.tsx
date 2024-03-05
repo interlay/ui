@@ -9,7 +9,8 @@ import { StyledModal, StyledWrapper } from './Modal.style';
 
 type Props = {
   children: ReactNode;
-  align?: 'top' | 'center';
+  placement?: 'top' | 'center';
+  scrollBehaviour: 'inside' | 'outside';
   isOpen?: boolean;
   onClose: () => void;
   wrapperRef: RefObject<HTMLDivElement>;
@@ -24,7 +25,8 @@ const ModalWrapper = forwardRef<HTMLDivElement, ModalWrapperProps>(
     {
       children,
       isDismissable = true,
-      align = 'center',
+      placement = 'center',
+      scrollBehaviour = 'inside',
       onClose,
       isKeyboardDismissDisabled,
       isOpen,
@@ -50,13 +52,17 @@ const ModalWrapper = forwardRef<HTMLDivElement, ModalWrapperProps>(
       ref as RefObject<HTMLElement>
     );
 
-    const isCentered = align === 'center';
-
     return (
       <div ref={wrapperRef}>
         <Underlay {...underlayProps} isOpen={!!isOpen} />
-        <StyledWrapper $isCentered={isCentered} $isOpen={!!isOpen}>
-          <StyledModal ref={ref} $isCentered={isCentered} $isOpen={isOpen} {...mergeProps(modalProps, props)}>
+        <StyledWrapper $isOpen={!!isOpen} $placement={placement} $scrollBehavior={scrollBehaviour}>
+          <StyledModal
+            ref={ref}
+            $isOpen={isOpen}
+            $placement={placement}
+            $scrollBehavior={scrollBehaviour}
+            {...mergeProps(modalProps, props)}
+          >
             {children}
           </StyledModal>
         </StyledWrapper>

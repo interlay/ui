@@ -21,6 +21,9 @@ type NativeAttrs = Omit<AnchorHTMLAttributes<unknown>, keyof Props & AriaAttrs &
 
 type CTALinkProps = Props & AriaAttrs & InheritAttrs & NativeAttrs;
 
+/**
+ * @deprecated use Button component with asChild prop
+ */
 const CTALink = forwardRef<HTMLAnchorElement, CTALinkProps>(
   ({ disabled, external, children, icon, ...props }, ref): JSX.Element => {
     const linkRef = useDOMRef(ref);
@@ -44,7 +47,7 @@ const CTALink = forwardRef<HTMLAnchorElement, CTALinkProps>(
         })}
       >
         {children}
-        {icon && <StyledIcon color='secondary' />}
+        {icon && <StyledIcon />}
       </BaseCTA>
     );
   }

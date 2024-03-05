@@ -15,7 +15,7 @@ export default {
     children: 'Button'
   },
   render: (args) => (
-    <Flex gap='spacing4'>
+    <Flex gap='md'>
       <CTALink {...args} />
       <CTALink {...args} disabled />
     </Flex>

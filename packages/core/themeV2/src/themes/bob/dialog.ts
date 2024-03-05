@@ -1,4 +1,4 @@
-import { rounded, spacing } from '../../core';
+import { maxWidth, rounded, spacing } from '../../core';
 import { DialogTheme } from '../../components';
 
 import { color } from './colors';
@@ -9,48 +9,48 @@ const dialog: DialogTheme = {
     border: `1px solid ${color('grey-200')}`,
     borderRadius: rounded('md')
   },
+  header: {
+    padding: `${spacing('xl')} ${spacing('2xl')} ${spacing('s')} ${spacing('2xl')}`
+  },
+  body: {
+    padding: `${spacing('md')} ${spacing('2xl')}`
+  },
+  footer: {
+    padding: `${spacing('xl')} ${spacing('2xl')}`
+  },
   size: {
+    xs: {
+      maxWidth: maxWidth('xs')
+    },
     s: {
-      base: {
-        width: '400px'
-      },
-      header: {
-        padding: `${spacing('md')} ${spacing('lg')} ${spacing('s')} ${spacing('md')}`
-      },
-      body: {
-        padding: `${spacing('md')} ${spacing('xs')}`
-      },
-      footer: {
-        padding: `${spacing('xs')} ${spacing('md')} ${spacing('md')}`
-      }
+      maxWidth: maxWidth('s')
     },
     md: {
-      base: {
-        width: '32rem'
-      },
-      header: {
-        padding: `${spacing('md')} ${spacing('lg')} ${spacing('md')} ${spacing('md')}`
-      },
-      body: {
-        padding: `${spacing('s')} ${spacing('md')}`
-      },
-      footer: {
-        padding: `${spacing('md')} ${spacing('lg')} ${spacing('lg')}`
-      }
+      maxWidth: maxWidth('md')
     },
     lg: {
-      base: {
-        width: '32rem'
-      },
-      header: {
-        padding: `${spacing('md')} ${spacing('lg')} ${spacing('md')} ${spacing('md')}`
-      },
-      body: {
-        padding: `${spacing('s')} ${spacing('md')}`
-      },
-      footer: {
-        padding: `${spacing('md')} ${spacing('lg')} ${spacing('lg')}`
-      }
+      maxWidth: maxWidth('lg')
+    },
+    xl: {
+      maxWidth: maxWidth('xl')
+    },
+    '2xl': {
+      maxWidth: maxWidth('2xl')
+    },
+    '3xl': {
+      maxWidth: maxWidth('3xl')
+    },
+    '4xl': {
+      maxWidth: maxWidth('4xl')
+    },
+    '5xl': {
+      maxWidth: maxWidth('5xl')
+    },
+    '6xl': {
+      maxWidth: maxWidth('6xl')
+    },
+    '7xl': {
+      maxWidth: maxWidth('7xl')
     }
   }
 };

@@ -8,7 +8,7 @@ import { StyledTicker, StyledTokenImg, StyledTokenSelect } from './TokenInput.st
 import { TokenListItem } from './TokenListItem';
 
 const Value = ({ data }: { data: TokenData }) => (
-  <Flex alignItems='center' gap='spacing1' justifyContent='space-evenly'>
+  <Flex alignItems='center' gap='xs' justifyContent='space-evenly'>
     <StyledTokenImg alt={data.ticker} src={data.logoUrl} />
     <StyledTicker>{data.ticker}</StyledTicker>
   </Flex>

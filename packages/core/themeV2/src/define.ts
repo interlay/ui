@@ -10,7 +10,8 @@ import {
   breakpoints,
   transition,
   color,
-  icon
+  icon,
+  maxWidth
 } from './core';
 import {
   ButtonTheme,
@@ -35,6 +36,7 @@ const baseTheme = {
   spacing,
   typography,
   transition,
+  maxWidth,
   ...breakpoints
 };
 

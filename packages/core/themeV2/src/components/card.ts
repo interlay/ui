@@ -1,14 +1,8 @@
+import { StyledObject } from 'styled-components';
+
 type CardTheme = {
-  bg: string;
-  boxShadow: string;
-  border: string;
-  hover: {
-    border: string;
-  };
-  focus: {
-    border: string;
-    boxShadow: string;
-  };
+  base: StyledObject<object>;
+  focus: StyledObject<object>;
 };
 
 export type { CardTheme };

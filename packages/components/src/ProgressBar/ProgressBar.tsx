@@ -34,7 +34,7 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
   const barStyle: CSSProperties = { width: `${Math.round(percentage * 100)}%` };
 
   return (
-    <Flex className={className} direction='column' gap='spacing3' hidden={hidden} style={style} {...progressBarProps}>
+    <Flex className={className} direction='column' gap='s' hidden={hidden} style={style} {...progressBarProps}>
       {(label || showValueLabel) && (
         <Flex>
           {label && <Span {...labelProps}>{label}</Span>}

@@ -31,12 +31,12 @@ const TokenInputBalance = ({
   const handleClickBalance = () => onClickBalance?.(balanceProp);
 
   return (
-    <Flex alignItems='center' gap='spacing1'>
-      <StyledBalance gap='spacing1'>
-        <StyledBalanceLabel color='primary' size='xs' weight='medium'>
+    <Flex alignItems='center' gap='xs'>
+      <StyledBalance gap='xs'>
+        <StyledBalanceLabel color='light' size='xs' weight='medium'>
           {label}
         </StyledBalanceLabel>
-        <Dd color='secondary' size='xs' weight='medium'>
+        <Dd color='grey-200' size='xs' weight='medium'>
           {balance}
         </Dd>
       </StyledBalance>

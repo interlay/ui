@@ -48,7 +48,7 @@ const List = forwardRef<HTMLDivElement, ListProps>(
         ref={listRef}
         $variant={variant}
         direction={direction}
-        gap={variant === 'card' ? undefined : 'spacing2'}
+        gap={variant === 'card' ? undefined : 's'}
       >
         {[...state.collection].map((item) => (
           <ListItem key={item.key} item={item} state={state} variant={variant} />

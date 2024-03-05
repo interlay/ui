@@ -1,5 +1,6 @@
 import { forwardRef, useRef } from 'react';
 import { useDOMRef } from '@interlay/hooks';
+import { DialogSize } from '@interlay/themev2';
 
 import { DialogProps } from '../Dialog';
 import { Overlay } from '../Overlay';
@@ -16,13 +17,16 @@ const isInteractingWithToasts = (element: Element) => {
   return toastsContainer.contains(element);
 };
 
+type ModalSizes = DialogSize;
+
 type Props = {
   container?: Element;
-  hasMaxHeight?: boolean;
-  align?: 'top' | 'center';
+  placement?: 'top' | 'center';
+  scrollBehavior?: 'inside' | 'outside';
+  size?: ModalSizes;
 };
 
-type InheritAttrs = Omit<ModalWrapperProps & DialogProps, keyof Props | 'size' | 'wrapperRef'>;
+type InheritAttrs = Omit<ModalWrapperProps & DialogProps, keyof Props | 'wrapperRef'>;
 
 type ModalProps = Props & InheritAttrs;
 
@@ -31,13 +35,14 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
     {
       children,
       isDismissable = true,
-      align = 'center',
-      hasMaxHeight,
+      placement = 'center',
+      scrollBehavior = 'inside',
       isKeyboardDismissDisabled,
       shouldCloseOnBlur,
       shouldCloseOnInteractOutside,
       container,
       isOpen,
+      size,
       ...props
     },
     ref
@@ -46,8 +51,6 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
     const { onClose } = props;
     const wrapperRef = useRef<HTMLDivElement>(null);
 
-    const isCentered = align === 'center';
-
     // Does not allow the modal to close when clicking on toasts
     const handleShouldCloseOnInteractOutside = (element: Element) =>
       shouldCloseOnInteractOutside
@@ -55,20 +58,21 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
         : !isInteractingWithToasts(element);
 
     return (
-      <ModalContext.Provider value={{ bodyProps: { overflow: isCentered ? 'auto' : undefined } }}>
+      <ModalContext.Provider value={{ scrollBehavior }}>
         <Overlay container={container} isOpen={isOpen} nodeRef={wrapperRef}>
           <ModalWrapper
             ref={domRef}
-            align={align}
             isDismissable={isDismissable}
             isKeyboardDismissDisabled={isKeyboardDismissDisabled}
             isOpen={isOpen}
+            placement={placement}
+            scrollBehaviour={scrollBehavior}
             shouldCloseOnBlur={shouldCloseOnBlur}
             shouldCloseOnInteractOutside={handleShouldCloseOnInteractOutside}
             wrapperRef={wrapperRef}
             onClose={onClose}
           >
-            <StyledDialog $hasMaxHeight={hasMaxHeight} $isCentered={isCentered} $isOpen={isOpen} {...props}>
+            <StyledDialog $isOpen={isOpen} $scrollBehavior={scrollBehavior} size={size} {...props}>
               {children}
             </StyledDialog>
           </ModalWrapper>

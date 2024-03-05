@@ -21,7 +21,19 @@ export type {
   TransitionProperty,
   TransitionTimingFunction,
   Typography,
-  NormalAlignments
+  NormalAlignments,
+  MaxWidth,
+  AlignItems,
+  AlignSelf,
+  Direction,
+  JustifyContent,
+  LabelPosition,
+  MarginProps,
+  Orientation,
+  Overflow,
+  Placement,
+  Status,
+  Wrap
 } from './core';
 export { bobTheme } from './themes';
 export type { Theme } from './define';

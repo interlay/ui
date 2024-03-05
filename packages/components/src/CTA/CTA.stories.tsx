@@ -15,7 +15,7 @@ export default {
     children: 'Button'
   },
   render: (args) => (
-    <Flex gap='spacing4'>
+    <Flex gap='md'>
       <CTA {...args} />
       <CTA {...args} disabled />
     </Flex>
@@ -66,7 +66,7 @@ export const Large: StoryObj<CTAProps> = {
 
 export const Loading: StoryObj<CTAProps> = {
   render: (args) => (
-    <Flex direction='column' gap='spacing4'>
+    <Flex direction='column' gap='md'>
       <CTA {...args} />
       <CTA variant='secondary' {...args} />
       <CTA variant='outlined' {...args} />

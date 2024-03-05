@@ -21,7 +21,7 @@ const TokenListItem = ({ balance, balanceUSD, ticker, logoUrl, isDisabled }: Tok
       </StyledListTokenWrapper>
       <Flex alignItems='flex-end' direction='column' flex='0' gap='spacing2'>
         <StyledListItemLabel $isSelected={isSelected}>{balance}</StyledListItemLabel>
-        <Span color='tertiary' size='s'>
+        <Span color='light' size='s'>
           {format(balanceUSD)}
         </Span>
       </Flex>

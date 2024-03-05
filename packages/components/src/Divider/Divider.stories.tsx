@@ -15,11 +15,11 @@ export default {
     <Flex
       alignItems='center'
       direction={args.orientation === 'horizontal' ? 'column' : 'row'}
-      gap='spacing4'
+      gap='md'
       justifyContent='center'
       style={{ width: 400 }}
     >
-      <H1 size='xl4'>Divider</H1>
+      <H1 size='xl'>Divider</H1>
       <Divider {...args} />
       <P size='s'>Divides content</P>
     </Flex>

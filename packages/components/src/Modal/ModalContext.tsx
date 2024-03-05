@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { ModalBodyProps } from './ModalBody';
-
 interface ModalConfig {
-  bodyProps?: ModalBodyProps;
+  scrollBehavior: 'inside' | 'outside';
 }
 
-const defaultContext = {};
+const defaultContext = { scrollBehavior: 'inside' } as ModalConfig;
 
 const ModalContext = React.createContext<ModalConfig>(defaultContext);
 

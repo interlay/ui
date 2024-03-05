@@ -89,7 +89,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...mergeProps(props, buttonProps, focusProps, { onClick })}
       >
         {loading && (
-          <Flex elementType='span' marginRight={isIconOnly ? undefined : 'spacing2'}>
+          <Flex elementType='span' marginRight={isIconOnly ? undefined : 's'}>
             <Spinner aria-label='Loading...' color={spinnerColorMap[color][variant]} size={spinnerSizeMap[size]} />
           </Flex>
         )}

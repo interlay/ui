@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributes, ReactNode } from 'react';
-import { LabelPosition, Spacing } from '@interlay/theme';
+import { LabelPosition, Spacing } from '@interlay/themev2';
 
 import { Flex, FlexProps } from '../Flex';
 import { HelperText, HelperTextProps } from '../HelperText';

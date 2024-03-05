@@ -1,17 +1,14 @@
+import { MaxWidth } from 'src/core';
 import { StyledObject } from 'styled-components';
 
-type DialogSize = 's' | 'md' | 'lg';
+type DialogSize = MaxWidth;
 
-type DialogSizeParams = {
+type DialogTheme = {
   base: StyledObject<object>;
   header: StyledObject<object>;
   body: StyledObject<object>;
   footer: StyledObject<object>;
-};
-
-type DialogTheme = {
-  base: StyledObject<object>;
-  size: Record<DialogSize, DialogSizeParams>;
+  size: Record<DialogSize, StyledObject<object>>;
 };
 
 export type { DialogTheme, DialogSize };

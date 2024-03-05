@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Spacing, theme } from '@interlay/theme';
+import { Spacing } from '@interlay/themev2';
 
 type StyledFieldProps = {
   $maxWidth?: Spacing;
@@ -7,10 +7,9 @@ type StyledFieldProps = {
 
 const StyledField = styled.div<StyledFieldProps>`
   position: relative;
-  color: ${theme.colors.textPrimary};
   box-sizing: border-box;
   display: inline-flex;
-  max-width: ${({ $maxWidth }) => $maxWidth && theme.spacing[$maxWidth]};
+  max-width: ${({ $maxWidth, theme }) => $maxWidth && theme.spacing($maxWidth)};
 `;
 
 export { StyledField };

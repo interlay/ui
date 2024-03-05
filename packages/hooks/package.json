@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@interlay/theme": "workspace:*",
+    "@interlay/themev2": "workspace:*",
     "@internationalized/number": "^3.2.1",
     "@react-aria/i18n": "^3.8.1",
     "@react-aria/utils": "^3.19.0",

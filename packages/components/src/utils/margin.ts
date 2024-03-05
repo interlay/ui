@@ -1,16 +1,20 @@
-import { css } from 'styled-components';
 import { StyledMarginProps } from '@interlay/hooks';
+import { Theme } from '@interlay/themev2';
+import { css } from 'styled-components';
 
-import { Spacing, theme } from '../../../core/theme/src';
+const marginCSS = ({ theme, ...props }: StyledMarginProps & { theme: Theme }) => {
+  const marginTop = props.$marginTop || props.$marginY;
+  const marginBottom = props.$marginBottom || props.$marginY;
+  const marginLeft = props.$marginLeft || props.$marginX;
+  const marginRight = props.$marginRight || props.$marginX;
 
-const getThemeSpacing = (spacing?: Spacing): string | undefined => spacing && theme.spacing[spacing];
-
-const marginCSS = (props: StyledMarginProps) => css`
-  margin: ${getThemeSpacing(props.$margin)};
-  margin-top: ${getThemeSpacing(props.$marginTop || props.$marginY)};
-  margin-bottom: ${getThemeSpacing(props.$marginBottom || props.$marginY)};
-  margin-left: ${getThemeSpacing(props.$marginLeft || props.$marginX)};
-  margin-right: ${getThemeSpacing(props.$marginRight || props.$marginX)};
-`;
+  return css`
+    margin: ${props.$margin && theme.spacing(props.$margin)};
+    margin-top: ${marginTop && theme.spacing(marginTop)};
+    margin-bottom: ${marginBottom && theme.spacing(marginBottom)};
+    margin-left: ${marginLeft && theme.spacing(marginLeft)};
+    margin-right: ${marginRight && theme.spacing(marginRight)};
+  `;
+};
 
 export { marginCSS };

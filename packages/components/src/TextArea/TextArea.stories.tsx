@@ -57,13 +57,13 @@ export const SideLabel: StoryObj<TextAreaProps> = {
 
 export const MaxWidth: StoryObj<TextAreaProps> = {
   args: {
-    maxWidth: 'spacing28'
+    maxWidth: '6xl'
   }
 };
 
 export const MinHeight: StoryObj<TextAreaProps> = {
   args: {
-    minHeight: 'spacing28'
+    minHeight: '6xl'
   }
 };
 
@@ -77,9 +77,9 @@ export const Adornments: StoryFn<TextAreaProps> = (args) => (
 
 export const Sizes: StoryFn<TextAreaProps> = (args) => (
   <Flex direction='column'>
-    <TextArea {...args} label='Small' size='small' />
+    <TextArea {...args} label='Small' size='s' />
     <TextArea {...args} label='Medium' />
-    <TextArea {...args} label='Large' size='large' />
+    <TextArea {...args} label='Large' size='lg' />
   </Flex>
 );
 

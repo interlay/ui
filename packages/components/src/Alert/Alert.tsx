@@ -13,7 +13,7 @@ type InheritAttrs = Omit<FlexProps, keyof Props>;
 type AlertProps = Props & InheritAttrs;
 
 const Alert = ({ status = 'success', children, ...props }: AlertProps): JSX.Element => (
-  <StyledAlert $status={status} alignItems='center' gap='spacing4' role='alert' {...props}>
+  <StyledAlert $status={status} alignItems='center' gap='md' role='alert' {...props}>
     <StyledWarningIcon />
     <div>{children}</div>
   </StyledAlert>

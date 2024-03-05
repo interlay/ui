@@ -1,50 +1,39 @@
 import styled, { css } from 'styled-components';
-import { theme } from '@interlay/theme';
-import { BorderRadius, CardVariants, Spacing, Variants } from '@interlay/theme';
+import { Color, Rounded, Spacing } from '@interlay/themev2';
 
 import { Flex } from '../Flex';
 
 type StyledCardProps = {
-  $variant: CardVariants;
-  $rounded: BorderRadius;
+  $bordered: boolean | Color;
+  $rounded: Rounded;
   $padding: Spacing;
   $shadowed: boolean;
-  $background: Variants;
+  $background: Color;
   $isHoverable?: boolean;
   $isPressable?: boolean;
 };
 
 const StyledCard = styled(Flex)<StyledCardProps>`
-  color: ${theme.colors.textPrimary};
-  background-color: ${({ $background }) => theme.card.bg[$background]};
-  border: ${({ $variant }) => ($variant === 'bordered' ? theme.border.default : theme.card.outlined.border)};
-  border-radius: ${({ $rounded }) => theme.rounded[$rounded]};
-  padding: ${({ $padding }) => theme.spacing[$padding]};
+  background-color: ${({ $background, theme }) => theme.color($background)};
+  border-radius: ${({ $rounded, theme }) => theme.rounded($rounded)};
+  padding: ${({ $padding, theme }) => theme.spacing($padding)};
   cursor: ${({ $isPressable }) => $isPressable && 'pointer'};
   outline: none;
 
-  ${({ $shadowed }) =>
-    $shadowed &&
-    css`
-      box-shadow: ${theme.boxShadow.default};
-    `}
+  // TODO: add isHoverable
+  ${({ $bordered, $isPressable, $shadowed, theme }) => {
+    const { border, boxShadow, ...baseCss } = theme.card.base;
 
-  ${({ $isHoverable }) =>
-    $isHoverable &&
-    css`
-      &:hover {
-        border: ${theme.border.hover};
-      }
-    `}
+    return css`
+      border: ${typeof $bordered === 'boolean' ? border : `1px solid ${$bordered}`};
+      box-shadow: ${$shadowed && boxShadow};
+      ${baseCss}
 
-  ${({ $isPressable }) =>
-    $isPressable &&
-    css`
       &:focus {
-        border: ${theme.border.focus};
-        box-shadow: ${theme.boxShadow.focus};
+        ${$isPressable && theme.card.focus}
       }
-    `}
+    `;
+  }}
 `;
 
 export { StyledCard };

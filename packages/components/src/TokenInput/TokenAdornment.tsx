@@ -12,7 +12,7 @@ type NativeAttrs = Omit<FlexProps, keyof Props>;
 type TokenAdornmentProps = Props & NativeAttrs;
 
 const TokenAdornment = ({ ticker, logoUrl, ...props }: TokenAdornmentProps): JSX.Element => (
-  <StyledTokenAdornment {...props} alignItems='center' gap='spacing1' justifyContent='space-evenly'>
+  <StyledTokenAdornment {...props} alignItems='center' gap='xs' justifyContent='space-evenly'>
     <StyledTokenImg alt={ticker} src={logoUrl} />
     <StyledTicker>{ticker}</StyledTicker>
   </StyledTokenAdornment>

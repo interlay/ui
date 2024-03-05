@@ -15,7 +15,7 @@ const TokenInputLabel = ({ balance, children, ...props }: TokenInputLabelProps):
   const hasLabel = !!children;
 
   return (
-    <Flex gap='spacing0' justifyContent={hasLabel ? 'space-between' : 'flex-end'}>
+    <Flex gap='none' justifyContent={hasLabel ? 'space-between' : 'flex-end'}>
       {hasLabel && <Label {...props}>{children}</Label>}
       {balance}
     </Flex>

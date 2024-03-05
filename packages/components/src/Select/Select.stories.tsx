@@ -10,17 +10,17 @@ import { Select, SelectProps } from './Select';
 const Render = (args: SelectProps) => (
   <Select<any> {...args}>
     <Item key='BTC' textValue='BTC'>
-      <Flex alignItems='center' gap='spacing2'>
+      <Flex alignItems='center' gap='xs'>
         BTC
       </Flex>
     </Item>
     <Item key='ETH' textValue='ETH'>
-      <Flex alignItems='center' gap='spacing2'>
+      <Flex alignItems='center' gap='xs'>
         ETH
       </Flex>
     </Item>
     <Item key='USDT' textValue='USDT'>
-      <Flex alignItems='center' gap='spacing2'>
+      <Flex alignItems='center' gap='xs'>
         USDT
       </Flex>
     </Item>
