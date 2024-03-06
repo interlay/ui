@@ -13,7 +13,7 @@ const CheckCircle = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
     xmlns='http://www.w3.org/2000/svg'
   >
     <path
-      d='M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+      d='M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z'
       strokeLinecap='round'
       strokeLinejoin='round'
     />

@@ -29,7 +29,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
   (
     {
       direction = 'column',
-      background = 'grey-300',
+      background,
       isHoverable,
       isPressable,
       children,

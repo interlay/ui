@@ -10,3 +10,4 @@ export * from './list';
 export * from './radio';
 export * from './switch';
 export * from './spinner';
+export * from './progress-bar';

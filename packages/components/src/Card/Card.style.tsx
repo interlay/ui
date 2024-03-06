@@ -8,25 +8,25 @@ type StyledCardProps = {
   $rounded: Rounded;
   $padding: Spacing;
   $shadowed: boolean;
-  $background: Color;
+  $background?: Color;
   $isHoverable?: boolean;
   $isPressable?: boolean;
 };
 
 const StyledCard = styled(Flex)<StyledCardProps>`
-  background-color: ${({ $background, theme }) => theme.color($background)};
   border-radius: ${({ $rounded, theme }) => theme.rounded($rounded)};
   padding: ${({ $padding, theme }) => theme.spacing($padding)};
   cursor: ${({ $isPressable }) => $isPressable && 'pointer'};
   outline: none;
 
   // TODO: add isHoverable
-  ${({ $bordered, $isPressable, $shadowed, theme }) => {
-    const { border, boxShadow, ...baseCss } = theme.card.base;
+  ${({ $bordered, $isPressable, $shadowed, $background, theme }) => {
+    const { border, boxShadow, backgroundColor, ...baseCss } = theme.card.base;
 
     return css`
       border: ${typeof $bordered === 'boolean' ? border : `1px solid ${$bordered}`};
       box-shadow: ${$shadowed && boxShadow};
+      background-color: ${$background ? theme.color($background) : backgroundColor};
       ${baseCss}
 
       &:focus {

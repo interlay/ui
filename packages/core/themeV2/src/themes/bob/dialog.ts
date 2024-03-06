@@ -5,8 +5,8 @@ import { color } from './colors';
 
 const dialog: DialogTheme = {
   base: {
-    background: color('grey-300'),
-    border: `1px solid ${color('grey-200')}`,
+    background: color('grey-500'),
+    border: `1px solid ${color('grey-400')}`,
     borderRadius: rounded('md')
   },
   header: {

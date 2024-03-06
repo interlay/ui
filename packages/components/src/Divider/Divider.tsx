@@ -21,7 +21,7 @@ type DividerProps = Props & NativeAttrs & ElementTypeProp & MarginProps;
 
 const Divider = forwardRef<HTMLHRElement, DividerProps>(
   (
-    { elementType: elementTypeProp, orientation = 'horizontal', color = 'grey-200', size = 's', ...props },
+    { elementType: elementTypeProp, orientation = 'horizontal', color = 'grey-400', size = 's', ...props },
     ref
   ): JSX.Element => {
     const elementType = elementTypeProp || orientation === 'vertical' ? 'div' : 'hr';

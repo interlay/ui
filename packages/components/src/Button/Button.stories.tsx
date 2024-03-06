@@ -16,8 +16,19 @@ export default {
 
 export const Solid: StoryObj<ButtonProps> = {
   args: {
-    variant: 'solid',
-    loading: true
+    variant: 'solid'
+  }
+};
+
+export const Outline: StoryObj<ButtonProps> = {
+  args: {
+    variant: 'outline'
+  }
+};
+
+export const Ghost: StoryObj<ButtonProps> = {
+  args: {
+    variant: 'ghost'
   }
 };
 

@@ -7,7 +7,7 @@ const input: InputTheme = {
   base: {
     color: color('light'),
     backgroundColor: color('grey-500'),
-    border: `1px solid ${color('grey-200')}`,
+    border: `1px solid ${color('grey-400')}`,
     borderRadius: rounded('md'),
     ...transition('common', 'normal')
   },
@@ -38,27 +38,27 @@ const input: InputTheme = {
     }
   },
   hover: {
-    border: `1px solid ${color('grey-200')}`
+    border: `1px solid ${color('grey-300')}`
   },
   focus: {
     border: `1px solid ${color('light')}`,
     boxShadow: `0 0 0 1px ${color('light')}`
   },
   placeholder: {
-    color: color('grey-100')
+    color: color('grey-300')
   },
   disabled: {
     opacity: 0.5
   },
   error: {
     base: {
-      border: `1px solid ${'#FF0000'}`
+      border: `1px solid ${color('red-500')}`
     },
     hover: {
-      border: `1px solid ${'#FF0000'}`
+      border: `1px solid ${color('red-500')}`
     },
     focus: {
-      boxShadow: `0 0 0 1px ${'#FF0000'}`
+      boxShadow: `0 0 0 1px ${color('red-500')}`
     }
   }
 };

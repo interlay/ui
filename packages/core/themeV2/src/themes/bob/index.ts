@@ -13,6 +13,7 @@ import { radio } from './radio';
 import { colors } from './colors';
 import { spinner } from './spinner';
 import { _switch } from './switch';
+import { progressBar } from './progress-bar';
 
 const bobTheme = defineTheme({
   colors,
@@ -27,7 +28,8 @@ const bobTheme = defineTheme({
   list,
   radio,
   spinner,
-  switch: _switch
+  switch: _switch,
+  progressBar
 });
 
 export { bobTheme };

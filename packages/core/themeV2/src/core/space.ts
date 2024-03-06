@@ -22,6 +22,7 @@ const baseSpacing = {
   '11xl': 160
 };
 
+// TODO: make this accept more props such as space("xl", "s") -> `Xrem Xrem`
 const spacing = style(baseSpacing);
 
 export { spacing };

@@ -1,16 +1,10 @@
-import { Rounded, Spacing } from '../core';
+import { StyledObject } from 'styled-components';
 
 type AlertStatus = 'info' | 'success' | 'warning' | 'error';
 
-type AlertSatusParams = {
-  border: string;
-  bg: string;
-};
-
 type AlertTheme = {
-  padding: Spacing;
-  rounded: Rounded;
-  status: Record<AlertStatus, AlertSatusParams>;
+  base: StyledObject<object>;
+  status: Record<AlertStatus, StyledObject<object>>;
 };
 
 export type { AlertTheme, AlertStatus };

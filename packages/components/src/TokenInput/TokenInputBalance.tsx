@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 
-import { CTA } from '../CTA';
-import { Dd, Flex } from '..';
+import { Dd, Flex, UnstyledButton } from '..';
 
 import { StyledBalance, StyledBalanceLabel } from './TokenInput.style';
 
@@ -37,10 +36,10 @@ const TokenInputBalance = ({
           {label}
         </StyledBalanceLabel>
         <Dd color='grey-200' size='xs' weight='medium'>
-          {balance}
+          <UnstyledButton>{balance}</UnstyledButton>
         </Dd>
       </StyledBalance>
-      <CTA
+      {/* <CTA
         aria-controls={inputId}
         aria-label={ariaLabel}
         disabled={isDisabled}
@@ -48,7 +47,7 @@ const TokenInputBalance = ({
         onPress={handleClickBalance}
       >
         MAX
-      </CTA>
+      </CTA> */}
     </Flex>
   );
 };

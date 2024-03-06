@@ -1,13 +1,13 @@
 import { AriaProgressBarProps, useProgressBar } from '@react-aria/progress';
 import { CSSProperties } from 'react';
-import { ProgressBarColors } from '@interlay/theme';
+import { Color, ProgressBarSize } from '@interlay/themev2';
 
 import { Flex, FlexProps } from '../Flex';
 import { Span } from '../Text';
 
 import { StyledFill, StyledTrack } from './ProgressBar.style';
 
-type Props = { color?: ProgressBarColors; showValueLabel?: boolean };
+type Props = { color?: Color; showValueLabel?: boolean; size?: ProgressBarSize };
 
 type AriaAttrs = Omit<AriaProgressBarProps, keyof Props>;
 
@@ -22,7 +22,8 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
     value = 0,
     minValue = 0,
     maxValue = 100,
-    color = 'default',
+    color,
+    size = 'md',
     showValueLabel,
     label,
     className,
@@ -36,13 +37,13 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
   return (
     <Flex className={className} direction='column' gap='s' hidden={hidden} style={style} {...progressBarProps}>
       {(label || showValueLabel) && (
-        <Flex>
+        <Flex gap='s'>
           {label && <Span {...labelProps}>{label}</Span>}
           {showValueLabel && <Span>{progressBarProps['aria-valuetext']}</Span>}
         </Flex>
       )}
-      <StyledTrack>
-        <StyledFill $color={color} style={barStyle} />
+      <StyledTrack $size={size}>
+        <StyledFill $color={color} $size={size} style={barStyle} />
       </StyledTrack>
     </Flex>
   );

@@ -1,11 +1,10 @@
 import { useDOMRef } from '@interlay/hooks';
-import { useButton } from '@react-aria/button';
 import { useFocusRing } from '@react-aria/focus';
 import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { ButtonVariants, ButtonSizes, ButtonColors, SpinnerSizes, SpinnerColors } from '@interlay/themev2';
-import { Slot, Slottable } from '@radix-ui/react-slot';
+import { Slottable } from '@radix-ui/react-slot';
 
 import { Flex } from '../Flex';
 import { Spinner } from '../Spinner';
@@ -59,8 +58,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       color = 'default',
       fullWidth,
       isIconOnly,
-      onPress,
-      onClick,
       asChild,
       ...props
     },
@@ -70,10 +67,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const isDisabled = disabled || loading;
 
-    const { buttonProps } = useButton({ isDisabled, onPress, ...props }, domRef);
     const { focusProps, isFocusVisible } = useFocusRing(props);
-
-    const Comp = asChild ? Slot : 'button';
 
     return (
       <StyledButton
@@ -84,9 +78,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         $isIconOnly={isIconOnly}
         $size={size}
         $variant={variant}
-        as={Comp}
+        asChild={asChild}
         disabled={isDisabled}
-        {...mergeProps(props, buttonProps, focusProps, { onClick })}
+        {...mergeProps(props, focusProps)}
       >
         {loading && (
           <Flex elementType='span' marginRight={isIconOnly ? undefined : 's'}>

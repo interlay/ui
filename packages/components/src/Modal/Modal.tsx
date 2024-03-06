@@ -6,7 +6,6 @@ import { DialogProps } from '../Dialog';
 import { Overlay } from '../Overlay';
 
 import { StyledDialog } from './Modal.style';
-import { ModalContext } from './ModalContext';
 import { ModalWrapper, ModalWrapperProps } from './ModalWrapper';
 
 const isInteractingWithToasts = (element: Element) => {
@@ -22,7 +21,6 @@ type ModalSizes = DialogSize;
 type Props = {
   container?: Element;
   placement?: 'top' | 'center';
-  scrollBehavior?: 'inside' | 'outside';
   size?: ModalSizes;
 };
 
@@ -36,7 +34,6 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
       children,
       isDismissable = true,
       placement = 'center',
-      scrollBehavior = 'inside',
       isKeyboardDismissDisabled,
       shouldCloseOnBlur,
       shouldCloseOnInteractOutside,
@@ -58,26 +55,23 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
         : !isInteractingWithToasts(element);
 
     return (
-      <ModalContext.Provider value={{ scrollBehavior }}>
-        <Overlay container={container} isOpen={isOpen} nodeRef={wrapperRef}>
-          <ModalWrapper
-            ref={domRef}
-            isDismissable={isDismissable}
-            isKeyboardDismissDisabled={isKeyboardDismissDisabled}
-            isOpen={isOpen}
-            placement={placement}
-            scrollBehaviour={scrollBehavior}
-            shouldCloseOnBlur={shouldCloseOnBlur}
-            shouldCloseOnInteractOutside={handleShouldCloseOnInteractOutside}
-            wrapperRef={wrapperRef}
-            onClose={onClose}
-          >
-            <StyledDialog $isOpen={isOpen} $scrollBehavior={scrollBehavior} size={size} {...props}>
-              {children}
-            </StyledDialog>
-          </ModalWrapper>
-        </Overlay>
-      </ModalContext.Provider>
+      <Overlay container={container} isOpen={isOpen} nodeRef={wrapperRef}>
+        <ModalWrapper
+          ref={domRef}
+          isDismissable={isDismissable}
+          isKeyboardDismissDisabled={isKeyboardDismissDisabled}
+          isOpen={isOpen}
+          placement={placement}
+          shouldCloseOnBlur={shouldCloseOnBlur}
+          shouldCloseOnInteractOutside={handleShouldCloseOnInteractOutside}
+          wrapperRef={wrapperRef}
+          onClose={onClose}
+        >
+          <StyledDialog $isOpen={isOpen} size={size} {...props}>
+            {children}
+          </StyledDialog>
+        </ModalWrapper>
+      </Overlay>
     );
   }
 );

@@ -6,7 +6,10 @@ export type {
   SpinnerSizes,
   InputSizes,
   DividerSizes,
-  DialogSize
+  DialogSize,
+  AccordionVariants,
+  ProgressBarSize,
+  AlertStatus
 } from './components';
 export type {
   IconsSizes,

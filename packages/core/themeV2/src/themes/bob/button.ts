@@ -47,14 +47,14 @@ const button: ButtonTheme = {
       color: {
         default: {
           base: {
-            backgroundColor: color('grey-200'),
+            backgroundColor: color('grey-500'),
             color: color('light')
           },
           hover: {
-            backgroundColor: color('grey-100')
+            backgroundColor: color('grey-400')
           },
           active: {
-            backgroundColor: color('grey-100')
+            backgroundColor: color('grey-300')
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #4040403D, 0px 1px 2px 0px #1018280D'
@@ -65,14 +65,14 @@ const button: ButtonTheme = {
         },
         primary: {
           base: {
-            backgroundColor: color('primary-300'),
+            backgroundColor: color('primary-500'),
             color: color('light')
           },
           hover: {
-            backgroundColor: color('primary-200')
+            backgroundColor: color('primary-600')
           },
           active: {
-            backgroundColor: color('primary-200')
+            backgroundColor: color('primary-700')
           },
           focus: {
             boxShadow: '0px 0px 0px 4px #FA45163D, 0px 1px 2px 0px #1018280D'
@@ -87,11 +87,11 @@ const button: ButtonTheme = {
       color: {
         default: {
           base: {
-            border: `1px solid ${color('grey-200')}`,
+            border: `1px solid ${color('grey-400')}`,
             color: color('light')
           },
           hover: {
-            backgroundColor: color('grey-300')
+            backgroundColor: color('grey-600')
           },
           active: {
             backgroundColor: color('grey-300')
