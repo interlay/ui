@@ -43,7 +43,9 @@ export const Controlled: StoryObj<TokenInputProps> = {
 
 export const WithValueUSD: StoryObj<TokenInputProps> = {
   args: {
-    valueUSD: 0
+    valueUSD: 0,
+    balance: '10.901231231',
+    humanBalance: '11'
   },
   render: ControlledComponent
 };

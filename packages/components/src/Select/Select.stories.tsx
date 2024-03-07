@@ -24,6 +24,51 @@ const Render = (args: SelectProps) => (
         USDT
       </Flex>
     </Item>
+    <Item key='USDC' textValue='USDC'>
+      <Flex alignItems='center' gap='xs'>
+        USDC
+      </Flex>
+    </Item>
+    <Item key='TBTC' textValue='TBTC'>
+      <Flex alignItems='center' gap='xs'>
+        TBTC
+      </Flex>
+    </Item>
+    <Item key='WBTC' textValue='WBTC'>
+      <Flex alignItems='center' gap='xs'>
+        WBTC
+      </Flex>
+    </Item>
+    <Item key='WETH' textValue='WETH'>
+      <Flex alignItems='center' gap='xs'>
+        WETH
+      </Flex>
+    </Item>
+    <Item key='DAI' textValue='DAI'>
+      <Flex alignItems='center' gap='xs'>
+        DAI
+      </Flex>
+    </Item>
+    <Item key='BBTC' textValue='BBTC'>
+      <Flex alignItems='center' gap='xs'>
+        BBTC
+      </Flex>
+    </Item>
+    <Item key='DBTC' textValue='DBTC'>
+      <Flex alignItems='center' gap='xs'>
+        DBTC
+      </Flex>
+    </Item>
+    <Item key='PBTC' textValue='PBTC'>
+      <Flex alignItems='center' gap='xs'>
+        PBTC
+      </Flex>
+    </Item>
+    <Item key='WWBTC' textValue='WWBTC'>
+      <Flex alignItems='center' gap='xs'>
+        WWBTC
+      </Flex>
+    </Item>
   </Select>
 );
 

@@ -6,7 +6,7 @@ import { color } from './colors';
 const input: InputTheme = {
   base: {
     color: color('light'),
-    backgroundColor: color('grey-500'),
+    backgroundColor: color('grey-600'),
     border: `1px solid ${color('grey-400')}`,
     borderRadius: rounded('md'),
     ...transition('common', 'normal')

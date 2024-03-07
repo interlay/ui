@@ -1,77 +1,48 @@
 import styled from 'styled-components';
 import { ChevronDown } from '@interlay/icons';
 import { theme } from '@interlay/theme';
+import { TokenInputSize } from '@interlay/themev2';
 
+import { UnstyledButton } from '../UnstyledButton';
 import { Flex } from '../Flex';
 import { List } from '../List';
 import { StyledTrigger } from '../Select/Select.style';
-import { Dl, Dt, Span } from '../Text';
-
-type StyledUSDAdornmentProps = {
-  $isDisabled?: boolean;
-};
+import { Span } from '../Text';
 
 type StyledListItemSelectedLabelProps = {
   $isSelected: boolean;
 };
 
+type StyledTokenAdornmentProps = {
+  $size: TokenInputSize;
+};
+
 const StyledTicker = styled.span`
-  font-size: ${theme.text.s};
-  color: ${theme.colors.textPrimary};
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
-const StyledUSDAdornment = styled.span<StyledUSDAdornmentProps>`
-  display: block;
-  font-size: ${theme.text.xs};
-  line-height: ${theme.lineHeight.s};
-  color: ${({ $isDisabled }) => ($isDisabled ? theme.input.disabled.color : theme.colors.textTertiary)};
-  white-space: nowrap;
-  align-self: flex-start;
+const StyledTokenAdornment = styled(Flex)<StyledTokenAdornmentProps>`
+  ${({ theme, $size }) => theme.tokenInput.size[$size].addornment.token.base}
 `;
 
-const StyledTokenAdornment = styled(Flex)`
-  border: ${theme.border.default};
-  background-color: ${theme.tokenInput.endAdornment.bg};
-  border-radius: ${theme.rounded.md};
-  font-size: ${theme.text.s};
-  padding: ${theme.spacing.spacing3};
-  height: 3rem;
-  width: auto;
-  overflow: hidden;
-`;
-
-const StyledTokenImg = styled.img`
-  height: ${theme.spacing.spacing6};
-  width: ${theme.spacing.spacing6};
+const StyledTokenImg = styled.img<StyledTokenAdornmentProps>`
+  ${({ theme, $size }) => theme.tokenInput.size[$size].addornment.token.img}
   border-radius: ${theme.rounded.full};
 `;
 
 const StyledTokenSelect = styled(StyledTrigger)`
-  background-color: ${theme.tokenInput.endAdornment.bg};
-  opacity: ${({ $isDisabled }) => $isDisabled && 0.5};
-  border-radius: ${theme.rounded.md};
-  font-size: ${theme.text.s};
-  padding: ${theme.spacing.spacing3};
-  height: 3rem;
-  max-height: 3rem;
-  width: auto;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   overflow: hidden;
+  margin-left: -1px;
+  max-width: 150px;
+  width: 100%;
 `;
 
 const StyledChevronDown = styled(ChevronDown)`
   margin-left: ${theme.spacing.spacing1};
-`;
-
-const StyledBalance = styled(Dl)`
-  padding: ${theme.spacing.spacing1} 0;
-`;
-
-const StyledBalanceLabel = styled(Dt)`
-  &:after {
-    content: ':';
-  }
 `;
 
 const StyledListItemLabel = styled(Span)<StyledListItemSelectedLabelProps>`
@@ -94,17 +65,26 @@ const StyledListTokenWrapper = styled(Flex)`
   overflow: hidden;
 `;
 
+const StyledBalanceButton = styled(UnstyledButton)`
+  ${({ theme }) => theme.tokenInput.balance}
+`;
+
+const StyledBalanceLabel = styled(Span)`
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+`;
+
 export {
+  StyledBalanceLabel,
   StyledChevronDown,
   StyledList,
   StyledListHeader,
   StyledListItemLabel,
   StyledListTokenWrapper,
   StyledTicker,
+  StyledBalanceButton,
   StyledTokenAdornment,
-  StyledBalance,
-  StyledBalanceLabel,
   StyledTokenSelect,
-  StyledUSDAdornment,
   StyledTokenImg
 };

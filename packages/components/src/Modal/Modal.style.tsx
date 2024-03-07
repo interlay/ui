@@ -1,22 +1,28 @@
-import styled from 'styled-components';
+import styled, { CSSProperties } from 'styled-components';
+import { DialogSize } from '@interlay/themev2';
 
 import { overlayCSS } from '../utils/overlay';
 import { Dialog, DialogBody } from '../Dialog';
 
+type StyledWrapperProps = {
+  $placement: 'top' | 'center';
+};
+
 type StyledModalProps = {
   $isOpen?: boolean;
-  $placement: 'top' | 'center';
+  $size: DialogSize;
 };
 
 type StyledDialogProps = {
   $isOpen?: boolean;
+  $maxHeight?: CSSProperties['maxHeight'];
 };
 
 type StyledModalBodyProps = {
   $noPadding?: boolean;
 };
 
-const StyledWrapper = styled.div<StyledModalProps>`
+const StyledWrapper = styled.div<StyledWrapperProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -46,11 +52,13 @@ const StyledModal = styled.div<StyledModalProps>`
 
   outline: none;
   margin: ${({ theme }) => `${theme.spacing('7xl')} ${theme.spacing('xl')}`};
+  max-width: ${({ theme, $size }) => theme.dialog.size[$size].maxWidth};
+  width: 100%;
 `;
 
 const StyledDialog = styled(Dialog)<StyledDialogProps>`
   pointer-events: ${({ $isOpen }) => !$isOpen && 'none'};
-  max-height: ${({ theme }) => `calc(100dvh - ${theme.spacing('10xl')})`};
+  max-height: ${({ theme, $maxHeight }) => $maxHeight || `calc(100dvh - ${theme.spacing('10xl')})`};
 `;
 
 const StyledDialogBody = styled(DialogBody)<StyledModalBodyProps>`

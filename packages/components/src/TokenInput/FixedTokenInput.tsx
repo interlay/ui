@@ -13,7 +13,7 @@ type Props = {
   logoUrl: string;
 };
 
-type InheritAttrs = Omit<BaseTokenInputProps, keyof Props>;
+type InheritAttrs = Omit<BaseTokenInputProps, keyof Props | 'endAdornment'>;
 
 type FixedTokenInputProps = Props & InheritAttrs;
 
@@ -28,6 +28,7 @@ const FixedTokenInput = forwardRef<HTMLInputElement, FixedTokenInputProps>(
       logoUrl,
       isDisabled,
       id,
+      size = 'md',
       ...props
     },
     ref
@@ -45,12 +46,13 @@ const FixedTokenInput = forwardRef<HTMLInputElement, FixedTokenInputProps>(
 
     return (
       <BaseTokenInput
+        {...props}
         ref={ref}
         balance={balance}
-        endAdornment={<TokenAdornment logoUrl={logoUrl} ticker={tickerProp} />}
+        endAdornment={<TokenAdornment logoUrl={logoUrl} size={size} ticker={tickerProp} />}
         id={id}
         isDisabled={isDisabled}
-        {...props}
+        size={size}
       />
     );
   }

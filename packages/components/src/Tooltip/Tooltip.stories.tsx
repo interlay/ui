@@ -11,7 +11,7 @@ export default {
     layout: 'centered'
   },
   render: (args) => (
-    <Tooltip {...args} isOpen>
+    <Tooltip {...args}>
       <CTA>Hover Me</CTA>
     </Tooltip>
   ),

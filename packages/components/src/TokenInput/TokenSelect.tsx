@@ -1,7 +1,7 @@
 import { mergeProps } from '@react-aria/utils';
 
 import { Flex } from '../Flex';
-import { Item, Select, ModalSelectProps } from '../Select';
+import { Item, ModalSelectProps, Select } from '../Select';
 import { Span } from '../Text';
 
 import { StyledTicker, StyledTokenImg, StyledTokenSelect } from './TokenInput.style';
@@ -9,7 +9,7 @@ import { TokenListItem } from './TokenListItem';
 
 const Value = ({ data }: { data: TokenData }) => (
   <Flex alignItems='center' gap='xs' justifyContent='space-evenly'>
-    <StyledTokenImg alt={data.ticker} src={data.logoUrl} />
+    <StyledTokenImg $size='md' alt={data.ticker} src={data.logoUrl} />
     <StyledTicker>{data.ticker}</StyledTicker>
   </Flex>
 );

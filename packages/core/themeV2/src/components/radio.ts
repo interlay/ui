@@ -1,8 +1,5 @@
-type RadioTheme = {
-  color: string;
-  selected: {
-    color: string;
-  };
-};
+import { StyledObject } from 'styled-components';
+
+type RadioTheme = StyledObject<object>;
 
 export type { RadioTheme };

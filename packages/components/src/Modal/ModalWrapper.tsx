@@ -2,6 +2,7 @@ import { AriaModalOverlayProps, AriaOverlayProps, useModalOverlay } from '@react
 import { mergeProps } from '@react-aria/utils';
 import { OverlayTriggerState } from '@react-stately/overlays';
 import { forwardRef, ReactNode, RefObject } from 'react';
+import { DialogSize } from '@interlay/themev2';
 
 import { Underlay } from '../Overlay/Underlay';
 
@@ -13,6 +14,7 @@ type Props = {
   isOpen?: boolean;
   onClose: () => void;
   wrapperRef: RefObject<HTMLDivElement>;
+  size: DialogSize;
 };
 
 type InheritAttrs = Omit<AriaModalOverlayProps & AriaOverlayProps, keyof Props>;
@@ -31,6 +33,7 @@ const ModalWrapper = forwardRef<HTMLDivElement, ModalWrapperProps>(
       shouldCloseOnInteractOutside,
       shouldCloseOnBlur,
       wrapperRef,
+      size,
       ...props
     },
     ref
@@ -53,8 +56,8 @@ const ModalWrapper = forwardRef<HTMLDivElement, ModalWrapperProps>(
     return (
       <div ref={wrapperRef}>
         <Underlay {...underlayProps} isOpen={!!isOpen} />
-        <StyledWrapper $isOpen={!!isOpen} $placement={placement}>
-          <StyledModal ref={ref} $isOpen={isOpen} $placement={placement} {...mergeProps(modalProps, props)}>
+        <StyledWrapper $placement={placement}>
+          <StyledModal ref={ref} $isOpen={isOpen} $size={size} {...mergeProps(modalProps, props)}>
             {children}
           </StyledModal>
         </StyledWrapper>

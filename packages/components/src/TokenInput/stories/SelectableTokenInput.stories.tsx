@@ -63,7 +63,8 @@ export const SelectableControlledValue: StoryObj<TokenInputProps> = {
 
 export const SelectableWithBalance: StoryObj<TokenInputProps> = {
   args: {
-    balance: '10'
+    balance: '10',
+    valueUSD: '0'
   }
 };
 

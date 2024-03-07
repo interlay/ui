@@ -1,6 +1,7 @@
 import { forwardRef, useRef } from 'react';
 import { useDOMRef } from '@interlay/hooks';
 import { DialogSize } from '@interlay/themev2';
+import { CSSProperties } from 'styled-components';
 
 import { DialogProps } from '../Dialog';
 import { Overlay } from '../Overlay';
@@ -22,6 +23,7 @@ type Props = {
   container?: Element;
   placement?: 'top' | 'center';
   size?: ModalSizes;
+  maxHeight?: CSSProperties['maxHeight'];
 };
 
 type InheritAttrs = Omit<ModalWrapperProps & DialogProps, keyof Props | 'wrapperRef'>;
@@ -39,7 +41,8 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
       shouldCloseOnInteractOutside,
       container,
       isOpen,
-      size,
+      size = 'md',
+      maxHeight,
       ...props
     },
     ref
@@ -64,10 +67,11 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
           placement={placement}
           shouldCloseOnBlur={shouldCloseOnBlur}
           shouldCloseOnInteractOutside={handleShouldCloseOnInteractOutside}
+          size={size}
           wrapperRef={wrapperRef}
           onClose={onClose}
         >
-          <StyledDialog $isOpen={isOpen} size={size} {...props}>
+          <StyledDialog $isOpen={isOpen} $maxHeight={maxHeight} size={size} {...props}>
             {children}
           </StyledDialog>
         </ModalWrapper>

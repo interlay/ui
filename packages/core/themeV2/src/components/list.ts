@@ -1,17 +1,5 @@
-import { Rounded } from '../core';
+import { StyledObject } from 'styled-components';
 
-type ListTheme = {
-  bg: string;
-  item: {
-    rounded: Rounded;
-    border: string;
-    hover: {
-      bg: string;
-    };
-    selected: {
-      bg: string;
-    };
-  };
-};
+type ListTheme = { item: { base: StyledObject<object>; hover: StyledObject<object>; selected: StyledObject<object> } };
 
 export type { ListTheme };

@@ -1,3 +1,5 @@
+import { TokenInputSize } from '@interlay/themev2';
+
 import { FlexProps } from '../Flex';
 
 import { StyledTicker, StyledTokenAdornment, StyledTokenImg } from './TokenInput.style';
@@ -5,15 +7,16 @@ import { StyledTicker, StyledTokenAdornment, StyledTokenImg } from './TokenInput
 type Props = {
   ticker: string;
   logoUrl: string;
+  size: TokenInputSize;
 };
 
 type NativeAttrs = Omit<FlexProps, keyof Props>;
 
 type TokenAdornmentProps = Props & NativeAttrs;
 
-const TokenAdornment = ({ ticker, logoUrl, ...props }: TokenAdornmentProps): JSX.Element => (
-  <StyledTokenAdornment {...props} alignItems='center' gap='xs' justifyContent='space-evenly'>
-    <StyledTokenImg alt={ticker} src={logoUrl} />
+const TokenAdornment = ({ ticker, logoUrl, size, ...props }: TokenAdornmentProps): JSX.Element => (
+  <StyledTokenAdornment {...props} $size={size} alignItems='center' gap='s'>
+    <StyledTokenImg $size={size} alt={ticker} src={logoUrl} />
     <StyledTicker>{ticker}</StyledTicker>
   </StyledTokenAdornment>
 );

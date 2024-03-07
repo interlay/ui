@@ -15,6 +15,7 @@ const StyledDialog = styled.section<StyledDialogProps>`
   position: relative;
   outline: none;
 
+  width: 100%;
   ${({ theme, $size }) => css`
     ${theme.dialog.base}
     ${theme.dialog.size[$size]}

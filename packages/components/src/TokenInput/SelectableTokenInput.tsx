@@ -15,7 +15,7 @@ type Props = {
   selectProps: Omit<TokenSelectProps, 'label' | 'helperTextId'>;
 };
 
-type InheritAttrs = Omit<BaseTokenInputProps, keyof Props>;
+type InheritAttrs = Omit<BaseTokenInputProps, keyof Props | 'endAdornment'>;
 
 type SelectableTokenInputProps = Props & InheritAttrs;
 

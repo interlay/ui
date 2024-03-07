@@ -1,12 +1,11 @@
+import { useDOMRef } from '@interlay/hooks';
+import { InputSizes } from '@interlay/themev2';
 import { useSelect } from '@react-aria/select';
 import { mergeProps, useId } from '@react-aria/utils';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import { SelectProps as AriaSelectProps, useSelectState } from '@react-stately/select';
-import { CollectionBase, Node } from '@react-types/shared';
-import { ForwardedRef, forwardRef, ReactNode, useRef } from 'react';
-import { Sizes } from '@interlay/theme';
-import { useDOMRef } from '@interlay/hooks';
-import { Key } from '@react-types/shared';
+import { CollectionBase, Key, Node } from '@react-types/shared';
+import { ForwardedRef, ReactNode, forwardRef, useRef } from 'react';
 
 import { Field, FieldProps, useFieldProps } from '../Field';
 import { hasError } from '../utils/input';
@@ -19,7 +18,7 @@ type SelectObject = Record<any, any>;
 type Props<T = SelectObject> = {
   open?: boolean;
   loading?: boolean;
-  size?: Sizes;
+  size?: InputSizes;
   // MEMO: Allows a custom select trigger (TokenInput select)
   asSelectTrigger?: any;
   renderValue?: (item: Node<T>) => ReactNode;
@@ -62,7 +61,7 @@ const Select = <T extends SelectObject = SelectObject>(
     required,
     label,
     errorMessage,
-    size = 'medium',
+    size = 'md',
     placeholder = 'Select an option',
     asSelectTrigger,
     isInvalid,
@@ -165,6 +164,7 @@ const Select = <T extends SelectObject = SelectObject>(
             selectedKeys: state.selectedItem?.key ? [state.selectedItem?.key] : [],
             disabledKeys
           })}
+          maxHeight='650px'
           state={state}
         />
       )}
@@ -179,4 +179,4 @@ const _Select = forwardRef(Select) as <T extends SelectObject = SelectObject>(
 Select.displayName = 'Select';
 
 export { _Select as Select };
-export type { SelectProps, ListboxSelectProps, ModalSelectProps };
+export type { ListboxSelectProps, ModalSelectProps, SelectProps };

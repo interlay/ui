@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Dd, Flex, UnstyledButton } from '..';
-
-import { StyledBalance, StyledBalanceLabel } from './TokenInput.style';
+import { StyledBalanceButton, StyledBalanceLabel } from './TokenInput.style';
 
 type TokenInputBalanceProps = {
   inputId?: string;
@@ -30,25 +28,14 @@ const TokenInputBalance = ({
   const handleClickBalance = () => onClickBalance?.(balanceProp);
 
   return (
-    <Flex alignItems='center' gap='xs'>
-      <StyledBalance gap='xs'>
-        <StyledBalanceLabel color='light' size='xs' weight='medium'>
-          {label}
-        </StyledBalanceLabel>
-        <Dd color='grey-200' size='xs' weight='medium'>
-          <UnstyledButton>{balance}</UnstyledButton>
-        </Dd>
-      </StyledBalance>
-      {/* <CTA
-        aria-controls={inputId}
-        aria-label={ariaLabel}
-        disabled={isDisabled}
-        size='x-small'
-        onPress={handleClickBalance}
-      >
-        MAX
-      </CTA> */}
-    </Flex>
+    <StyledBalanceButton
+      aria-controls={inputId}
+      aria-label={ariaLabel}
+      disabled={isDisabled}
+      onPress={handleClickBalance}
+    >
+      <StyledBalanceLabel>{label}:</StyledBalanceLabel> {balance}
+    </StyledBalanceButton>
   );
 };
 

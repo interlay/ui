@@ -6,7 +6,7 @@ import { StyledMarginProps } from '@interlay/hooks';
 import { marginCSS } from '../utils/margin';
 
 type StyledFlexProps = {
-  $gap: Spacing;
+  $gap?: Spacing;
   $justifyContent?: JustifyContent;
   $alignItems?: AlignItems;
   $direction?: Direction;
@@ -20,7 +20,7 @@ const StyledFlex = styled.div<StyledFlexProps>`
   flex-direction: ${(props) => props.$direction};
   justify-content: ${(props) => props.$justifyContent};
   align-items: ${(props) => props.$alignItems};
-  gap: ${({ theme, $gap }) => theme.spacing($gap)};
+  gap: ${({ theme, $gap }) => $gap && theme.spacing($gap)};
   flex: ${(props) => props.$flex};
   flex-wrap: ${(props) => (typeof props.$wrap === 'boolean' ? 'wrap' : props.$wrap)};
   align-self: ${(props) => props.$alignSelf};

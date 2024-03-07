@@ -1,15 +1,5 @@
-import { Spacing } from '../core';
+import { StyledObject } from 'styled-components';
 
-type SwitchTheme = {
-  width: Spacing;
-  height: Spacing;
-  bg: string;
-  selected: {
-    bg: string;
-  };
-  indicator: {
-    bg: string;
-  };
-};
+type SwitchTheme = StyledObject<object>;
 
 export type { SwitchTheme };

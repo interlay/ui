@@ -14,6 +14,8 @@ import { colors } from './colors';
 import { spinner } from './spinner';
 import { _switch } from './switch';
 import { progressBar } from './progress-bar';
+import { tooltip } from './tooltip';
+import { tokenInput } from './token-input';
 
 const bobTheme = defineTheme({
   colors,
@@ -29,7 +31,9 @@ const bobTheme = defineTheme({
   radio,
   spinner,
   switch: _switch,
-  progressBar
+  progressBar,
+  tooltip,
+  tokenInput
 });
 
 export { bobTheme };

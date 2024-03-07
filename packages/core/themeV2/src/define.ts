@@ -26,7 +26,9 @@ import {
   RadioTheme,
   SwitchTheme,
   SpinnerTheme,
-  ProgressBarTheme
+  ProgressBarTheme,
+  TooltipTheme,
+  TokenInputTheme
 } from './components';
 
 const baseTheme = {
@@ -56,6 +58,8 @@ type ThemeParams = {
   switch: SwitchTheme;
   spinner: SpinnerTheme;
   progressBar: ProgressBarTheme;
+  tooltip: TooltipTheme;
+  tokenInput: TokenInputTheme;
 };
 
 const defineTheme = ({ colors, ...theme }: ThemeParams) => ({

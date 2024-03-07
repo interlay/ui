@@ -27,7 +27,19 @@ type ListProps = Props & NativeAttrs & InheritAttrs;
 // FIXME: use keyboardDelegate for horizontal list (see TagGroup from spectrum)
 const List = forwardRef<HTMLDivElement, ListProps>(
   (
-    { variant = 'primary', direction = 'column', onSelectionChange, selectionMode, selectedKeys, ...props },
+    {
+      variant = 'primary',
+      direction = 'column',
+      onSelectionChange,
+      selectionMode,
+      selectedKeys,
+      disabledBehavior,
+      disabledKeys,
+      disallowEmptySelection,
+      defaultSelectedKeys,
+      selectionBehavior,
+      ...props
+    },
     ref
   ): JSX.Element => {
     const listRef = useDOMRef<HTMLDivElement>(ref);
@@ -36,9 +48,13 @@ const List = forwardRef<HTMLDivElement, ListProps>(
       onSelectionChange,
       selectionMode,
       selectedKeys,
+      disabledBehavior,
+      defaultSelectedKeys,
+      disabledKeys,
+      disallowEmptySelection,
       ...props
     };
-    const state = useListState(ariaProps);
+    const state = useListState({ selectionBehavior, ...ariaProps });
 
     const { gridProps } = useGridList(ariaProps, state, listRef);
 
@@ -46,12 +62,11 @@ const List = forwardRef<HTMLDivElement, ListProps>(
       <StyledList
         {...mergeProps(gridProps, props)}
         ref={listRef}
-        $variant={variant}
         direction={direction}
         gap={variant === 'card' ? undefined : 's'}
       >
         {[...state.collection].map((item) => (
-          <ListItem key={item.key} item={item} state={state} variant={variant} />
+          <ListItem key={item.key} item={item} state={state} />
         ))}
       </StyledList>
     );

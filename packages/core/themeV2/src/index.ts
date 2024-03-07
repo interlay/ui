@@ -9,7 +9,8 @@ export type {
   DialogSize,
   AccordionVariants,
   ProgressBarSize,
-  AlertStatus
+  AlertStatus,
+  TokenInputSize
 } from './components';
 export type {
   IconsSizes,

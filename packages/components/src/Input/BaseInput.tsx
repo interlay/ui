@@ -41,6 +41,7 @@ type InheritAttrs = Omit<
     Pick<FieldProps, 'label' | 'labelPosition' | 'labelProps' | 'maxWidth' | 'justifyContent' | 'alignItems'>,
   keyof Props
 >;
+
 type BaseInputProps = Props & InheritAttrs;
 
 const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
@@ -60,7 +61,7 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
           ref={ref as any}
           $adornments={{ left: !!startAdornment, right: !!endAdornment }}
           $hasError={error}
-          $isDisabled={!!inputProps.disabled}
+          $isDisabled={!!inputProps?.disabled}
           $minHeight={minHeight}
           $size={size}
           as={elementType}

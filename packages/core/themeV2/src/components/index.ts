@@ -11,3 +11,5 @@ export * from './radio';
 export * from './switch';
 export * from './spinner';
 export * from './progress-bar';
+export * from './tooltip';
+export * from './token-input';
