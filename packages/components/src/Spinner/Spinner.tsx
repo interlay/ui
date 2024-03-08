@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { SpinnerColors, SpinnerSizes } from '@interlay/themev2';
+import { SpinnerColors, SpinnerSizes } from '@interlay/theme';
 
 import { StyledSpinner } from './Spinner.style';
 

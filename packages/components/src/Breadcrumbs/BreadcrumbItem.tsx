@@ -32,7 +32,7 @@ const BreadcrumbItem = ({ children, isDisabled, isCurrent, href, ...props }: Bre
 
   const commonProps: Pick<TextLinkProps, 'size' | 'color'> = {
     size: 's',
-    color: isCurrent ? 'secondary' : 'tertiary'
+    color: isCurrent ? 'light' : 'green-300'
   };
 
   return (
@@ -51,7 +51,7 @@ const BreadcrumbItem = ({ children, isDisabled, isCurrent, href, ...props }: Bre
           {children}
         </StyledLinkBreadcrumb>
       )}
-      {isCurrent === false && <ChevronRight color='tertiary' size='xs' />}
+      {isCurrent === false && <ChevronRight color='green-300' size='xs' />}
     </Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import type { AlignItems, AlignSelf, Direction, JustifyContent, Spacing, Wrap } from '@interlay/themev2';
+import type { AlignItems, AlignSelf, Direction, JustifyContent, Spacing, Wrap } from '@interlay/theme';
 
 import { styled } from 'styled-components';
 import { StyledMarginProps } from '@interlay/hooks';

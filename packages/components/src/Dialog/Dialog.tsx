@@ -4,7 +4,7 @@ import { PressEvent } from '@react-types/shared';
 import { forwardRef, ReactNode } from 'react';
 import { XMark } from '@interlay/icons';
 import { useDOMRef } from '@interlay/hooks';
-import { DialogSize } from '@interlay/themev2';
+import { DialogSize } from '@interlay/theme';
 
 import { ElementTypeProp } from '../utils/types';
 

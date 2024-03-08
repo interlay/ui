@@ -1,4 +1,4 @@
-import { InputSizes, Spacing } from '@interlay/themev2';
+import { InputSizes, Spacing } from '@interlay/theme';
 import styled, { css } from 'styled-components';
 
 type BaseInputProps = {
@@ -93,6 +93,7 @@ const StyledAdornment = styled.div<StyledAdornmentProps>`
   position: absolute;
   // to not allow adornment to take more than 50% of the input. We might want to reduce this in the future.
   max-width: 50%;
+  ${({ theme }) => theme.input.adornment};
 `;
 
 const StyledAdornmentRight = styled(StyledAdornment)`

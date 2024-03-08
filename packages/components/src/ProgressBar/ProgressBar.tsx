@@ -1,6 +1,6 @@
 import { AriaProgressBarProps, useProgressBar } from '@react-aria/progress';
 import { CSSProperties } from 'react';
-import { Color, ProgressBarSize } from '@interlay/themev2';
+import { Color, ProgressBarSize } from '@interlay/theme';
 
 import { Flex, FlexProps } from '../Flex';
 import { Span } from '../Text';

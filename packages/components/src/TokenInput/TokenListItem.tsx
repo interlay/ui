@@ -2,9 +2,8 @@ import { useCurrencyFormatter } from '@interlay/hooks';
 
 import { Flex } from '../Flex';
 import { useSelectModalContext } from '../Select/SelectModalContext';
-import { Span } from '../Text';
 
-import { StyledListItemLabel, StyledListTokenWrapper, StyledTokenImg } from './TokenInput.style';
+import { StyledListItemLabel, StyledListItemUsd, StyledListTokenWrapper, StyledTokenImg } from './TokenInput.style';
 import { TokenData } from './TokenSelect';
 
 type TokenListItemProps = { isDisabled?: boolean } & TokenData;
@@ -15,15 +14,15 @@ const TokenListItem = ({ balance, balanceUSD, ticker, logoUrl, isDisabled }: Tok
 
   return (
     <>
-      <StyledListTokenWrapper alignItems='center' flex='1' gap='spacing2'>
-        <StyledTokenImg alt={ticker} src={logoUrl} />
+      <StyledListTokenWrapper alignItems='center' flex='1' gap='s'>
+        <StyledTokenImg $size='lg' alt={ticker} src={logoUrl} />
         <StyledListItemLabel $isSelected={isSelected}>{ticker}</StyledListItemLabel>
       </StyledListTokenWrapper>
-      <Flex alignItems='flex-end' direction='column' flex='0' gap='spacing2'>
+      <Flex alignItems='flex-end' direction='column' flex='0' gap='xs'>
         <StyledListItemLabel $isSelected={isSelected}>{balance}</StyledListItemLabel>
-        <Span color='light' size='s'>
+        <StyledListItemUsd $isSelected={isSelected} color='light'>
           {format(balanceUSD)}
-        </Span>
+        </StyledListItemUsd>
       </Flex>
     </>
   );

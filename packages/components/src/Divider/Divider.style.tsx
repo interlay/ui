@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { StyledMarginProps } from '@interlay/hooks';
-import { Color, DividerSizes } from '@interlay/themev2';
+import { Color, DividerSizes } from '@interlay/theme';
 
 import { Orientation } from '../../../core/theme/src';
 import { marginCSS } from '../utils/margin';

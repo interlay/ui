@@ -1,16 +1,22 @@
 import { useCurrencyFormatter, useDOMRef } from '@interlay/hooks';
-import { Spacing, TokenInputSize } from '@interlay/themev2';
+import { Spacing, TokenInputSize } from '@interlay/theme';
 import { AriaTextFieldOptions, useTextField } from '@react-aria/textfield';
 import { mergeProps } from '@react-aria/utils';
 import { ChangeEventHandler, FocusEvent, forwardRef, ReactNode, useCallback, useEffect, useState } from 'react';
-import { HelperTextProps } from 'src/HelperText';
-import { LabelProps } from 'src/Label';
 
+import { HelperTextProps } from '../HelperText';
+import { LabelProps } from '../Label';
 import { Field, FieldProps, useFieldProps } from '../Field';
 import { Flex } from '../Flex';
 import { hasError } from '../utils/input';
 
-import { StyledAdornment, StyledBaseInput, StyledInputWrapper, StyledUSDAdornment } from './BaseTokenInput.style';
+import {
+  StyledAdornment,
+  StyledBaseInput,
+  StyledGroupInputWrapper,
+  StyledNumberInputWrapper,
+  StyledUSDAdornment
+} from './BaseTokenInput.style';
 import { TokenInputLabel } from './TokenInputLabel';
 
 const escapeRegExp = (string: string): string => {
@@ -108,9 +114,9 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
     const hasLabel = !!label || !!balance;
 
     // FIXME: move this into Field
-    const { fieldProps: styleFieldProps } = useFieldProps({ ...props, descriptionProps, errorMessageProps });
+    const { fieldProps: styleFieldProps } = useFieldProps({ ...props, descriptionProps, errorMessageProps } as any);
 
-    const error = hasError({ isInvalid, errorMessage: props.errorMessage });
+    const error = hasError({ isInvalid, errorMessage: props.errorMessage } as any);
 
     const bottomAdornment = valueUSD !== undefined && (
       <StyledUSDAdornment $isDisabled={isDisabled} $size={size}>
@@ -126,18 +132,20 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
               {label}
             </TokenInputLabel>
           )}
-          <StyledInputWrapper>
-            <StyledBaseInput
-              ref={ref}
-              $adornmentBottom={!!bottomAdornment}
-              $hasError={error}
-              $size={size}
-              placeholder={placeholder}
-              {...mergeProps(inputProps, { onChange: handleChange })}
-            />
-            <StyledAdornment $size={size}>{bottomAdornment}</StyledAdornment>
+          <StyledGroupInputWrapper>
+            <StyledNumberInputWrapper>
+              <StyledBaseInput
+                ref={ref}
+                $adornmentBottom={!!bottomAdornment}
+                $hasError={error}
+                $size={size}
+                placeholder={placeholder}
+                {...mergeProps(inputProps, { onChange: handleChange })}
+              />
+              <StyledAdornment $size={size}>{bottomAdornment}</StyledAdornment>
+            </StyledNumberInputWrapper>
             {endAdornment}
-          </StyledInputWrapper>
+          </StyledGroupInputWrapper>
           {children}
         </Flex>
       </Field>

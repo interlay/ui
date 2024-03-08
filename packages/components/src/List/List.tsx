@@ -2,9 +2,9 @@ import { AriaGridListOptions, useGridList } from '@react-aria/gridlist';
 import { mergeProps } from '@react-aria/utils';
 import { ListProps as StatelyListProps, useListState } from '@react-stately/list';
 import { forwardRef } from 'react';
-import { ListVariants } from '@interlay/theme';
 import { Selection } from '@react-types/shared';
 import { useDOMRef } from '@interlay/hooks';
+import { CSSProperties } from 'styled-components';
 
 import { FlexProps } from '../Flex';
 
@@ -12,7 +12,7 @@ import { StyledList } from './List.style';
 import { ListItem } from './ListItem';
 
 type Props = {
-  variant?: ListVariants;
+  maxHeight?: CSSProperties['maxHeight'];
 };
 
 type InheritAttrs = Omit<
@@ -28,7 +28,7 @@ type ListProps = Props & NativeAttrs & InheritAttrs;
 const List = forwardRef<HTMLDivElement, ListProps>(
   (
     {
-      variant = 'primary',
+      maxHeight,
       direction = 'column',
       onSelectionChange,
       selectionMode,
@@ -59,12 +59,7 @@ const List = forwardRef<HTMLDivElement, ListProps>(
     const { gridProps } = useGridList(ariaProps, state, listRef);
 
     return (
-      <StyledList
-        {...mergeProps(gridProps, props)}
-        ref={listRef}
-        direction={direction}
-        gap={variant === 'card' ? undefined : 's'}
-      >
+      <StyledList {...mergeProps(gridProps, props)} ref={listRef} $maxHeight={maxHeight} direction={direction}>
         {[...state.collection].map((item) => (
           <ListItem key={item.key} item={item} state={state} />
         ))}

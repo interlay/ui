@@ -60,7 +60,7 @@ const Meter = ({
           $variant={variant}
           alignItems='center'
           direction='column'
-          gap='spacing1'
+          gap='xs'
           justifyContent='center'
         >
           <Indicator />

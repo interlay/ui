@@ -1,14 +1,14 @@
+import { TabsSize } from '@interlay/theme';
 import { useTab } from '@react-aria/tabs';
 import { TabListState } from '@react-stately/tabs';
 import { AriaTabProps } from '@react-types/tabs';
 import { ReactNode, useRef } from 'react';
-import { Sizes } from '@interlay/theme';
 
 import { StyledTab } from './Tabs.style';
 
 type Props = {
   fullWidth?: boolean;
-  size: Sizes;
+  size: TabsSize;
 };
 
 type InheritProps<T> = {
@@ -23,7 +23,7 @@ const Tab = <T extends Record<string, unknown>>({
   item,
   state,
   fullWidth = false,
-  size = 'small'
+  size = 'md'
 }: TabProps<T>): JSX.Element => {
   const ref = useRef<HTMLDivElement>(null);
   const { tabProps, isDisabled } = useTab(item, state, ref);

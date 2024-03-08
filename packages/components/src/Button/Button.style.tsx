@@ -1,5 +1,5 @@
-import { ButtonSizes, ButtonVariants } from '@interlay/themev2';
-import { ButtonColors } from '@interlay/themev2/src/components';
+import { ButtonSizes, ButtonVariants } from '@interlay/theme';
+import { ButtonColors } from '@interlay/theme/src/components';
 import styled, { css } from 'styled-components';
 
 import { UnstyledButton } from '../UnstyledButton';

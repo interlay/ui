@@ -18,13 +18,15 @@ interface InterlayUIProviderProps extends Omit<ModalProviderProps, 'children'> {
 const InterlayUIProvider: React.FC<InterlayUIProviderProps> = ({
   children,
   locale = 'en-US',
-  theme = {},
+  theme = {} as DefaultTheme,
   ...otherProps
 }) => {
   return (
     <ThemeProvider theme={theme}>
       <I18nProvider locale={locale}>
-        <OverlayProvider {...otherProps}>{children}</OverlayProvider>
+        <OverlayProvider {...otherProps}>
+          <div style={{ isolation: 'isolate' }}>{children}</div>
+        </OverlayProvider>
       </I18nProvider>
     </ThemeProvider>
   );

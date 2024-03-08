@@ -1,5 +1,5 @@
 import { useDOMRef } from '@interlay/hooks';
-import { InputSizes } from '@interlay/themev2';
+import { InputSizes } from '@interlay/theme';
 import { useSelect } from '@react-aria/select';
 import { mergeProps, useId } from '@react-aria/utils';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
@@ -164,7 +164,6 @@ const Select = <T extends SelectObject = SelectObject>(
             selectedKeys: state.selectedItem?.key ? [state.selectedItem?.key] : [],
             disabledKeys
           })}
-          maxHeight='650px'
           state={state}
         />
       )}

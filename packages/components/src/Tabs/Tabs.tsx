@@ -1,11 +1,11 @@
+import { useDOMRef } from '@interlay/hooks';
+import { AlignItems, TabsSize } from '@interlay/theme';
 import { useFocusRing } from '@react-aria/focus';
 import { useTabList } from '@react-aria/tabs';
 import { mergeProps } from '@react-aria/utils';
 import { useTabListState } from '@react-stately/tabs';
 import { CollectionChildren, Key } from '@react-types/shared';
-import { forwardRef, HTMLAttributes, useEffect, useState } from 'react';
-import { AlignItems, Sizes } from '@interlay/theme';
-import { useDOMRef } from '@interlay/hooks';
+import { HTMLAttributes, forwardRef, useEffect, useState } from 'react';
 
 import { Tab } from './Tab';
 import { TabPanel } from './TabPanel';
@@ -18,7 +18,7 @@ type Props = {
   disabledKeys?: Key[];
   panel?: React.ReactNode;
   fullWidth?: boolean;
-  size?: Sizes;
+  size?: TabsSize;
   align?: AlignItems;
 };
 
@@ -28,7 +28,7 @@ type TabsProps = Props & NativeAttrs;
 
 const Tabs = forwardRef<HTMLDivElement, TabsProps>(
   (
-    { children, className, style, panel, fullWidth = false, size = 'small', align = 'flex-start', ...props },
+    { children, className, style, panel, fullWidth = false, size = 'md', align = 'flex-start', ...props },
     ref
   ): JSX.Element => {
     const ariaProps = { children: children as CollectionChildren<Record<string, unknown>>, ...props };

@@ -1,42 +1,23 @@
-import base from './base';
-import { Colors, FontSize } from './types';
+const rem = (value: number, base = 16) => `${(1 / base) * value}rem`;
 
-const resolveColor = (color: Colors | undefined): string => {
-  switch (color) {
-    case 'primary':
-      return base.colors.textPrimary;
-    case 'secondary':
-      return base.colors.textSecondary;
-    case 'tertiary':
-      return base.colors.textTertiary;
-    case 'success':
-      return base.colors.success;
-    case 'warning':
-      return base.colors.warning;
-    case 'error':
-      return base.colors.error;
-    default:
-      return base.colors.textPrimary;
-  }
+const style =
+  <T extends Record<string, any>>(baseStyle: T) =>
+  (key: keyof typeof baseStyle, unit: 'rem' | 'px' = 'rem', base = 16) => {
+    if (unit === 'px') {
+      return `${baseStyle[key]}px`;
+    }
+
+    return rem(baseStyle[key], base);
+  };
+
+// MEMO: only supports 6 digits hex
+const hexToRgba = (hex: string, opacity: number) => {
+  const tempHex = hex.replace('#', '');
+  const r = parseInt(tempHex.substring(0, 2), 16);
+  const g = parseInt(tempHex.substring(2, 4), 16);
+  const b = parseInt(tempHex.substring(4, 6), 16);
+
+  return `rgba(${r},${g},${b},${opacity / 100})`;
 };
 
-const resolveHeight = (size: FontSize | undefined): string | undefined => {
-  switch (size) {
-    case 's':
-      return base.lineHeight.s;
-    case 'base':
-    case 'lg':
-    case 'xl':
-    default:
-      return base.lineHeight.base;
-    case 'xs':
-    case 'xl2':
-    case 'xl3':
-    case 'xl4':
-    case 'xl5':
-    case 'xl6':
-      return undefined;
-  }
-};
-
-export { resolveColor, resolveHeight };
+export { rem, style, hexToRgba };

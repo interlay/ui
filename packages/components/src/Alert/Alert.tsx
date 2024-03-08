@@ -1,4 +1,4 @@
-import { AlertStatus } from '@interlay/themev2';
+import { AlertStatus } from '@interlay/theme';
 import { ForwardRefExoticComponent } from 'react';
 
 import { FlexProps } from '../Flex';

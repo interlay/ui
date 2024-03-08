@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { CTA } from '../CTA';
+import { Button } from '../Button';
 
 import { Popover, PopoverBody, PopoverContent, PopoverFooter, PopoverHeader, PopoverProps, PopoverTrigger } from '.';
 
@@ -11,14 +11,14 @@ const Render = ({ title, footer, children, placement = 'left', ...args }: StoryP
     <>
       <Popover {...args}>
         <PopoverTrigger>
-          <CTA style={{ [placement]: 0, position: 'absolute', margin: 20 }}>Open Popover</CTA>
+          <Button style={{ [placement]: 0, position: 'absolute', margin: 20 }}>Open Popover</Button>
         </PopoverTrigger>
         <PopoverContent>
           {title && <PopoverHeader>Popover Header</PopoverHeader>}
           <PopoverBody>{children}</PopoverBody>
           {footer && (
             <PopoverFooter>
-              <CTA>Confirm</CTA>
+              <Button>Confirm</Button>
             </PopoverFooter>
           )}
         </PopoverContent>

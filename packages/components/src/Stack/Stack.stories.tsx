@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { CTA } from '../CTA';
+import { Button } from '../Button';
 import { P } from '../Text';
 
 import { Stack, StackProps } from '.';
@@ -13,7 +13,7 @@ export default {
   },
   render: (args) => (
     <Stack {...args}>
-      <P>Stack children</P> <P>Stack children</P> <CTA>CTA</CTA>
+      <P>Stack children</P> <P>Stack children</P> <Button>Button</Button>
     </Stack>
   )
 } as Meta<typeof Stack>;

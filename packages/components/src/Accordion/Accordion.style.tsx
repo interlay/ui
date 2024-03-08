@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ChevronDown } from '@interlay/icons';
-import { AccordionVariants } from '@interlay/themev2';
+import { AccordionVariants } from '@interlay/theme';
 
 import { H3, Span } from '../Text';
 

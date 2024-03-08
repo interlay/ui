@@ -1,8 +1,8 @@
 import { mergeProps } from '@react-aria/utils';
 
+import { Span } from '../Text';
 import { Flex } from '../Flex';
 import { Item, ModalSelectProps, Select } from '../Select';
-import { Span } from '../Text';
 
 import { StyledTicker, StyledTokenImg, StyledTokenSelect } from './TokenInput.style';
 import { TokenListItem } from './TokenListItem';
@@ -23,15 +23,21 @@ type TokenData = {
 
 type TokenSelectProps = Omit<ModalSelectProps<TokenData>, 'children' | 'type'>;
 
-const TokenSelect = ({ modalProps, ...props }: TokenSelectProps): JSX.Element => (
+const TokenSelect = ({ modalProps, value, ...props }: TokenSelectProps): JSX.Element => (
   <Select<TokenData>
     {...props}
     aria-label='select token'
     asSelectTrigger={StyledTokenSelect}
-    modalProps={mergeProps({ title: 'Select Token' }, modalProps)}
-    placeholder={<Span>Select Token</Span>}
+    maxWidth={value ? '6.75rem' : '7.5rem'}
+    modalProps={mergeProps({ title: 'Select Token', listProps: { maxHeight: '32rem' } }, modalProps)}
+    placeholder={
+      <Span color='inherit' size='s'>
+        Select token
+      </Span>
+    }
     renderValue={(item) => <Value data={item.value as TokenData} />}
     type='modal'
+    value={value}
   >
     {(data: TokenData) => (
       <Item key={data.ticker} textValue={data.ticker}>

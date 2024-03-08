@@ -3,7 +3,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { Key, useState } from 'react';
 
 import { Flex } from '../Flex';
-import { CTA } from '..';
+import { Button } from '..';
 
 import { Select, SelectProps } from './Select';
 
@@ -120,7 +120,7 @@ const ControlledOpenComponent = (args: SelectProps<any>) => {
 
   return (
     <>
-      <CTA onPress={() => setState(true)}>Open Modal</CTA>
+      <Button onPress={() => setState(true)}>Open Modal</Button>
       <Render {...(args as any)} open={state} onOpenChange={setState} />
     </>
   );
@@ -174,7 +174,7 @@ export const SideLabel: StoryObj<SelectProps> = {
 
 export const MaxWidth: StoryObj<SelectProps> = {
   args: {
-    maxWidth: 'spacing28'
+    maxWidth: '11xl'
   }
 };
 

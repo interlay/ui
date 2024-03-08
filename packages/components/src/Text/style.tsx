@@ -1,8 +1,8 @@
-import { Color, FontWeight, NormalAlignments, Typography } from '@interlay/themev2';
+import { Color, FontWeight, NormalAlignments, Typography } from '@interlay/theme';
 import styled, { css } from 'styled-components';
 
 type StyledTextProps = {
-  $color: Color;
+  $color: Color | 'inherit';
   $size: Typography;
   $weight: FontWeight;
   $align?: NormalAlignments;
@@ -12,7 +12,7 @@ type StyledTextProps = {
 
 const Text = styled.p<StyledTextProps>`
   ${({ theme, $size }) => theme.typography($size)}
-  color: ${({ theme, $color }) => theme.color($color)};
+  color: ${({ theme, $color }) => ($color === 'inherit' ? 'inherit' : theme.color($color))};
   font-weight: ${({ theme, $weight }) => theme.fontWeight($weight)};
   text-align: ${({ $align }) => $align};
   white-space: ${({ $noWrap }) => $noWrap && 'nowrap'};

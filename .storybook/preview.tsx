@@ -4,8 +4,8 @@ import React from 'react';
 
 import { InterlayUIProvider } from '../packages/core/system/src';
 import { CSSReset } from '../packages/components/src';
-import '../packages/core/theme/src/css/theme.interlay.css';
-import { bobTheme } from '../packages/core/themeV2/src';
+import '../packages/core/theme/src/temp/css/theme.interlay.css';
+import { bobTheme } from '../packages/core/theme/src';
 import './style.css';
 
 const preview: Preview = {

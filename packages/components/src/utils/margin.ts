@@ -1,8 +1,6 @@
-import { StyledMarginProps } from '@interlay/hooks';
-import { Theme } from '@interlay/themev2';
 import { css } from 'styled-components';
 
-const marginCSS = ({ theme, ...props }: StyledMarginProps & { theme: Theme }) => {
+const marginCSS = ({ theme, ...props }: any) => {
   const marginTop = props.$marginTop || props.$marginY;
   const marginBottom = props.$marginBottom || props.$marginY;
   const marginLeft = props.$marginLeft || props.$marginX;

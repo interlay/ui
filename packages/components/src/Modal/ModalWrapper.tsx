@@ -2,7 +2,8 @@ import { AriaModalOverlayProps, AriaOverlayProps, useModalOverlay } from '@react
 import { mergeProps } from '@react-aria/utils';
 import { OverlayTriggerState } from '@react-stately/overlays';
 import { forwardRef, ReactNode, RefObject } from 'react';
-import { DialogSize } from '@interlay/themev2';
+import { DialogSize } from '@interlay/theme';
+import { CSSProperties } from 'styled-components';
 
 import { Underlay } from '../Overlay/Underlay';
 
@@ -15,6 +16,7 @@ type Props = {
   onClose: () => void;
   wrapperRef: RefObject<HTMLDivElement>;
   size: DialogSize;
+  maxHeight?: CSSProperties['maxHeight'];
 };
 
 type InheritAttrs = Omit<AriaModalOverlayProps & AriaOverlayProps, keyof Props>;
@@ -34,6 +36,7 @@ const ModalWrapper = forwardRef<HTMLDivElement, ModalWrapperProps>(
       shouldCloseOnBlur,
       wrapperRef,
       size,
+      maxHeight,
       ...props
     },
     ref
@@ -57,7 +60,13 @@ const ModalWrapper = forwardRef<HTMLDivElement, ModalWrapperProps>(
       <div ref={wrapperRef}>
         <Underlay {...underlayProps} isOpen={!!isOpen} />
         <StyledWrapper $placement={placement}>
-          <StyledModal ref={ref} $isOpen={isOpen} $size={size} {...mergeProps(modalProps, props)}>
+          <StyledModal
+            ref={ref}
+            $isOpen={isOpen}
+            $maxHeight={maxHeight}
+            $size={size}
+            {...mergeProps(modalProps, props)}
+          >
             {children}
           </StyledModal>
         </StyledWrapper>

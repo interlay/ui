@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Color, Rounded, Spacing } from '@interlay/themev2';
+import { Color, Rounded, Spacing } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 

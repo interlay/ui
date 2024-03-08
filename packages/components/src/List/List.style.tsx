@@ -1,23 +1,26 @@
-import styled, { css } from 'styled-components';
-import { theme } from '@interlay/theme';
+import styled, { CSSProperties, css } from 'styled-components';
 
 import { Flex } from '../Flex';
 
-const StyledList = styled(Flex)``;
+type StyledListProps = {
+  $maxHeight?: CSSProperties['maxHeight'];
+};
+
+const StyledList = styled(Flex)<StyledListProps>`
+  max-height: ${({ $maxHeight }) => $maxHeight};
+`;
 
 type StyledListItemProps = {
   $isDisabled: boolean;
   $isHovered: boolean;
-  $isInteractable: boolean;
+  $isInteraButtonble: boolean;
   $isFocusVisible: boolean;
 };
 
 const StyledListItem = styled.div<StyledListItemProps>`
   flex: 1;
   align-self: stretch;
-  padding: ${theme.spacing.spacing3};
-  color: ${theme.colors.textPrimary};
-  cursor: ${({ $isInteractable }) => $isInteractable && 'pointer'};
+  cursor: ${({ $isInteraButtonble }) => $isInteraButtonble && 'pointer'};
   outline: ${({ $isFocusVisible }) => !$isFocusVisible && 'none'};
   opacity: ${({ $isDisabled }) => $isDisabled && 0.5};
   white-space: nowrap;

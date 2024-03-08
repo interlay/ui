@@ -1,6 +1,6 @@
 import { DOMAttributes } from '@react-types/shared';
 import React from 'react';
-import { DialogSize } from '@interlay/themev2';
+import { DialogSize } from '@interlay/theme';
 
 interface DialogConfig {
   titleProps?: DOMAttributes;

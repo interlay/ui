@@ -1,4 +1,4 @@
-import { SpinnerColors, SpinnerSizes } from '@interlay/themev2';
+import { SpinnerColors, SpinnerSizes } from '@interlay/theme';
 import styled, { css } from 'styled-components';
 
 interface StyledSpinnerProps {

@@ -1,5 +1,5 @@
 import { useDOMRef } from '@interlay/hooks';
-import { Sizes } from '@interlay/theme';
+import { InputSizes } from '@interlay/theme';
 import { useButton } from '@react-aria/button';
 import { PressEvent } from '@react-types/shared';
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
@@ -10,7 +10,7 @@ import { StyledChevronDown, StyledTrigger, StyledTriggerValue } from './Select.s
 
 type Props = {
   as?: any;
-  size?: Sizes;
+  size?: InputSizes;
   isOpen?: boolean;
   hasError?: boolean;
   placeholder?: ReactNode;

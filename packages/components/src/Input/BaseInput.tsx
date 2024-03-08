@@ -1,4 +1,4 @@
-import { Spacing, InputSizes } from '@interlay/themev2';
+import { Spacing, InputSizes } from '@interlay/theme';
 import { FocusEvent, forwardRef, InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react';
 
 import { Field, FieldProps, useFieldProps } from '../Field';

@@ -2,7 +2,7 @@ import { useSeparator } from '@react-aria/separator';
 import { mergeProps } from '@react-aria/utils';
 import { forwardRef, HTMLAttributes } from 'react';
 import { useStyleProps } from '@interlay/hooks';
-import { Color, DividerSizes } from '@interlay/themev2';
+import { Color, DividerSizes } from '@interlay/theme';
 
 import { MarginProps, Orientation } from '../../../core/theme/src';
 import { ElementTypeProp } from '../utils/types';

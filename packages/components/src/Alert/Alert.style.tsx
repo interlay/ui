@@ -1,6 +1,6 @@
 import { CheckCircle, InformationCircle, Warning } from '@interlay/icons';
 import styled, { css } from 'styled-components';
-import { AlertStatus } from '@interlay/themev2';
+import { AlertStatus } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 

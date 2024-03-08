@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { CTA } from '..';
+import { Button } from '..';
 
 import { Drawer, DrawerProps } from '.';
 
@@ -18,7 +18,7 @@ const Render = () => {
 
   return (
     <>
-      <CTA onClick={() => setOpen(true)}>Open</CTA>
+      <Button onClick={() => setOpen(true)}>Open</Button>
       <Drawer isOpen={isOpen} onClose={() => setOpen(false)}>
         Drawer
       </Drawer>

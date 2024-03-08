@@ -1,6 +1,6 @@
 import { forwardRef, useRef } from 'react';
 import { useDOMRef } from '@interlay/hooks';
-import { DialogSize } from '@interlay/themev2';
+import { DialogSize } from '@interlay/theme';
 import { CSSProperties } from 'styled-components';
 
 import { DialogProps } from '../Dialog';
@@ -64,6 +64,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
           isDismissable={isDismissable}
           isKeyboardDismissDisabled={isKeyboardDismissDisabled}
           isOpen={isOpen}
+          maxHeight={maxHeight}
           placement={placement}
           shouldCloseOnBlur={shouldCloseOnBlur}
           shouldCloseOnInteractOutside={handleShouldCloseOnInteractOutside}
@@ -71,7 +72,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
           wrapperRef={wrapperRef}
           onClose={onClose}
         >
-          <StyledDialog $isOpen={isOpen} $maxHeight={maxHeight} size={size} {...props}>
+          <StyledDialog $isOpen={isOpen} size={size} {...props}>
             {children}
           </StyledDialog>
         </ModalWrapper>

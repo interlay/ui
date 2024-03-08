@@ -1,4 +1,4 @@
-import { TokenInputSize } from '@interlay/themev2';
+import { TokenInputSize } from '@interlay/theme';
 
 import { FlexProps } from '../Flex';
 

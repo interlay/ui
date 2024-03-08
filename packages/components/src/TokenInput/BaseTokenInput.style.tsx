@@ -1,4 +1,4 @@
-import { InputSizes, TokenInputSize } from '@interlay/themev2';
+import { InputSizes, TokenInputSize } from '@interlay/theme';
 import styled, { css } from 'styled-components';
 
 import { Flex } from '../Flex';
@@ -40,6 +40,8 @@ const StyledBaseInput = styled.input<StyledBaseInputProps>`
       padding-left: ${paddingLeft};
       padding-right: ${paddingRight};
 
+      position: relative;
+
       ${sizeCss}
       ${theme.input.base}
       ${$hasError && theme.input.error.base}
@@ -52,7 +54,6 @@ const StyledBaseInput = styled.input<StyledBaseInputProps>`
       }
 
       &:focus:not(:disabled) {
-        z-index: 1;
         ${$hasError ? theme.input.error.focus : theme.input.focus}
       }
 
@@ -74,7 +75,7 @@ const StyledUSDAdornment = styled.span<StyledUSDAdornmentProps>`
   overflow: hidden;
   max-width: -webkit-fill-available;
   text-overflow: ellipsis;
-  ${({ theme, $size }) => theme.tokenInput.size[$size].addornment.bottom}
+  ${({ theme }) => theme.tokenInput.addorment.usd}
 `;
 
 type StyledAdornmentProps = {
@@ -90,11 +91,23 @@ const StyledAdornment = styled.div<StyledAdornmentProps>`
   bottom: ${({ theme }) => theme.spacing('s')};
   overflow: hidden;
   max-width: ${({ theme, $size }) => `calc(100% - (2 *${theme.input.size[$size].paddingLeft}))`};
-  z-index: 2;
+  z-index: 1;
+  z-index: 5;
+
+  pointer-events: none;
 `;
 
-const StyledInputWrapper = styled(Flex)`
+const StyledGroupInputWrapper = styled(Flex)`
+  input:focus,
+  button:focus,
+  input:hover,
+  button:hover {
+    z-index: 5;
+  }
+`;
+
+const StyledNumberInputWrapper = styled.div`
   position: relative;
 `;
 
-export { StyledBaseInput, StyledAdornment, StyledUSDAdornment, StyledInputWrapper };
+export { StyledBaseInput, StyledAdornment, StyledUSDAdornment, StyledNumberInputWrapper, StyledGroupInputWrapper };

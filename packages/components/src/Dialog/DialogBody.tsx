@@ -1,14 +1,19 @@
+import { Spacing } from '@interlay/theme';
+
 import { FlexProps } from '../Flex';
 
 import { StyledDialogBody } from './Dialog.style';
-import { useDialogContext } from './DialogContext';
 
-type DialogBodyProps = FlexProps;
+type Props = {
+  maxHeight?: Spacing;
+};
 
-const DialogBody = ({ direction = 'column', ...props }: DialogBodyProps): JSX.Element => {
-  const { size } = useDialogContext();
+type InheritAttrs = Omit<FlexProps, keyof Props>;
 
-  return <StyledDialogBody {...props} $size={size} direction={direction} />;
+type DialogBodyProps = Props & InheritAttrs;
+
+const DialogBody = ({ direction = 'column', maxHeight, ...props }: DialogBodyProps): JSX.Element => {
+  return <StyledDialogBody {...props} $maxHeight={maxHeight} direction={direction} />;
 };
 
 export { DialogBody };

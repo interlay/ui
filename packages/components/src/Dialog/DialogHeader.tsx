@@ -15,10 +15,10 @@ type InheritAttrs = Omit<TextProps, keyof Props>;
 type DialogHeaderProps = Props & InheritAttrs;
 
 const DialogHeader = ({ elementType, children, align = 'start', ...props }: DialogHeaderProps): JSX.Element => {
-  const { titleProps, size } = useDialogContext();
+  const { titleProps } = useDialogContext();
 
   return (
-    <StyledDialogHeader $size={size} align={align} as={elementType} size='xl' {...mergeProps(titleProps || {}, props)}>
+    <StyledDialogHeader align={align} as={elementType} size='xl' {...mergeProps(titleProps || {}, props)}>
       {children}
     </StyledDialogHeader>
   );

@@ -1,4 +1,4 @@
-import { Theme } from '@interlay/themev2';
+import { Theme } from '@interlay/theme';
 
 declare module 'styled-components' {
   export interface DefaultTheme extends Theme {}

@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 import { createRef } from 'react';
 import { testA11y } from '@interlay/test-utils';
 
-import { CTA } from '..';
+import { UnstyledButton } from '..';
 
-describe('CTA', () => {
+describe('UnstyledButton', () => {
   it('should render correctly', () => {
-    const wrapper = render(<CTA>Button</CTA>);
+    const wrapper = render(<UnstyledButton>Button</UnstyledButton>);
 
     expect(() => wrapper.unmount()).not.toThrow();
   });
@@ -14,12 +14,12 @@ describe('CTA', () => {
   it('ref should be forwarded', () => {
     const ref = createRef<HTMLButtonElement>();
 
-    render(<CTA ref={ref}>Button</CTA>);
+    render(<UnstyledButton ref={ref}>Button</UnstyledButton>);
 
     expect(ref.current).not.toBeNull();
   });
 
   it('should pass a11y', async () => {
-    await testA11y(<CTA>Button</CTA>);
+    await testA11y(<UnstyledButton>Button</UnstyledButton>);
   });
 });

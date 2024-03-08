@@ -1,5 +1,5 @@
 import styled, { CSSProperties } from 'styled-components';
-import { DialogSize } from '@interlay/themev2';
+import { DialogSize } from '@interlay/theme';
 
 import { overlayCSS } from '../utils/overlay';
 import { Dialog, DialogBody } from '../Dialog';
@@ -11,11 +11,11 @@ type StyledWrapperProps = {
 type StyledModalProps = {
   $isOpen?: boolean;
   $size: DialogSize;
+  $maxHeight?: CSSProperties['maxHeight'];
 };
 
 type StyledDialogProps = {
   $isOpen?: boolean;
-  $maxHeight?: CSSProperties['maxHeight'];
 };
 
 type StyledModalBodyProps = {
@@ -36,6 +36,8 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   align-items: ${({ $placement }) => ($placement === 'center' ? 'center' : 'flex-start')};
 `;
 
+//FIXME: on very small screen (height) the modal could overflow when max-heigh is set
+// might not need the max-heigh property
 const StyledModal = styled.div<StyledModalProps>`
   transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : `translateY(20px)`)};
   ${({ $isOpen }) => overlayCSS(!!$isOpen)}
@@ -54,11 +56,12 @@ const StyledModal = styled.div<StyledModalProps>`
   margin: ${({ theme }) => `${theme.spacing('7xl')} ${theme.spacing('xl')}`};
   max-width: ${({ theme, $size }) => theme.dialog.size[$size].maxWidth};
   width: 100%;
+  max-height: ${({ theme, $maxHeight }) => $maxHeight || `calc(100dvh - ${theme.spacing('10xl')})`};
 `;
 
 const StyledDialog = styled(Dialog)<StyledDialogProps>`
   pointer-events: ${({ $isOpen }) => !$isOpen && 'none'};
-  max-height: ${({ theme, $maxHeight }) => $maxHeight || `calc(100dvh - ${theme.spacing('10xl')})`};
+  max-height: inherit;
 `;
 
 const StyledDialogBody = styled(DialogBody)<StyledModalBodyProps>`

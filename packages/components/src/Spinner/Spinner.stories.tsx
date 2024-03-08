@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { SpinnerSizes } from '@interlay/themev2';
+import { SpinnerSizes } from '@interlay/theme';
 
 import { Spinner, SpinnerProps } from '.';
 

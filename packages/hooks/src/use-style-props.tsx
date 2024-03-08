@@ -1,4 +1,4 @@
-import { Spacing } from '@interlay/themev2';
+import { Spacing } from '@interlay/theme';
 
 type MarginProps = {
   margin?: Spacing;

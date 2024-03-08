@@ -1,8 +1,6 @@
-import type { DefaultTheme, RuleSet } from 'styled-components';
-
 import { css } from 'styled-components';
 
-const hideScrollbar = (): RuleSet<DefaultTheme> => css`
+const hideScrollbar = () => css`
   &::-webkit-scrollbar {
     display: none;
   }

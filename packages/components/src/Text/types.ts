@@ -1,10 +1,10 @@
 import { HTMLAttributes } from 'react';
-import { Color, FontSize, FontWeight } from '@interlay/themev2';
+import { Color, FontSize, FontWeight } from '@interlay/theme';
 
 import { NormalAlignments } from '../../../core/theme/src';
 
 type Props = {
-  color?: Color;
+  color?: Color | 'inherit';
   size?: FontSize;
   align?: NormalAlignments;
   weight?: FontWeight;

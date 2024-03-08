@@ -3,7 +3,7 @@ import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { forwardRef } from 'react';
 import { useDOMRef } from '@interlay/hooks';
-import { Color, Rounded, Spacing } from '@interlay/themev2';
+import { Color, Rounded, Spacing } from '@interlay/theme';
 
 import { FlexProps } from '../Flex';
 

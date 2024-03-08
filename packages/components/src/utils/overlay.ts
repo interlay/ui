@@ -1,25 +1,24 @@
+import { Placement } from '@interlay/theme';
 import { css } from 'styled-components';
-
-import { Placement, theme } from '../../../core/theme/src';
 
 const getOverlayPlacementCSS = (placement: Placement) => {
   switch (placement) {
     case 'bottom':
       return css`
-        transform: translateY(${theme.overlay.placement.transform});
+        transform: translateY(6px);
       `;
     case 'right':
       return css`
-        transform: translateX(${theme.overlay.placement.transform});
+        transform: translateX(6px);
       `;
     case 'left':
       return css`
-        transform: translateX(calc(${theme.overlay.placement.transform} * -1));
+        transform: translateX(-6px);
       `;
     case 'top':
     default:
       return css`
-        transform: translateY(calc(${theme.overlay.placement.transform} * -1));
+        transform: translateY(-6px);
       `;
   }
 };
@@ -29,9 +28,9 @@ const overlayCSS = (isOpen: boolean) => css`
   opacity: ${isOpen ? 1 : 0};
   pointer-events: ${isOpen ? 'auto' : 'none'};
   transition:
-    transform ${theme.transition.duration.duration100}ms ease-in-out,
-    opacity ${theme.transition.duration.duration100}ms ease-in-out,
-    visibility 0ms linear ${theme.transition.duration.duration100}ms;
+    transform 100ms ease-in-out,
+    opacity 100ms ease-in-out,
+    visibility 0ms linear 100ms;
 `;
 
 export { getOverlayPlacementCSS, overlayCSS };

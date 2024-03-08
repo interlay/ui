@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ChevronDown } from '@interlay/icons';
-import { InputSizes } from '@interlay/themev2';
+import { InputSizes } from '@interlay/theme';
 
 import { List } from '../List';
 import { Span } from '../Text';

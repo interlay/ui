@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { DialogSize } from '@interlay/themev2';
+import { DialogSize, Spacing } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 import { H3 } from '../Text';
@@ -9,11 +9,16 @@ type StyledDialogProps = {
   $size: DialogSize;
 };
 
+type StyledDialogBodyProps = {
+  $maxHeight?: Spacing;
+};
+
 const StyledDialog = styled.section<StyledDialogProps>`
   display: flex;
   flex-direction: column;
   position: relative;
   outline: none;
+  overflow: hidden;
 
   width: 100%;
   ${({ theme, $size }) => css`
@@ -36,8 +41,9 @@ const StyledDialogHeader = styled(H3)`
   flex-shrink: 0;
 `;
 
-const StyledDialogBody = styled(Flex)`
+const StyledDialogBody = styled(Flex)<StyledDialogBodyProps>`
   ${({ theme }) => theme.dialog.body};
+  max-height: ${({ theme, $maxHeight }) => $maxHeight && theme.spacing($maxHeight)};
 
   flex: 1 1 auto;
 `;

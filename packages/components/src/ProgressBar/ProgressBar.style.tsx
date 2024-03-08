@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { theme } from '@interlay/theme';
-import { Color, ProgressBarSize } from '@interlay/themev2';
+import { Color, ProgressBarSize } from '@interlay/theme';
 
 type StyledTrackProps = {
   $size: ProgressBarSize;

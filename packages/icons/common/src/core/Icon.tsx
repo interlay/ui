@@ -1,5 +1,5 @@
 import { SVGAttributes, forwardRef } from 'react';
-import { Color, IconsSizes } from '@interlay/themev2';
+import { Color, IconsSizes } from '@interlay/theme';
 
 import { StyledIcon } from './Icon.style';
 
@@ -13,7 +13,7 @@ type NativeAttrs<T = unknown> = Omit<SVGAttributes<T>, keyof Props>;
 type IconProps<T = unknown> = Props & NativeAttrs<T>;
 
 const Icon = forwardRef<SVGSVGElement, IconProps>(
-  ({ size = 'md', color = 'light', ...props }, ref): JSX.Element => (
+  ({ size = 'md', color, ...props }, ref): JSX.Element => (
     <StyledIcon ref={ref} $color={color} $size={size} {...props} />
   )
 );

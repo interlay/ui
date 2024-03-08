@@ -3,7 +3,7 @@ import { useFocusRing } from '@react-aria/focus';
 import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
-import { ButtonVariants, ButtonSizes, ButtonColors, SpinnerSizes, SpinnerColors } from '@interlay/themev2';
+import { ButtonVariants, ButtonSizes, ButtonColors, SpinnerSizes, SpinnerColors } from '@interlay/theme';
 import { Slottable } from '@radix-ui/react-slot';
 
 import { Flex } from '../Flex';

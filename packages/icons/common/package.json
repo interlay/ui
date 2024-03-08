@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@interlay/theme": "workspace:*",
-    "@interlay/themev2": "workspace:*"
+    "@interlay/theme": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18",

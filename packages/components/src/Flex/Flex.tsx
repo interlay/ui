@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 
 import { forwardRef } from 'react';
 import { useStyleProps } from '@interlay/hooks';
-import { AlignItems, AlignSelf, Direction, JustifyContent, MarginProps, Spacing, Wrap } from '@interlay/themev2';
+import { AlignItems, AlignSelf, Direction, JustifyContent, MarginProps, Spacing, Wrap } from '@interlay/theme';
 
 import { ElementTypeProp } from '../utils/types';
 

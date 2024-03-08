@@ -26,7 +26,7 @@ export default {
     ticker: { control: 'select', options: Object.keys(coins) }
   },
   args: {
-    type: 'selectable',
+    type: 'seleButtonble',
     label: 'Amount',
     selectProps: {
       items
@@ -34,9 +34,9 @@ export default {
   }
 } as Meta<typeof TokenInput>;
 
-export const Selectable: StoryObj<TokenInputProps> = {};
+export const SeleButtonble: StoryObj<TokenInputProps> = {};
 
-export const SelectableDefaultValue: StoryObj<TokenInputProps> = {
+export const SeleButtonbleDefaultValue: StoryObj<TokenInputProps> = {
   args: {
     selectProps: {
       defaultValue: 'BTC',
@@ -52,23 +52,24 @@ const ControlledSelectComponent = (args: any) => {
     <TokenInput
       {...args}
       selectProps={mergeProps(args.selectProps, { value: state, onSelectionChange: setState })}
-      type='selectable'
+      type='seleButtonble'
     />
   );
 };
 
-export const SelectableControlledValue: StoryObj<TokenInputProps> = {
+export const SeleButtonbleControlledValue: StoryObj<TokenInputProps> = {
   render: ControlledSelectComponent
 };
 
-export const SelectableWithBalance: StoryObj<TokenInputProps> = {
+export const SeleButtonbleWithBalance: StoryObj<TokenInputProps> = {
   args: {
     balance: '10',
-    valueUSD: '0'
+    valueUSD: 0,
+    size: 's'
   }
 };
 
-export const SelectableDescription: StoryObj<TokenInputProps> = {
+export const SeleButtonbleDescription: StoryObj<TokenInputProps> = {
   args: {
     selectProps: {
       items,
@@ -77,7 +78,7 @@ export const SelectableDescription: StoryObj<TokenInputProps> = {
   }
 };
 
-export const SelectableErrorMessage: StoryObj<TokenInputProps> = {
+export const SeleButtonbleErrorMessage: StoryObj<TokenInputProps> = {
   args: {
     selectProps: {
       items,

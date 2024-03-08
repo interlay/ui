@@ -3,7 +3,7 @@ import { mergeProps } from '@react-aria/utils';
 import { useTreeState } from '@react-stately/tree';
 import { forwardRef, HTMLAttributes, Ref } from 'react';
 import { useDOMRef } from '@interlay/hooks';
-import { AccordionVariants } from '@interlay/themev2';
+import { AccordionVariants } from '@interlay/theme';
 
 import { AccordionItem } from './AccordionItem';
 import { StyledAccordion } from './Accordion.style';
