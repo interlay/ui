@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 1.0.0-next.2
+
+### Patch Changes
+
+- [#65](https://github.com/interlay/ui/pull/65) [`487cc149349dcedbfbfead3dba26f2e42cf887f8`](https://github.com/interlay/ui/commit/487cc149349dcedbfbfead3dba26f2e42cf887f8) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): export CTA
+
 ## 1.0.0-next.1
 
 ### Patch Changes
