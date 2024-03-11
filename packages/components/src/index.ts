@@ -11,6 +11,8 @@ export type { CardProps } from './Card';
 export { Divider } from './Divider';
 export type { DividerProps } from './Divider';
 export { Drawer } from './Drawer';
+export { CTA, CTALink } from './CTA';
+export type { CTALinkProps, CTAProps } from './CTA';
 export type { DrawerProps } from './Drawer';
 export { Field, useFieldProps } from './Field';
 export type { FieldProps } from './Field';
