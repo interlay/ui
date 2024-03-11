@@ -10,6 +10,7 @@
     "@interlay/test-utils": "0.0.0"
   },
   "changesets": [
+    "curvy-oranges-mate",
     "popular-plants-fold"
   ]
 }
