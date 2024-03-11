@@ -48,5 +48,5 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "clean-package": "../../../clean-package.config.json"
+  "clean-package": "../../clean-package.config.json"
 }
