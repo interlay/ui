@@ -1,54 +1,55 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { DialogSize, Spacing } from '@interlay/theme';
 
-import { theme } from '../../../core/theme/src';
-import { Sizes } from '../../../core/theme/src';
-import { CTA } from '../CTA';
-import { Divider } from '../Divider';
 import { Flex } from '../Flex';
 import { H3 } from '../Text';
+import { Button } from '../Button';
 
 type StyledDialogProps = {
-  $size: Sizes;
+  $size: DialogSize;
+};
+
+type StyledDialogBodyProps = {
+  $maxHeight?: Spacing;
 };
 
 const StyledDialog = styled.section<StyledDialogProps>`
-  background: ${theme.colors.bgPrimary};
-  border: ${theme.border.default};
-  border-radius: ${theme.rounded.md};
-  color: ${theme.colors.textPrimary};
-  max-width: 100%;
-  width: ${({ $size }) => theme.dialog[$size].width};
   display: flex;
   flex-direction: column;
   position: relative;
   outline: none;
+  overflow: hidden;
+
+  width: 100%;
+  ${({ theme, $size }) => css`
+    ${theme.dialog.base}
+    ${theme.dialog.size[$size]}
+  `}
 `;
 
-const StyledCloseCTA = styled(CTA)`
+const StyledCloseBtn = styled(Button)`
   position: absolute;
-  top: ${theme.spacing.spacing2};
-  right: ${theme.spacing.spacing2};
-  z-index: ${theme.dialog.closeBtn.zIndex};
+  top: ${({ theme }) => theme.spacing('md')};
+  right: ${({ theme }) => theme.spacing('md')};
+  z-index: 100;
 `;
 
-const StyledDialogHeader = styled(H3)<StyledDialogProps>`
-  padding: ${({ $size }) => theme.dialog[$size].header.padding};
+const StyledDialogHeader = styled(H3)`
+  ${({ theme }) => theme.dialog.header};
+
   overflow: hidden;
   flex-shrink: 0;
 `;
 
-const StyledDialogDivider = styled(Divider)<StyledDialogProps>`
-  margin: ${({ $size }) => `0 ${theme.dialog[$size].divider.marginX} ${theme.dialog[$size].divider.marginBottom}`};
-  flex-shrink: 0;
-`;
+const StyledDialogBody = styled(Flex)<StyledDialogBodyProps>`
+  ${({ theme }) => theme.dialog.body};
+  max-height: ${({ theme, $maxHeight }) => $maxHeight && theme.spacing($maxHeight)};
 
-const StyledDialogBody = styled(Flex)<StyledDialogProps>`
-  padding: ${({ $size }) => `${theme.dialog[$size].body.paddingY} ${theme.dialog[$size].body.paddingX}`};
   flex: 1 1 auto;
 `;
 
-const StyledDialogFooter = styled(Flex)<StyledDialogProps>`
-  padding: ${({ $size }) => theme.dialog[$size].footer.padding};
+const StyledDialogFooter = styled(Flex)`
+  ${({ theme }) => theme.dialog.footer};
 `;
 
-export { StyledCloseCTA, StyledDialog, StyledDialogBody, StyledDialogDivider, StyledDialogFooter, StyledDialogHeader };
+export { StyledCloseBtn, StyledDialog, StyledDialogBody, StyledDialogFooter, StyledDialogHeader };

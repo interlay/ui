@@ -44,7 +44,7 @@ const CTALink = forwardRef<HTMLAnchorElement, CTALinkProps>(
         })}
       >
         {children}
-        {icon && <StyledIcon color='secondary' />}
+        {icon && <StyledIcon />}
       </BaseCTA>
     );
   }

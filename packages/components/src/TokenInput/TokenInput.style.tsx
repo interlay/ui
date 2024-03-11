@@ -1,103 +1,90 @@
-import styled from 'styled-components';
-import { ChevronDown } from '@interlay/icons';
-import { theme } from '@interlay/theme';
+import styled, { css } from 'styled-components';
+import { TokenInputSize } from '@interlay/theme';
 
+import { UnstyledButton } from '../UnstyledButton';
 import { Flex } from '../Flex';
-import { List } from '../List';
 import { StyledTrigger } from '../Select/Select.style';
-import { Dl, Dt, Span } from '../Text';
-
-type StyledUSDAdornmentProps = {
-  $isDisabled?: boolean;
-};
+import { Span } from '../Text';
 
 type StyledListItemSelectedLabelProps = {
   $isSelected: boolean;
 };
 
+type StyledTokenAdornmentProps = {
+  $size: TokenInputSize;
+};
+
 const StyledTicker = styled.span`
-  font-size: ${theme.text.s};
-  color: ${theme.colors.textPrimary};
+  color: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
-const StyledUSDAdornment = styled.span<StyledUSDAdornmentProps>`
-  display: block;
-  font-size: ${theme.text.xs};
-  line-height: ${theme.lineHeight.s};
-  color: ${({ $isDisabled }) => ($isDisabled ? theme.input.disabled.color : theme.colors.textTertiary)};
-  white-space: nowrap;
-  align-self: flex-start;
+const StyledTokenAdornment = styled(Flex)<StyledTokenAdornmentProps>`
+  ${({ theme, $size }) => css`
+    ${theme.tokenInput.addorment.token.base}
+    ${theme.tokenInput.size[$size].addornment.token.base}
+  `}
 `;
 
-const StyledTokenAdornment = styled(Flex)`
-  border: ${theme.border.default};
-  background-color: ${theme.tokenInput.endAdornment.bg};
-  border-radius: ${theme.rounded.md};
-  font-size: ${theme.text.s};
-  padding: ${theme.spacing.spacing3};
-  height: 3rem;
-  width: auto;
-  overflow: hidden;
+const StyledTokenImg = styled.img<StyledTokenAdornmentProps>`
+  ${({ theme, $size }) => theme.tokenInput.size[$size].addornment.token.img}
+  border-radius: ${({ theme }) => theme.rounded('full')};
 `;
 
 const StyledTokenSelect = styled(StyledTrigger)`
-  background-color: ${theme.tokenInput.endAdornment.bg};
-  opacity: ${({ $isDisabled }) => $isDisabled && 0.5};
-  border-radius: ${theme.rounded.md};
-  font-size: ${theme.text.s};
-  padding: ${theme.spacing.spacing3};
-  height: 3rem;
-  max-height: 3rem;
-  width: auto;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   overflow: hidden;
-`;
-
-const StyledChevronDown = styled(ChevronDown)`
-  margin-left: ${theme.spacing.spacing1};
-`;
-
-const StyledBalance = styled(Dl)`
-  padding: ${theme.spacing.spacing1} 0;
-`;
-
-const StyledBalanceLabel = styled(Dt)`
-  &:after {
-    content: ':';
-  }
+  margin-left: -1px;
 `;
 
 const StyledListItemLabel = styled(Span)<StyledListItemSelectedLabelProps>`
-  color: ${({ $isSelected }) =>
-    $isSelected ? theme.tokenInput.list.item.selected.text : theme.tokenInput.list.item.default.text};
   text-overflow: ellipsis;
   overflow: hidden;
+
+  ${({ theme, $isSelected }) => {
+    return css`
+      ${theme.tokenInput.list.item.ticker}
+      ${$isSelected && theme.tokenInput.list.item.selected.ticker}
+    `;
+  }}
 `;
 
-const StyledList = styled(List)`
-  overflow: auto;
-  padding: 0 ${theme.spacing.spacing4} ${theme.spacing.spacing2} ${theme.spacing.spacing4};
-`;
+const StyledListItemUsd = styled(Span)<StyledListItemSelectedLabelProps>`
+  text-overflow: ellipsis;
+  overflow: hidden;
 
-const StyledListHeader = styled(Flex)`
-  padding: ${theme.spacing.spacing2} ${theme.spacing.spacing4};
+  ${({ theme, $isSelected }) => {
+    return css`
+      ${theme.tokenInput.list.item.usd}
+      ${$isSelected && theme.tokenInput.list.item.selected.usd}
+    `;
+  }}
 `;
 
 const StyledListTokenWrapper = styled(Flex)`
   overflow: hidden;
 `;
 
+const StyledBalanceButton = styled(UnstyledButton)`
+  ${({ theme }) => theme.tokenInput.balance}
+`;
+
+const StyledBalanceLabel = styled(Span)`
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+`;
+
 export {
-  StyledChevronDown,
-  StyledList,
-  StyledListHeader,
+  StyledBalanceLabel,
   StyledListItemLabel,
   StyledListTokenWrapper,
   StyledTicker,
+  StyledBalanceButton,
   StyledTokenAdornment,
-  StyledBalance,
-  StyledBalanceLabel,
   StyledTokenSelect,
-  StyledUSDAdornment
+  StyledTokenImg,
+  StyledListItemUsd
 };

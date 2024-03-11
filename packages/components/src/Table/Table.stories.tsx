@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ChevronRight } from '@interlay/icons';
 
-import { CTA } from '../CTA';
+import { Button } from '../Button';
 
 import { ColumnProps, RowProps, Table, TableProps } from '.';
 
 const action = (
-  <CTA size='small' variant='text' onPress={() => alert('Pressed')}>
+  <Button onPress={() => alert('Pressed')}>
     <ChevronRight size='s' />
-  </CTA>
+  </Button>
 );
 const columns: ColumnProps[] = [
   { name: 'Coin', id: 'coin' },
@@ -42,7 +42,7 @@ export default {
 
 export const Default: StoryObj<TableProps> = {};
 
-export const SelectableRow: StoryObj<TableProps> = {
+export const SeleButtonbleRow: StoryObj<TableProps> = {
   args: {
     onRowAction: (key) => alert(`Row ${key} selected`)
   }

@@ -4,8 +4,8 @@ import { Key, ReactNode, forwardRef, useEffect, useState } from 'react';
 import { HelperText } from '../HelperText';
 
 import { BaseTokenInput, BaseTokenInputProps } from './BaseTokenInput';
-import { TokenSelect, TokenSelectProps } from './TokenSelect';
 import { TokenInputBalance } from './TokenInputBalance';
+import { TokenSelect, TokenSelectProps } from './TokenSelect';
 
 type Props = {
   balance?: string | number;
@@ -15,7 +15,7 @@ type Props = {
   selectProps: Omit<TokenSelectProps, 'label' | 'helperTextId'>;
 };
 
-type InheritAttrs = Omit<BaseTokenInputProps, keyof Props>;
+type InheritAttrs = Omit<BaseTokenInputProps, keyof Props | 'endAdornment'>;
 
 type SelectableTokenInputProps = Props & InheritAttrs;
 
@@ -32,6 +32,7 @@ const SelectableTokenInput = forwardRef<HTMLInputElement, SelectableTokenInputPr
       balanceLabel,
       humanBalance,
       onClickBalance,
+      size,
       ...props
     },
     ref
@@ -66,6 +67,7 @@ const SelectableTokenInput = forwardRef<HTMLInputElement, SelectableTokenInputPr
         description={undefined}
         errorMessage={undefined}
         isInvalid={isInvalid}
+        size={size}
         value={ticker}
         onSelectionChange={chain(onSelectionChange, handleTokenChange)}
       />

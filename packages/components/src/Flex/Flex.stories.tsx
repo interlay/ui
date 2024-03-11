@@ -7,7 +7,7 @@ export default {
   component: Flex,
 
   args: {
-    gap: 'spacing2'
+    gap: 'md'
   },
   render: (args: FlexProps) => (
     <Flex {...args}>

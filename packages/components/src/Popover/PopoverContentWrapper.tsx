@@ -59,7 +59,7 @@ const PopoverContentWrapper = forwardRef<HTMLDivElement, PopoverContentWrapperPr
           style={{ ...style, ...popoverProps.style }}
         >
           {!isNonModal && <DismissButton onDismiss={state.close} />}
-          <Dialog size='small' {...dialogProps}>
+          <Dialog size='s' {...dialogProps}>
             {children}
           </Dialog>
           <DismissButton onDismiss={state.close} />

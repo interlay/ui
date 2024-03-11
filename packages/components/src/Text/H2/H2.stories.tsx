@@ -1,33 +1,18 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
-import { H2, H2Props } from '.';
+import { H2Props } from './H2';
 
-const Template: Story<H2Props> = (args) => <H2 {...args} />;
-
-const Primary = Template.bind({});
-
-Primary.args = {
-  color: 'primary',
-  children: 'Primary heading 2'
-};
-
-const Secondary = Template.bind({});
-
-Secondary.args = {
-  color: 'secondary',
-  children: 'Secondary heading 2'
-};
-
-const Tertiary = Template.bind({});
-
-Tertiary.args = {
-  color: 'tertiary',
-  children: 'Tertiary heading 2'
-};
-
-export { Primary, Secondary, Tertiary };
+import { H2 } from '.';
 
 export default {
   title: 'Text/H2',
-  component: H2
-} as Meta;
+  component: H2,
+  parameters: {
+    layout: 'centered'
+  },
+  args: {
+    children: 'Heading 2'
+  }
+} as Meta<typeof H2>;
+
+export const Default: StoryObj<H2Props> = {};

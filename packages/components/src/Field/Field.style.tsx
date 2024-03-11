@@ -1,16 +1,22 @@
-import styled from 'styled-components';
-import { Spacing, theme } from '@interlay/theme';
+import styled, { CSSProperties } from 'styled-components';
+
+import { Flex } from '../Flex';
 
 type StyledFieldProps = {
-  $maxWidth?: Spacing;
+  $maxWidth?: CSSProperties['maxWidth'];
+  $fullWidth?: boolean;
 };
 
-const StyledField = styled.div<StyledFieldProps>`
+const StyledFieldElWrapper = styled.div`
   position: relative;
-  color: ${theme.colors.textPrimary};
   box-sizing: border-box;
   display: inline-flex;
-  max-width: ${({ $maxWidth }) => $maxWidth && theme.spacing[$maxWidth]};
+  height: 100%;
 `;
 
-export { StyledField };
+const StyledField = styled(Flex)<StyledFieldProps>`
+  max-width: ${({ $maxWidth }) => $maxWidth};
+  width: ${({ $fullWidth, $maxWidth }) => ($fullWidth || $maxWidth) && '100%'};
+`;
+
+export { StyledField, StyledFieldElWrapper };

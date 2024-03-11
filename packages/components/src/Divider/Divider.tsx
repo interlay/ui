@@ -2,16 +2,17 @@ import { useSeparator } from '@react-aria/separator';
 import { mergeProps } from '@react-aria/utils';
 import { forwardRef, HTMLAttributes } from 'react';
 import { useStyleProps } from '@interlay/hooks';
+import { Color, DividerSizes } from '@interlay/theme';
 
-import { DividerVariants, MarginProps, Orientation, Sizes } from '../../../core/theme/src';
+import { MarginProps, Orientation } from '../../../core/theme/src';
 import { ElementTypeProp } from '../utils/types';
 
 import { StyledDivider } from './Divider.style';
 
 type Props = {
   orientation?: Orientation;
-  color?: DividerVariants;
-  size?: Sizes;
+  color?: Color;
+  size?: DividerSizes;
 };
 
 type NativeAttrs = Omit<HTMLAttributes<unknown>, keyof Props>;
@@ -20,7 +21,7 @@ type DividerProps = Props & NativeAttrs & ElementTypeProp & MarginProps;
 
 const Divider = forwardRef<HTMLHRElement, DividerProps>(
   (
-    { elementType: elementTypeProp, orientation = 'horizontal', color = 'primary', size = 'small', ...props },
+    { elementType: elementTypeProp, orientation = 'horizontal', color = 'grey-400', size = 's', ...props },
     ref
   ): JSX.Element => {
     const elementType = elementTypeProp || orientation === 'vertical' ? 'div' : 'hr';

@@ -41,7 +41,7 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
       >
         <StyledRadioGroup
           {...radioGroupProps}
-          $gap={orientation === 'horizontal' ? gap || 'spacing4' : gap}
+          $gap={orientation === 'horizontal' ? gap || 'md' : gap}
           $orientation={orientation}
           direction={orientation === 'vertical' ? 'column' : 'row'}
           onChange={onChange}

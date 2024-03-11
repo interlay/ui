@@ -28,18 +28,6 @@ export default {
 
 export const Default: StoryObj<ListProps> = {};
 
-export const Secondary: StoryObj<ListProps> = {
-  args: {
-    variant: 'secondary'
-  }
-};
-
-export const Card: StoryObj<ListProps> = {
-  args: {
-    variant: 'card'
-  }
-};
-
 export const Horizontal: StoryObj<ListProps> = {
   args: {
     direction: 'row'

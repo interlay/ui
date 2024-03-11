@@ -4,25 +4,24 @@ import { mergeProps } from '@react-aria/utils';
 import { TreeState } from '@react-stately/tree';
 import { Node } from '@react-types/shared';
 import { useRef } from 'react';
-import { FontSize } from '@interlay/theme';
-
-import { Span } from '..';
+import { AccordionVariants } from '@interlay/theme';
 
 import {
   StyledAccordionItemButton,
   StyledAccordionItemHeading,
   StyledAccordionItemWrapper,
-  StyledChevronDown
+  StyledChevronDown,
+  StyledSpan
 } from './Accordion.style';
 import { AccordionItemRegion } from './AccordionItemRegion';
 
 type AccordionItemProps<T> = {
   item: Node<T>;
   state: TreeState<T>;
-  size?: FontSize;
+  variant?: AccordionVariants;
 };
 const AccordionItem = <T extends Record<string, unknown>>({
-  size = 'base',
+  variant = 'light',
   ...props
 }: AccordionItemProps<T>): JSX.Element => {
   const ref = useRef<HTMLButtonElement>(null);
@@ -33,8 +32,8 @@ const AccordionItem = <T extends Record<string, unknown>>({
   const { isFocusVisible, focusProps } = useFocusRing();
 
   return (
-    <StyledAccordionItemWrapper $isDisabled={isDisabled}>
-      <StyledAccordionItemHeading size={size}>
+    <StyledAccordionItemWrapper $isDisabled={isDisabled} $variant={variant}>
+      <StyledAccordionItemHeading>
         <FocusRing within>
           <StyledAccordionItemButton
             {...mergeProps(buttonProps, focusProps)}
@@ -42,7 +41,7 @@ const AccordionItem = <T extends Record<string, unknown>>({
             $isDisabled={isDisabled}
             $isFocusVisible={isFocusVisible}
           >
-            <Span>{item.props.title}</Span>
+            <StyledSpan>{item.props.title}</StyledSpan>
             <StyledChevronDown $isExpanded={isExpanded} aria-hidden='true' role='img' size='s' />
           </StyledAccordionItemButton>
         </FocusRing>

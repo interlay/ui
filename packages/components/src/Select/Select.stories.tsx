@@ -2,27 +2,71 @@ import { Item } from '@react-stately/collections';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { Key, useState } from 'react';
 
-import { CoinIcon } from '../CoinIcon';
 import { Flex } from '../Flex';
-import { CTA } from '..';
+import { Button } from '..';
 
 import { Select, SelectProps } from './Select';
 
 const Render = (args: SelectProps) => (
   <Select<any> {...args}>
     <Item key='BTC' textValue='BTC'>
-      <Flex alignItems='center' gap='spacing2'>
-        <CoinIcon ticker='BTC' /> BTC
+      <Flex alignItems='center' gap='xs'>
+        BTC
       </Flex>
     </Item>
     <Item key='ETH' textValue='ETH'>
-      <Flex alignItems='center' gap='spacing2'>
-        <CoinIcon ticker='ETH' /> ETH
+      <Flex alignItems='center' gap='xs'>
+        ETH
       </Flex>
     </Item>
     <Item key='USDT' textValue='USDT'>
-      <Flex alignItems='center' gap='spacing2'>
-        <CoinIcon ticker='USDT' /> USDT
+      <Flex alignItems='center' gap='xs'>
+        USDT
+      </Flex>
+    </Item>
+    <Item key='USDC' textValue='USDC'>
+      <Flex alignItems='center' gap='xs'>
+        USDC
+      </Flex>
+    </Item>
+    <Item key='TBTC' textValue='TBTC'>
+      <Flex alignItems='center' gap='xs'>
+        TBTC
+      </Flex>
+    </Item>
+    <Item key='WBTC' textValue='WBTC'>
+      <Flex alignItems='center' gap='xs'>
+        WBTC
+      </Flex>
+    </Item>
+    <Item key='WETH' textValue='WETH'>
+      <Flex alignItems='center' gap='xs'>
+        WETH
+      </Flex>
+    </Item>
+    <Item key='DAI' textValue='DAI'>
+      <Flex alignItems='center' gap='xs'>
+        DAI
+      </Flex>
+    </Item>
+    <Item key='BBTC' textValue='BBTC'>
+      <Flex alignItems='center' gap='xs'>
+        BBTC
+      </Flex>
+    </Item>
+    <Item key='DBTC' textValue='DBTC'>
+      <Flex alignItems='center' gap='xs'>
+        DBTC
+      </Flex>
+    </Item>
+    <Item key='PBTC' textValue='PBTC'>
+      <Flex alignItems='center' gap='xs'>
+        PBTC
+      </Flex>
+    </Item>
+    <Item key='WWBTC' textValue='WWBTC'>
+      <Flex alignItems='center' gap='xs'>
+        WWBTC
       </Flex>
     </Item>
   </Select>
@@ -76,7 +120,7 @@ const ControlledOpenComponent = (args: SelectProps<any>) => {
 
   return (
     <>
-      <CTA onPress={() => setState(true)}>Open Modal</CTA>
+      <Button onPress={() => setState(true)}>Open Modal</Button>
       <Render {...(args as any)} open={state} onOpenChange={setState} />
     </>
   );
@@ -130,15 +174,15 @@ export const SideLabel: StoryObj<SelectProps> = {
 
 export const MaxWidth: StoryObj<SelectProps> = {
   args: {
-    maxWidth: 'spacing28'
+    maxWidth: '11xl'
   }
 };
 
 export const Sizes: StoryFn<SelectProps> = (args: any) => (
   <Flex direction='column'>
-    <Select {...args} label='Small' size='small' />
-    <Select {...args} label='Medium' />
-    <Select {...args} label='Large' size='large' />
+    <Render {...args} label='Small' size='s' type='modal' />
+    <Render {...args} label='Medium' type='modal' />
+    <Render {...args} label='Large' size='lg' type='modal' />
   </Flex>
 );
 

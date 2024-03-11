@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from '@interlay/theme';
 
 import { Span } from '../Text';
 import { TextLink } from '../TextLink';
@@ -28,12 +27,12 @@ const StyledListItem = styled.li`
 `;
 
 const StyledSpanBreadcrumb = styled(Span)<StyledBreadcrumbProps>`
-  padding: 0 ${theme.spacing.spacing2};
+  padding: 0 ${({ theme }) => theme.spacing('s')};
   cursor: default;
 `;
 
 const StyledLinkBreadcrumb = styled(TextLink)<StyledBreadcrumbProps>`
-  padding: 0 ${theme.spacing.spacing2};
+  padding: 0 ${({ theme }) => theme.spacing('s')};
   text-decoration: none;
 `;
 

@@ -7,9 +7,9 @@ export default defineConfig({
   banner: { js: '"use client";' },
   entry: {
     index: 'src/index.ts',
-    kintsugi: 'src/css/theme.kintsugi.css',
-    interlay: 'src/css/theme.interlay.css',
-    bob: 'src/css/theme.bob.css'
+    kintsugi: 'src/temp/css/theme.kintsugi.css',
+    interlay: 'src/temp/css/theme.interlay.css',
+    bob: 'src/temp/css/theme.bob.css'
   },
   dts: {
     entry: {

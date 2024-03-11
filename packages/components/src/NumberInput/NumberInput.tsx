@@ -26,7 +26,7 @@ type Props = {
 
 type InheritAttrs = Omit<
   BaseInputProps,
-  keyof Props | 'errorMessageProps' | 'descriptionProps' | 'inputProps' | 'elementType'
+  keyof Props | 'errorMessageProps' | 'descriptionProps' | 'inputProps' | 'elementType' | 'autoCapitalize'
 >;
 
 type AriaAttrs = Omit<AriaTextFieldOptions<'input'>, keyof (Props & InheritAttrs)>;

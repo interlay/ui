@@ -1,6 +1,6 @@
 {
   "name": "@interlay/theme",
-  "version": "0.0.7",
+  "version": "1.0.0-next.0",
   "description": "The default theme for Interlay UI components",
   "homepage": "https://github.com/interlay/ui#readme",
   "license": "MIT",
@@ -42,12 +42,14 @@
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "styled-components": ">=6.0.0"
   },
   "devDependencies": {
     "clean-package": "^2.2.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.0.7"
   },
   "clean-package": "./clean-package.config.json"
 }

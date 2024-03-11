@@ -2,20 +2,20 @@ import { useButton } from '@react-aria/button';
 import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { forwardRef } from 'react';
-import { BorderRadius, CardVariants, Spacing, Variants } from '@interlay/theme';
 import { useDOMRef } from '@interlay/hooks';
+import { Color, Rounded, Spacing } from '@interlay/theme';
 
 import { FlexProps } from '../Flex';
 
 import { StyledCard } from './Card.style';
 
 type Props = {
-  variant?: CardVariants;
-  background?: Variants;
   isHoverable?: boolean;
   isPressable?: boolean;
   isDisabled?: boolean;
-  rounded?: BorderRadius;
+  background?: Color;
+  bordered?: boolean | Color;
+  rounded?: Rounded;
   padding?: Spacing;
   shadowed?: boolean;
   onPress?: (e: PressEvent) => void;
@@ -28,17 +28,17 @@ type CardProps = Props & InheritAttrs;
 const Card = forwardRef<HTMLDivElement, CardProps>(
   (
     {
-      variant = 'default',
       direction = 'column',
-      background = 'primary',
+      background,
       isHoverable,
       isPressable,
       children,
       elementType,
       isDisabled,
       rounded = 'xl',
-      padding = 'spacing6',
-      shadowed = true,
+      padding = 'md',
+      shadowed = false,
+      bordered = true,
       ...props
     },
     ref
@@ -53,12 +53,12 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       <StyledCard
         ref={cardRef}
         $background={background}
+        $bordered={bordered}
         $isHoverable={isHoverable}
         $isPressable={isPressable}
         $padding={padding}
         $rounded={rounded}
         $shadowed={shadowed}
-        $variant={variant}
         direction={direction}
         elementType={elementType}
         {...mergeProps(props, isPressable ? buttonProps : {})}

@@ -2,6 +2,8 @@ import { AriaModalOverlayProps, AriaOverlayProps, useModalOverlay } from '@react
 import { mergeProps } from '@react-aria/utils';
 import { OverlayTriggerState } from '@react-stately/overlays';
 import { forwardRef, ReactNode, RefObject } from 'react';
+import { DialogSize } from '@interlay/theme';
+import { CSSProperties } from 'styled-components';
 
 import { Underlay } from '../Overlay/Underlay';
 
@@ -9,10 +11,12 @@ import { StyledModal, StyledWrapper } from './Modal.style';
 
 type Props = {
   children: ReactNode;
-  align?: 'top' | 'center';
+  placement?: 'top' | 'center';
   isOpen?: boolean;
   onClose: () => void;
   wrapperRef: RefObject<HTMLDivElement>;
+  size: DialogSize;
+  maxHeight?: CSSProperties['maxHeight'];
 };
 
 type InheritAttrs = Omit<AriaModalOverlayProps & AriaOverlayProps, keyof Props>;
@@ -24,13 +28,15 @@ const ModalWrapper = forwardRef<HTMLDivElement, ModalWrapperProps>(
     {
       children,
       isDismissable = true,
-      align = 'center',
+      placement = 'center',
       onClose,
       isKeyboardDismissDisabled,
       isOpen,
       shouldCloseOnInteractOutside,
       shouldCloseOnBlur,
       wrapperRef,
+      size,
+      maxHeight,
       ...props
     },
     ref
@@ -50,13 +56,17 @@ const ModalWrapper = forwardRef<HTMLDivElement, ModalWrapperProps>(
       ref as RefObject<HTMLElement>
     );
 
-    const isCentered = align === 'center';
-
     return (
       <div ref={wrapperRef}>
         <Underlay {...underlayProps} isOpen={!!isOpen} />
-        <StyledWrapper $isCentered={isCentered} $isOpen={!!isOpen}>
-          <StyledModal ref={ref} $isCentered={isCentered} $isOpen={isOpen} {...mergeProps(modalProps, props)}>
+        <StyledWrapper $placement={placement}>
+          <StyledModal
+            ref={ref}
+            $isOpen={isOpen}
+            $maxHeight={maxHeight}
+            $size={size}
+            {...mergeProps(modalProps, props)}
+          >
             {children}
           </StyledModal>
         </StyledWrapper>

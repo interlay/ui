@@ -1,36 +1,18 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
-import { P, PProps } from '.';
+import { PProps } from './P';
 
-const Template: Story<PProps> = (args) => <P {...args} />;
-
-const Primary = Template.bind({});
-
-Primary.args = {
-  color: 'primary',
-  children:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maiores cumque quidem voluptate odit explicabo asperiores itaque tenetur illum iusto possimus quae, sequi natus corporis voluptas cupiditate ipsa eius officiis?'
-};
-
-const Secondary = Template.bind({});
-
-Secondary.args = {
-  color: 'secondary',
-  children:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maiores cumque quidem voluptate odit explicabo asperiores itaque tenetur illum iusto possimus quae, sequi natus corporis voluptas cupiditate ipsa eius officiis?'
-};
-
-const Tertiary = Template.bind({});
-
-Tertiary.args = {
-  color: 'tertiary',
-  children:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maiores cumque quidem voluptate odit explicabo asperiores itaque tenetur illum iusto possimus quae, sequi natus corporis voluptas cupiditate ipsa eius officiis?'
-};
-
-export { Primary, Secondary, Tertiary };
+import { P } from '.';
 
 export default {
   title: 'Text/P',
-  component: P
-} as Meta;
+  component: P,
+  parameters: {
+    layout: 'centered'
+  },
+  args: {
+    children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit'
+  }
+} as Meta<typeof P>;
+
+export const Default: StoryObj<PProps> = {};

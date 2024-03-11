@@ -4,7 +4,8 @@ import React from 'react';
 
 import { InterlayUIProvider } from '../packages/core/system/src';
 import { CSSReset } from '../packages/components/src';
-import '../packages/core/theme/src/css/theme.interlay.css';
+import '../packages/core/theme/src/temp/css/theme.interlay.css';
+import { bobTheme } from '../packages/core/theme/src';
 import './style.css';
 
 const preview: Preview = {
@@ -15,6 +16,19 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/
       }
+    },
+    backgrounds: {
+      default: 'dark',
+      values: [
+        {
+          name: 'dark',
+          value: bobTheme.color('dark')
+        },
+        {
+          name: 'light',
+          value: bobTheme.color('light')
+        }
+      ]
     }
   },
   decorators: [
@@ -24,7 +38,7 @@ const preview: Preview = {
         locale && new Intl.Locale(locale)?.textInfo?.direction === 'rtl' ? 'rtl' : undefined;
 
       return (
-        <InterlayUIProvider locale={locale}>
+        <InterlayUIProvider locale={locale} theme={bobTheme}>
           <CSSReset />
           <div dir={direction} lang={locale}>
             <Story />

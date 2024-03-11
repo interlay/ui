@@ -2,14 +2,17 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { mergeProps } from '@react-aria/utils';
 
-import * as coins from '../../../../icons/coin/src';
 import { TokenInput, TokenInputProps } from '..';
 
 const items = [
-  { balance: 1, value: 'BTC', balanceUSD: 10000 },
-  { balance: 2, value: 'ETH', balanceUSD: 900 },
-  { balance: 500, value: 'USDT', balanceUSD: 500 },
-  { balance: 120, value: 'LP Token', tickers: ['BTC', 'ETH', 'USDT'], balanceUSD: 230 }
+  { balance: 2, ticker: 'ETH', logoUrl: 'https://ethereum-optimism.github.io/data/ETH/logo.svg', balanceUSD: 900 },
+  { balance: 500, ticker: 'USDT', logoUrl: 'https://ethereum-optimism.github.io/data/USDT/logo.png', balanceUSD: 500 },
+  {
+    balance: 100,
+    ticker: 'USDC',
+    logoUrl: 'https://ethereum-optimism.github.io/data/BridgedUSDC/logo.png',
+    balanceUSD: 100
+  }
 ];
 
 export default {
@@ -17,9 +20,6 @@ export default {
   component: TokenInput,
   parameters: {
     layout: 'centered'
-  },
-  argTypes: {
-    ticker: { control: 'select', options: Object.keys(coins) }
   },
   args: {
     type: 'selectable',
@@ -35,7 +35,7 @@ export const Selectable: StoryObj<TokenInputProps> = {};
 export const SelectableDefaultValue: StoryObj<TokenInputProps> = {
   args: {
     selectProps: {
-      defaultValue: 'BTC',
+      defaultValue: 'ETH',
       items
     }
   }
@@ -59,7 +59,8 @@ export const SelectableControlledValue: StoryObj<TokenInputProps> = {
 
 export const SelectableWithBalance: StoryObj<TokenInputProps> = {
   args: {
-    balance: '10'
+    balance: '10',
+    valueUSD: 0
   }
 };
 

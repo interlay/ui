@@ -38,24 +38,24 @@ const SelectModal = forwardRef<HTMLDivElement, SelectModalProps>(
 
     return (
       <SelectModalContext.Provider value={{ selectedItem: state.selectedItem }}>
-        <Modal ref={ref} hasMaxHeight onClose={onClose} {...props}>
-          <ModalHeader color='secondary' id={headerId} size='lg' weight='medium'>
+        <Modal ref={ref} onClose={onClose} {...props}>
+          <ModalHeader id={headerId} size='lg' weight='medium'>
             {title}
           </ModalHeader>
-          <ModalBody noPadding={hasItems} overflow='hidden'>
+          <ModalBody noPadding={hasItems}>
             {hasItems ? (
               <StyledList
                 {...listProps}
                 aria-labelledby={headerId}
+                gap='s'
                 selectionMode='single'
-                variant='secondary'
                 onSelectionChange={handleSelectionChange}
               >
                 {[...state.collection].map((item) => (
                   <ListItem
                     key={item.key}
                     alignItems='center'
-                    gap='spacing2'
+                    gap='xs'
                     justifyContent='space-between'
                     textValue={item.textValue}
                   >
@@ -64,9 +64,7 @@ const SelectModal = forwardRef<HTMLDivElement, SelectModalProps>(
                 ))}
               </StyledList>
             ) : (
-              <P align='center' color='tertiary'>
-                No options
-              </P>
+              <P align='center'>No options</P>
             )}
           </ModalBody>
         </Modal>

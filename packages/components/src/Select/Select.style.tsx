@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ChevronDown } from '@interlay/icons';
-import { theme } from '@interlay/theme';
-import { Sizes } from '@interlay/theme';
+import { InputSizes } from '@interlay/theme';
 
 import { List } from '../List';
 import { Span } from '../Text';
 
 type StyledTriggerProps = {
   $isOpen?: boolean;
-  $size: Sizes;
+  $size: InputSizes;
   $isDisabled: boolean;
   $hasError: boolean;
+  $hasValue: boolean;
 };
 
 type StyledTriggerValueProps = {
@@ -20,14 +20,9 @@ type StyledTriggerValueProps = {
 
 const StyledTrigger = styled.button<StyledTriggerProps>`
   outline: none;
-  font: inherit;
   letter-spacing: inherit;
   background: none;
 
-  font-size: ${({ $size }) => theme.select.size[$size].text};
-  line-height: ${theme.lineHeight.base};
-  color: ${({ $isDisabled }) => ($isDisabled ? theme.input.disabled.color : theme.input.color)};
-  background-color: ${({ $isDisabled }) => ($isDisabled ? theme.input.disabled.bg : theme.input.background)};
   overflow: hidden;
 
   display: inline-flex;
@@ -36,45 +31,63 @@ const StyledTrigger = styled.button<StyledTriggerProps>`
   width: 100%;
   text-align: left;
 
-  padding: ${({ $size }) => theme.select.size[$size].padding};
   cursor: ${({ $isDisabled }) => !$isDisabled && 'pointer'};
-  max-height: ${({ $size }) => `calc(${theme.input[$size].maxHeight} - 1px)`};
 
-  border: ${({ $isDisabled, $hasError }) =>
-    $isDisabled ? theme.input.disabled.border : $hasError ? theme.input.error.border : theme.border.default};
-  border-radius: ${theme.rounded.md};
-  transition:
-    border-color ${theme.transition.duration.duration150}ms ease-in-out,
-    box-shadow ${theme.transition.duration.duration150}ms ease-in-out;
+  ${({ theme, $size, $hasError, $hasValue }) => {
+    const { paddingRight, paddingTop, paddingBottom, paddingLeft, ...sizeCss } = theme.input.size[$size];
+    const { color, ...baseCss } = theme.input.base;
 
-  &:hover:not(:disabled):not(:focus) {
-    border: ${({ $isDisabled, $hasError }) => !$isDisabled && !$hasError && theme.input.hover.border};
-  }
+    return css`
+      padding-top: ${paddingTop};
+      padding-bottom: ${paddingBottom};
+      padding-left: ${paddingLeft};
+      padding-right: ${paddingRight};
 
-  &:focus {
-    border: ${({ $isDisabled }) => !$isDisabled && theme.input.focus.border};
-    box-shadow: ${({ $isDisabled }) => !$isDisabled && theme.input.focus.boxShadow};
-  }
+      color: ${$hasValue ? color : theme.input.placeholder.color};
+
+      ${sizeCss}
+      ${baseCss}
+      ${$hasError && theme.input.error.base}
+
+
+      &:hover:not(:disabled):not(:focus) {
+        ${$hasError ? theme.input.error.hover : theme.input.hover}
+      }
+
+      &:focus:not(:disabled) {
+        ${$hasError ? theme.input.error.focus : theme.input.focus}
+      }
+
+      &:disabled {
+        ${theme.input.disabled}
+      }
+    `;
+  }}
 `;
 
 const StyledTriggerValue = styled(Span)<StyledTriggerValueProps>`
   flex: 1;
   display: inline-flex;
   align-items: center;
-  color: ${({ $isDisabled, $isSelected }) =>
-    $isDisabled ? theme.input.disabled.color : $isSelected ? theme.select.color : theme.select.placeholder};
+  color: inherit;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
 `;
 
-const StyledList = styled(List)`
-  overflow: auto;
-  padding: 0 ${theme.dialog.medium.body.paddingX} ${theme.dialog.medium.body.paddingX};
+const StyledList: any = styled(List)`
+  ${({ theme }) => theme.tokenInput.list.base};
+
+  > :last-child {
+    margin-bottom: ${({ theme }) => theme.spacing('lg')};
+  }
 `;
 
 const StyledChevronDown = styled(ChevronDown)`
-  margin-left: ${theme.spacing.spacing2};
+  margin-left: ${({ theme }) => theme.spacing('md')};
 `;
 
 export { StyledChevronDown, StyledList, StyledTrigger, StyledTriggerValue };

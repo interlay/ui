@@ -1,5 +1,5 @@
-import { blur, testA11y } from '@interlay/test-utils';
-import { render, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
+import { blur, testA11y, render } from '@interlay/test-utils';
+import { screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { Key, createRef, useState } from 'react';
 
@@ -7,7 +7,7 @@ import { TokenInput } from '..';
 
 describe('TokenInput', () => {
   it('should render correctly', () => {
-    const wrapper = render(<TokenInput label='label' ticker='BTC' />);
+    const wrapper = render(<TokenInput label='label' logoUrl='' ticker='BTC' />);
 
     expect(() => wrapper.unmount()).not.toThrow();
   });
@@ -15,28 +15,28 @@ describe('TokenInput', () => {
   it('ref should be forwarded', () => {
     const ref = createRef<HTMLInputElement>();
 
-    render(<TokenInput ref={ref} label='label' ticker='BTC' />);
+    render(<TokenInput ref={ref} label='label' logoUrl='' ticker='BTC' />);
     expect(ref.current).not.toBeNull();
   });
 
   it('should pass a11y', async () => {
-    await testA11y(<TokenInput label='label' ticker='BTC' />);
+    await testA11y(<TokenInput label='label' logoUrl='' ticker='BTC' />);
   });
 
   it('should render with placeholder', () => {
-    render(<TokenInput label='label' ticker='BTC' />);
+    render(<TokenInput label='label' logoUrl='' ticker='BTC' />);
 
-    expect(screen.getByPlaceholderText('0')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('0.00')).toBeInTheDocument();
   });
 
   it('should render with usd value', () => {
-    render(<TokenInput label='label' ticker='BTC' valueUSD={10} />);
+    render(<TokenInput label='label' logoUrl='' ticker='BTC' valueUSD={10} />);
 
     expect(screen.getByText('$10.00')).toBeInTheDocument();
   });
 
   it('should render with default value', () => {
-    render(<TokenInput defaultValue='10' label='label' ticker='BTC' />);
+    render(<TokenInput defaultValue='10' label='label' logoUrl='' ticker='BTC' />);
 
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('10');
   });
@@ -47,7 +47,7 @@ describe('TokenInput', () => {
 
       const handleValueChange = (value?: string | number) => setValue(value?.toString() || '');
 
-      return <TokenInput label='label' ticker='BTC' value={value} onValueChange={handleValueChange} />;
+      return <TokenInput label='label' logoUrl='' ticker='BTC' value={value} onValueChange={handleValueChange} />;
     };
 
     render(<Component />);
@@ -64,22 +64,22 @@ describe('TokenInput', () => {
   });
 
   it('should render description', () => {
-    render(<TokenInput description='Please select token' label='label' ticker='BTC' />);
+    render(<TokenInput description='Please select token' label='label' logoUrl='' ticker='BTC' />);
 
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveAccessibleDescription(/please select token$/i);
   });
 
   describe('balance', () => {
     it('should render', () => {
-      render(<TokenInput balance={10} label='label' ticker='BTC' />);
+      render(<TokenInput balance={10} label='label' logoUrl='' ticker='BTC' />);
 
-      expect(screen.getByRole('definition')).toHaveTextContent('10');
+      expect(screen.getByRole('button')).toHaveTextContent('10');
     });
 
     it('should render human value', () => {
-      render(<TokenInput balance={10} humanBalance={11} label='label' ticker='BTC' />);
+      render(<TokenInput balance={10} humanBalance={11} label='label' logoUrl='' ticker='BTC' />);
 
-      expect(screen.getByRole('definition')).toHaveTextContent('11');
+      expect(screen.getByRole('button')).toHaveTextContent('11');
     });
 
     it('should update input when applying max', async () => {
@@ -91,6 +91,7 @@ describe('TokenInput', () => {
           balance={10}
           humanBalance={11}
           label='label'
+          logoUrl=''
           ticker='BTC'
           onClickBalance={handleClickBalance}
           onValueChange={handleValueChange}
@@ -114,7 +115,14 @@ describe('TokenInput', () => {
       const handleBlur = jest.fn();
 
       render(
-        <TokenInput balance={10} label='label' ticker='BTC' onBlur={handleBlur} onClickBalance={handleClickBalance} />
+        <TokenInput
+          balance={10}
+          label='label'
+          logoUrl=''
+          ticker='BTC'
+          onBlur={handleBlur}
+          onClickBalance={handleClickBalance}
+        />
       );
 
       userEvent.type(screen.getByRole('textbox', { name: /label/i }), '1');
@@ -140,7 +148,14 @@ describe('TokenInput', () => {
       const handleClickBalance = jest.fn();
 
       render(
-        <TokenInput balance={0} humanBalance={11} label='label' ticker='BTC' onClickBalance={handleClickBalance} />
+        <TokenInput
+          balance={0}
+          humanBalance={11}
+          label='label'
+          logoUrl=''
+          ticker='BTC'
+          onClickBalance={handleClickBalance}
+        />
       );
 
       expect(screen.getByRole('button', { name: /apply max balance/i })).toBeDisabled();
@@ -149,7 +164,9 @@ describe('TokenInput', () => {
     it('should have max btn disabled when input is disabled', async () => {
       const handleClickBalance = jest.fn();
 
-      render(<TokenInput isDisabled balance={10} label='label' ticker='BTC' onClickBalance={handleClickBalance} />);
+      render(
+        <TokenInput isDisabled balance={10} label='label' logoUrl='' ticker='BTC' onClickBalance={handleClickBalance} />
+      );
 
       expect(screen.getByRole('button', { name: /apply max balance/i })).toBeDisabled();
     });
@@ -157,28 +174,22 @@ describe('TokenInput', () => {
 
   describe('fixed type', () => {
     it('should render with ticker adornment', () => {
-      render(<TokenInput label='label' ticker='BTC' />);
+      render(<TokenInput label='label' logoUrl='' ticker='BTC' />);
 
-      expect(screen.getAllByText(/btc/i)).toHaveLength(2);
+      expect(screen.getByText(/btc/i)).toBeInTheDocument();
     });
 
     it('should render with unknown ticker', () => {
-      render(<TokenInput label='label' ticker='ABC' />);
+      render(<TokenInput label='label' logoUrl='' ticker='ABC' />);
 
-      expect(screen.getAllByText(/abc/i)).toHaveLength(2);
-    });
-
-    it('should render with multi ticker', () => {
-      render(<TokenInput label='label' ticker={{ text: 'Custom', icons: ['BTC', 'ABC'] }} />);
-
-      expect(screen.getAllByText(/custom/i)).toHaveLength(2);
+      expect(screen.getByText(/abc/i)).toBeInTheDocument();
     });
   });
 
   describe('selectable type', () => {
     const items = [
-      { balance: 1, value: 'BTC', balanceUSD: 10000 },
-      { balance: 2, value: 'ETH', balanceUSD: 900 }
+      { balance: 1, ticker: 'BTC', balanceUSD: 10000, logoUrl: '' },
+      { balance: 2, ticker: 'ETH', balanceUSD: 900, logoUrl: '' }
     ];
 
     it('should render correctly', async () => {

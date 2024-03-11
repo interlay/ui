@@ -1,18 +1,20 @@
 import { forwardRef, HTMLAttributes, ReactNode } from 'react';
-import { LabelPosition, Spacing } from '@interlay/theme';
+import { LabelPosition } from '@interlay/theme';
+import { CSSProperties } from 'styled-components';
 
 import { Flex, FlexProps } from '../Flex';
 import { HelperText, HelperTextProps } from '../HelperText';
 import { Label, LabelProps } from '../Label';
 import { hasError } from '../utils/input';
 
-import { StyledField } from './Field.style';
+import { StyledField, StyledFieldElWrapper } from './Field.style';
 
 type Props = {
   label?: ReactNode;
   labelPosition?: LabelPosition;
   labelProps?: LabelProps;
-  maxWidth?: Spacing;
+  maxWidth?: CSSProperties['maxWidth'];
+  fullWidth?: boolean;
 };
 
 type NativeAttrs = Omit<HTMLAttributes<unknown>, keyof Props>;
@@ -33,6 +35,7 @@ const Field = forwardRef<HTMLDivElement, FieldProps>(
       descriptionProps,
       children,
       maxWidth,
+      fullWidth,
       ...props
     },
     ref
@@ -42,7 +45,7 @@ const Field = forwardRef<HTMLDivElement, FieldProps>(
 
     const element = (
       <>
-        <StyledField $maxWidth={maxWidth}>{children}</StyledField>
+        <StyledFieldElWrapper>{children}</StyledFieldElWrapper>
         {hasHelpText && (
           <HelperText
             description={description}
@@ -55,7 +58,13 @@ const Field = forwardRef<HTMLDivElement, FieldProps>(
     );
 
     return (
-      <Flex ref={ref} direction={labelPosition === 'top' ? 'column' : 'row'} {...props}>
+      <StyledField
+        ref={ref}
+        $fullWidth={fullWidth}
+        $maxWidth={maxWidth}
+        direction={labelPosition === 'top' ? 'column' : 'row'}
+        {...props}
+      >
         {label && (
           <Label {...labelProps} position={labelPosition}>
             {label}
@@ -68,7 +77,7 @@ const Field = forwardRef<HTMLDivElement, FieldProps>(
             {element}
           </Flex>
         )}
-      </Flex>
+      </StyledField>
     );
   }
 );

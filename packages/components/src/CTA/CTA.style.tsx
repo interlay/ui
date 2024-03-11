@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { ArrowTopRightOnSquare } from '@interlay/icons';
+import { theme, CTASizes, CTAVariants } from '@interlay/theme';
 
-import { theme } from '../../../core/theme/src';
-import { CTASizes, CTAVariants } from '../../../core/theme/src';
 import { Spinner } from '../Spinner';
 
 interface StyledCTAProps {

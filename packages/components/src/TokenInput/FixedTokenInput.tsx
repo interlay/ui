@@ -1,6 +1,6 @@
 import { ReactNode, forwardRef } from 'react';
 
-import { TokenAdornment, TokenTicker } from './TokenAdornment';
+import { TokenAdornment } from './TokenAdornment';
 import { BaseTokenInput, BaseTokenInputProps } from './BaseTokenInput';
 import { TokenInputBalance } from './TokenInputBalance';
 
@@ -9,16 +9,28 @@ type Props = {
   humanBalance?: string | number;
   balanceLabel?: ReactNode;
   onClickBalance?: (balance: string | number) => void;
-  ticker: TokenTicker;
+  ticker: string;
+  logoUrl: string;
 };
 
-type InheritAttrs = Omit<BaseTokenInputProps, keyof Props>;
+type InheritAttrs = Omit<BaseTokenInputProps, keyof Props | 'endAdornment'>;
 
 type FixedTokenInputProps = Props & InheritAttrs;
 
 const FixedTokenInput = forwardRef<HTMLInputElement, FixedTokenInputProps>(
   (
-    { balance: balanceProp, humanBalance, balanceLabel, onClickBalance, ticker: tickerProp, isDisabled, id, ...props },
+    {
+      balance: balanceProp,
+      humanBalance,
+      balanceLabel,
+      onClickBalance,
+      ticker: tickerProp,
+      logoUrl,
+      isDisabled,
+      id,
+      size = 'md',
+      ...props
+    },
     ref
   ): JSX.Element => {
     const balance = balanceProp !== undefined && (
@@ -34,12 +46,13 @@ const FixedTokenInput = forwardRef<HTMLInputElement, FixedTokenInputProps>(
 
     return (
       <BaseTokenInput
+        {...props}
         ref={ref}
         balance={balance}
-        endAdornment={<TokenAdornment ticker={tickerProp} />}
+        endAdornment={<TokenAdornment logoUrl={logoUrl} size={size} ticker={tickerProp} />}
         id={id}
         isDisabled={isDisabled}
-        {...props}
+        size={size}
       />
     );
   }

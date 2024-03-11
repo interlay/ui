@@ -1,46 +1,25 @@
-import { useMemo } from 'react';
+import { TokenInputSize } from '@interlay/theme';
 
-import { CoinIcon } from '../CoinIcon';
 import { FlexProps } from '../Flex';
 
-import { StyledTicker, StyledTokenAdornment } from './TokenInput.style';
-
-type SingleToken = string;
-
-type MultiToken = { text: string; icons: string[] };
-
-type TokenTicker = SingleToken | MultiToken;
+import { StyledTicker, StyledTokenAdornment, StyledTokenImg } from './TokenInput.style';
 
 type Props = {
-  ticker?: TokenTicker;
+  ticker: string;
+  logoUrl: string;
+  size: TokenInputSize;
 };
 
 type NativeAttrs = Omit<FlexProps, keyof Props>;
 
 type TokenAdornmentProps = Props & NativeAttrs;
 
-const TokenAdornment = ({ ticker = '', ...props }: TokenAdornmentProps): JSX.Element => {
-  const { tickerText, tickers } = useMemo(() => {
-    if (typeof ticker === 'object') {
-      return {
-        tickerText: ticker.text,
-        tickers: ticker.icons
-      };
-    }
-
-    return {
-      tickerText: ticker,
-      tickers: undefined
-    };
-  }, [ticker]);
-
-  return (
-    <StyledTokenAdornment {...props} alignItems='center' gap='spacing1' justifyContent='space-evenly'>
-      <CoinIcon ticker={tickerText} tickers={tickers} />
-      <StyledTicker>{tickerText}</StyledTicker>
-    </StyledTokenAdornment>
-  );
-};
+const TokenAdornment = ({ ticker, logoUrl, size, ...props }: TokenAdornmentProps): JSX.Element => (
+  <StyledTokenAdornment {...props} $size={size} alignItems='center' gap='s'>
+    <StyledTokenImg $size={size} alt={ticker} src={logoUrl} />
+    <StyledTicker>{ticker}</StyledTicker>
+  </StyledTokenAdornment>
+);
 
 export { TokenAdornment };
-export type { TokenAdornmentProps, TokenTicker };
+export type { TokenAdornmentProps };

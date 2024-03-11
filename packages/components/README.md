@@ -60,10 +60,10 @@ function App({ children }) {
 2. Now you can start using components like so!:
 
 ```jsx
-import { CTA } from '@interlay/ui';
+import { Button } from '@interlay/ui';
 
 function Example() {
-  return <CTA>I am using Interlay UI</CTA>;
+  return <Button>I am using Interlay UI</Button>;
 }
 ```
 

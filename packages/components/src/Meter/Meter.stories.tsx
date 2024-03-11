@@ -10,8 +10,8 @@ const Render = (args: MeterProps) => {
   const [error, setError] = useState(80);
 
   return (
-    <Flex direction='column' gap='spacing4'>
-      <Flex direction='row' gap='spacing4'>
+    <Flex direction='column' gap='md'>
+      <Flex direction='row' gap='md'>
         <NumberInput
           label='Warning'
           value={warning}

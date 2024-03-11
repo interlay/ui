@@ -1,6 +1,6 @@
 {
   "name": "@interlay/hooks",
-  "version": "0.0.8",
+  "version": "1.0.0-next.0",
   "description": "Interlay UI hooks",
   "homepage": "https://github.com/interlay/ui#readme",
   "license": "MIT",
@@ -48,6 +48,7 @@
     "react-dom": ">=18"
   },
   "devDependencies": {
+    "@interlay/test-utils": "workspace:*",
     "clean-package": "^2.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { mergeProps } from '@react-aria/utils';
 
-import { Select, Item, Flex, CoinIcon, SelectProps } from '../../../../components/src';
+import { Select, Item, Flex, SelectProps } from '../../../../components/src';
 import { useForm } from '../use-form';
 
 export default {
@@ -22,18 +22,18 @@ const RenderSelect = (args: SelectProps) => {
       <p>Values: {JSON.stringify(form.values)}</p>
       <Select {...mergeProps(args, form.getSelectFieldProps('coin') as any)}>
         <Item key='BTC' textValue='BTC'>
-          <Flex alignItems='center' gap='spacing2'>
-            <CoinIcon ticker='BTC' /> BTC
+          <Flex alignItems='center' gap='s'>
+            BTC
           </Flex>
         </Item>
         <Item key='ETH' textValue='ETH'>
-          <Flex alignItems='center' gap='spacing2'>
-            <CoinIcon ticker='ETH' /> ETH
+          <Flex alignItems='center' gap='s'>
+            ETH
           </Flex>
         </Item>
         <Item key='USDT' textValue='USDT'>
-          <Flex alignItems='center' gap='spacing2'>
-            <CoinIcon ticker='USDT' /> USDT
+          <Flex alignItems='center' gap='s'>
+            USDT
           </Flex>
         </Item>
       </Select>

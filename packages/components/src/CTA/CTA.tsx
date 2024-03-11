@@ -5,12 +5,12 @@ import { PressEvent } from '@react-types/shared';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { useDOMRef } from '@interlay/hooks';
 
-import { CTASizes, IconSize } from '../../../core/theme/src';
+import { CTASizes, IconsSizes } from '../../../core/theme/src';
 
 import { BaseCTA, BaseCTAProps } from './BaseCTA';
 import { LoadingWrapper, StyledSpinner } from './CTA.style';
 
-const loadingSizes: Record<CTASizes, IconSize> = {
+const loadingSizes: Record<CTASizes, IconsSizes> = {
   'x-small': 'xs',
   small: 'xs',
   medium: 's',

@@ -1,6 +1,6 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { CTA } from '../CTA';
+import { Button } from '../Button';
 
 import { Tooltip, TooltipProps } from '.';
 
@@ -11,8 +11,8 @@ export default {
     layout: 'centered'
   },
   render: (args) => (
-    <Tooltip {...args} isOpen>
-      <CTA>Hover Me</CTA>
+    <Tooltip {...args}>
+      <Button>Hover Me</Button>
     </Tooltip>
   ),
   args: {

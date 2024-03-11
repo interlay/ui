@@ -29,6 +29,8 @@ export default {
 
 export const Default: StoryObj<AccordionProps> = {};
 
+export const Splitted: StoryObj<AccordionProps> = { args: { variant: 'splitted' } };
+
 export const DefaultExpanded: StoryObj<AccordionProps> = {
   args: {
     defaultExpandedKeys: ['1']

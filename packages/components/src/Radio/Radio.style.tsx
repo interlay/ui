@@ -24,8 +24,8 @@ const StyledRadioGroup = styled(Flex)<StyledRadioGroupProps>`
   width: 100%;
 
   label {
-    margin-right: ${({ $orientation, $gap }) => $orientation === 'horizontal' && $gap && theme.spacing[$gap]};
-    margin-bottom: ${({ $orientation, $gap }) => $orientation === 'vertical' && $gap && theme.spacing[$gap]};
+    margin-right: ${({ $orientation, $gap, theme }) => $orientation === 'horizontal' && $gap && theme.spacing($gap)};
+    margin-bottom: ${({ $orientation, $gap, theme }) => $orientation === 'vertical' && $gap && theme.spacing($gap)};
   }
 `;
 

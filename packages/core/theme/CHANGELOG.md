@@ -1,10 +1,16 @@
 # @interlay/theme
 
+## 1.0.0-next.0
+
+### Major Changes
+
+- feat: rebranding
+
 ## 0.0.7
 
 ### Patch Changes
 
-- [#42](https://github.com/interlay/ui/pull/42) [`4f38fec0481cd7b1134457932dc23a94c9665511`](https://github.com/interlay/ui/commit/4f38fec0481cd7b1134457932dc23a94c9665511) Thanks [@danielsimao](https://github.com/danielsimao)! - refactor(components): Spinner (LoadingSpinner) and CTA
+- [#42](https://github.com/interlay/ui/pull/42) [`4f38fec0481cd7b1134457932dc23a94c9665511`](https://github.com/interlay/ui/commit/4f38fec0481cd7b1134457932dc23a94c9665511) Thanks [@danielsimao](https://github.com/danielsimao)! - refactor(components): Spinner (LoadingSpinner) and Button
 
 ## 0.0.6
 

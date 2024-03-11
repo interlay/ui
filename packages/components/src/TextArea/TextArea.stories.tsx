@@ -2,7 +2,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { InformationCircle } from '@interlay/icons';
 
-import { Flex, Span } from '..';
+import { Flex } from '..';
 
 import { TextArea, TextAreaProps } from '.';
 
@@ -57,13 +57,13 @@ export const SideLabel: StoryObj<TextAreaProps> = {
 
 export const MaxWidth: StoryObj<TextAreaProps> = {
   args: {
-    maxWidth: 'spacing28'
+    maxWidth: '6xl'
   }
 };
 
 export const MinHeight: StoryObj<TextAreaProps> = {
   args: {
-    minHeight: 'spacing28'
+    minHeight: '6xl'
   }
 };
 
@@ -71,23 +71,15 @@ export const Adornments: StoryFn<TextAreaProps> = (args) => (
   <Flex direction='column'>
     <TextArea {...args} label='Start Adornment' startAdornment={<InformationCircle />} />
     <TextArea {...args} endAdornment={<InformationCircle />} label='End Adornment' />
-    <TextArea
-      {...args}
-      bottomAdornment={
-        <Span color='tertiary' size='xs'>
-          $0.00
-        </Span>
-      }
-      label='Bottom Adornment'
-    />
+    <TextArea {...args} label='Bottom Adornment' />
   </Flex>
 );
 
 export const Sizes: StoryFn<TextAreaProps> = (args) => (
   <Flex direction='column'>
-    <TextArea {...args} label='Small' size='small' />
+    <TextArea {...args} label='Small' size='s' />
     <TextArea {...args} label='Medium' />
-    <TextArea {...args} label='Large' size='large' />
+    <TextArea {...args} label='Large' size='lg' />
   </Flex>
 );
 

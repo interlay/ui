@@ -1,5 +1,19 @@
 # @interlay/ui
 
+## 1.0.0-next.0
+
+### Major Changes
+
+- feat: rebranding
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @interlay/system@1.0.0-next.0
+  - @interlay/theme@1.0.0-next.0
+  - @interlay/hooks@1.0.0-next.0
+  - @interlay/icons@1.0.0-next.0
+
 ## 0.0.13
 
 ### Patch Changes
@@ -28,7 +42,7 @@
 
 ### Patch Changes
 
-- [#42](https://github.com/interlay/ui/pull/42) [`4f38fec0481cd7b1134457932dc23a94c9665511`](https://github.com/interlay/ui/commit/4f38fec0481cd7b1134457932dc23a94c9665511) Thanks [@danielsimao](https://github.com/danielsimao)! - refactor(components): Spinner (LoadingSpinner) and CTA
+- [#42](https://github.com/interlay/ui/pull/42) [`4f38fec0481cd7b1134457932dc23a94c9665511`](https://github.com/interlay/ui/commit/4f38fec0481cd7b1134457932dc23a94c9665511) Thanks [@danielsimao](https://github.com/danielsimao)! - refactor(components): Spinner (LoadingSpinner) and Button
 
 - [#46](https://github.com/interlay/ui/pull/46) [`95c75c1968cda23b75ff5f7aaaa13d5c4cbe6c0e`](https://github.com/interlay/ui/commit/95c75c1968cda23b75ff5f7aaaa13d5c4cbe6c0e) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): Radio and RadioGroup
 

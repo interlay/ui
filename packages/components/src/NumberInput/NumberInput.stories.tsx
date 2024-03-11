@@ -2,7 +2,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { InformationCircle } from '@interlay/icons';
 
-import { Flex, Span } from '..';
+import { Flex } from '..';
 
 import { NumberInput, NumberInputProps } from '.';
 
@@ -67,11 +67,11 @@ export const Adornments: StoryFn<NumberInputProps> = (args) => (
     <NumberInput {...args} endAdornment={<InformationCircle />} label='End Adornment' />
     <NumberInput
       {...args}
-      bottomAdornment={
-        <Span color='tertiary' size='xs'>
-          $0.00
-        </Span>
-      }
+      // bottomAdornment={
+      //   <Span color='tertiary' size='xs'>
+      //     $0.00
+      //   </Span>
+      // }
       label='Bottom Adornment'
     />
   </Flex>
@@ -79,15 +79,15 @@ export const Adornments: StoryFn<NumberInputProps> = (args) => (
 
 export const Sizes: StoryFn<NumberInputProps> = (args) => (
   <Flex direction='column'>
-    <NumberInput {...args} label='Small' size='small' />
+    <NumberInput {...args} label='Small' size='s' />
     <NumberInput {...args} label='Medium' />
-    <NumberInput {...args} label='Large' size='large' />
+    <NumberInput {...args} label='Large' size='lg' />
   </Flex>
 );
 
 export const MaxWidth: StoryObj<NumberInputProps> = {
   args: {
-    maxWidth: 'spacing12',
+    maxWidth: 'xl',
     labelPosition: 'side',
     justifyContent: 'space-between',
     style: { width: 150 },

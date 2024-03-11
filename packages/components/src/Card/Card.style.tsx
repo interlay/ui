@@ -1,50 +1,39 @@
 import styled, { css } from 'styled-components';
-import { theme } from '@interlay/theme';
-import { BorderRadius, CardVariants, Spacing, Variants } from '@interlay/theme';
+import { Color, Rounded, Spacing } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 
 type StyledCardProps = {
-  $variant: CardVariants;
-  $rounded: BorderRadius;
+  $bordered: boolean | Color;
+  $rounded: Rounded;
   $padding: Spacing;
   $shadowed: boolean;
-  $background: Variants;
+  $background?: Color;
   $isHoverable?: boolean;
   $isPressable?: boolean;
 };
 
 const StyledCard = styled(Flex)<StyledCardProps>`
-  color: ${theme.colors.textPrimary};
-  background-color: ${({ $background }) => theme.card.bg[$background]};
-  border: ${({ $variant }) => ($variant === 'bordered' ? theme.border.default : theme.card.outlined.border)};
-  border-radius: ${({ $rounded }) => theme.rounded[$rounded]};
-  padding: ${({ $padding }) => theme.spacing[$padding]};
+  border-radius: ${({ $rounded, theme }) => theme.rounded($rounded)};
+  padding: ${({ $padding, theme }) => theme.spacing($padding)};
   cursor: ${({ $isPressable }) => $isPressable && 'pointer'};
   outline: none;
 
-  ${({ $shadowed }) =>
-    $shadowed &&
-    css`
-      box-shadow: ${theme.boxShadow.default};
-    `}
+  // TODO: add isHoverable
+  ${({ $bordered, $isPressable, $shadowed, $background, theme }) => {
+    const { border, boxShadow, backgroundColor, ...baseCss } = theme.card.base;
 
-  ${({ $isHoverable }) =>
-    $isHoverable &&
-    css`
-      &:hover {
-        border: ${theme.border.hover};
-      }
-    `}
+    return css`
+      border: ${typeof $bordered === 'boolean' ? border : `1px solid ${$bordered}`};
+      box-shadow: ${$shadowed && boxShadow};
+      background-color: ${$background ? theme.color($background) : backgroundColor};
+      ${baseCss}
 
-  ${({ $isPressable }) =>
-    $isPressable &&
-    css`
       &:focus {
-        border: ${theme.border.focus};
-        box-shadow: ${theme.boxShadow.focus};
+        ${$isPressable && theme.card.focus}
       }
-    `}
+    `;
+  }}
 `;
 
 export { StyledCard };

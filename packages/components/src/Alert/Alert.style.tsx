@@ -1,28 +1,38 @@
-import { Warning } from '@interlay/icons';
-import styled from 'styled-components';
-import { theme } from '@interlay/theme';
-import { Status } from '@interlay/theme';
+import { CheckCircle, InformationCircle, Warning } from '@interlay/icons';
+import styled, { css } from 'styled-components';
+import { AlertStatus } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 
 type StyledAlertProps = {
-  $status: Status;
+  $status: AlertStatus;
 };
 
+// FIXME: waiting on JAy
 const StyledAlert = styled(Flex)<StyledAlertProps>`
-  padding: ${theme.spacing.spacing2};
-  color: ${({ $status }) => theme.alert.status[$status]};
-  border: 1px solid ${({ $status }) => theme.alert.status[$status]};
-  background-color: ${({ $status }) => theme.alert.bg[$status]};
-  border-radius: ${theme.rounded.md};
-  font-size: ${theme.text.xs};
+  ${({ $status, theme }) => css`
+    ${theme.alert.base}
+    ${theme.alert.status[$status]}
+  `}
 `;
 
-const StyledWarningIcon = styled(Warning)`
-  color: inherit;
-  width: ${theme.spacing.spacing5};
-  height: ${theme.spacing.spacing5};
-  flex-shrink: 0;
+const StyledInformationCircle = styled(InformationCircle)<StyledAlertProps>`
+  ${({ $status, theme }) => css`
+    ${theme.alert.status[$status]}
+  `}
 `;
 
-export { StyledAlert, StyledWarningIcon };
+const StyledCheckCircle = styled(CheckCircle)<StyledAlertProps>`
+  ${({ $status, theme }) => css`
+    ${theme.alert.base}
+    ${theme.alert.status[$status]}
+  `}
+`;
+
+const StyledWarning = styled(Warning)<StyledAlertProps>`
+  ${({ $status, theme }) => css`
+    ${theme.alert.status[$status].color}
+  `}
+`;
+
+export { StyledAlert, StyledInformationCircle, StyledCheckCircle, StyledWarning };

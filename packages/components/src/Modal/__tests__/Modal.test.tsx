@@ -1,15 +1,13 @@
-import { render } from '@testing-library/react';
 import { createRef } from 'react';
-import { testA11y } from '@interlay/test-utils';
+import { testA11y, render } from '@interlay/test-utils';
 
-import { Modal, ModalBody, ModalDivider, ModalFooter, ModalHeader } from '..';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from '..';
 
 describe('Modal', () => {
   it('should render correctly', () => {
     const wrapper = render(
       <Modal isOpen onClose={jest.fn}>
         <ModalHeader>title</ModalHeader>
-        <ModalDivider />
         <ModalBody>body</ModalBody>
         <ModalFooter>footer</ModalFooter>
       </Modal>
@@ -24,7 +22,6 @@ describe('Modal', () => {
     render(
       <Modal ref={ref} isOpen onClose={jest.fn}>
         <ModalHeader>title</ModalHeader>
-        <ModalDivider />
         <ModalBody>body</ModalBody>
         <ModalFooter>footer</ModalFooter>
       </Modal>
@@ -37,7 +34,6 @@ describe('Modal', () => {
     await testA11y(
       <Modal isOpen onClose={jest.fn}>
         <ModalHeader>title</ModalHeader>
-        <ModalDivider />
         <ModalBody>body</ModalBody>
         <ModalFooter>footer</ModalFooter>
       </Modal>

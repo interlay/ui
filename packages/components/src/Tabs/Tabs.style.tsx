@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { theme } from '@interlay/theme';
-import { AlignItems, Sizes } from '@interlay/theme';
+import styled, { css } from 'styled-components';
+import { TabsSize, theme } from '@interlay/theme';
+import { AlignItems } from '@interlay/theme';
 
 import { hideScrollbar } from '../utils/visually-hidden';
 
@@ -12,7 +12,7 @@ const StyledTabs = styled.div`
 
 type TabListWrapperProps = {
   $fullWidth: boolean;
-  $size: Sizes;
+  $size: TabsSize;
   $align: AlignItems;
 };
 
@@ -20,14 +20,14 @@ const TabListWrapper = styled.div<TabListWrapperProps>`
   display: ${({ $fullWidth }) => ($fullWidth ? 'flex' : 'inline-flex')};
   align-self: ${({ $align, $fullWidth }) => !$fullWidth && $align};
   position: relative;
-  background-color: ${theme.tabs.bg};
-  padding: ${({ $size }) => theme.tabs[$size].wrapper.padding};
-  border-radius: ${theme.rounded.md};
-  border: ${theme.tabs.border};
   z-index: 0;
   max-width: 100%;
   overflow-x: auto;
+
   ${hideScrollbar()}
+
+  ${({ theme }) => theme.tabs.base};
+  ${({ $size, theme }) => theme.tabs.size[$size].base};
 `;
 
 type TabListProps = {
@@ -41,7 +41,7 @@ const TabList = styled.div<TabListProps>`
 
 type StyledTabProps = {
   $fullWidth: boolean;
-  $size: Sizes;
+  $size: TabsSize;
   $isDisabled: boolean;
 };
 
@@ -50,39 +50,38 @@ const StyledTab = styled.div<StyledTabProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${({ $size }) => theme.tabs[$size].tab.padding};
-  font-size: ${({ $size }) => theme.tabs[$size].tab.text};
-  font-weight: ${({ $size }) => theme.tabs[$size].tab.fontWeight};
   text-align: center;
   cursor: ${({ $isDisabled }) => !$isDisabled && 'pointer'};
   user-select: none;
   outline: none;
-  border-radius: ${theme.rounded.rg};
-  color: ${theme.tabs.color};
-  // TODO: have this transition into theme
-  transition: color 150ms;
   opacity: ${({ $isDisabled }) => $isDisabled && '.5'};
   overflow: hidden;
+  text-overflow: ellipsis;
 
-  &[aria-selected='true'] {
-    color: ${theme.tabs.active.color};
-  }
+  ${({ theme, $size }) => {
+    return css`
+      ${theme.tabs.item.base}
+      ${theme.tabs.size[$size].item}
+    `;
+  }};
 `;
 
 type TabSelectionProps = {
   $isFocusVisible: boolean;
   $width: number;
   $transform: string;
-  $size: Sizes;
+  $size: TabsSize;
+  $isHovered: boolean;
+  $isFocusWithin: boolean;
 };
 
 const TabSelection = styled.div<TabSelectionProps>`
   position: absolute;
-  top: ${({ $size }) => theme.tabs[$size].selection.padding};
-  bottom: ${({ $size }) => theme.tabs[$size].selection.padding};
+  top: ${({ $size, theme }) => theme.tabs.size[$size].base.padding};
+  bottom: ${({ $size, theme }) => theme.tabs.size[$size].base.padding};
   left: 0;
-  border-radius: ${theme.rounded.rg};
-  background-color: ${theme.tabs.active.bg};
+  border-radius: ${({ theme }) => theme.tabs.item.base.borderRadius};
+  background-color: ${({ theme }) => theme.tabs.item.base.backgroundColor};
   will-change: transform, width;
   transition:
     transform ${theme.transition.duration.duration150}ms,
@@ -92,19 +91,29 @@ const TabSelection = styled.div<TabSelectionProps>`
   width: ${(props) => props.$width}px;
   transform: ${(props) => props.$transform};
 
+  ${({ theme, $isHovered, $isFocusWithin }) => {
+    return css`
+      ${theme.tabs.item.selected}
+      ${$isHovered && theme.tabs.item.hover}
+      ${$isFocusWithin && theme.tabs.item.focus}
+    `;
+  }};
+
   ${(props) =>
     props.$isFocusVisible &&
-    `&:after {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border-radius: ${theme.rounded.md};
-    border: 2px solid ${theme.tabs.active.bg};
-    z-index: 3;
-  }`}
+    css`
+      &:after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        border-radius: ${theme.rounded.md};
+        border: 2px solid ${theme.tabs.active.bg};
+        z-index: 3;
+      }
+    `}
 `;
 
 export { StyledTab, StyledTabs, TabList, TabListWrapper, TabSelection };

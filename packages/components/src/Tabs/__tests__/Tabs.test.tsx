@@ -1,6 +1,5 @@
-import { render } from '@testing-library/react';
 import { createRef } from 'react';
-import { testA11y } from '@interlay/test-utils';
+import { testA11y, render } from '@interlay/test-utils';
 
 import { Tabs, TabsItem } from '..';
 

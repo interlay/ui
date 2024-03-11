@@ -45,7 +45,7 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
     };
 
     const handleBlur = (e: FocusEvent<Element>) => {
-      const relatedTargetEl = e.relatedTarget as HTMLButtonElement;
+      const relatedTargetEl = e.relatedTarget;
 
       if (!relatedTargetEl || !relatedTargetEl.getAttribute) {
         return onBlur?.(e);

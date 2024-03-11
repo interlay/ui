@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { theme } from '@interlay/theme';
 import { Placement } from '@interlay/theme';
 
 import { getOverlayPlacementCSS, overlayCSS } from '../utils/overlay';
@@ -20,15 +19,6 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
   align-items: center;
   box-sizing: border-box;
   vertical-align: top;
-  background-color: ${theme.tooltip.bg};
-  padding: ${theme.spacing.spacing3};
-  border-radius: ${theme.rounded.rg};
-  // TODO: add box-shadow to theme
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.21);
-  font-weight: ${theme.fontWeight.book};
-  font-size: ${theme.text.s};
-  line-height: ${theme.lineHeight.s};
-  color: ${theme.colors.textPrimary};
   word-break: break-word;
   -webkit-font-smoothing: antialiased;
   cursor: default;
@@ -41,22 +31,23 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
       case 'top':
       default:
         return css`
-          margin-bottom: ${theme.tooltip.offset};
+          margin-bottom: 3px;
         `;
       case 'bottom':
         return css`
-          margin-top: ${theme.tooltip.offset};
+          margin-top: 3px;
         `;
       case 'right':
         return css`
-          margin-left: ${theme.tooltip.offset};
+          margin-left: 3px;
         `;
       case 'left':
         return css`
-          margin-right: ${theme.tooltip.offset};
+          margin-right: 3px;
         `;
     }
   }}
+  ${({ theme }) => theme.tooltip}
 `;
 
 const StyledTooltipTip = styled.span<StyledTooltipTipProps>`
@@ -64,8 +55,8 @@ const StyledTooltipTip = styled.span<StyledTooltipTipProps>`
   height: 0;
   width: 0;
   border-style: solid;
-  border-width: ${theme.tooltip.tip.width};
-  border-top-color: ${theme.tooltip.tip.bg};
+  border-width: 3px;
+  border-top-color: ${({ theme }) => theme.tooltip.backgroundColor};
   border-left-color: transparent;
   border-right-color: transparent;
   border-bottom-color: transparent;
@@ -77,27 +68,27 @@ const StyledTooltipTip = styled.span<StyledTooltipTipProps>`
         return css`
           top: 100%;
           left: 50%;
-          margin-left: calc(${theme.tooltip.tip.width} * -1);
+          margin-left: calc(5px * -1);
         `;
       case 'bottom':
         return css`
           bottom: 100%;
           left: 50%;
-          margin-left: calc(${theme.tooltip.tip.width} * -1);
+          margin-left: calc(5px * -1);
           transform: rotate(-180deg);
         `;
       case 'right':
         return css`
           right: 100%;
           top: 50%;
-          margin-top: calc(${theme.tooltip.tip.width} * -1);
+          margin-top: calc(5px * -1);
           transform: rotate(90deg);
         `;
       case 'left':
         return css`
           left: 100%;
           top: 50%;
-          margin-top: calc(${theme.tooltip.tip.width} * -1);
+          margin-top: calc(5px * -1);
           transform: rotate(-90deg);
         `;
     }
