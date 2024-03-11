@@ -20,7 +20,6 @@ type StyledTriggerValueProps = {
 
 const StyledTrigger = styled.button<StyledTriggerProps>`
   outline: none;
-  font: inherit;
   letter-spacing: inherit;
   background: none;
 

@@ -23,9 +23,9 @@ const ListItem = <T extends object>({ item, state }: InternalProps<T>): JSX.Elem
   const ref = useRef(null);
   const { rowProps, gridCellProps, isDisabled } = useGridListItem({ node: item }, state, ref);
 
-  const isInteraButtonble = state.selectionManager.selectionMode !== 'none' && !isDisabled;
+  const isInteractable = state.selectionManager.selectionMode !== 'none' && !isDisabled;
 
-  const { isHovered, hoverProps } = useHover({ isDisabled: !isInteraButtonble });
+  const { isHovered, hoverProps } = useHover({ isDisabled: !isInteractable });
   const { focusProps, isFocusVisible } = useFocusRing();
 
   const props = useMemo(
@@ -40,7 +40,7 @@ const ListItem = <T extends object>({ item, state }: InternalProps<T>): JSX.Elem
       $isDisabled={isDisabled}
       $isFocusVisible={isFocusVisible}
       $isHovered={isHovered}
-      $isInteraButtonble={isInteraButtonble}
+      $isInteractable={isInteractable}
     >
       <Flex {...mergeProps(gridCellProps, props)}>{item.rendered}</Flex>
     </StyledListItem>

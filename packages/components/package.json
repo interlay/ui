@@ -43,7 +43,6 @@
     "@interlay/icons": "workspace:*",
     "@interlay/system": "workspace:*",
     "@interlay/theme": "workspace:*",
-    "@interlay/theme": "workspace:*",
     "@radix-ui/react-slot": "^1.0.2",
     "@react-aria/accordion": "3.0.0-alpha.20",
     "@react-aria/breadcrumbs": "^3.5.4",

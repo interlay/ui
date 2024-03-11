@@ -36,7 +36,6 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@interlay/theme": "workspace:*",
     "@interlay/theme": "workspace:*"
   },
   "peerDependencies": {

@@ -180,9 +180,9 @@ export const MaxWidth: StoryObj<SelectProps> = {
 
 export const Sizes: StoryFn<SelectProps> = (args: any) => (
   <Flex direction='column'>
-    <Select {...args} label='Small' size='small' />
-    <Select {...args} label='Medium' />
-    <Select {...args} label='Large' size='large' />
+    <Render {...args} label='Small' size='s' type='modal' />
+    <Render {...args} label='Medium' type='modal' />
+    <Render {...args} label='Large' size='lg' type='modal' />
   </Flex>
 );
 

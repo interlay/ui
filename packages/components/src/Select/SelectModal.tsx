@@ -2,7 +2,7 @@ import { useId } from '@react-aria/utils';
 import { SelectState } from '@react-stately/select';
 import { forwardRef, ReactNode } from 'react';
 
-import { Input, Modal, ModalBody, ModalHeader, ModalProps, P } from '..';
+import { Modal, ModalBody, ModalHeader, ModalProps, P } from '..';
 import { ListItem, ListProps } from '../List';
 
 import { StyledList } from './Select.style';
@@ -43,13 +43,12 @@ const SelectModal = forwardRef<HTMLDivElement, SelectModalProps>(
             {title}
           </ModalHeader>
           <ModalBody noPadding={hasItems}>
-            <Input />
             {hasItems ? (
               <StyledList
                 {...listProps}
                 aria-labelledby={headerId}
+                gap='s'
                 selectionMode='single'
-                variant='secondary'
                 onSelectionChange={handleSelectionChange}
               >
                 {[...state.collection].map((item) => (

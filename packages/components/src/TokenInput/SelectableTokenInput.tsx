@@ -67,7 +67,6 @@ const SelectableTokenInput = forwardRef<HTMLInputElement, SelectableTokenInputPr
         description={undefined}
         errorMessage={undefined}
         isInvalid={isInvalid}
-        maxWidth='7rem'
         size={size}
         value={ticker}
         onSelectionChange={chain(onSelectionChange, handleTokenChange)}

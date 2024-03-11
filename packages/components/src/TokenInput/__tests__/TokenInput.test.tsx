@@ -186,26 +186,26 @@ describe('TokenInput', () => {
     });
   });
 
-  describe('seleButtonble type', () => {
+  describe('selectable type', () => {
     const items = [
       { balance: 1, ticker: 'BTC', balanceUSD: 10000, logoUrl: '' },
       { balance: 2, ticker: 'ETH', balanceUSD: 900, logoUrl: '' }
     ];
 
     it('should render correctly', async () => {
-      const wrapper = render(<TokenInput label='label' selectProps={{ items }} type='seleButtonble' />);
+      const wrapper = render(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
 
       expect(() => wrapper.unmount()).not.toThrow();
     });
 
     it('should pass a11y', async () => {
-      await testA11y(<TokenInput label='label' selectProps={{ items }} type='seleButtonble' />);
+      await testA11y(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
     });
 
     it('ref should be forwarded to the modal', async () => {
       const ref = createRef<HTMLInputElement>();
 
-      render(<TokenInput label='label' selectProps={{ items, modalProps: { ref } }} type='seleButtonble' />);
+      render(<TokenInput label='label' selectProps={{ items, modalProps: { ref } }} type='selectable' />);
 
       userEvent.click(screen.getByRole('button', { name: /select token/i }));
 
@@ -217,13 +217,13 @@ describe('TokenInput', () => {
     });
 
     it('should render empty value', () => {
-      render(<TokenInput label='label' selectProps={{ items }} type='seleButtonble' />);
+      render(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
 
       expect(screen.getByRole('button', { name: /select token/i })).toHaveTextContent(/select token$/i);
     });
 
     it('should render default value', () => {
-      render(<TokenInput label='label' selectProps={{ defaultValue: 'BTC', items }} type='seleButtonble' />);
+      render(<TokenInput label='label' selectProps={{ defaultValue: 'BTC', items }} type='selectable' />);
 
       expect(screen.getByRole('button', { name: /select token/i })).toHaveTextContent('BTC');
     });
@@ -238,7 +238,7 @@ describe('TokenInput', () => {
           <TokenInput
             label='label'
             selectProps={{ defaultValue: 'BTC', items, onSelectionChange: handleSelectionChange, value }}
-            type='seleButtonble'
+            type='selectable'
           />
         );
       };
@@ -266,7 +266,7 @@ describe('TokenInput', () => {
 
     it('should render description', () => {
       render(
-        <TokenInput label='label' selectProps={{ items, description: 'Please select token' }} type='seleButtonble' />
+        <TokenInput label='label' selectProps={{ items, description: 'Please select token' }} type='selectable' />
       );
 
       expect(screen.getByRole('button', { name: /select token/i })).toHaveAccessibleDescription(
@@ -276,11 +276,7 @@ describe('TokenInput', () => {
 
     it('should render select error message', () => {
       render(
-        <TokenInput
-          label='label'
-          selectProps={{ items, errorMessage: 'Token field is required' }}
-          type='seleButtonble'
-        />
+        <TokenInput label='label' selectProps={{ items, errorMessage: 'Token field is required' }} type='selectable' />
       );
 
       expect(screen.getByRole('button', { name: /select token/i })).toHaveAccessibleDescription(

@@ -6,7 +6,7 @@ import { Button } from '../Button';
 import { ColumnProps, RowProps, Table, TableProps } from '.';
 
 const action = (
-  <Button size='small' variant='text' onPress={() => alert('Pressed')}>
+  <Button onPress={() => alert('Pressed')}>
     <ChevronRight size='s' />
   </Button>
 );

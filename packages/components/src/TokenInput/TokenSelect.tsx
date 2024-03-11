@@ -23,29 +23,30 @@ type TokenData = {
 
 type TokenSelectProps = Omit<ModalSelectProps<TokenData>, 'children' | 'type'>;
 
-const TokenSelect = ({ modalProps, value, ...props }: TokenSelectProps): JSX.Element => (
-  <Select<TokenData>
-    {...props}
-    aria-label='select token'
-    asSelectTrigger={StyledTokenSelect}
-    maxWidth={value ? '6.75rem' : '7.5rem'}
-    modalProps={mergeProps({ title: 'Select Token', listProps: { maxHeight: '32rem' } }, modalProps)}
-    placeholder={
-      <Span color='inherit' size='s'>
-        Select token
-      </Span>
-    }
-    renderValue={(item) => <Value data={item.value as TokenData} />}
-    type='modal'
-    value={value}
-  >
-    {(data: TokenData) => (
-      <Item key={data.ticker} textValue={data.ticker}>
-        <TokenListItem {...data} />
-      </Item>
-    )}
-  </Select>
-);
+const TokenSelect = ({ modalProps, size, ...props }: TokenSelectProps): JSX.Element => {
+  return (
+    <Select<TokenData>
+      {...props}
+      aria-label='select token'
+      asSelectTrigger={StyledTokenSelect}
+      modalProps={mergeProps({ title: 'Select Token', listProps: { maxHeight: '32rem' } }, modalProps)}
+      placeholder={
+        <Span color='inherit' size='s'>
+          Select token
+        </Span>
+      }
+      renderValue={(item) => <Value data={item.value as TokenData} />}
+      size={size === 'lg' ? 'md' : size}
+      type='modal'
+    >
+      {(data: TokenData) => (
+        <Item key={data.ticker} textValue={data.ticker}>
+          <TokenListItem {...data} />
+        </Item>
+      )}
+    </Select>
+  );
+};
 
 export { TokenSelect };
 export type { TokenData, TokenSelectProps };

@@ -13,14 +13,14 @@ const StyledList = styled(Flex)<StyledListProps>`
 type StyledListItemProps = {
   $isDisabled: boolean;
   $isHovered: boolean;
-  $isInteraButtonble: boolean;
+  $isInteractable: boolean;
   $isFocusVisible: boolean;
 };
 
 const StyledListItem = styled.div<StyledListItemProps>`
   flex: 1;
   align-self: stretch;
-  cursor: ${({ $isInteraButtonble }) => $isInteraButtonble && 'pointer'};
+  cursor: ${({ $isInteractable }) => $isInteractable && 'pointer'};
   outline: ${({ $isFocusVisible }) => !$isFocusVisible && 'none'};
   opacity: ${({ $isDisabled }) => $isDisabled && 0.5};
   white-space: nowrap;

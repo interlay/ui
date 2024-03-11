@@ -39,7 +39,7 @@ export const Selectable: StoryObj<TokenInputProps> = {};
 export const SelectableDefaultValue: StoryObj<TokenInputProps> = {
   args: {
     selectProps: {
-      defaultValue: 'BTC',
+      defaultValue: 'ETH',
       items
     }
   }
