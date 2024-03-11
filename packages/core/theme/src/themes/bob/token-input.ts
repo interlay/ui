@@ -28,6 +28,9 @@ const tokenInput: TokenInputTheme = {
     }
   },
   list: {
+    base: {
+      padding: `0 ${spacing('xl')}`
+    },
     item: {
       ticker: {
         color: color('light'),

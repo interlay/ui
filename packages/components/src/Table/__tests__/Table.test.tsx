@@ -1,5 +1,5 @@
-import { testA11y } from '@interlay/test-utils';
-import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import { testA11y, render } from '@interlay/test-utils';
+import { fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { createRef } from 'react';
 

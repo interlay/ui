@@ -2,7 +2,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { mergeProps } from '@react-aria/utils';
 
-import * as coins from '../../../../icons/coin/src';
 import { TokenInput, TokenInputProps } from '..';
 
 const items = [
@@ -21,9 +20,6 @@ export default {
   component: TokenInput,
   parameters: {
     layout: 'centered'
-  },
-  argTypes: {
-    ticker: { control: 'select', options: Object.keys(coins) }
   },
   args: {
     type: 'selectable',

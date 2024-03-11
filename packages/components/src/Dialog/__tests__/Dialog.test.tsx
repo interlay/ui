@@ -1,6 +1,5 @@
-import { render } from '@testing-library/react';
+import { render, testA11y } from '@interlay/test-utils';
 import { createRef } from 'react';
-import { testA11y } from '@interlay/test-utils';
 
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from '..';
 

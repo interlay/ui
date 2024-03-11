@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import * as coins from '../../../../icons/coin/src';
 import { TokenInput, TokenInputProps } from '..';
 
 export default {
@@ -9,9 +8,6 @@ export default {
   component: TokenInput,
   parameters: {
     layout: 'centered'
-  },
-  argTypes: {
-    ticker: { control: 'select', options: Object.keys(coins) }
   },
   args: {
     ticker: 'ETH',

@@ -38,7 +38,6 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@interlay/coin-icons": "workspace:*",
     "@interlay/hooks": "workspace:*",
     "@interlay/icons": "workspace:*",
     "@interlay/system": "workspace:*",

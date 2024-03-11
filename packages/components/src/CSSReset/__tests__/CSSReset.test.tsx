@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@interlay/test-utils';
 
 import { CSSReset } from '..';
 

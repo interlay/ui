@@ -48,6 +48,7 @@
     "react-dom": ">=18"
   },
   "devDependencies": {
+    "@interlay/test-utils": "workspace:*",
     "clean-package": "^2.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

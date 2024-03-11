@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react';
-import { testA11y } from '@interlay/test-utils';
+import { render, testA11y } from '@interlay/test-utils';
 
 import { Underlay } from '..';
 

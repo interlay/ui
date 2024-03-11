@@ -135,7 +135,7 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
           <StyledGroupInputWrapper>
             <StyledNumberInputWrapper>
               <StyledBaseInput
-                ref={ref}
+                ref={inputRef}
                 $adornmentBottom={!!bottomAdornment}
                 $hasError={error}
                 $size={size}

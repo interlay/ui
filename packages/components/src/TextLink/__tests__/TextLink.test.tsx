@@ -1,6 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { createRef } from 'react';
-import { testA11y } from '@interlay/test-utils';
+import { testA11y, render } from '@interlay/test-utils';
 
 import { TextLink } from '..';
 

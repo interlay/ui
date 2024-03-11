@@ -1,5 +1,6 @@
-import { act, render, renderHook, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
+import { act, renderHook, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
+import { render } from '@interlay/test-utils';
 
 import { Input, TokenInput, Select, Item, InterlayUIProvider } from '../../../../components/src';
 import { useForm } from '../use-form';

@@ -78,9 +78,12 @@ const StyledTriggerValue = styled(Span)<StyledTriggerValueProps>`
   font-weight: inherit;
 `;
 
-const StyledList = styled(List)`
-  overflow: auto;
-  padding: 0 12px 12px;
+const StyledList: any = styled(List)`
+  ${({ theme }) => theme.tokenInput.list.base};
+
+  > :last-child {
+    margin-bottom: ${({ theme }) => theme.spacing('lg')};
+  }
 `;
 
 const StyledChevronDown = styled(ChevronDown)`

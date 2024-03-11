@@ -1,5 +1,5 @@
-import { blur, testA11y } from '@interlay/test-utils';
-import { render, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
+import { blur, testA11y, render } from '@interlay/test-utils';
+import { screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { Key, createRef, useState } from 'react';
 
@@ -26,7 +26,7 @@ describe('TokenInput', () => {
   it('should render with placeholder', () => {
     render(<TokenInput label='label' logoUrl='' ticker='BTC' />);
 
-    expect(screen.getByPlaceholderText('0')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('0.00')).toBeInTheDocument();
   });
 
   it('should render with usd value', () => {
@@ -73,13 +73,13 @@ describe('TokenInput', () => {
     it('should render', () => {
       render(<TokenInput balance={10} label='label' logoUrl='' ticker='BTC' />);
 
-      expect(screen.getByRole('definition')).toHaveTextContent('10');
+      expect(screen.getByRole('button')).toHaveTextContent('10');
     });
 
     it('should render human value', () => {
       render(<TokenInput balance={10} humanBalance={11} label='label' logoUrl='' ticker='BTC' />);
 
-      expect(screen.getByRole('definition')).toHaveTextContent('11');
+      expect(screen.getByRole('button')).toHaveTextContent('11');
     });
 
     it('should update input when applying max', async () => {
@@ -176,13 +176,13 @@ describe('TokenInput', () => {
     it('should render with ticker adornment', () => {
       render(<TokenInput label='label' logoUrl='' ticker='BTC' />);
 
-      expect(screen.getAllByText(/btc/i)).toHaveLength(2);
+      expect(screen.getByText(/btc/i)).toBeInTheDocument();
     });
 
     it('should render with unknown ticker', () => {
       render(<TokenInput label='label' logoUrl='' ticker='ABC' />);
 
-      expect(screen.getAllByText(/abc/i)).toHaveLength(2);
+      expect(screen.getByText(/abc/i)).toBeInTheDocument();
     });
   });
 

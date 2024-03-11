@@ -8,6 +8,7 @@ type TokenInputTheme = {
   balance: StyledObject<object>;
   addorment: { token: { base: StyledObject<object>; img?: StyledObject<object> }; usd: StyledObject<object> };
   list: {
+    base: StyledObject<object>;
     item: {
       ticker: StyledObject<object>;
       usd: StyledObject<object>;
