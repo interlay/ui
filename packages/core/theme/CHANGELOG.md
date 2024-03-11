@@ -1,5 +1,11 @@
 # @interlay/theme
 
+## 1.0.0-next.0
+
+### Major Changes
+
+- feat: rebranding
+
 ## 0.0.7
 
 ### Patch Changes

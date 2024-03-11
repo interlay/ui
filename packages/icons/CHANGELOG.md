@@ -1,5 +1,16 @@
 # @interlay/icons
 
+## 1.0.0-next.0
+
+### Major Changes
+
+- feat: rebranding
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @interlay/theme@1.0.0-next.0
+
 ## 0.0.7
 
 ### Patch Changes

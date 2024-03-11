@@ -1,6 +1,6 @@
 {
   "name": "@interlay/system",
-  "version": "0.0.1",
+  "version": "1.0.0-next.0",
   "description": "Interlay UI system primitives.",
   "homepage": "https://github.com/interlay/ui#readme",
   "license": "MIT",

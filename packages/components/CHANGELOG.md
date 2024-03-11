@@ -1,5 +1,19 @@
 # @interlay/ui
 
+## 1.0.0-next.0
+
+### Major Changes
+
+- feat: rebranding
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @interlay/system@1.0.0-next.0
+  - @interlay/theme@1.0.0-next.0
+  - @interlay/hooks@1.0.0-next.0
+  - @interlay/icons@1.0.0-next.0
+
 ## 0.0.13
 
 ### Patch Changes
