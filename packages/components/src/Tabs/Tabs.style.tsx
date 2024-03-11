@@ -56,6 +56,7 @@ const StyledTab = styled.div<StyledTabProps>`
   outline: none;
   opacity: ${({ $isDisabled }) => $isDisabled && '.5'};
   overflow: hidden;
+  text-overflow: ellipsis;
 
   ${({ theme, $size }) => {
     return css`
@@ -70,6 +71,8 @@ type TabSelectionProps = {
   $width: number;
   $transform: string;
   $size: TabsSize;
+  $isHovered: boolean;
+  $isFocusWithin: boolean;
 };
 
 const TabSelection = styled.div<TabSelectionProps>`
@@ -88,9 +91,11 @@ const TabSelection = styled.div<TabSelectionProps>`
   width: ${(props) => props.$width}px;
   transform: ${(props) => props.$transform};
 
-  ${({ theme }) => {
+  ${({ theme, $isHovered, $isFocusWithin }) => {
     return css`
       ${theme.tabs.item.selected}
+      ${$isHovered && theme.tabs.item.hover}
+      ${$isFocusWithin && theme.tabs.item.focus}
     `;
   }};
 

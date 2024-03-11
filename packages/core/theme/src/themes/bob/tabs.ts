@@ -5,7 +5,7 @@ import { color } from './colors';
 
 const tabs: TabsTheme = {
   base: {
-    backgroundColor: color('grey-800'),
+    backgroundColor: color('grey-900'),
     borderRadius: rounded('md')
   },
   item: {
@@ -33,7 +33,7 @@ const tabs: TabsTheme = {
         padding: spacing('xs')
       },
       item: {
-        padding: `${spacing('s')} ${spacing('xs')}`,
+        padding: `${spacing('s')} ${spacing('md')}`,
         ...typography('s')
       }
     },
@@ -42,7 +42,7 @@ const tabs: TabsTheme = {
         padding: spacing('xs')
       },
       item: {
-        padding: `${spacing('s')} ${spacing('xs')}`,
+        padding: `${spacing('md')} ${spacing('lg')}`,
         ...typography('md')
       }
     },
@@ -51,7 +51,7 @@ const tabs: TabsTheme = {
         padding: spacing('xs')
       },
       item: {
-        padding: `${spacing('s')} ${spacing('xs')}`,
+        padding: `${spacing('lg')} ${spacing('xl')}`,
         ...typography('lg')
       }
     }

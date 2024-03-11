@@ -6,6 +6,7 @@ import { mergeProps } from '@react-aria/utils';
 import { useTabListState } from '@react-stately/tabs';
 import { CollectionChildren, Key } from '@react-types/shared';
 import { HTMLAttributes, forwardRef, useEffect, useState } from 'react';
+import { useFocusWithin, useHover } from '@react-aria/interactions';
 
 import { Tab } from './Tab';
 import { TabPanel } from './TabPanel';
@@ -41,6 +42,8 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       transform: 'translateX(0)'
     });
 
+    const { hoverProps, isHovered } = useHover({});
+
     useEffect(() => {
       const activeTab = tabsListRef.current?.querySelector<HTMLDivElement>('[role="tab"][aria-selected="true"]');
 
@@ -52,8 +55,13 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       });
     }, [state.selectedKey, tabsListRef]);
 
-    const { focusProps, isFocusVisible } = useFocusRing({
+    const { focusProps: focusRingProps, isFocusVisible } = useFocusRing({
       within: true
+    });
+
+    let [isFocusWithin, setFocusWithin] = useState(false);
+    const { focusWithinProps } = useFocusWithin({
+      onFocusWithinChange: (isFocusWithin) => setFocusWithin(isFocusWithin)
     });
 
     return (
@@ -61,13 +69,26 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
         <TabListWrapper $align={align} $fullWidth={fullWidth} $size={size}>
           <TabSelection
             $isFocusVisible={isFocusVisible}
+            $isFocusWithin={isFocusWithin}
+            $isHovered={isHovered}
             $size={size}
             $transform={activeTabStyle.transform}
             $width={activeTabStyle.width}
           />
-          <TabList {...mergeProps(tabListProps, focusProps)} ref={tabsListRef} $fullWidth={fullWidth}>
+          <TabList
+            {...mergeProps(tabListProps, focusRingProps, focusWithinProps)}
+            ref={tabsListRef}
+            $fullWidth={fullWidth}
+          >
             {[...state.collection].map((item) => (
-              <Tab key={item.key} fullWidth={fullWidth} item={item} size={size} state={state} />
+              <Tab
+                key={item.key}
+                fullWidth={fullWidth}
+                item={item}
+                size={size}
+                state={state}
+                {...(item.key === state.selectedKey ? hoverProps : undefined)}
+              />
             ))}
           </TabList>
         </TabListWrapper>

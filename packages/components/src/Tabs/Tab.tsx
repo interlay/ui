@@ -2,7 +2,8 @@ import { TabsSize } from '@interlay/theme';
 import { useTab } from '@react-aria/tabs';
 import { TabListState } from '@react-stately/tabs';
 import { AriaTabProps } from '@react-types/tabs';
-import { ReactNode, useRef } from 'react';
+import { HTMLAttributes, ReactNode, useRef } from 'react';
+import { mergeProps } from '@react-aria/utils';
 
 import { StyledTab } from './Tabs.style';
 
@@ -11,25 +12,28 @@ type Props = {
   size: TabsSize;
 };
 
-type InheritProps<T> = {
+type AriaProps<T> = {
   item: AriaTabProps & { rendered: ReactNode };
   state: TabListState<T>;
 };
 
-type TabProps<T> = Props & InheritProps<T>;
+type InheritAttrs<T> = Omit<HTMLAttributes<unknown>, keyof (Props & AriaProps<T>)>;
+
+type TabProps<T> = Props & AriaProps<T> & InheritAttrs<T>;
 
 // @internal
 const Tab = <T extends Record<string, unknown>>({
   item,
   state,
   fullWidth = false,
-  size = 'md'
+  size = 'md',
+  ...props
 }: TabProps<T>): JSX.Element => {
   const ref = useRef<HTMLDivElement>(null);
   const { tabProps, isDisabled } = useTab(item, state, ref);
 
   return (
-    <StyledTab {...tabProps} ref={ref} $fullWidth={fullWidth} $isDisabled={isDisabled} $size={size}>
+    <StyledTab {...mergeProps(tabProps, props)} ref={ref} $fullWidth={fullWidth} $isDisabled={isDisabled} $size={size}>
       {item.rendered}
     </StyledTab>
   );
