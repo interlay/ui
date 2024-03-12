@@ -36,7 +36,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       elementType,
       isDisabled,
       rounded = 'xl',
-      padding = 'md',
+      padding = 'xl',
       shadowed = false,
       bordered = true,
       ...props

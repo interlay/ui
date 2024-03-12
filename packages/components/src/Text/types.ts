@@ -10,6 +10,7 @@ type Props = {
   weight?: FontWeight;
   rows?: number;
   noWrap?: boolean;
+  fontFamily?: string;
 };
 
 type NativeAttrs<T = unknown> = Omit<HTMLAttributes<T>, keyof Props>;

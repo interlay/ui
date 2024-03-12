@@ -8,6 +8,7 @@ type StyledTextProps = {
   $align?: NormalAlignments;
   $rows?: number;
   $noWrap?: boolean;
+  $fontFamily?: string;
 };
 
 const Text = styled.p<StyledTextProps>`
@@ -16,6 +17,7 @@ const Text = styled.p<StyledTextProps>`
   font-weight: ${({ theme, $weight }) => theme.fontWeight($weight)};
   text-align: ${({ $align }) => $align};
   white-space: ${({ $noWrap }) => $noWrap && 'nowrap'};
+  font-family: ${({ $fontFamily }) => $fontFamily};
 
   ${({ $rows }) =>
     $rows &&
