@@ -7,7 +7,9 @@ import { mapTextProps } from '../utils';
 type DtProps = TextProps<HTMLElement>;
 
 const Dt = forwardRef<HTMLElement, DtProps>(
-  ({ color = 'light', ...props }, ref): JSX.Element => <Text ref={ref} as='dt' {...mapTextProps({ color, ...props })} />
+  ({ color = 'grey-200', ...props }, ref): JSX.Element => (
+    <Text ref={ref} as='dt' {...mapTextProps({ color, ...props })} />
+  )
 );
 
 Dt.displayName = 'Dt';
