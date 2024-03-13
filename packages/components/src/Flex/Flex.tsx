@@ -8,6 +8,7 @@ import {
   Direction,
   JustifyContent,
   MarginProps,
+  PaddingProps,
   ResponsiveProp,
   Spacing,
   Wrap
@@ -29,7 +30,7 @@ type Props = {
 
 type NativeAttrs = Omit<HTMLAttributes<unknown>, keyof Props>;
 
-type FlexProps = Props & NativeAttrs & ElementTypeProp & MarginProps;
+type FlexProps = Props & NativeAttrs & ElementTypeProp & MarginProps & PaddingProps;
 
 const Flex = forwardRef<HTMLElement, FlexProps>(
   (

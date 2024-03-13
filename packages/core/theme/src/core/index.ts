@@ -37,6 +37,16 @@ export interface MarginProps {
   marginY?: ResponsiveProp<Spacing>;
 }
 
+export interface PaddingProps {
+  padding?: ResponsiveProp<Spacing>;
+  paddingTop?: ResponsiveProp<Spacing>;
+  paddingBottom?: ResponsiveProp<Spacing>;
+  paddingLeft?: ResponsiveProp<Spacing>;
+  paddingRight?: ResponsiveProp<Spacing>;
+  paddingX?: ResponsiveProp<Spacing>;
+  paddingY?: ResponsiveProp<Spacing>;
+}
+
 export type Orientation = 'horizontal' | 'vertical';
 
 export type Overflow = 'auto' | 'hidden' | 'scroll' | 'visible' | 'inherit';

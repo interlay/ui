@@ -39,7 +39,8 @@ export type {
   Placement,
   Status,
   Wrap,
-  ResponsiveProp
+  ResponsiveProp,
+  PaddingProps
 } from './core';
 export { bobTheme } from './themes';
 export type { Theme } from './define';
