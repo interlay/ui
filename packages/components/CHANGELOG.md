@@ -1,5 +1,16 @@
 # @interlay/ui
 
+## 1.0.0-next.4
+
+### Patch Changes
+
+- [#69](https://github.com/interlay/ui/pull/69) [`f4a8ea0e4290039894f51d6202bac0b6ce23c538`](https://github.com/interlay/ui/commit/f4a8ea0e4290039894f51d6202bac0b6ce23c538) Thanks [@danielsimao](https://github.com/danielsimao)! - Fix/design system
+
+- Updated dependencies [[`f4a8ea0e4290039894f51d6202bac0b6ce23c538`](https://github.com/interlay/ui/commit/f4a8ea0e4290039894f51d6202bac0b6ce23c538)]:
+  - @interlay/hooks@1.0.0-next.2
+  - @interlay/theme@1.0.0-next.2
+  - @interlay/icons@1.0.0-next.2
+
 ## 1.0.0-next.3
 
 ### Patch Changes

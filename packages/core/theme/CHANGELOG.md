@@ -1,5 +1,11 @@
 # @interlay/theme
 
+## 1.0.0-next.2
+
+### Patch Changes
+
+- [#69](https://github.com/interlay/ui/pull/69) [`f4a8ea0e4290039894f51d6202bac0b6ce23c538`](https://github.com/interlay/ui/commit/f4a8ea0e4290039894f51d6202bac0b6ce23c538) Thanks [@danielsimao](https://github.com/danielsimao)! - Fix/design system
+
 ## 1.0.0-next.1
 
 ### Patch Changes
