@@ -24,6 +24,7 @@ const StyledFlex = styled.div<StyledFlexProps>`
   ${(props) => marginCSS(props)};
   ${(props) => paddingCSS(props)};
   ${({ $gap, theme }) => getSpacingResponsiveCSS(theme, 'gap', $gap)}
+  ${({ $direction, theme }) => getResponsiveCSS(theme, 'flex-direction', $direction)}
   ${({ $justifyContent, theme }) => getResponsiveCSS(theme, 'justify-content', $justifyContent)}
   ${({ $alignItems, theme }) => getResponsiveCSS(theme, 'align-items', $alignItems)}
   ${({ $flex, theme }) => getResponsiveCSS(theme, 'flex', $flex)}
