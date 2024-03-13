@@ -1,7 +1,7 @@
-import { ResponsiveProp, Spacing, Theme } from '@interlay/theme';
-import { css } from 'styled-components';
+import { ResponsiveProp, Spacing } from '@interlay/theme';
+import { DefaultTheme, css } from 'styled-components';
 
-const getSpacingResponsiveCSS = (theme: Theme, attribute: string, prop?: ResponsiveProp<Spacing>) =>
+const getSpacingResponsiveCSS = (theme: DefaultTheme, attribute: string, prop?: ResponsiveProp<Spacing>) =>
   typeof prop === 'object'
     ? css`
         ${prop.xs && theme.breakpoints.media.xs`${attribute}: ${theme.spacing(prop.xs)};`}
@@ -13,7 +13,7 @@ const getSpacingResponsiveCSS = (theme: Theme, attribute: string, prop?: Respons
     : prop && `${attribute}:${theme.spacing(prop)};`;
 
 const getResponsiveCSS = (
-  theme: Theme,
+  theme: DefaultTheme,
   attribute: string,
   prop?: ResponsiveProp<string | number | boolean>,
   condition?: (prop: string | number | boolean) => string | number
