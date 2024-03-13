@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 1.0.0-next.5
+
+### Patch Changes
+
+- [#71](https://github.com/interlay/ui/pull/71) [`b69c089646b3df7aa9394234fa0ab533f3b76d8d`](https://github.com/interlay/ui/commit/b69c089646b3df7aa9394234fa0ab533f3b76d8d) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): flex direction
+
 ## 1.0.0-next.4
 
 ### Patch Changes
