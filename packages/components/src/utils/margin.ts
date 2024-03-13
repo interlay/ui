@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+import { getSpacingResponsiveCSS } from './responsive';
+
 const marginCSS = ({ theme, ...props }: any) => {
   const marginTop = props.$marginTop || props.$marginY;
   const marginBottom = props.$marginBottom || props.$marginY;
@@ -7,11 +9,11 @@ const marginCSS = ({ theme, ...props }: any) => {
   const marginRight = props.$marginRight || props.$marginX;
 
   return css`
-    margin: ${props.$margin && theme.spacing(props.$margin)};
-    margin-top: ${marginTop && theme.spacing(marginTop)};
-    margin-bottom: ${marginBottom && theme.spacing(marginBottom)};
-    margin-left: ${marginLeft && theme.spacing(marginLeft)};
-    margin-right: ${marginRight && theme.spacing(marginRight)};
+    ${getSpacingResponsiveCSS(theme, 'margin', props.$margin)}
+    ${getSpacingResponsiveCSS(theme, 'margin-top', marginTop)}
+  ${getSpacingResponsiveCSS(theme, 'margin-bottom', marginBottom)}
+  ${getSpacingResponsiveCSS(theme, 'margin-left', marginLeft)}
+  ${getSpacingResponsiveCSS(theme, 'margin-right', marginRight)}
   `;
 };
 

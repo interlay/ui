@@ -1,25 +1,31 @@
-import { theme, BreakPoints, ResponsiveProp } from '@interlay/theme';
+import { ResponsiveProp, Spacing, Theme } from '@interlay/theme';
+import { css } from 'styled-components';
 
-const getResponsiveCSS = <T extends number | string>(key: string, prop?: ResponsiveProp<T>): string | undefined => {
-  if (!prop) return undefined;
+const getSpacingResponsiveCSS = (theme: Theme, attribute: string, prop?: ResponsiveProp<Spacing>) =>
+  typeof prop === 'object'
+    ? css`
+        ${prop.xs && theme.breakpoints.media.xs`${attribute}: ${theme.spacing(prop.xs)};`}
+        ${prop.s && theme.breakpoints.media.s`${attribute}: ${theme.spacing(prop.s)};`}
+    ${prop.md && theme.breakpoints.media.md`${attribute}: ${theme.spacing(prop.md)};`}
+    ${prop.lg && theme.breakpoints.media.lg`${attribute}: ${theme.spacing(prop.lg)};`}
+    ${prop.xl && theme.breakpoints.media.xl`${attribute}: ${theme.spacing(prop.xl)};`}
+      `
+    : prop && `${attribute}:${theme.spacing(prop)};`;
 
-  if (typeof prop === 'object') {
-    let finalQuery = '';
+const getResponsiveCSS = (
+  theme: Theme,
+  attribute: string,
+  prop?: ResponsiveProp<string | number | boolean>,
+  condition?: (prop: string | number | boolean) => string | number
+) =>
+  typeof prop === 'object'
+    ? css`
+        ${prop.xs && theme.breakpoints.media.xs`${attribute}: ${condition ? condition(prop.xs) : prop.xs};`}
+        ${prop.s && theme.breakpoints.media.s`${attribute}: ${condition ? condition(prop.s) : prop.s};`}
+    ${prop.md && theme.breakpoints.media.md`${attribute}: ${condition ? condition(prop.md) : prop.md};`}
+    ${prop.lg && theme.breakpoints.media.lg`${attribute}: ${condition ? condition(prop.lg) : prop.lg};`}
+    ${prop.xl && theme.breakpoints.media.xl`${attribute}: ${condition ? condition(prop.xl) : prop.xl};`}
+      `
+    : prop && `${attribute}:${prop};`;
 
-    for (const breakpoint of Object.keys(prop)) {
-      const query = `
-        @media (min-width: ${theme.breakpoints.values[breakpoint as BreakPoints]}px){
-          ${key}: ${prop[breakpoint as BreakPoints]};
-        }
-      `;
-
-      finalQuery = finalQuery.concat(query);
-    }
-
-    return finalQuery;
-  }
-
-  return `${key}: ${prop};`;
-};
-
-export { getResponsiveCSS };
+export { getResponsiveCSS, getSpacingResponsiveCSS };

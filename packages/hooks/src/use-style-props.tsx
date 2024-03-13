@@ -1,13 +1,13 @@
-import { Spacing } from '@interlay/theme';
+import { ResponsiveProp, Spacing } from '@interlay/theme';
 
 type MarginProps = {
-  margin?: Spacing;
-  marginTop?: Spacing;
-  marginBottom?: Spacing;
-  marginLeft?: Spacing;
-  marginRight?: Spacing;
-  marginX?: Spacing;
-  marginY?: Spacing;
+  margin?: ResponsiveProp<Spacing>;
+  marginTop?: ResponsiveProp<Spacing>;
+  marginBottom?: ResponsiveProp<Spacing>;
+  marginLeft?: ResponsiveProp<Spacing>;
+  marginRight?: ResponsiveProp<Spacing>;
+  marginX?: ResponsiveProp<Spacing>;
+  marginY?: ResponsiveProp<Spacing>;
 };
 
 type StyledMarginProps = {

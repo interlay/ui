@@ -42,7 +42,7 @@ const baseTheme = {
   typography,
   transition,
   maxWidth,
-  ...breakpoints
+  breakpoints
 };
 
 type ThemeParams = {

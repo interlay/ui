@@ -38,7 +38,8 @@ export type {
   Overflow,
   Placement,
   Status,
-  Wrap
+  Wrap,
+  ResponsiveProp
 } from './core';
 export { bobTheme } from './themes';
 export type { Theme } from './define';

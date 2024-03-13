@@ -6,9 +6,9 @@ export default {
   title: 'Layout/Flex',
   component: Flex,
 
-  args: {
-    gap: 'md'
-  },
+  // args: {
+  //   gap: 'md'
+  // },
   render: (args: FlexProps) => (
     <Flex {...args}>
       <div style={{ height: 60, width: 100, background: 'red' }} />
