@@ -1,12 +1,11 @@
 import styled, { css } from 'styled-components';
-import { Color, Rounded, Spacing } from '@interlay/theme';
+import { Color, Rounded } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 
 type StyledCardProps = {
   $bordered: boolean | Color;
   $rounded: Rounded;
-  $padding: Spacing;
   $shadowed: boolean;
   $background?: Color;
   $isHoverable?: boolean;
@@ -15,7 +14,6 @@ type StyledCardProps = {
 
 const StyledCard = styled(Flex)<StyledCardProps>`
   border-radius: ${({ $rounded, theme }) => theme.rounded($rounded)};
-  padding: ${({ $padding, theme }) => theme.spacing($padding)};
   cursor: ${({ $isPressable }) => $isPressable && 'pointer'};
   outline: none;
 

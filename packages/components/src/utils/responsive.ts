@@ -4,7 +4,7 @@ import { DefaultTheme, css } from 'styled-components';
 const getSpacingResponsiveCSS = (theme: DefaultTheme, attribute: string, prop?: ResponsiveProp<Spacing>) =>
   typeof prop === 'object'
     ? css`
-        ${prop.xs && theme.breakpoints.media.xs`${attribute}: ${theme.spacing(prop.xs)};`}
+        ${prop.base && theme.breakpoints.media.base`${attribute}: ${theme.spacing(prop.base)};`}
         ${prop.s && theme.breakpoints.media.s`${attribute}: ${theme.spacing(prop.s)};`}
     ${prop.md && theme.breakpoints.media.md`${attribute}: ${theme.spacing(prop.md)};`}
     ${prop.lg && theme.breakpoints.media.lg`${attribute}: ${theme.spacing(prop.lg)};`}
@@ -20,7 +20,7 @@ const getResponsiveCSS = (
 ) =>
   typeof prop === 'object'
     ? css`
-        ${prop.xs && theme.breakpoints.media.xs`${attribute}: ${condition ? condition(prop.xs) : prop.xs};`}
+        ${prop.base && theme.breakpoints.media.base`${attribute}: ${condition ? condition(prop.base) : prop.base};`}
         ${prop.s && theme.breakpoints.media.s`${attribute}: ${condition ? condition(prop.s) : prop.s};`}
     ${prop.md && theme.breakpoints.media.md`${attribute}: ${condition ? condition(prop.md) : prop.md};`}
     ${prop.lg && theme.breakpoints.media.lg`${attribute}: ${condition ? condition(prop.lg) : prop.lg};`}

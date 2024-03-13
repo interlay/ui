@@ -1,12 +1,12 @@
 // @ts-nocheck
 import { css } from 'styled-components';
 
-type BreakPoints = 'xs' | 's' | 'md' | 'lg' | 'xl';
+type BreakPoints = 'base' | 's' | 'md' | 'lg' | 'xl';
 
 type ResponsiveProp<T extends number | string | boolean> = T | Partial<{ [K in BreakPoints]: T }>;
 
 const values: Record<BreakPoints, number> = {
-  xs: 0, // phone
+  base: 0, // phone
   s: 600, // tablet
   md: 900, // small laptop
   lg: 1200, // desktop
@@ -18,8 +18,8 @@ const breakpoints = {
   up: (key: BreakPoints): string => `(min-width:${values[key]}px)`,
   down: (key: BreakPoints): string => `(max-width:${values[key]}px)`,
   media: {
-    xs: (...args) => css`
-      @media (min-width: ${values.xs}px) {
+    base: (...args) => css`
+      @media (min-width: ${values.base}px) {
         ${css(...args)};
       }
     `,

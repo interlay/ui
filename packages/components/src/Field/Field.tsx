@@ -99,6 +99,7 @@ const useFieldProps = ({
   alignItems,
   justifyContent,
   gap,
+  fullWidth,
   ...props
 }: FieldProps): { fieldProps: FieldProps; elementProps: any } => {
   return {
@@ -116,7 +117,8 @@ const useFieldProps = ({
       maxWidth,
       alignItems,
       justifyContent,
-      gap
+      gap,
+      fullWidth
     },
     elementProps: props
   };

@@ -43,7 +43,10 @@ type Props = {
 
 type InheritAttrs = Omit<
   HelperTextProps &
-    Pick<FieldProps, 'label' | 'labelPosition' | 'labelProps' | 'maxWidth' | 'justifyContent' | 'alignItems'>,
+    Pick<
+      FieldProps,
+      'label' | 'labelPosition' | 'labelProps' | 'maxWidth' | 'justifyContent' | 'alignItems' | 'fullWidth'
+    >,
   keyof Props
 >;
 
@@ -126,7 +129,7 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
 
     return (
       <Field {...styleFieldProps}>
-        <Flex direction='column'>
+        <Flex direction='column' flex={1}>
           {hasLabel && (
             <TokenInputLabel {...labelProps} balance={balance}>
               {label}
