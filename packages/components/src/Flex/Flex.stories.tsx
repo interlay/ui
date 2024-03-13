@@ -5,7 +5,6 @@ import { Flex, FlexProps } from '.';
 export default {
   title: 'Layout/Flex',
   component: Flex,
-
   args: {
     gap: 'md'
   },

@@ -1,3 +1,4 @@
+import { ResponsiveProp } from './breakpoints';
 import { Spacing } from './space';
 
 export type Status = 'error' | 'warning' | 'success';
@@ -27,13 +28,23 @@ export type AlignSelf =
 export type Placement = 'top' | 'right' | 'bottom' | 'left';
 
 export interface MarginProps {
-  margin?: Spacing;
-  marginTop?: Spacing;
-  marginBottom?: Spacing;
-  marginLeft?: Spacing;
-  marginRight?: Spacing;
-  marginX?: Spacing;
-  marginY?: Spacing;
+  margin?: ResponsiveProp<Spacing>;
+  marginTop?: ResponsiveProp<Spacing>;
+  marginBottom?: ResponsiveProp<Spacing>;
+  marginLeft?: ResponsiveProp<Spacing>;
+  marginRight?: ResponsiveProp<Spacing>;
+  marginX?: ResponsiveProp<Spacing>;
+  marginY?: ResponsiveProp<Spacing>;
+}
+
+export interface PaddingProps {
+  padding?: ResponsiveProp<Spacing>;
+  paddingTop?: ResponsiveProp<Spacing>;
+  paddingBottom?: ResponsiveProp<Spacing>;
+  paddingLeft?: ResponsiveProp<Spacing>;
+  paddingRight?: ResponsiveProp<Spacing>;
+  paddingX?: ResponsiveProp<Spacing>;
+  paddingY?: ResponsiveProp<Spacing>;
 }
 
 export type Orientation = 'horizontal' | 'vertical';

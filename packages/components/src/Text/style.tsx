@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 
 type StyledTextProps = {
   $color: Color | 'inherit';
-  $size: Typography;
-  $weight: FontWeight;
+  $size: Typography | 'inherit';
+  $weight: FontWeight | 'inherit';
   $align?: NormalAlignments;
   $rows?: number;
   $noWrap?: boolean;
@@ -12,9 +12,10 @@ type StyledTextProps = {
 };
 
 const Text = styled.p<StyledTextProps>`
-  ${({ theme, $size }) => theme.typography($size)}
-  color: ${({ theme, $color }) => ($color === 'inherit' ? 'inherit' : theme.color($color))};
-  font-weight: ${({ theme, $weight }) => theme.fontWeight($weight)};
+  ${({ theme, $size }) =>
+    $size === 'inherit' ? { fontSize: 'inherit', lineHeight: 'inherit' } : theme.typography($size)}
+  color: ${({ theme, $color }) => ($color === 'inherit' ? $color : theme.color($color))};
+  font-weight: ${({ theme, $weight }) => ($weight === 'inherit' ? $weight : theme.fontWeight($weight))};
   text-align: ${({ $align }) => $align};
   white-space: ${({ $noWrap }) => $noWrap && 'nowrap'};
   font-family: ${({ $fontFamily }) => $fontFamily};

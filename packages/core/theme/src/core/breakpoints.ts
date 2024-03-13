@@ -1,10 +1,13 @@
-type BreakPoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+// @ts-nocheck
+import { css } from 'styled-components';
 
-type ResponsiveProp<T extends number | string> = T | Partial<{ [K in BreakPoints]: T }>;
+type BreakPoints = 'xs' | 's' | 'md' | 'lg' | 'xl';
+
+type ResponsiveProp<T extends number | string | boolean> = T | Partial<{ [K in BreakPoints]: T }>;
 
 const values: Record<BreakPoints, number> = {
   xs: 0, // phone
-  sm: 600, // tablet
+  s: 600, // tablet
   md: 900, // small laptop
   lg: 1200, // desktop
   xl: 1536 // large screen
@@ -13,7 +16,34 @@ const values: Record<BreakPoints, number> = {
 const breakpoints = {
   values,
   up: (key: BreakPoints): string => `(min-width:${values[key]}px)`,
-  down: (key: BreakPoints): string => `(max-width:${values[key]}px)`
+  down: (key: BreakPoints): string => `(max-width:${values[key]}px)`,
+  media: {
+    xs: (...args) => css`
+      @media (min-width: ${values.xs}px) {
+        ${css(...args)};
+      }
+    `,
+    s: (...args) => css`
+      @media (min-width: ${values.s}px) {
+        ${css(...args)};
+      }
+    `,
+    md: (...args) => css`
+      @media (min-width: ${values.md}px) {
+        ${css(...args)};
+      }
+    `,
+    lg: (...args) => css`
+      @media (min-width: ${values.lg}px) {
+        ${css(...args)};
+      }
+    `,
+    xl: (...args) => css`
+      @media (min-width: ${values.xl}px) {
+        ${css(...args)};
+      }
+    `
+  }
 };
 
 export { breakpoints };
