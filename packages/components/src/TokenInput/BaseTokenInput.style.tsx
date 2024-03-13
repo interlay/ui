@@ -108,6 +108,7 @@ const StyledGroupInputWrapper = styled(Flex)`
 
 const StyledNumberInputWrapper = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 export { StyledBaseInput, StyledAdornment, StyledUSDAdornment, StyledNumberInputWrapper, StyledGroupInputWrapper };

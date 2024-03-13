@@ -3,7 +3,7 @@ import { mergeProps } from '@react-aria/utils';
 import { PressEvent } from '@react-types/shared';
 import { forwardRef } from 'react';
 import { useDOMRef } from '@interlay/hooks';
-import { Color, Rounded, Spacing } from '@interlay/theme';
+import { Color, Rounded } from '@interlay/theme';
 
 import { FlexProps } from '../Flex';
 
@@ -16,7 +16,6 @@ type Props = {
   background?: Color;
   bordered?: boolean | Color;
   rounded?: Rounded;
-  padding?: Spacing;
   shadowed?: boolean;
   onPress?: (e: PressEvent) => void;
 };
@@ -56,11 +55,11 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         $bordered={bordered}
         $isHoverable={isHoverable}
         $isPressable={isPressable}
-        $padding={padding}
         $rounded={rounded}
         $shadowed={shadowed}
         direction={direction}
         elementType={elementType}
+        padding={padding}
         {...mergeProps(props, isPressable ? buttonProps : {})}
       >
         {children}
