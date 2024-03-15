@@ -30,7 +30,8 @@ import {
   TooltipTheme,
   TokenInputTheme,
   TableTheme,
-  TabsTheme
+  TabsTheme,
+  StepperTheme
 } from './components';
 
 const baseTheme = {
@@ -64,6 +65,7 @@ type ThemeParams = {
   tokenInput: TokenInputTheme;
   tabs: TabsTheme;
   table: TableTheme;
+  stepper: StepperTheme;
 };
 
 const defineTheme = ({ colors, ...theme }: ThemeParams) => ({

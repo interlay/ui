@@ -71,3 +71,5 @@ export { Button } from './Button';
 export type { ButtonProps } from './Button';
 export { UnstyledButton } from './UnstyledButton';
 export type { UnstyledButtonProps } from './UnstyledButton';
+export { Stepper, StepperItem } from './Stepper';
+export type { StepperProps, StepperItemProps } from './Stepper';

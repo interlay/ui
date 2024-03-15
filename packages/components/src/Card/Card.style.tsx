@@ -22,7 +22,11 @@ const StyledCard = styled(Flex)<StyledCardProps>`
     const { border, boxShadow, backgroundColor, ...baseCss } = theme.card.base;
 
     return css`
-      border: ${typeof $bordered === 'boolean' ? border : `1px solid ${theme.color($bordered)}`};
+      border: ${typeof $bordered === 'boolean'
+        ? $bordered
+          ? border
+          : undefined
+        : `1px solid ${theme.color($bordered)}`};
       box-shadow: ${$shadowed && boxShadow};
       background-color: ${$background ? theme.color($background) : backgroundColor};
       ${baseCss}

@@ -55,6 +55,8 @@ export type ProgressBarColors = 'default' | 'red';
 
 export type LabelPosition = 'top' | 'side';
 
+// export type DimensionValue =
+
 export * from './font-size';
 export * from './font-weight';
 export * from './line-height';

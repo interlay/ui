@@ -30,6 +30,8 @@ const StyledModal = styled.div<StyledModalProps>`
   right: 100%;
 
   height: 100%;
+  max-width: 300px;
+  width: 100%;
 
   transition: transform ${({ $isOpen }) => ($isOpen ? '250ms' : '100ms')} ease-in-out;
 
@@ -41,7 +43,8 @@ const StyledDialog = styled(Dialog)<StyledDialogProps>`
   background: none;
   border: none;
   border-radius: 0px;
-  width: 300px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;

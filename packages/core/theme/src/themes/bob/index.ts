@@ -18,6 +18,7 @@ import { tooltip } from './tooltip';
 import { tokenInput } from './token-input';
 import { tabs } from './tabs';
 import { table } from './table';
+import { stepper } from './stepper';
 
 const bobTheme = defineTheme({
   colors,
@@ -37,7 +38,8 @@ const bobTheme = defineTheme({
   tooltip,
   tokenInput,
   table,
-  tabs
+  tabs,
+  stepper
 });
 
 export { bobTheme };
