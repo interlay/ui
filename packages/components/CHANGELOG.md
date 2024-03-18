@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 1.0.0-next.8
+
+### Patch Changes
+
+- [#79](https://github.com/interlay/ui/pull/79) [`f702e1f6d48587f6bc3bc251b742c16b46d69105`](https://github.com/interlay/ui/commit/f702e1f6d48587f6bc3bc251b742c16b46d69105) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(components): table sticky header
+
 ## 1.0.0-next.7
 
 ### Patch Changes
