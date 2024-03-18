@@ -11,14 +11,18 @@ import { TableHeaderRow } from './TableHeaderRow';
 import { TableRow } from './TableRow';
 import { TableRowGroup } from './TableRowGroup';
 
-type InheritAttrs = TableStateProps<Record<string, any>> & AriaTableProps<Record<string, any>>;
+type Props = {
+  isStickyHeader?: boolean;
+};
 
-type NativeAttrs = Omit<HTMLAttributes<HTMLTableElement>, keyof InheritAttrs>;
+type InheritAttrs = Omit<TableStateProps<Record<string, any>> & AriaTableProps<Record<string, any>>, keyof Props>;
 
-type BaseTableProps = InheritAttrs & NativeAttrs;
+type NativeAttrs = Omit<HTMLAttributes<HTMLTableElement>, keyof (InheritAttrs & Props)>;
+
+type BaseTableProps = Props & InheritAttrs & NativeAttrs;
 
 const BaseTable = forwardRef<HTMLTableElement, BaseTableProps>(
-  ({ onRowAction, onCellAction, onSelectionChange, onSortChange, ...props }, ref): JSX.Element => {
+  ({ onRowAction, onCellAction, onSelectionChange, onSortChange, isStickyHeader, ...props }, ref): JSX.Element => {
     const tableRef = useDOMRef(ref);
 
     const statelyProps = { onSelectionChange, onSortChange, ...props };
@@ -31,7 +35,7 @@ const BaseTable = forwardRef<HTMLTableElement, BaseTableProps>(
 
     return (
       <StyledTable ref={tableRef} {...mergeProps(props, gridProps)}>
-        <TableRowGroup elementType='thead'>
+        <TableRowGroup elementType='thead' isStickyHeader={isStickyHeader}>
           {collection.headerRows.map((headerRow) => (
             <TableHeaderRow key={headerRow.key} item={headerRow} state={state}>
               {[...(collection.getChildren?.(headerRow.key) || [])].map((column) => (

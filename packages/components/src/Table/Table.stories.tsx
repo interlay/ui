@@ -25,7 +25,16 @@ const rows: RowProps[] = [
   },
   { id: 2, coin: 'DOT', price: '$8.13', action },
   { id: 3, coin: 'KINT', price: '$2.80', action },
-  { id: 4, coin: 'kBTC', price: '$23,074.29', action }
+  { id: 5, coin: 'kBTC', price: '$23,074.29', action },
+  { id: 6, coin: 'kBTC', price: '$23,074.29', action },
+  { id: 7, coin: 'kBTC', price: '$23,074.29', action },
+  { id: 8, coin: 'kBTC', price: '$23,074.29', action },
+  { id: 9, coin: 'kBTC', price: '$23,074.29', action },
+  { id: 10, coin: 'kBTC', price: '$23,074.29', action },
+  { id: 11, coin: 'kBTC', price: '$23,074.29', action },
+  { id: 12, coin: 'kBTC', price: '$23,074.29', action },
+  { id: 13, coin: 'kBTC', price: '$23,074.29', action },
+  { id: 14, coin: 'kBTC', price: '$23,074.29', action }
 ];
 
 export default {
@@ -52,5 +61,14 @@ export const Selection: StoryObj<TableProps> = {
   args: {
     selectionMode: 'single',
     selectedKeys: [1]
+  }
+};
+
+export const StickyHeader: StoryObj<TableProps> = {
+  args: {
+    isStickyHeader: true,
+    style: {
+      maxHeight: 300
+    }
   }
 };
