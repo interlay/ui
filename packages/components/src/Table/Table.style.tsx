@@ -1,70 +1,54 @@
-import styled from 'styled-components';
-import { theme } from '@interlay/theme';
+import styled, { css } from 'styled-components';
 
 const StyledTable = styled.table`
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   isolation: isolate;
-  border: ${theme.table.border};
-  border-radius: 4px;
   overflow: hidden;
+
+  ${({ theme }) => theme.table.base};
 `;
 
 const StyledTableColumnHeader = styled.th`
-  color: ${theme.colors.textTertiary};
-  font-size: ${theme.text.s};
-  line-height: ${theme.lineHeight.s};
-  font-weight: ${theme.fontWeight.bold};
-  padding: ${theme.spacing.spacing4} 0;
   text-align: left;
   position: relative;
-  padding-left: ${theme.spacing.spacing4};
 
-  &:last-of-type {
-    text-align: right;
-    padding-right: ${theme.spacing.spacing4};
-  }
+  ${({ theme }) => theme.table.columnHeader};
 `;
 
 const StyledTableCell = styled.td`
-  color: ${theme.colors.textPrimary};
-  padding-top: ${theme.spacing.spacing4};
-  padding-bottom: ${theme.spacing.spacing4};
   vertical-align: middle;
-  padding-left: ${theme.spacing.spacing4};
 
-  &:last-of-type {
-    text-align: right;
-    padding-right: ${theme.spacing.spacing4};
-  }
+  ${({ theme }) => theme.table.cell};
 `;
 
 const StyledTableHeaderRow = styled.tr`
-  background-color: ${theme.table.header.bg};
+  ${({ theme }) => theme.table.headerRow};
 `;
 
 type StyledTableRowProps = {
   $isHovered: boolean;
+  $isSelected: boolean;
 };
 
 const StyledTableRow = styled.tr<StyledTableRowProps>`
   outline: none;
-  font-size: ${theme.text.s};
-  line-height: ${theme.lineHeight.s};
   cursor: ${({ $isHovered }) => $isHovered && 'pointer'};
 
-  &:nth-child(odd) {
-    background-color: ${({ $isHovered }) => ($isHovered ? theme.table.row.bgHover : theme.table.row.odd.bg)};
-  }
+  ${({ theme, $isHovered, $isSelected }) => {
+    const { even, odd, selected } = theme.table.row;
 
-  &:nth-child(even) {
-    background-color: ${({ $isHovered }) => ($isHovered ? theme.table.row.bgHover : theme.table.row.even.bg)};
-  }
+    return css`
+      &:nth-child(odd) {
+        ${$isSelected ? selected : $isHovered ? odd.hover : odd.base};
+      }
 
-  &:focus-visible {
-    background-color: ${theme.table.row.bgHover};
-  }
+      &:nth-child(even) {
+        ${$isSelected ? selected : $isHovered ? even.hover : even.base};
+      }
+    `;
+  }};
 `;
 
 export { StyledTable, StyledTableCell, StyledTableColumnHeader, StyledTableHeaderRow, StyledTableRow };

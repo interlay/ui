@@ -26,11 +26,7 @@ export default {
   render: Render
 } as Meta<typeof List>;
 
-export const Default: StoryObj<ListProps> = {
-  args: {
-    selectedKeys: ['1']
-  }
-};
+export const Default: StoryObj<ListProps> = {};
 
 export const Horizontal: StoryObj<ListProps> = {
   args: {

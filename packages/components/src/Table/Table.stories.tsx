@@ -42,8 +42,15 @@ export default {
 
 export const Default: StoryObj<TableProps> = {};
 
-export const SeleButtonbleRow: StoryObj<TableProps> = {
+export const RowAction: StoryObj<TableProps> = {
   args: {
     onRowAction: (key) => alert(`Row ${key} selected`)
+  }
+};
+
+export const Selection: StoryObj<TableProps> = {
+  args: {
+    selectionMode: 'single',
+    selectedKeys: [1]
   }
 };
