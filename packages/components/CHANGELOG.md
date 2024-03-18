@@ -1,5 +1,16 @@
 # @interlay/ui
 
+## 1.0.0-next.7
+
+### Patch Changes
+
+- [#76](https://github.com/interlay/ui/pull/76) [`a3119508d7e1760b3d54423e37473336ce7ffada`](https://github.com/interlay/ui/commit/a3119508d7e1760b3d54423e37473336ce7ffada) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(components): add stepper and table changes
+
+- Updated dependencies [[`a3119508d7e1760b3d54423e37473336ce7ffada`](https://github.com/interlay/ui/commit/a3119508d7e1760b3d54423e37473336ce7ffada)]:
+  - @interlay/theme@1.0.0-next.4
+  - @interlay/hooks@1.0.0-next.4
+  - @interlay/icons@1.0.0-next.4
+
 ## 1.0.0-next.6
 
 ### Patch Changes
