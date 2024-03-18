@@ -1,11 +1,22 @@
 import styled, { css } from 'styled-components';
 
+import { Card } from '../Card';
+
+type StyledTableRowProps = {
+  $isHovered: boolean;
+  $isSelected: boolean;
+};
+
+type StyledTableRowGroupProps = {
+  $isStickyHeader: boolean;
+};
+
 const StyledTable = styled.table`
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   isolation: isolate;
-  overflow: hidden;
+  overflow: auto;
 
   ${({ theme }) => theme.table.base};
 `;
@@ -27,11 +38,6 @@ const StyledTableHeaderRow = styled.tr`
   ${({ theme }) => theme.table.headerRow};
 `;
 
-type StyledTableRowProps = {
-  $isHovered: boolean;
-  $isSelected: boolean;
-};
-
 const StyledTableRow = styled.tr<StyledTableRowProps>`
   outline: none;
   cursor: ${({ $isHovered }) => $isHovered && 'pointer'};
@@ -51,4 +57,26 @@ const StyledTableRow = styled.tr<StyledTableRowProps>`
   }};
 `;
 
-export { StyledTable, StyledTableCell, StyledTableColumnHeader, StyledTableHeaderRow, StyledTableRow };
+const StyledTableRowGroup = styled.div<StyledTableRowGroupProps>`
+  ${({ $isStickyHeader }) =>
+    $isStickyHeader &&
+    css`
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    `}
+`;
+
+const StyledCard = styled(Card)`
+  overflow: auto;
+`;
+
+export {
+  StyledTable,
+  StyledTableCell,
+  StyledTableColumnHeader,
+  StyledTableHeaderRow,
+  StyledTableRow,
+  StyledTableRowGroup,
+  StyledCard
+};

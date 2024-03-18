@@ -4,14 +4,29 @@ import { HTMLAttributes } from 'react';
 
 import { ElementTypeProp } from '../utils/types';
 
-type NativeAttrs = HTMLAttributes<HTMLTableSectionElement>;
+import { StyledTableRowGroup } from './Table.style';
 
-type TableRowGroupProps = NativeAttrs & ElementTypeProp;
+type Props = {
+  isStickyHeader?: boolean;
+};
 
-const TableRowGroup = ({ elementType: Component = 'thead', children, ...props }: TableRowGroupProps): JSX.Element => {
+type NativeAttrs = Omit<HTMLAttributes<HTMLTableSectionElement>, keyof Props>;
+
+type TableRowGroupProps = Props & NativeAttrs & ElementTypeProp;
+
+const TableRowGroup = ({
+  elementType = 'thead',
+  children,
+  isStickyHeader,
+  ...props
+}: TableRowGroupProps): JSX.Element => {
   const { rowGroupProps } = useTableRowGroup();
 
-  return <Component {...mergeProps(props, rowGroupProps)}>{children}</Component>;
+  return (
+    <StyledTableRowGroup as={elementType} {...mergeProps(props, rowGroupProps)} $isStickyHeader={isStickyHeader}>
+      {children}
+    </StyledTableRowGroup>
+  );
 };
 
 export { TableRowGroup };
