@@ -5,6 +5,7 @@ import { Card } from '../Card';
 type StyledTableRowProps = {
   $isHovered: boolean;
   $isSelected: boolean;
+  $isDisabled: boolean;
 };
 
 type StyledTableRowGroupProps = {
@@ -40,7 +41,7 @@ const StyledTableHeaderRow = styled.tr`
 
 const StyledTableRow = styled.tr<StyledTableRowProps>`
   outline: none;
-  cursor: ${({ $isHovered }) => $isHovered && 'pointer'};
+  cursor: ${({ $isDisabled, $isHovered }) => !$isDisabled && $isHovered && 'pointer'};
 
   ${({ theme, $isHovered, $isSelected }) => {
     const { even, odd, selected } = theme.table.row;

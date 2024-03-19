@@ -34,7 +34,10 @@ type TableRowProps = Props & NativeAttrs;
 
 const TableRow = ({ item, children, state, ...props }: TableRowProps): JSX.Element => {
   const ref = useRef<HTMLTableRowElement>(null);
+
   let isSelected = state.selectionManager.isSelected(item.key);
+  let isDisabled = state.selectionManager.isDisabled(item.key);
+
   const {
     rowProps: { onPointerDown, onPointerUp, onClick, ...otherRowProps }
   } = useTableRow(
@@ -76,6 +79,7 @@ const TableRow = ({ item, children, state, ...props }: TableRowProps): JSX.Eleme
         onPointerUp: handlePointerUp,
         onClick: handleClick
       })}
+      $isDisabled={isDisabled}
       $isHovered={isHovered}
       $isSelected={isSelected}
     >

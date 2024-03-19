@@ -99,10 +99,18 @@ const StyledAdornment = styled.div<StyledAdornmentProps>`
 
 const StyledGroupInputWrapper = styled(Flex)`
   input:focus,
-  button:focus,
-  input:hover,
-  button:hover {
+  button:focus {
     z-index: 5;
+  }
+
+  input[aria-invalid='true'],
+  button[data-invalid='true'] {
+    z-index: 4;
+  }
+
+  input:hover:not(:focus),
+  button:hover:not(:focus) {
+    z-index: 3;
   }
 `;
 

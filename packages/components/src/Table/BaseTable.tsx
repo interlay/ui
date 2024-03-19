@@ -22,13 +22,33 @@ type NativeAttrs = Omit<HTMLAttributes<HTMLTableElement>, keyof (InheritAttrs & 
 type BaseTableProps = Props & InheritAttrs & NativeAttrs;
 
 const BaseTable = forwardRef<HTMLTableElement, BaseTableProps>(
-  ({ onRowAction, onCellAction, onSelectionChange, onSortChange, isStickyHeader, ...props }, ref): JSX.Element => {
+  (
+    {
+      onRowAction,
+      onCellAction,
+      onSelectionChange,
+      onSortChange,
+      isStickyHeader,
+      selectedKeys,
+      selectionMode,
+      selectionBehavior,
+      ...props
+    },
+    ref
+  ): JSX.Element => {
     const tableRef = useDOMRef(ref);
 
-    const statelyProps = { onSelectionChange, onSortChange, ...props };
+    const statelyProps: TableStateProps<Record<string, any>> = {
+      onSelectionChange,
+      onSortChange,
+      selectedKeys,
+      selectionMode,
+      selectionBehavior,
+      ...props
+    };
     const state = useTableState(statelyProps);
 
-    const ariaProps = { onRowAction, onCellAction, ...props };
+    const ariaProps: AriaTableProps<Record<string, any>> = { onRowAction, onCellAction, ...props };
     const { gridProps } = useTable(ariaProps, state, tableRef);
 
     const { collection } = state;

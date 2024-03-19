@@ -73,6 +73,15 @@ export const SelectableDescription: StoryObj<TokenInputProps> = {
   }
 };
 
+export const SelectableInputErrorMessage: StoryObj<TokenInputProps> = {
+  args: {
+    errorMessage: 'Token field is required',
+    selectProps: {
+      items
+    }
+  }
+};
+
 export const SelectableErrorMessage: StoryObj<TokenInputProps> = {
   args: {
     selectProps: {
