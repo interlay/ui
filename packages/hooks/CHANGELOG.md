@@ -1,5 +1,11 @@
 # @interlay/hooks
 
+## 1.0.0-next.5
+
+### Patch Changes
+
+- [#81](https://github.com/interlay/ui/pull/81) [`b645637572f4658dbaa8c0f95168e19052056a75`](https://github.com/interlay/ui/commit/b645637572f4658dbaa8c0f95168e19052056a75) Thanks [@danielsimao](https://github.com/danielsimao)! - fix: table and select
+
 ## 1.0.0-next.4
 
 ### Patch Changes
