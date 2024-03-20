@@ -10,3 +10,4 @@ export type {
 } from './use-style-props';
 export { useDOMRef } from './use-dom-ref';
 export * from './use-currency-formatter';
+export { useLocale } from '@react-aria/i18n';

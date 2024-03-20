@@ -55,6 +55,7 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
         $isDisabled={!!disabled}
         $isOpen={isOpen}
         $size={size}
+        data-invalid={hasError ? true : null}
         name={name}
       >
         <StyledTriggerValue {...valueProps} $isDisabled={disabled} $isSelected={!!children}>
