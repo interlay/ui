@@ -73,13 +73,13 @@ describe('TokenInput', () => {
     it('should render', () => {
       render(<TokenInput balance={10} label='label' logoUrl='' ticker='BTC' />);
 
-      expect(screen.getByRole('button')).toHaveTextContent('10');
+      expect(screen.getByRole('definition')).toHaveTextContent('10');
     });
 
     it('should render human value', () => {
       render(<TokenInput balance={10} humanBalance={11} label='label' logoUrl='' ticker='BTC' />);
 
-      expect(screen.getByRole('button')).toHaveTextContent('11');
+      expect(screen.getByRole('definition')).toHaveTextContent('11');
     });
 
     it('should update input when applying max', async () => {
@@ -98,7 +98,7 @@ describe('TokenInput', () => {
         />
       );
 
-      userEvent.click(screen.getByRole('button', { name: /apply max balance/i }));
+      userEvent.click(screen.getByRole('button', { name: /max/i }));
 
       await waitFor(() => {
         expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('10');
@@ -131,7 +131,7 @@ describe('TokenInput', () => {
         expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('1');
       });
 
-      userEvent.click(screen.getByRole('button', { name: /apply max balance/i }));
+      userEvent.click(screen.getByRole('button', { name: /max/i }));
 
       await waitFor(() => {
         expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('10');
@@ -158,7 +158,7 @@ describe('TokenInput', () => {
         />
       );
 
-      expect(screen.getByRole('button', { name: /apply max balance/i })).toBeDisabled();
+      expect(screen.getByRole('button', { name: /max/i })).toBeDisabled();
     });
 
     it('should have max btn disabled when input is disabled', async () => {
@@ -168,7 +168,7 @@ describe('TokenInput', () => {
         <TokenInput isDisabled balance={10} label='label' logoUrl='' ticker='BTC' onClickBalance={handleClickBalance} />
       );
 
-      expect(screen.getByRole('button', { name: /apply max balance/i })).toBeDisabled();
+      expect(screen.getByRole('button', { name: /max/i })).toBeDisabled();
     });
   });
 
