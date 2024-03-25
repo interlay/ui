@@ -6,7 +6,7 @@ import { color } from './colors';
 // TODO: handle different sizes
 const tokenInput: TokenInputTheme = {
   balance: {
-    padding: `${spacing('xxs')} 0`,
+    padding: `${spacing('s')} 0`,
     color: color('primary-500'),
     fontWeight: fontWeight('medium'),
     ...typography('xs')

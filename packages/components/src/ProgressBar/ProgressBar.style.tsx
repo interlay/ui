@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { theme } from '@interlay/theme';
 import { Color, ProgressBarSize } from '@interlay/theme';
 
 type StyledTrackProps = {
@@ -15,7 +14,7 @@ const StyledTrack = styled.div<StyledTrackProps>`
   overflow: hidden;
   z-index: 1;
   width: 100%;
-  min-width: ${theme.spacing.spacing6};
+  min-width: ${({ theme }) => theme.spacing('2xl')};
 
   ${({ theme, $size }) => css`
     min-width: ${theme.spacing('2xl')};
@@ -26,7 +25,7 @@ const StyledTrack = styled.div<StyledTrackProps>`
 
 const StyledFill = styled.div<StyledFillProps>`
   border: none;
-  transition: width ${theme.transition.duration.duration100}ms;
+  transition: width 100ms;
   will-change: width;
 
   ${({ theme, $size, $color }) => {

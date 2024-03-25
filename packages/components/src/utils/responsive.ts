@@ -26,6 +26,6 @@ const getResponsiveCSS = (
     ${prop.lg && theme.breakpoints.media.lg`${attribute}: ${condition ? condition(prop.lg) : prop.lg};`}
     ${prop.xl && theme.breakpoints.media.xl`${attribute}: ${condition ? condition(prop.xl) : prop.xl};`}
       `
-    : prop && `${attribute}:${prop};`;
+    : prop && `${attribute}:${typeof prop === 'boolean' ? 'wrap' : prop};`;
 
 export { getResponsiveCSS, getSpacingResponsiveCSS };

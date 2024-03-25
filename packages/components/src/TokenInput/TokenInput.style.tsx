@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { TokenInputSize } from '@interlay/theme';
 
-import { UnstyledButton } from '../UnstyledButton';
+import { Button } from '../Button';
 import { Flex } from '../Flex';
 import { StyledTrigger } from '../Select/Select.style';
 import { Span } from '../Text';
@@ -67,8 +67,16 @@ const StyledListTokenWrapper = styled(Flex)`
   overflow: hidden;
 `;
 
-const StyledBalanceButton = styled(UnstyledButton)`
+const StyledBalance = styled(Flex)`
+  max-height: 1.625rem;
   ${({ theme }) => theme.tokenInput.balance}
+`;
+
+const StyledMaxButton = styled(Button)`
+  height: ${({ theme }) => theme.spacing('2xl')};
+  padding: 0 ${({ theme }) => theme.spacing('s')};
+  ${({ theme }) => ({ ...theme.typography('xs') })}
+  font-weight: ${({ theme }) => theme.fontWeight('medium')};
 `;
 
 const StyledBalanceLabel = styled(Span)`
@@ -82,9 +90,10 @@ export {
   StyledListItemLabel,
   StyledListTokenWrapper,
   StyledTicker,
-  StyledBalanceButton,
+  StyledBalance,
   StyledTokenAdornment,
   StyledTokenSelect,
   StyledTokenImg,
-  StyledListItemUsd
+  StyledListItemUsd,
+  StyledMaxButton
 };
