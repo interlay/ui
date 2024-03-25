@@ -5,7 +5,7 @@ import { color } from './colors';
 
 const progressBar: ProgressBarTheme = {
   track: {
-    background: color('grey-500')
+    background: color('grey-800')
   },
   fill: {
     background: `linear-gradient(90deg, #FF6301 0%, #FFF500 100%)`

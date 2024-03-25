@@ -45,3 +45,4 @@ export type {
 export { bobTheme } from './themes';
 export type { Theme } from './define';
 export * from './temp';
+export * from './utils';
