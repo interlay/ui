@@ -75,7 +75,7 @@ const SelectableTokenInput = forwardRef<HTMLInputElement, SelectableTokenInputPr
 
     const balance = balanceProp !== undefined && (
       <TokenInputBalance
-        balance={ticker ? humanBalance || balanceProp : 0}
+        balance={ticker ? balanceProp : 0}
         balanceHuman={humanBalance}
         inputId={id}
         isDisabled={isDisabled || !ticker}
