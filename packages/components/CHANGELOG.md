@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 1.0.0-next.11
+
+### Patch Changes
+
+- [#85](https://github.com/interlay/ui/pull/85) [`4c1fc1bb8421ca362dca42fedbf2a980162e7d87`](https://github.com/interlay/ui/commit/4c1fc1bb8421ca362dca42fedbf2a980162e7d87) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): token input balance event
+
 ## 1.0.0-next.10
 
 ### Patch Changes
