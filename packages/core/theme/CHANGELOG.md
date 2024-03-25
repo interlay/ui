@@ -1,5 +1,11 @@
 # @interlay/theme
 
+## 1.0.0-next.5
+
+### Patch Changes
+
+- [#83](https://github.com/interlay/ui/pull/83) [`267ba6f0fda2bebd32f3c15644f25faa44ec9c68`](https://github.com/interlay/ui/commit/267ba6f0fda2bebd32f3c15644f25faa44ec9c68) Thanks [@danielsimao](https://github.com/danielsimao)! - fix: progress-bar and token-input styles
+
 ## 1.0.0-next.4
 
 ### Patch Changes

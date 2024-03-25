@@ -10,6 +10,7 @@
     "@interlay/test-utils": "0.0.0"
   },
   "changesets": [
+    "cold-bats-battle",
     "curvy-oranges-mate",
     "early-penguins-scream",
     "grumpy-needles-tell",
