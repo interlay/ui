@@ -5,7 +5,7 @@ import { mergeProps } from '@react-aria/utils';
 import { useToggleState } from '@react-stately/toggle';
 import { PressEvent } from '@react-types/shared';
 import { ChangeEvent, forwardRef, HTMLAttributes, useRef } from 'react';
-import { Placement } from '@interlay/theme';
+import { Placement, SwitchSize } from '@interlay/theme';
 import { useDOMRef } from '@interlay/hooks';
 
 import { TextProps } from '../Text';
@@ -17,6 +17,7 @@ type Props = {
   onPress?: (e: PressEvent) => void;
   labelProps?: TextProps;
   labelPlacement?: Extract<Placement, 'left' | 'right'>;
+  size?: SwitchSize;
 };
 
 type NativeAttrs = Omit<HTMLAttributes<unknown>, keyof Props>;
@@ -26,7 +27,10 @@ type InheritAttrs = Omit<AriaSwitchProps, keyof Props>;
 type SwitchProps = Props & NativeAttrs & InheritAttrs;
 
 const Switch = forwardRef<HTMLLabelElement, SwitchProps>(
-  ({ children, onChange, className, style, hidden, labelProps, labelPlacement, ...props }, ref): JSX.Element => {
+  (
+    { children, onChange, className, style, hidden, labelProps, labelPlacement, size = 'md', ...props },
+    ref
+  ): JSX.Element => {
     const labelRef = useDOMRef(ref);
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -50,7 +54,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>(
         style={style}
       >
         <StyledInput {...mergeProps(inputProps, focusProps, pressProps, { onChange })} ref={inputRef} />
-        <StyledSwitch $isChecked={inputProps.checked} $isFocusVisible={isFocusVisible} />
+        <StyledSwitch $isChecked={inputProps.checked} $isFocusVisible={isFocusVisible} $size={size} />
         {children && <StyledLabel {...labelProps}>{children}</StyledLabel>}
       </StyledWrapper>
     );
