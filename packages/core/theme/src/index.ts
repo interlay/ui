@@ -11,7 +11,8 @@ export type {
   ProgressBarSize,
   AlertStatus,
   TokenInputSize,
-  TabsSize
+  TabsSize,
+  SwitchSize
 } from './components';
 export type {
   IconsSizes,

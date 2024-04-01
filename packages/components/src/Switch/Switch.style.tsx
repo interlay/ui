@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { theme } from '@interlay/theme';
+import styled, { css } from 'styled-components';
+import { SwitchSize } from '@interlay/theme';
 
 import { Span } from '../Text';
 
@@ -12,8 +12,7 @@ const StyledWrapper = styled.label<StyledWrapperProps>`
   flex-direction: ${({ $reverse }) => $reverse && 'row-reverse'};
   align-items: center;
   position: relative;
-  min-height: ${theme.spacing.spacing8};
-  gap: ${theme.spacing.spacing2};
+  gap: ${({ theme }) => theme.spacing('md')};
 `;
 
 const StyledInput = styled.input`
@@ -32,6 +31,7 @@ const StyledInput = styled.input`
 type StyledSwitchProps = {
   $isFocusVisible: boolean;
   $isChecked?: boolean;
+  $size: SwitchSize;
 };
 
 const StyledSwitch = styled.span<StyledSwitchProps>`
@@ -39,32 +39,29 @@ const StyledSwitch = styled.span<StyledSwitchProps>`
   flex-shrink: 0;
   display: inline-block;
   position: relative;
-  width: ${theme.spacing.spacing10};
-  height: ${theme.spacing.spacing6};
-  border-radius: ${theme.rounded.full};
-  margin: ${theme.spacing.spacing1} 0;
-  background-color: ${({ $isChecked }) => ($isChecked ? theme.switch.checked.bg : theme.switch.unchecked.bg)};
-  transition: ${theme.transition.default};
-  outline: ${({ $isFocusVisible }) => $isFocusVisible && theme.outline.default};
   outline-offset: 2px;
 
-  &::before {
-    content: '';
-    box-sizing: border-box;
-    display: block;
-    background-color: ${theme.switch.indicator.bg};
-    position: absolute;
-    width: calc(${theme.spacing.spacing6} * 0.7);
-    height: calc(${theme.spacing.spacing6} * 0.7);
-    top: calc(50% - ${theme.spacing.spacing6} * 0.35);
-    left: 0;
-    border-radius: ${theme.rounded.full};
-    transition: transform ${theme.transition.duration.duration250}ms ease 0s;
-    transform: ${({ $isChecked }) =>
-      $isChecked
-        ? `translateX(calc(${theme.spacing.spacing10} - ${theme.spacing.spacing10} / 15 - ${theme.spacing.spacing6} * 0.7))`
-        : `translateX(calc(${theme.spacing.spacing10} / 15))`};
-  }
+  ${({ theme, $isChecked, $isFocusVisible, $size }) => {
+    const { base, checked, indicator, focusVisible } = theme.switch;
+    const sizeStyle = theme.switch.size[$size];
+
+    return css`
+      ${base}
+      ${$isChecked && checked}
+      ${sizeStyle.base}
+      outline: ${$isFocusVisible && focusVisible};
+
+      &::before {
+        content: '';
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        ${indicator}
+        ${sizeStyle.indicator}
+        ${$isChecked && sizeStyle.checked.indicator}
+      }
+    `;
+  }}
 `;
 
 const StyledLabel = styled(Span)`
