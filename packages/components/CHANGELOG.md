@@ -1,5 +1,16 @@
 # @interlay/ui
 
+## 1.0.0-next.12
+
+### Patch Changes
+
+- [#87](https://github.com/interlay/ui/pull/87) [`383c4d6e09d92cf449db46d07f28db41d80b86de`](https://github.com/interlay/ui/commit/383c4d6e09d92cf449db46d07f28db41d80b86de) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(components): theme switch
+
+- Updated dependencies [[`383c4d6e09d92cf449db46d07f28db41d80b86de`](https://github.com/interlay/ui/commit/383c4d6e09d92cf449db46d07f28db41d80b86de)]:
+  - @interlay/theme@1.0.0-next.6
+  - @interlay/hooks@1.0.0-next.7
+  - @interlay/icons@1.0.0-next.6
+
 ## 1.0.0-next.11
 
 ### Patch Changes
