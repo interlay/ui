@@ -1,5 +1,12 @@
 # @interlay/hooks
 
+## 1.0.0-next.7
+
+### Patch Changes
+
+- Updated dependencies [[`383c4d6e09d92cf449db46d07f28db41d80b86de`](https://github.com/interlay/ui/commit/383c4d6e09d92cf449db46d07f28db41d80b86de)]:
+  - @interlay/theme@1.0.0-next.6
+
 ## 1.0.0-next.6
 
 ### Patch Changes
