@@ -38,13 +38,14 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       padding = 'xl',
       shadowed = false,
       bordered = true,
+      onPress,
       ...props
     },
     ref
   ): JSX.Element => {
     const cardRef = useDOMRef(ref);
     const { buttonProps } = useButton(
-      { elementType: elementType || 'div', isDisabled: !isPressable || isDisabled, ...props },
+      { elementType: elementType || 'div', isDisabled: !isPressable || isDisabled, onPress, ...props },
       cardRef
     );
 

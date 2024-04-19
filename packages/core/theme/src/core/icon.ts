@@ -4,9 +4,13 @@ import { css } from 'styled-components';
 import { spacing } from './space';
 import { Color, Palette, color } from './colors';
 
-type IconsSizes = 'xs' | 's' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+type IconsSizes = 'xxs' | 'xs' | 's' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
 
 const iconSizeBase: Record<IconsSizes, Styles<object>> = {
+  xxs: {
+    height: spacing('lg'),
+    width: spacing('lg')
+  },
   xs: {
     height: spacing('xl'),
     width: spacing('xl')

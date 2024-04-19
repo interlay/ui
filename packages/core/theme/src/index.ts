@@ -12,7 +12,8 @@ export type {
   AlertStatus,
   TokenInputSize,
   TabsSize,
-  SwitchSize
+  SwitchSize,
+  RadioSize
 } from './components';
 export type {
   IconsSizes,

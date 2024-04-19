@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Orientation, Spacing, theme } from '@interlay/theme';
+import styled, { css } from 'styled-components';
+import { Orientation, RadioSize, Spacing } from '@interlay/theme';
 
 import { Flex } from '../Flex';
 import { visuallyHidden } from '../utils/visually-hidden';
@@ -16,6 +16,7 @@ type StyledLabelProps = {
 };
 
 type StyledButtonProps = {
+  $size: RadioSize;
   $isSelected: boolean;
   $isHovered: boolean;
 };
@@ -32,7 +33,7 @@ const StyledRadioGroup = styled(Flex)<StyledRadioGroupProps>`
 const StyledLabel = styled(Label)<StyledLabelProps>`
   padding: 0;
   display: flex;
-  gap: ${theme.spacing.spacing2};
+  gap: ${({ theme }) => theme.spacing('md')};
   align-items: center;
   opacity: ${({ $isDisabled }) => $isDisabled && 0.5};
   flex: ${({ $flex }) => (typeof $flex === 'boolean' ? '1' : $flex)};
@@ -46,32 +47,35 @@ const StyledButton = styled.span<StyledButtonProps>`
   position: relative;
   flex-grow: 0;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  margin: ${theme.spacing.spacing2} 0;
   outline: none;
-  border-width: 2px;
-  border-style: solid;
-  border-color: ${({ $isSelected }) => ($isSelected ? theme.colors.textSecondary : theme.colors.textPrimary)};
   border-radius: 50%;
   opacity: ${({ $isHovered }) => $isHovered && 0.9};
-  transition:
-    border-color ${theme.transition.duration.duration100}ms ease-in-out,
-    opacity ${theme.transition.duration.duration100}ms ease-in-out;
 
-  &::after {
-    content: '';
-    border-radius: 50%;
-    position: absolute;
-    transition: border-width ${theme.transition.duration.duration100}ms ease-in-out;
-    border-color: ${theme.colors.textSecondary};
-    border-style: solid;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-width: ${({ $isSelected }) => ($isSelected ? '7px' : 0)};
-    opacity: inherit;
-  }
+  ${({ theme, $size, $isSelected }) => {
+    const { button, selected, size } = theme.radio;
+    const { button: buttonSize, selected: selectedSize } = size[$size];
+
+    return css`
+      ${button.base}
+      ${buttonSize.base}
+      ${$isSelected && selected.button.base}
+      
+      &::after {
+        content: '';
+        border-radius: 50%;
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: inherit;
+
+        ${button.inside}
+        ${$isSelected && selected.button.inside}
+        ${$isSelected && selectedSize.button.inside}
+      }
+    `;
+  }}
 `;
 
 export { StyledLabel, StyledRadioGroup, StyledButton, StyledInput };
