@@ -3,6 +3,7 @@ import { Placement } from '@interlay/theme';
 import { useHover } from '@react-aria/interactions';
 import { AriaRadioProps, useRadio } from '@react-aria/radio';
 import { HTMLAttributes, forwardRef, useRef } from 'react';
+import { useTheme } from 'styled-components';
 
 import { Span, TextProps } from '../Text';
 
@@ -25,11 +26,12 @@ type RadioProps = Props & NativeAttrs & InheritAttrs;
 const Radio = forwardRef<HTMLLabelElement, RadioProps>(
   ({ labelProps, isDisabled: isDisabledProp, children, className, style, flex, ...props }, ref): JSX.Element => {
     let { hoverProps, isHovered } = useHover({ isDisabled: isDisabledProp });
+    const { radio } = useTheme();
 
     const labelRef = useDOMRef(ref);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const state = useRadioProvider();
+    const { size, state } = useRadioProvider();
 
     const { inputProps, isSelected, isDisabled } = useRadio(
       {
@@ -52,8 +54,8 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>(
         style={style}
       >
         <StyledInput {...inputProps} ref={inputRef} />
-        <StyledButton $isHovered={isHovered} $isSelected={isSelected} />
-        {children && <Span size='xs'>{children}</Span>}
+        <StyledButton $isHovered={isHovered} $isSelected={isSelected} $size={size} />
+        {children && <Span size={radio.size[size].label}>{children}</Span>}
       </StyledLabel>
     );
   }
