@@ -1,5 +1,14 @@
 # @interlay/icons
 
+## 1.0.0-next.7
+
+### Patch Changes
+
+- [#89](https://github.com/interlay/ui/pull/89) [`ddd04da13f993d944021f412c8587b52d8c780e1`](https://github.com/interlay/ui/commit/ddd04da13f993d944021f412c8587b52d8c780e1) Thanks [@danielsimao](https://github.com/danielsimao)! - feat: theme radio, icon size, card fix
+
+- Updated dependencies [[`ddd04da13f993d944021f412c8587b52d8c780e1`](https://github.com/interlay/ui/commit/ddd04da13f993d944021f412c8587b52d8c780e1)]:
+  - @interlay/theme@1.0.0-next.7
+
 ## 1.0.0-next.6
 
 ### Patch Changes
