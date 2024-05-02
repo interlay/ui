@@ -8,10 +8,10 @@ import { TokenInputBalance } from './TokenInputBalance';
 import { TokenSelect, TokenSelectProps } from './TokenSelect';
 
 type Props = {
-  balance?: string | number;
+  balance?: string;
   humanBalance?: string | number;
   balanceLabel?: ReactNode;
-  onClickBalance?: (balance: string | number) => void;
+  onClickBalance?: (balance: string) => void;
   selectProps: Omit<TokenSelectProps, 'label' | 'helperTextId'>;
 };
 
@@ -75,7 +75,7 @@ const SelectableTokenInput = forwardRef<HTMLInputElement, SelectableTokenInputPr
 
     const balance = balanceProp !== undefined && (
       <TokenInputBalance
-        balance={ticker ? balanceProp : 0}
+        balance={ticker ? balanceProp : '0'}
         balanceHuman={humanBalance}
         inputId={id}
         isDisabled={isDisabled || !ticker}

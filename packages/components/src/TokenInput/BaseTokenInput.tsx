@@ -24,6 +24,12 @@ const escapeRegExp = (string: string): string => {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 };
 
+const hasCorrectDecimals = (value: string, decimals: number) => {
+  const decimalGroups = value.split('.');
+
+  return decimalGroups.length > 1 ? decimalGroups[1].length <= decimals : true;
+};
+
 type Props = {
   valueUSD?: number;
   balance?: ReactNode;
@@ -33,8 +39,10 @@ type Props = {
   size?: TokenInputSize;
   isInvalid?: boolean;
   minHeight?: Spacing;
-  value?: string | number;
-  defaultValue?: string | number;
+  value?: string;
+  defaultValue?: string;
+  // TODO: use Currency from bob-ui
+  currency: { decimals: number };
   onValueChange?: (value: string | number) => void;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: FocusEvent<Element>) => void;
@@ -69,6 +77,7 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
       inputMode,
       value: valueProp,
       endAdornment,
+      currency,
       onChange,
       onValueChange,
       ...props
@@ -84,9 +93,13 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
       (e) => {
         const value = e.target.value;
 
-        const isValid = value === '' || RegExp(`^\\d*(?:\\\\[.])?\\d*$`).test(escapeRegExp(value));
+        const isEmpty = value === '';
+        const hasValidDecimalFormat = RegExp(`^\\d*(?:\\\\[.])?\\d*$`).test(escapeRegExp(value));
+        const hasValidDecimalsAmount = hasCorrectDecimals(value, currency.decimals);
 
-        if (isValid) {
+        const isValid = hasValidDecimalFormat && hasValidDecimalsAmount;
+
+        if (isEmpty || isValid) {
           onChange?.(e);
           onValueChange?.(value);
           setValue(value);

@@ -12,7 +12,8 @@ export default {
   args: {
     ticker: 'ETH',
     logoUrl: 'https://ethereum-optimism.github.io/data/ETH/logo.svg',
-    label: 'Amount'
+    label: 'Amount',
+    currency: { decimals: 6 }
   }
 } as Meta<typeof TokenInput>;
 
@@ -25,7 +26,7 @@ export const DefaultValue: StoryObj<TokenInputProps> = {
 };
 
 const ControlledComponent = ({ value, valueUSD: valueUSDProp, ...args }: TokenInputProps) => {
-  const [state, setState] = useState<string | undefined>(value?.toString());
+  const [state, setState] = useState<string | undefined>(value);
 
   const valueUSD = valueUSDProp === undefined ? undefined : isNaN(state as any) ? 0 : Number(state) * 10;
 

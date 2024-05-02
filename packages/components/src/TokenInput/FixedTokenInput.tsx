@@ -5,7 +5,7 @@ import { BaseTokenInput, BaseTokenInputProps } from './BaseTokenInput';
 import { TokenInputBalance } from './TokenInputBalance';
 
 type Props = {
-  balance?: string | number;
+  balance?: string;
   humanBalance?: string | number;
   balanceLabel?: ReactNode;
   onClickBalance?: (balance: string | number) => void;
