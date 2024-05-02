@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 1.0.0-next.14
+
+### Patch Changes
+
+- [#91](https://github.com/interlay/ui/pull/91) [`f99474c2e9c9876139d117b0ad192c105cba2428`](https://github.com/interlay/ui/commit/f99474c2e9c9876139d117b0ad192c105cba2428) Thanks [@danielsimao](https://github.com/danielsimao)! - fix: token input decimals handling
+
 ## 1.0.0-next.13
 
 ### Patch Changes
