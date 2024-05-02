@@ -7,6 +7,8 @@ import { SelectableTokenInput, SelectableTokenInputProps } from './SelectableTok
 
 type Props = {
   onValueChange?: (value?: string | number) => void;
+  // TODO: define type when repo moved to bob-ui
+  currency: any;
 };
 
 type FixedAttrs = Omit<FixedTokenInputProps, keyof Props>;
@@ -38,7 +40,7 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
       setValue(value);
     };
 
-    const handleClickBalance = (balance: string | number) => {
+    const handleClickBalance = (balance: string) => {
       inputRef.current?.focus();
       setValue(balance);
       onValueChange?.(balance);

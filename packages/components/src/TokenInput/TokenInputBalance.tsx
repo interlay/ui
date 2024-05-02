@@ -6,9 +6,9 @@ import { StyledBalance, StyledMaxButton } from './TokenInput.style';
 
 type TokenInputBalanceProps = {
   inputId?: string;
-  balance: string | number;
+  balance: string;
   balanceHuman?: string | number;
-  onClickBalance?: (balance: string | number) => void;
+  onClickBalance?: (balance: string) => void;
   isDisabled?: boolean;
   label?: ReactNode;
 };
@@ -21,7 +21,7 @@ const TokenInputBalance = ({
   isDisabled: isDisabledProp,
   label = 'Balance'
 }: TokenInputBalanceProps): JSX.Element => {
-  const isDisabled = isDisabledProp || balanceProp === 0;
+  const isDisabled = isDisabledProp || Number(balanceProp) === 0;
 
   const ariaLabel = typeof label === 'string' ? `apply max ${label}` : 'apply max';
 
