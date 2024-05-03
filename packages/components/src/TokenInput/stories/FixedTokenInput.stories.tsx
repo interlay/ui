@@ -10,10 +10,9 @@ export default {
     layout: 'centered'
   },
   args: {
-    ticker: 'ETH',
     logoUrl: 'https://ethereum-optimism.github.io/data/ETH/logo.svg',
     label: 'Amount',
-    currency: { decimals: 6 }
+    currency: { decimals: 6, symbol: 'ETH' }
   }
 } as Meta<typeof TokenInput>;
 

@@ -5,11 +5,21 @@ import { mergeProps } from '@react-aria/utils';
 import { TokenInput, TokenInputProps } from '..';
 
 const items = [
-  { balance: 2, ticker: 'ETH', logoUrl: 'https://ethereum-optimism.github.io/data/ETH/logo.svg', balanceUSD: 900 },
-  { balance: 500, ticker: 'USDT', logoUrl: 'https://ethereum-optimism.github.io/data/USDT/logo.png', balanceUSD: 500 },
+  {
+    balance: 2,
+    currency: { symbol: 'ETH', decimals: 18 },
+    logoUrl: 'https://ethereum-optimism.github.io/data/ETH/logo.svg',
+    balanceUSD: 900
+  },
+  {
+    balance: 500,
+    currency: { symbol: 'USDT', decimals: 6 },
+    logoUrl: 'https://ethereum-optimism.github.io/data/USDT/logo.png',
+    balanceUSD: 500
+  },
   {
     balance: 100,
-    ticker: 'USDC',
+    currency: { symbol: 'USDC', decimals: 6 },
     logoUrl: 'https://ethereum-optimism.github.io/data/BridgedUSDC/logo.png',
     balanceUSD: 100
   }

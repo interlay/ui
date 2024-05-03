@@ -5,11 +5,11 @@ import { BaseTokenInput, BaseTokenInputProps } from './BaseTokenInput';
 import { TokenInputBalance } from './TokenInputBalance';
 
 type Props = {
+  currency: any;
   balance?: string;
   humanBalance?: string | number;
   balanceLabel?: ReactNode;
   onClickBalance?: (balance: string | number) => void;
-  ticker: string;
   logoUrl: string;
 };
 
@@ -24,11 +24,11 @@ const FixedTokenInput = forwardRef<HTMLInputElement, FixedTokenInputProps>(
       humanBalance,
       balanceLabel,
       onClickBalance,
-      ticker: tickerProp,
       logoUrl,
       isDisabled,
       id,
       size = 'md',
+      currency,
       ...props
     },
     ref
@@ -49,7 +49,7 @@ const FixedTokenInput = forwardRef<HTMLInputElement, FixedTokenInputProps>(
         {...props}
         ref={ref}
         balance={balance}
-        endAdornment={<TokenAdornment logoUrl={logoUrl} size={size} ticker={tickerProp} />}
+        endAdornment={<TokenAdornment logoUrl={logoUrl} size={size} ticker={currency.symbol} />}
         id={id}
         isDisabled={isDisabled}
         size={size}

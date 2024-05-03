@@ -1,11 +1,11 @@
 import { chain, useId } from '@react-aria/utils';
-import { Key, ReactNode, forwardRef, useEffect, useState } from 'react';
+import { Key, ReactNode, forwardRef, useCallback, useEffect, useState } from 'react';
 
 import { HelperText } from '../HelperText';
 
 import { BaseTokenInput, BaseTokenInputProps } from './BaseTokenInput';
 import { TokenInputBalance } from './TokenInputBalance';
-import { TokenSelect, TokenSelectProps } from './TokenSelect';
+import { TokenData, TokenSelect, TokenSelectProps } from './TokenSelect';
 
 type Props = {
   balance?: string;
@@ -39,17 +39,30 @@ const SelectableTokenInput = forwardRef<HTMLInputElement, SelectableTokenInputPr
   ): JSX.Element => {
     const selectHelperTextId = useId();
 
-    const [ticker, setTicker] = useState<string | undefined>(selectProps?.defaultValue?.toString());
+    const defaultCurrency = (selectProps.items as TokenData[]).find(
+      (item) => item.currency.symbol === selectProps.defaultValue
+    );
+
+    const [currency, setCurrency] = useState<any | undefined>(defaultCurrency);
 
     useEffect(() => {
       const value = selectProps?.value;
 
       if (value === undefined) return;
 
-      setTicker(value.toString());
+      const tokenData = (selectProps.items as TokenData[]).find((item) => item.currency.symbol === value);
+
+      setCurrency(tokenData?.currency);
     }, [selectProps?.value]);
 
-    const handleTokenChange = (ticker: Key) => setTicker(ticker as string);
+    const handleTokenChange = useCallback(
+      (ticker: Key) => {
+        const tokenData = (selectProps.items as TokenData[]).find((item) => item.currency.symbol === ticker);
+
+        setCurrency(tokenData?.currency);
+      },
+      [selectProps]
+    );
 
     // Prioritise Number Input description and error message
     const hasNumberFieldMessages = !!(errorMessage || description);
@@ -68,17 +81,17 @@ const SelectableTokenInput = forwardRef<HTMLInputElement, SelectableTokenInputPr
         errorMessage={undefined}
         isInvalid={isInvalid}
         size={size}
-        value={ticker}
+        value={currency?.symbol}
         onSelectionChange={chain(onSelectionChange, handleTokenChange)}
       />
     );
 
     const balance = balanceProp !== undefined && (
       <TokenInputBalance
-        balance={ticker ? balanceProp : '0'}
+        balance={currency ? balanceProp : '0'}
         balanceHuman={humanBalance}
         inputId={id}
-        isDisabled={isDisabled || !ticker}
+        isDisabled={isDisabled || !currency}
         label={balanceLabel}
         onClickBalance={onClickBalance}
       />
@@ -88,6 +101,7 @@ const SelectableTokenInput = forwardRef<HTMLInputElement, SelectableTokenInputPr
       <BaseTokenInput
         ref={ref}
         balance={balance}
+        currency={currency}
         description={description}
         endAdornment={endAdornment}
         errorMessage={errorMessage}

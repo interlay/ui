@@ -7,7 +7,7 @@ import { TokenInput } from '..';
 
 describe('TokenInput', () => {
   it('should render correctly', () => {
-    const wrapper = render(<TokenInput currency={{ decimals: 6 }} label='label' logoUrl='' ticker='BTC' />);
+    const wrapper = render(<TokenInput currency={{ decimals: 6, symbol: 'BTC' }} label='label' logoUrl='' />);
 
     expect(() => wrapper.unmount()).not.toThrow();
   });
@@ -15,34 +15,34 @@ describe('TokenInput', () => {
   it('ref should be forwarded', () => {
     const ref = createRef<HTMLInputElement>();
 
-    render(<TokenInput ref={ref} currency={{ decimals: 6 }} label='label' logoUrl='' ticker='BTC' />);
+    render(<TokenInput ref={ref} currency={{ decimals: 6, symbol: 'BTC' }} label='label' logoUrl='' />);
     expect(ref.current).not.toBeNull();
   });
 
   it('should pass a11y', async () => {
-    await testA11y(<TokenInput currency={{ decimals: 6 }} label='label' logoUrl='' ticker='BTC' />);
+    await testA11y(<TokenInput currency={{ decimals: 6, symbol: 'BTC' }} label='label' logoUrl='' />);
   });
 
   it('should render with placeholder', () => {
-    render(<TokenInput currency={{ decimals: 6 }} label='label' logoUrl='' ticker='BTC' />);
+    render(<TokenInput currency={{ decimals: 6, symbol: 'BTC' }} label='label' logoUrl='' />);
 
     expect(screen.getByPlaceholderText('0.00')).toBeInTheDocument();
   });
 
   it('should render with usd value', () => {
-    render(<TokenInput currency={{ decimals: 6 }} label='label' logoUrl='' ticker='BTC' valueUSD={10} />);
+    render(<TokenInput currency={{ decimals: 6, symbol: 'BTC' }} label='label' logoUrl='' valueUSD={10} />);
 
     expect(screen.getByText('$10.00')).toBeInTheDocument();
   });
 
   it('should render with default value', () => {
-    render(<TokenInput currency={{ decimals: 6 }} defaultValue='10' label='label' logoUrl='' ticker='BTC' />);
+    render(<TokenInput currency={{ decimals: 6, symbol: 'BTC' }} defaultValue='10' label='label' logoUrl='' />);
 
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('10');
   });
 
   it('should display 0.01 when 0.0.1 is typed', async () => {
-    render(<TokenInput currency={{ decimals: 6 }} label='label' logoUrl='' ticker='BTC' />);
+    render(<TokenInput currency={{ decimals: 6, symbol: 'BTC' }} label='label' logoUrl='' />);
 
     const input = screen.getByRole('textbox', { name: /label/i });
 
@@ -54,7 +54,7 @@ describe('TokenInput', () => {
   });
 
   it('should display max decimals', async () => {
-    render(<TokenInput currency={{ decimals: 6 }} label='label' logoUrl='' ticker='BTC' />);
+    render(<TokenInput currency={{ decimals: 6, symbol: 'BTC' }} label='label' logoUrl='' />);
 
     const input = screen.getByRole('textbox', { name: /label/i });
 
@@ -73,10 +73,9 @@ describe('TokenInput', () => {
 
       return (
         <TokenInput
-          currency={{ decimals: 6 }}
+          currency={{ decimals: 6, symbol: 'BTC' }}
           label='label'
           logoUrl=''
-          ticker='BTC'
           value={value}
           onValueChange={handleValueChange}
         />
@@ -98,7 +97,12 @@ describe('TokenInput', () => {
 
   it('should render description', () => {
     render(
-      <TokenInput currency={{ decimals: 6 }} description='Please select token' label='label' logoUrl='' ticker='BTC' />
+      <TokenInput
+        currency={{ decimals: 6, symbol: 'BTC' }}
+        description='Please select token'
+        label='label'
+        logoUrl=''
+      />
     );
 
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveAccessibleDescription(/please select token$/i);
@@ -106,14 +110,14 @@ describe('TokenInput', () => {
 
   describe('balance', () => {
     it('should render', () => {
-      render(<TokenInput balance='10' currency={{ decimals: 6 }} label='label' logoUrl='' ticker='BTC' />);
+      render(<TokenInput balance='10' currency={{ decimals: 6, symbol: 'BTC' }} label='label' logoUrl='' />);
 
       expect(screen.getByRole('definition')).toHaveTextContent('10');
     });
 
     it('should render human value', () => {
       render(
-        <TokenInput balance='10' currency={{ decimals: 6 }} humanBalance={11} label='label' logoUrl='' ticker='BTC' />
+        <TokenInput balance='10' currency={{ decimals: 6, symbol: 'BTC' }} humanBalance={11} label='label' logoUrl='' />
       );
 
       expect(screen.getByRole('definition')).toHaveTextContent('11');
@@ -126,11 +130,10 @@ describe('TokenInput', () => {
       render(
         <TokenInput
           balance='10'
-          currency={{ decimals: 6 }}
+          currency={{ decimals: 6, symbol: 'BTC' }}
           humanBalance={11}
           label='label'
           logoUrl=''
-          ticker='BTC'
           onClickBalance={handleClickBalance}
           onValueChange={handleValueChange}
         />
@@ -148,18 +151,16 @@ describe('TokenInput', () => {
       expect(handleClickBalance).toHaveBeenCalledWith('10');
     });
 
-    it('should apply max with correct decimals', async () => {
+    it('should apply max with exact decimals', async () => {
       const handleClickBalance = jest.fn();
       const handleValueChange = jest.fn();
 
       render(
         <TokenInput
           balance='0.167345554041665262'
-          currency={{ decimals: 18 }}
-          humanBalance={0.16}
+          currency={{ decimals: 18, symbol: 'ETH' }}
           label='label'
           logoUrl=''
-          ticker='BTC'
           onClickBalance={handleClickBalance}
           onValueChange={handleValueChange}
         />
@@ -175,6 +176,31 @@ describe('TokenInput', () => {
       expect(handleClickBalance).toHaveBeenCalledWith('0.167345554041665262');
     });
 
+    it.only('should apply max with correct amount decimals', async () => {
+      const handleClickBalance = jest.fn();
+      const handleValueChange = jest.fn();
+
+      render(
+        <TokenInput
+          balance='0.167345554041665262'
+          currency={{ decimals: 8, symbol: 'BTC' }}
+          label='label'
+          logoUrl=''
+          onClickBalance={handleClickBalance}
+          onValueChange={handleValueChange}
+        />
+      );
+
+      userEvent.click(screen.getByRole('button', { name: /max/i }));
+
+      await waitFor(() => {
+        expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('0.16734555');
+      });
+
+      expect(handleValueChange).toHaveBeenCalledWith('0.16734555');
+      expect(handleClickBalance).toHaveBeenCalledWith('0.16734555');
+    });
+
     it('should not emit input onBlur when focus is in max btn', async () => {
       const handleClickBalance = jest.fn();
       const handleBlur = jest.fn();
@@ -182,10 +208,9 @@ describe('TokenInput', () => {
       render(
         <TokenInput
           balance='10'
-          currency={{ decimals: 6 }}
+          currency={{ decimals: 6, symbol: 'BTC' }}
           label='label'
           logoUrl=''
-          ticker='BTC'
           onBlur={handleBlur}
           onClickBalance={handleClickBalance}
         />
@@ -216,11 +241,10 @@ describe('TokenInput', () => {
       render(
         <TokenInput
           balance='0'
-          currency={{ decimals: 6 }}
+          currency={{ decimals: 6, symbol: 'BTC' }}
           humanBalance={11}
           label='label'
           logoUrl=''
-          ticker='BTC'
           onClickBalance={handleClickBalance}
         />
       );
@@ -235,10 +259,9 @@ describe('TokenInput', () => {
         <TokenInput
           isDisabled
           balance='10'
-          currency={{ decimals: 6 }}
+          currency={{ decimals: 6, symbol: 'BTC' }}
           label='label'
           logoUrl=''
-          ticker='BTC'
           onClickBalance={handleClickBalance}
         />
       );
@@ -249,47 +272,32 @@ describe('TokenInput', () => {
 
   describe('fixed type', () => {
     it('should render with ticker adornment', () => {
-      render(<TokenInput currency={{ decimals: 6 }} label='label' logoUrl='' ticker='BTC' />);
+      render(<TokenInput currency={{ decimals: 6, symbol: 'BTC' }} label='label' logoUrl='' />);
 
       expect(screen.getByText(/btc/i)).toBeInTheDocument();
-    });
-
-    it('should render with unknown ticker', () => {
-      render(<TokenInput currency={{ decimals: 6 }} label='label' logoUrl='' ticker='ABC' />);
-
-      expect(screen.getByText(/abc/i)).toBeInTheDocument();
     });
   });
 
   describe('selectable type', () => {
     const items = [
-      { balance: 1, ticker: 'BTC', balanceUSD: 10000, logoUrl: '' },
-      { balance: 2, ticker: 'ETH', balanceUSD: 900, logoUrl: '' }
+      { balance: 1, currency: { decimals: 6, symbol: 'BTC' }, balanceUSD: 10000, logoUrl: '' },
+      { balance: 2, currency: { decimals: 18, symbol: 'ETH' }, balanceUSD: 900, logoUrl: '' }
     ];
 
     it('should render correctly', async () => {
-      const wrapper = render(
-        <TokenInput currency={{ decimals: 6 }} label='label' selectProps={{ items }} type='selectable' />
-      );
+      const wrapper = render(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
 
       expect(() => wrapper.unmount()).not.toThrow();
     });
 
     it('should pass a11y', async () => {
-      await testA11y(<TokenInput currency={{ decimals: 6 }} label='label' selectProps={{ items }} type='selectable' />);
+      await testA11y(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
     });
 
     it('ref should be forwarded to the modal', async () => {
       const ref = createRef<HTMLInputElement>();
 
-      render(
-        <TokenInput
-          currency={{ decimals: 6 }}
-          label='label'
-          selectProps={{ items, modalProps: { ref } }}
-          type='selectable'
-        />
-      );
+      render(<TokenInput label='label' selectProps={{ items, modalProps: { ref } }} type='selectable' />);
 
       userEvent.click(screen.getByRole('button', { name: /select token/i }));
 
@@ -301,20 +309,13 @@ describe('TokenInput', () => {
     });
 
     it('should render empty value', () => {
-      render(<TokenInput currency={{ decimals: 6 }} label='label' selectProps={{ items }} type='selectable' />);
+      render(<TokenInput label='label' selectProps={{ items }} type='selectable' />);
 
       expect(screen.getByRole('button', { name: /select token/i })).toHaveTextContent(/select token$/i);
     });
 
     it('should render default value', () => {
-      render(
-        <TokenInput
-          currency={{ decimals: 6 }}
-          label='label'
-          selectProps={{ defaultValue: 'BTC', items }}
-          type='selectable'
-        />
-      );
+      render(<TokenInput label='label' selectProps={{ defaultValue: 'BTC', items }} type='selectable' />);
 
       expect(screen.getByRole('button', { name: /select token/i })).toHaveTextContent('BTC');
     });
@@ -327,7 +328,6 @@ describe('TokenInput', () => {
 
         return (
           <TokenInput
-            currency={{ decimals: 6 }}
             label='label'
             selectProps={{ defaultValue: 'BTC', items, onSelectionChange: handleSelectionChange, value }}
             type='selectable'
@@ -356,14 +356,33 @@ describe('TokenInput', () => {
       expect(screen.getByRole('button', { name: /select token/i })).toHaveTextContent('ETH');
     });
 
+    it('should apply correct decimals when switching currency', async () => {
+      render(
+        <TokenInput label='label' selectProps={{ value: 'ETH', items }} type='selectable' value='0.0000000000001' />
+      );
+
+      const selectBtn = screen.getByRole('button', { name: /ETH/i });
+
+      userEvent.click(selectBtn);
+
+      await waitFor(() => {
+        expect(screen.getByRole('dialog', { name: /select token/i })).toBeInTheDocument();
+      });
+
+      const dialog = within(screen.getByRole('dialog', { name: /select token/i }));
+
+      userEvent.click(dialog.getByRole('row', { name: 'BTC' }));
+
+      await waitForElementToBeRemoved(screen.getByRole('dialog', { name: /select token/i }));
+
+      await waitFor(() => {
+        expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('0.000000');
+      });
+    });
+
     it('should render description', () => {
       render(
-        <TokenInput
-          currency={{ decimals: 6 }}
-          label='label'
-          selectProps={{ items, description: 'Please select token' }}
-          type='selectable'
-        />
+        <TokenInput label='label' selectProps={{ items, description: 'Please select token' }} type='selectable' />
       );
 
       expect(screen.getByRole('button', { name: /select token/i })).toHaveAccessibleDescription(
@@ -373,12 +392,7 @@ describe('TokenInput', () => {
 
     it('should render select error message', () => {
       render(
-        <TokenInput
-          currency={{ decimals: 6 }}
-          label='label'
-          selectProps={{ items, errorMessage: 'Token field is required' }}
-          type='selectable'
-        />
+        <TokenInput label='label' selectProps={{ items, errorMessage: 'Token field is required' }} type='selectable' />
       );
 
       expect(screen.getByRole('button', { name: /select token/i })).toHaveAccessibleDescription(

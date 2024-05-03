@@ -4,6 +4,7 @@ import { AriaTextFieldOptions, useTextField } from '@react-aria/textfield';
 import { mergeProps } from '@react-aria/utils';
 import { ChangeEventHandler, FocusEvent, forwardRef, ReactNode, useCallback, useEffect, useState } from 'react';
 
+import { trimDecimals } from '../utils';
 import { HelperTextProps } from '../HelperText';
 import { LabelProps } from '../Label';
 import { Field, FieldProps, useFieldProps } from '../Field';
@@ -42,7 +43,7 @@ type Props = {
   value?: string;
   defaultValue?: string;
   // TODO: use Currency from bob-ui
-  currency: { decimals: number };
+  currency?: { decimals: number };
   onValueChange?: (value: string | number) => void;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: FocusEvent<Element>) => void;
@@ -89,24 +90,23 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
 
     const format = useCurrencyFormatter();
 
-    const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
-      (e) => {
-        const value = e.target.value;
+    // Observes currency field and correct decimals places if needed
+    useEffect(() => {
+      if (value && currency) {
+        const trimmedValue = trimDecimals(value, currency.decimals);
 
-        const isEmpty = value === '';
-        const hasValidDecimalFormat = RegExp(`^\\d*(?:\\\\[.])?\\d*$`).test(escapeRegExp(value));
-        const hasValidDecimalsAmount = hasCorrectDecimals(value, currency.decimals);
-
-        const isValid = hasValidDecimalFormat && hasValidDecimalsAmount;
-
-        if (isEmpty || isValid) {
-          onChange?.(e);
-          onValueChange?.(value);
-          setValue(value);
+        if (value !== trimmedValue) {
+          setValue(trimmedValue);
+          onValueChange?.(trimmedValue);
         }
-      },
-      [onChange, onValueChange]
-    );
+      }
+    }, [currency]);
+
+    useEffect(() => {
+      if (valueProp === undefined) return;
+
+      setValue(valueProp.toString());
+    }, [valueProp]);
 
     const { inputProps, descriptionProps, errorMessageProps, labelProps } = useTextField(
       {
@@ -121,11 +121,24 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
       inputRef
     );
 
-    useEffect(() => {
-      if (valueProp === undefined) return;
+    const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+      (e) => {
+        const value = e.target.value;
 
-      setValue(valueProp.toString());
-    }, [valueProp]);
+        const isEmpty = value === '';
+        const hasValidDecimalFormat = RegExp(`^\\d*(?:\\\\[.])?\\d*$`).test(escapeRegExp(value));
+        const hasValidDecimalsAmount = currency ? hasCorrectDecimals(value, currency.decimals) : true;
+
+        const isValid = hasValidDecimalFormat && hasValidDecimalsAmount;
+
+        if (isEmpty || isValid) {
+          onChange?.(e);
+          onValueChange?.(value);
+          setValue(value);
+        }
+      },
+      [onChange, onValueChange, currency]
+    );
 
     const hasLabel = !!label || !!balance;
 

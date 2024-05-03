@@ -1,6 +1,6 @@
 import { useDOMRef } from '@interlay/hooks';
 import { mergeProps, useId } from '@react-aria/utils';
-import { ChangeEvent, FocusEvent, forwardRef, useEffect, useState } from 'react';
+import { ChangeEvent, FocusEvent, forwardRef, useCallback, useEffect, useState } from 'react';
 
 import { FixedTokenInput, FixedTokenInputProps } from './FixedTokenInput';
 import { SelectableTokenInput, SelectableTokenInputProps } from './SelectableTokenInput';
@@ -8,7 +8,6 @@ import { SelectableTokenInput, SelectableTokenInputProps } from './SelectableTok
 type Props = {
   onValueChange?: (value?: string | number) => void;
   // TODO: define type when repo moved to bob-ui
-  currency: any;
 };
 
 type FixedAttrs = Omit<FixedTokenInputProps, keyof Props>;
@@ -19,34 +18,43 @@ type InheritAttrs = ({ type?: 'fixed' } & FixedAttrs) | ({ type?: 'selectable' }
 
 type TokenInputProps = Props & InheritAttrs;
 
-const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
-  ({ type = 'fixed', defaultValue, value: valueProp, onValueChange, balance, onBlur, ...props }, ref): JSX.Element => {
-    const inputRef = useDOMRef<HTMLInputElement>(ref);
+const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>((props, ref): JSX.Element => {
+  const { defaultValue, value: valueProp, onValueChange, balance, onBlur, ...otherProps } = props;
 
-    const [value, setValue] = useState(defaultValue);
+  const inputRef = useDOMRef<HTMLInputElement>(ref);
 
-    const inputId = useId();
+  const [value, setValue] = useState(defaultValue);
 
-    useEffect(() => {
-      if (valueProp === undefined) return;
+  const inputId = useId();
 
-      setValue(valueProp);
-    }, [valueProp]);
+  useEffect(() => {
+    if (valueProp === undefined) return;
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(valueProp);
+  }, [valueProp]);
+
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
 
       onValueChange?.(value);
       setValue(value);
-    };
+    },
+    [onValueChange]
+  );
 
-    const handleClickBalance = (balance: string) => {
+  const handleClickBalance = useCallback(
+    (balance: string) => {
       inputRef.current?.focus();
+
       setValue(balance);
       onValueChange?.(balance);
-    };
+    },
+    [onValueChange, inputRef.current]
+  );
 
-    const handleBlur = (e: FocusEvent<Element>) => {
+  const handleBlur = useCallback(
+    (e: FocusEvent<Element>) => {
       const relatedTargetEl = e.relatedTarget;
 
       if (!relatedTargetEl || !relatedTargetEl.getAttribute) {
@@ -58,32 +66,33 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>(
       if (!isTargetingMaxBtn) {
         onBlur?.(e);
       }
-    };
+    },
+    [onBlur]
+  );
 
-    const numberInputProps: Partial<TokenInputProps> =
-      balance !== undefined
-        ? {
-            id: inputId,
-            balance,
-            onBlur: handleBlur,
-            onClickBalance: handleClickBalance
-          }
-        : { onBlur };
+  const numberInputProps: Partial<TokenInputProps> =
+    balance !== undefined
+      ? {
+          id: inputId,
+          balance,
+          onBlur: handleBlur,
+          onClickBalance: handleClickBalance
+        }
+      : { onBlur };
 
-    const commonProps = {
-      ...numberInputProps,
-      ref: inputRef,
-      value,
-      onChange: handleChange
-    };
+  const commonProps = {
+    ...numberInputProps,
+    ref: inputRef,
+    value,
+    onChange: handleChange
+  };
 
-    if (type === 'selectable') {
-      return <SelectableTokenInput {...mergeProps(props, commonProps)} />;
-    }
-
-    return <FixedTokenInput {...mergeProps(props, commonProps)} />;
+  if (props.type === 'selectable') {
+    return <SelectableTokenInput {...mergeProps(otherProps, commonProps)} />;
   }
-);
+
+  return <FixedTokenInput {...mergeProps(otherProps, commonProps)} />;
+});
 
 TokenInput.displayName = 'TokenInput';
 

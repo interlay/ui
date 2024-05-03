@@ -9,13 +9,13 @@ import { TokenListItem } from './TokenListItem';
 
 const Value = ({ data }: { data: TokenData }) => (
   <Flex alignItems='center' gap='xs' justifyContent='space-evenly'>
-    <StyledTokenImg $size='md' alt={data.ticker} src={data.logoUrl} />
-    <StyledTicker>{data.ticker}</StyledTicker>
+    <StyledTokenImg $size='md' alt={data.currency.symbol} src={data.logoUrl} />
+    <StyledTicker>{data.currency.symbol}</StyledTicker>
   </Flex>
 );
 
 type TokenData = {
-  ticker: string;
+  currency: any;
   logoUrl: string;
   balance: string | number;
   balanceUSD: number;
@@ -23,6 +23,7 @@ type TokenData = {
 
 type TokenSelectProps = Omit<ModalSelectProps<TokenData>, 'children' | 'type'>;
 
+// TODO: value control from currency object
 const TokenSelect = ({ modalProps, size, ...props }: TokenSelectProps): JSX.Element => {
   return (
     <Select<TokenData>
@@ -40,7 +41,7 @@ const TokenSelect = ({ modalProps, size, ...props }: TokenSelectProps): JSX.Elem
       type='modal'
     >
       {(data: TokenData) => (
-        <Item key={data.ticker} textValue={data.ticker}>
+        <Item key={data.currency.symbol} textValue={data.currency.symbol}>
           <TokenListItem {...data} />
         </Item>
       )}
