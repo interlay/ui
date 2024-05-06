@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 1.0.0-next.16
+
+### Patch Changes
+
+- [#95](https://github.com/interlay/ui/pull/95) [`19bac3c08a0fc0a65ea0948793f12350975d6c49`](https://github.com/interlay/ui/commit/19bac3c08a0fc0a65ea0948793f12350975d6c49) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(TokenInput): currency state
+
 ## 1.0.0-next.15
 
 ### Patch Changes
