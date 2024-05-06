@@ -1,6 +1,6 @@
 import { useDOMRef } from '@interlay/hooks';
 import { mergeProps, useId } from '@react-aria/utils';
-import { ChangeEvent, FocusEvent, forwardRef, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, FocusEvent, forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { trimDecimals } from '../utils';
 
@@ -13,7 +13,9 @@ const getDefaultCurrency = (props: TokenInputProps) => {
     case 'fixed':
       return (props as FixedTokenInputProps).currency;
     case 'selectable':
-      return (props.items || []).find((item) => item.currency.symbol === props.selectProps?.defaultValue);
+      return (props.items || []).find(
+        (item) => item.currency.symbol === (props.selectProps?.value || props.selectProps?.defaultValue)
+      )?.currency;
   }
 };
 
@@ -34,8 +36,10 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>((props, ref): J
 
   const inputRef = useDOMRef<HTMLInputElement>(ref);
 
+  const defaultCurrency = useMemo(() => getDefaultCurrency(props), []);
+
   const [value, setValue] = useState(defaultValue);
-  const [currency, setCurrency] = useState<any | undefined>(getDefaultCurrency(props));
+  const [currency, setCurrency] = useState<any | undefined>(defaultCurrency);
 
   const inputId = useId();
 
@@ -119,9 +123,8 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>((props, ref): J
   if (props.type === 'selectable') {
     return (
       <SelectableTokenInput
-        {...mergeProps(otherProps, commonProps)}
+        {...mergeProps(otherProps, commonProps, { onChangeCurrency: handleChangeCurrency })}
         currency={currency}
-        onChangeCurrency={handleChangeCurrency}
       />
     );
   }

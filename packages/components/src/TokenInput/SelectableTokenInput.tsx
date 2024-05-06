@@ -1,5 +1,5 @@
 import { chain, useId } from '@react-aria/utils';
-import { Key, ReactNode, forwardRef, useCallback, useEffect } from 'react';
+import { Key, ReactNode, forwardRef, useCallback } from 'react';
 
 import { HelperText } from '../HelperText';
 
@@ -44,14 +44,6 @@ const SelectableTokenInput = forwardRef<HTMLInputElement, SelectableTokenInputPr
     ref
   ): JSX.Element => {
     const selectHelperTextId = useId();
-
-    useEffect(() => {
-      if (selectProps?.value === undefined) return;
-
-      const item = (items as TokenData[]).find((item) => item.currency.symbol === selectProps?.value);
-
-      onChangeCurrency?.(item?.currency);
-    }, [selectProps?.value, onChangeCurrency]);
 
     const handleSelectionChange = useCallback(
       (ticker: Key) => {

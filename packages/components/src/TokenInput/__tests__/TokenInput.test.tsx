@@ -329,7 +329,9 @@ describe('TokenInput', () => {
       expect(screen.getByRole('button', { name: /select token/i })).toHaveTextContent('BTC');
     });
 
-    it('should control value', async () => {
+    it('should control value and emit onChangeCurrency', async () => {
+      const handleChangeCurrency = jest.fn();
+
       const Component = () => {
         const [value, setValue] = useState<any | undefined>(currencies[0]);
 
@@ -342,6 +344,7 @@ describe('TokenInput', () => {
             label='label'
             selectProps={{ value: value.symbol, onSelectionChange: handleSelectionChange }}
             type='selectable'
+            onChangeCurrency={handleChangeCurrency}
           />
         );
       };
@@ -365,6 +368,8 @@ describe('TokenInput', () => {
       await waitForElementToBeRemoved(screen.getByRole('dialog', { name: /select token/i }));
 
       expect(screen.getByRole('button', { name: /select token/i })).toHaveTextContent('ETH');
+      expect(handleChangeCurrency).toHaveBeenCalledWith(currencies[1]);
+      expect(handleChangeCurrency).toHaveBeenCalledTimes(1);
     });
 
     it('should apply correct decimals when switching currency', async () => {
