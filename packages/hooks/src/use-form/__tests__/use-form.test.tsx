@@ -182,16 +182,16 @@ describe('useForm', () => {
   });
 
   describe('TokenInput', () => {
-    const commonProps = { initialValues: { amount: '' }, onSubmit: handleSubmit };
+    const commonProps = { initialValues: { amount: '', currency: '' }, onSubmit: handleSubmit };
 
-    it('should set field value', async () => {
+    it('should set amount field value', async () => {
       const { result } = renderHook(() => useForm<{ amount: string }>(commonProps));
 
       const props = result.current.getTokenFieldProps('amount');
 
       render(
         <form onSubmit={result.current.handleSubmit}>
-          <TokenInput currency={{ decimals: 8 }} label='Amount' logoUrl='' ticker='BTC' {...props} />
+          <TokenInput currency={{ decimals: 8, symbol: 'BTC' }} label='Amount' logoUrl='' {...props} />
           <button type='submit'>Submit</button>
         </form>
       );
@@ -202,6 +202,42 @@ describe('useForm', () => {
 
       await waitFor(() => {
         expect(result.current.values.amount).toBe('1');
+      });
+    });
+
+    it('should set currency field value', async () => {
+      const { result } = renderHook(() => useForm<{ amount: string; currency: string }>(commonProps));
+
+      const props = result.current.getSelectableTokenFieldProps({ amount: 'amount', currency: 'currency' });
+
+      render(
+        <form onSubmit={result.current.handleSubmit}>
+          <TokenInput
+            items={[{ logoUrl: '', balance: '0', balanceUSD: 0, currency: { symbol: 'BTC', decimals: 8 } }]}
+            label='Amount'
+            type='selectable'
+            {...props}
+          />
+          <button type='submit'>Submit</button>
+        </form>
+      );
+
+      const selectBtn = screen.getByRole('button', { name: /select token/i });
+
+      userEvent.click(selectBtn);
+
+      await waitFor(() => {
+        expect(screen.getByRole('dialog', { name: /select token/i })).toBeInTheDocument();
+      });
+
+      const dialog = within(screen.getByRole('dialog', { name: /select token/i }));
+
+      userEvent.click(dialog.getByRole('row', { name: 'BTC' }));
+
+      await waitForElementToBeRemoved(screen.getByRole('dialog', { name: /select token/i }));
+
+      await waitFor(() => {
+        expect(result.current.values.currency).toBe('BTC');
       });
     });
   });

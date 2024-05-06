@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { mergeProps } from '@react-aria/utils';
 
-import { Select, Item, Flex, SelectProps } from '../../../../components/src';
+import { Select, Item, Flex, SelectProps, TokenInputProps, TokenInput } from '../../../../components/src';
 import { useForm } from '../use-form';
 
 export default {
@@ -48,4 +48,53 @@ export const SelectField: StoryObj<SelectProps> = {
     modalProps: { title: 'Select token' }
   },
   render: RenderSelect
+};
+
+const items = [
+  {
+    balance: 2,
+    currency: { symbol: 'ETH', decimals: 18 },
+    logoUrl: 'https://ethereum-optimism.github.io/data/ETH/logo.svg',
+    balanceUSD: 900
+  },
+  {
+    balance: 500,
+    currency: { symbol: 'USDT', decimals: 6 },
+    logoUrl: 'https://ethereum-optimism.github.io/data/USDT/logo.png',
+    balanceUSD: 500
+  },
+  {
+    balance: 100,
+    currency: { symbol: 'USDC', decimals: 6 },
+    logoUrl: 'https://ethereum-optimism.github.io/data/BridgedUSDC/logo.png',
+    balanceUSD: 100
+  }
+];
+
+const RenderTokenInput = (args: TokenInputProps) => {
+  const form = useForm<{ amount: string; currency: '' }>({
+    initialValues: { amount: '', currency: '' },
+    onSubmit: alert
+  });
+
+  return (
+    <>
+      <h1>Form object</h1>
+      <p>Touched: {JSON.stringify(form.touched)}</p>
+      <p>Dirty: {JSON.stringify(form.dirty)}</p>
+      <p>Values: {JSON.stringify(form.values)}</p>
+      <TokenInput
+        items={items}
+        type='selectable'
+        {...mergeProps(args, form.getSelectableTokenFieldProps({ amount: 'amount', currency: 'currency' }) as any)}
+      />
+    </>
+  );
+};
+
+export const TokenInputField: StoryObj<TokenInputProps> = {
+  args: {
+    label: 'Amount'
+  },
+  render: RenderTokenInput
 };

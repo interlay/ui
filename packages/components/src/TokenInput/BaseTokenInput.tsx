@@ -2,7 +2,7 @@ import { useCurrencyFormatter, useDOMRef } from '@interlay/hooks';
 import { Spacing, TokenInputSize } from '@interlay/theme';
 import { AriaTextFieldOptions, useTextField } from '@react-aria/textfield';
 import { mergeProps } from '@react-aria/utils';
-import { ChangeEventHandler, FocusEvent, forwardRef, ReactNode, useCallback, useEffect, useState } from 'react';
+import { ChangeEventHandler, FocusEvent, forwardRef, ReactNode, useCallback } from 'react';
 
 import { HelperTextProps } from '../HelperText';
 import { LabelProps } from '../Label';
@@ -42,7 +42,7 @@ type Props = {
   value?: string;
   defaultValue?: string;
   // TODO: use Currency from bob-ui
-  currency: { decimals: number };
+  currency?: { decimals: number };
   onValueChange?: (value: string | number) => void;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: FocusEvent<Element>) => void;
@@ -75,7 +75,7 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
       size = 'md',
       defaultValue,
       inputMode,
-      value: valueProp,
+      value,
       endAdornment,
       currency,
       onChange,
@@ -84,29 +84,9 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
     },
     ref
   ): JSX.Element => {
-    const [value, setValue] = useState<string | undefined>(defaultValue?.toString());
     const inputRef = useDOMRef(ref);
 
     const format = useCurrencyFormatter();
-
-    const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
-      (e) => {
-        const value = e.target.value;
-
-        const isEmpty = value === '';
-        const hasValidDecimalFormat = RegExp(`^\\d*(?:\\\\[.])?\\d*$`).test(escapeRegExp(value));
-        const hasValidDecimalsAmount = hasCorrectDecimals(value, currency.decimals);
-
-        const isValid = hasValidDecimalFormat && hasValidDecimalsAmount;
-
-        if (isEmpty || isValid) {
-          onChange?.(e);
-          onValueChange?.(value);
-          setValue(value);
-        }
-      },
-      [onChange, onValueChange]
-    );
 
     const { inputProps, descriptionProps, errorMessageProps, labelProps } = useTextField(
       {
@@ -114,18 +94,32 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
         label,
         inputMode,
         isInvalid: isInvalid || !!props.errorMessage,
-        value: value,
+        value,
+        onChange: () => {},
+        defaultValue,
         placeholder,
         autoComplete: 'off'
       },
       inputRef
     );
 
-    useEffect(() => {
-      if (valueProp === undefined) return;
+    const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+      (e) => {
+        const value = e.target.value;
 
-      setValue(valueProp.toString());
-    }, [valueProp]);
+        const isEmpty = value === '';
+        const hasValidDecimalFormat = RegExp(`^\\d*(?:\\\\[.])?\\d*$`).test(escapeRegExp(value));
+        const hasValidDecimalsAmount = currency ? hasCorrectDecimals(value, currency.decimals) : true;
+
+        const isValid = hasValidDecimalFormat && hasValidDecimalsAmount;
+
+        if (isEmpty || isValid) {
+          onChange?.(e);
+          onValueChange?.(value);
+        }
+      },
+      [onChange, onValueChange, currency]
+    );
 
     const hasLabel = !!label || !!balance;
 
