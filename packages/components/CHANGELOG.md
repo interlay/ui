@@ -1,5 +1,14 @@
 # @interlay/ui
 
+## 1.0.0-next.15
+
+### Patch Changes
+
+- [#93](https://github.com/interlay/ui/pull/93) [`b488881632834c5d01c0f13a27c43bdf95a5a9fa`](https://github.com/interlay/ui/commit/b488881632834c5d01c0f13a27c43bdf95a5a9fa) Thanks [@danielsimao](https://github.com/danielsimao)! - Fix/token input decimal undefined
+
+- Updated dependencies [[`b488881632834c5d01c0f13a27c43bdf95a5a9fa`](https://github.com/interlay/ui/commit/b488881632834c5d01c0f13a27c43bdf95a5a9fa)]:
+  - @interlay/hooks@1.0.0-next.9
+
 ## 1.0.0-next.14
 
 ### Patch Changes
