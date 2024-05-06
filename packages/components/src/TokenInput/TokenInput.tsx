@@ -2,17 +2,28 @@ import { useDOMRef } from '@interlay/hooks';
 import { mergeProps, useId } from '@react-aria/utils';
 import { ChangeEvent, FocusEvent, forwardRef, useCallback, useEffect, useState } from 'react';
 
+import { trimDecimals } from '../utils';
+
 import { FixedTokenInput, FixedTokenInputProps } from './FixedTokenInput';
 import { SelectableTokenInput, SelectableTokenInputProps } from './SelectableTokenInput';
 
+const getDefaultCurrency = (props: TokenInputProps) => {
+  switch (props.type) {
+    default:
+    case 'fixed':
+      return (props as FixedTokenInputProps).currency;
+    case 'selectable':
+      return (props.items || []).find((item) => item.currency.symbol === props.selectProps?.defaultValue);
+  }
+};
+
 type Props = {
   onValueChange?: (value?: string | number) => void;
-  // TODO: define type when repo moved to bob-ui
 };
 
 type FixedAttrs = Omit<FixedTokenInputProps, keyof Props>;
 
-type SelectableAttrs = Omit<SelectableTokenInputProps, keyof Props>;
+type SelectableAttrs = Omit<SelectableTokenInputProps, keyof Props | 'currency'>;
 
 type InheritAttrs = ({ type?: 'fixed' } & FixedAttrs) | ({ type?: 'selectable' } & SelectableAttrs);
 
@@ -24,6 +35,7 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>((props, ref): J
   const inputRef = useDOMRef<HTMLInputElement>(ref);
 
   const [value, setValue] = useState(defaultValue);
+  const [currency, setCurrency] = useState<any | undefined>(getDefaultCurrency(props));
 
   const inputId = useId();
 
@@ -32,6 +44,17 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>((props, ref): J
 
     setValue(valueProp);
   }, [valueProp]);
+
+  useEffect(() => {
+    if (value && currency) {
+      const trimmedValue = trimDecimals(value, currency.decimals);
+
+      if (value !== trimmedValue) {
+        setValue(trimmedValue);
+        onValueChange?.(trimmedValue);
+      }
+    }
+  }, [currency]);
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,12 +68,16 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>((props, ref): J
 
   const handleClickBalance = useCallback(
     (balance: string) => {
+      if (!currency) return;
+
       inputRef.current?.focus();
 
-      setValue(balance);
-      onValueChange?.(balance);
+      const value = trimDecimals(balance, currency.decimals);
+
+      setValue(value);
+      onValueChange?.(value);
     },
-    [onValueChange, inputRef.current]
+    [onValueChange, inputRef.current, currency]
   );
 
   const handleBlur = useCallback(
@@ -70,6 +97,8 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>((props, ref): J
     [onBlur]
   );
 
+  const handleChangeCurrency = useCallback((currency: any) => setCurrency(currency), []);
+
   const numberInputProps: Partial<TokenInputProps> =
     balance !== undefined
       ? {
@@ -88,10 +117,16 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>((props, ref): J
   };
 
   if (props.type === 'selectable') {
-    return <SelectableTokenInput {...mergeProps(otherProps, commonProps)} />;
+    return (
+      <SelectableTokenInput
+        {...mergeProps(otherProps, commonProps)}
+        currency={currency}
+        onChangeCurrency={handleChangeCurrency}
+      />
+    );
   }
 
-  return <FixedTokenInput {...mergeProps(otherProps, commonProps)} />;
+  return <FixedTokenInput {...mergeProps(otherProps, commonProps)} currency={currency} />;
 });
 
 TokenInput.displayName = 'TokenInput';

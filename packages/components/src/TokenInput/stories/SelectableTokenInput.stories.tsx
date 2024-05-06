@@ -34,9 +34,7 @@ export default {
   args: {
     type: 'selectable',
     label: 'Amount',
-    selectProps: {
-      items
-    }
+    items
   }
 } as Meta<typeof TokenInput>;
 
@@ -45,19 +43,18 @@ export const Selectable: StoryObj<TokenInputProps> = {};
 export const SelectableDefaultValue: StoryObj<TokenInputProps> = {
   args: {
     selectProps: {
-      defaultValue: 'ETH',
-      items
+      defaultValue: 'ETH'
     }
   }
 };
 
 const ControlledSelectComponent = (args: any) => {
-  const [state, setState] = useState<string>();
+  const [state, setState] = useState(items[0].currency);
 
   return (
     <TokenInput
       {...args}
-      selectProps={mergeProps(args.selectProps, { value: state, onSelectionChange: setState })}
+      selectProps={mergeProps(args.selectProps, { value: state.symbol, onSelectionChange: setState })}
       type='selectable'
     />
   );
@@ -77,7 +74,6 @@ export const SelectableWithBalance: StoryObj<TokenInputProps> = {
 export const SelectableDescription: StoryObj<TokenInputProps> = {
   args: {
     selectProps: {
-      items,
       description: 'Please select a token'
     }
   }
@@ -85,17 +81,13 @@ export const SelectableDescription: StoryObj<TokenInputProps> = {
 
 export const SelectableInputErrorMessage: StoryObj<TokenInputProps> = {
   args: {
-    errorMessage: 'Token field is required',
-    selectProps: {
-      items
-    }
+    errorMessage: 'Token field is required'
   }
 };
 
 export const SelectableErrorMessage: StoryObj<TokenInputProps> = {
   args: {
     selectProps: {
-      items,
       errorMessage: 'Token field is required'
     }
   }

@@ -2,6 +2,8 @@ import { FieldInputProps, FormikConfig, FormikErrors as FormErrors, FormikValues
 import { FocusEvent, Key, useCallback } from 'react';
 import { useDebounce } from 'react-use';
 
+import { TokenSelectProps } from '../../../components/src';
+
 const shouldEmitBlur = (relatedTargetEl?: HTMLElement, targetEl?: HTMLElement) => {
   if (!relatedTargetEl || !targetEl) {
     return true;
@@ -33,9 +35,17 @@ type GetFieldProps = (nameOrOptions: any) => FieldInputProps<any> & {
   errorMessage?: string | string[];
 };
 
-type GetTokenFieldProps = (
-  nameOrOptions: any
-) => Omit<ReturnType<GetFieldProps>, 'onChange'> & { onValueChange?: (value?: string | number) => void };
+type GetTokenFieldProps = (nameOrOptions: any) => Omit<ReturnType<GetFieldProps>, 'onChange'> & {
+  onValueChange?: (value?: string | number) => void;
+};
+
+type GetSelectableTokenFieldProps = (fields: { amount: any; currency: any }) => Omit<
+  ReturnType<GetFieldProps>,
+  'onChange'
+> & {
+  onValueChange?: (value?: string | number) => void;
+  selectProps: Omit<TokenSelectProps, 'label' | 'helperTextId' | 'items'>;
+};
 
 type GetSelectFieldProps = (
   nameOrOptions: any
@@ -104,9 +114,9 @@ const useForm = <Values extends FormikValues = FormikValues>({
   );
 
   const getTokenFieldProps: GetTokenFieldProps = useCallback(
-    (nameOrOptions: any) => {
-      const props = getFieldProps(nameOrOptions);
-      const fieldName = getFieldName(nameOrOptions);
+    (amount) => {
+      const props = getFieldProps(amount);
+      const fieldName = getFieldName(amount);
 
       return {
         ...props,
@@ -145,11 +155,22 @@ const useForm = <Values extends FormikValues = FormikValues>({
     [getFieldProps, setFieldValue]
   );
 
+  const getSelectableTokenFieldProps: GetSelectableTokenFieldProps = useCallback(
+    ({ amount, currency }) => {
+      return {
+        ...getTokenFieldProps(amount),
+        selectProps: getSelectFieldProps(currency)
+      };
+    },
+    [getFieldProps, setFieldValue, getTokenFieldProps, getSelectFieldProps]
+  );
+
   return {
     values,
     validateForm,
     getFieldProps,
     getSelectFieldProps,
+    getSelectableTokenFieldProps,
     setFieldTouched,
     setFieldValue,
     getTokenFieldProps,

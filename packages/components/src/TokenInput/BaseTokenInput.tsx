@@ -2,9 +2,8 @@ import { useCurrencyFormatter, useDOMRef } from '@interlay/hooks';
 import { Spacing, TokenInputSize } from '@interlay/theme';
 import { AriaTextFieldOptions, useTextField } from '@react-aria/textfield';
 import { mergeProps } from '@react-aria/utils';
-import { ChangeEventHandler, FocusEvent, forwardRef, ReactNode, useCallback, useEffect, useState } from 'react';
+import { ChangeEventHandler, FocusEvent, forwardRef, ReactNode, useCallback } from 'react';
 
-import { trimDecimals } from '../utils';
 import { HelperTextProps } from '../HelperText';
 import { LabelProps } from '../Label';
 import { Field, FieldProps, useFieldProps } from '../Field';
@@ -76,7 +75,7 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
       size = 'md',
       defaultValue,
       inputMode,
-      value: valueProp,
+      value,
       endAdornment,
       currency,
       onChange,
@@ -85,28 +84,9 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
     },
     ref
   ): JSX.Element => {
-    const [value, setValue] = useState<string | undefined>(defaultValue?.toString());
     const inputRef = useDOMRef(ref);
 
     const format = useCurrencyFormatter();
-
-    // Observes currency field and correct decimals places if needed
-    useEffect(() => {
-      if (value && currency) {
-        const trimmedValue = trimDecimals(value, currency.decimals);
-
-        if (value !== trimmedValue) {
-          setValue(trimmedValue);
-          onValueChange?.(trimmedValue);
-        }
-      }
-    }, [currency]);
-
-    useEffect(() => {
-      if (valueProp === undefined) return;
-
-      setValue(valueProp.toString());
-    }, [valueProp]);
 
     const { inputProps, descriptionProps, errorMessageProps, labelProps } = useTextField(
       {
@@ -114,7 +94,9 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
         label,
         inputMode,
         isInvalid: isInvalid || !!props.errorMessage,
-        value: value,
+        value,
+        onChange: () => {},
+        defaultValue,
         placeholder,
         autoComplete: 'off'
       },
@@ -134,7 +116,6 @@ const BaseTokenInput = forwardRef<HTMLInputElement, BaseTokenInputProps>(
         if (isEmpty || isValid) {
           onChange?.(e);
           onValueChange?.(value);
-          setValue(value);
         }
       },
       [onChange, onValueChange, currency]
