@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 1.0.0-next.17
+
+### Patch Changes
+
+- [#97](https://github.com/interlay/ui/pull/97) [`459f4aa9ec887ec038d917b1bc0f98270e28e3fd`](https://github.com/interlay/ui/commit/459f4aa9ec887ec038d917b1bc0f98270e28e3fd) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(components): token input items
+
 ## 1.0.0-next.16
 
 ### Patch Changes
