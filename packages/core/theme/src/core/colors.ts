@@ -19,9 +19,13 @@ type Palette = {
   GreenColors &
   RedColors;
 
-type Color = keyof Palette;
+type NativeColor = 'inherit' | 'unset' | string;
 
-const color = (colors: Palette) => (color: Color | 'inherit') => (color === 'inherit' ? color : colors[color]);
+type PaletteColor = keyof Palette;
+
+type Color = PaletteColor | NativeColor;
+
+const color = (colors: Palette) => (color: Color) => colors[color as PaletteColor] || color;
 
 export { color };
-export type { Color, Palette, PrimaryColors, GreyColors, BlueColors, GreenColors, RedColors };
+export type { Color, Palette, PrimaryColors, PaletteColor, GreyColors, BlueColors, GreenColors, RedColors };

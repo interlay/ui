@@ -10,6 +10,7 @@ export type {
   AccordionVariants,
   ProgressBarSize,
   AlertStatus,
+  AlertVariant,
   TokenInputSize,
   TabsSize,
   SwitchSize,

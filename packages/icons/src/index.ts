@@ -9,6 +9,7 @@ export { ChevronRight } from './ChevronRight';
 export { Cog } from './Cog';
 export { DocumentDuplicate } from './DocumentDuplicate';
 export { InformationCircle } from './InformationCircle';
+export { ExclamationCircle } from './ExclamationCircle';
 export { ListBullet } from './ListBullet';
 export { PencilSquare } from './PencilSquare';
 export { PlusCircle } from './PlusCircle';
