@@ -1,5 +1,14 @@
 # @interlay/icons
 
+## 1.0.0-next.8
+
+### Patch Changes
+
+- [#100](https://github.com/interlay/ui/pull/100) [`b16116c77ede0475e78ac4d964bbe100d250789d`](https://github.com/interlay/ui/commit/b16116c77ede0475e78ac4d964bbe100d250789d) Thanks [@danielsimao](https://github.com/danielsimao)! - feat(components): add alert theme
+
+- Updated dependencies [[`b16116c77ede0475e78ac4d964bbe100d250789d`](https://github.com/interlay/ui/commit/b16116c77ede0475e78ac4d964bbe100d250789d)]:
+  - @interlay/theme@1.0.0-next.8
+
 ## 1.0.0-next.7
 
 ### Patch Changes
