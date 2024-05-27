@@ -1,5 +1,11 @@
 # @interlay/ui
 
+## 1.0.0-next.19
+
+### Patch Changes
+
+- [#102](https://github.com/interlay/ui/pull/102) [`34bc94f67217766dc2710b0ef534b1332a9deb72`](https://github.com/interlay/ui/commit/34bc94f67217766dc2710b0ef534b1332a9deb72) Thanks [@danielsimao](https://github.com/danielsimao)! - fix(componentes): token input deps
+
 ## 1.0.0-next.18
 
 ### Patch Changes
