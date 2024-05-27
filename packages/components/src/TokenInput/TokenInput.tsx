@@ -53,7 +53,7 @@ const TokenInput = forwardRef<HTMLInputElement, TokenInputProps>((props, ref): J
         );
       }
     },
-    props.type === 'selectable' ? [props.items] : []
+    props.type === 'selectable' ? [props.items, props.selectProps?.value] : []
   );
 
   useEffect(() => {
